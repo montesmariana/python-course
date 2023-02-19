@@ -1,0 +1,530 @@
+---
+title: "Variables"
+format: revealjs
+categories:
+    - basics
+    - errors
+execute:
+    output-location: fragment
+---
+
+## Basic types
+
+```{python}
+my_string = "This is a string"
+my_integer = 7
+my_float = 3.5
+my_boolean = True
+```
+
+. . . 
+
+Each with a different `type` and different *methods*.
+
+```{python}
+type(my_string)
+```
+
+. . .
+
+```{python}
+type(my_integer)
+```
+
+. . .
+
+```{python}
+type(my_float)
+```
+
+. . .
+
+```{python}
+type(my_boolean)
+```
+
+## Strings: some methods
+
+```{python}
+#| output-location: fragment
+len(my_string) # note: this is not a method
+```
+```{python}
+my_string + "another string"
+```
+
+```{python}
+#| output-location: fragment
+my_string.upper()
+```
+
+```{python}
+#| output-location: fragment
+my_string.endswith('string')
+```
+
+```{python}
+#| output-location: fragment
+my_string.replace('string', 'text')
+```
+
+```{python}
+#| output-location: fragment
+my_string
+```
+
+## Strings: notes
+
+- Strings can be written as `"string"` or `'string'`.
+
+- Strings are inmutable: the methods that modify them return a *different* string.
+
+- Methods can return a modified string or values of different types.
+
+- The length of a string is measured in characters.
+
+- The type of a string is `str`.
+
+::: {.footer}
+[Reference for string methods](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
+:::
+
+## Numbers I
+
+```{python}
+#| error: true
+#| output-location: fragment
+len(my_integer)
+```
+
+. . .
+
+```{python}
+#| error: true
+len(my_float)
+```
+
+. . .
+
+:::: {.columns}
+
+
+::: {.column width="50%"}
+```{python}
+my_float * my_float
+```
+
+```{python}
+my_float**2
+```
+
+```{python}
+-my_float
+```
+
+```{python}
+abs(-my_float)
+```
+
+:::
+::: {.column width="50%"}
+
+```{python}
+my_integer + 8
+```
+
+```{python}
+#| output-location: fragment
+type(my_integer/2)
+```
+
+```{python}
+#| output-location: fragment
+my_integer // 2
+```
+
+```{python}
+#| output-location: fragment
+my_integer % 2
+```
+
+:::
+::::
+
+## Numbers II
+
+```{python}
+my_float > my_integer
+```
+
+. . .
+
+```{python}
+my_float
+```
+
+. . .
+
+```{python}
+my_integer + my_integer * my_float
+```
+
+. . .
+
+```{python}
+(my_integer + my_integer) * my_float
+```
+
+. . .
+
+```{python}
+#| error: true
+#| output-location: fragment
+my_string + my_integer
+```
+
+. . .
+
+```{python}
+#| output-location: fragment
+my_string * my_integer
+```
+
+## Numbers: notes
+
+- Numbers can be of type `int` (with no decimal points) or `float` (with a decimal point).
+
+- We can implement the basic mathematical operations with the operators `+`, `-`, `/`, `*`...
+
+- We can compare them with `<`, `>`, `<=`, `>=`, `==` and `!=`.
+
+- We cannot add strings and numbers but we can multiply a string with a number.
+
+- Integers and floats are inmutable.
+
+
+::: {.footer}
+[Reference for numbers](https://docs.python.org/3/library/stdtypes.html#numeric-types-int-float-complex)
+:::
+
+## Booleans
+
+- Mostly `True` and `False` but in truth-value testing many things can be true/false.
+
+- Typically as result of [comparisons](https://docs.python.org/3/library/stdtypes.html#comparisons) and [boolean operations](https://docs.python.org/3/library/stdtypes.html#boolean-operations-and-or-not).
+
+```{python}
+my_string.endswith('awesome')
+```
+
+```{python}
+6 <= 1000
+```
+
+```{python}
+'A' < 'B'
+```
+
+## Boolean operators I
+
+**X and Y** is `True` when and *only when* both `X` and `Y` are `True`.
+
+```{python}
+(1 + 1 == 2) and ("python".startswith("py"))
+```
+
+. . .
+
+If at least one component is `False`, the full statement is `False`.
+
+```{python}
+(1 + 1 == 2) and ("python".startswith("r"))
+```
+
+```{python}
+(1 + 1 > 2) and ("python".startswith("r"))
+```
+
+```{python}
+(1 + 1 == 2) and ("python".startswith("py")) and (3 > 4)
+```
+
+## Boolean operators II
+
+**X or Y** is `True` when at least `X` or `Y` are `True`.
+
+```{python}
+(1 + 1 == 2) or (1 + 2 == 3)
+```
+
+```{python}
+(1 + 1 == 2) or ("python".startswith("r"))
+```
+
+. . .
+
+If all components are `False`, the full statement is `False`.
+
+```{python}
+(1 + 1 > 2) or ("python".startswith("r"))
+```
+
+## Boolean operators III
+
+The `not` operator negates the boolean operation it precedes. `not True` is `False`; `not False` is `True`.
+
+```{python}
+1 + 1 == 2
+```
+
+```{python}
+not 1 + 1 == 2
+```
+
+. . .
+
+The following is a nice trick:
+
+```{python}
+not (1 + 1 == 2) or not (1 + 2 > 3)
+```
+
+```{python}
+not ((1 + 1 == 2) and (1 + 2 > 3))
+```
+
+## Boolean: notes
+
+- `True` and `False` come *mostly* as result of boolean operations and comparisons.
+
+- They will be useful when we do flow control (e.g. "If the language of the text is French, choose the following translator...")
+
+::: {.footer}
+[More reference on booleans](https://docs.python.org/3/library/stdtypes.html#truth-value-testing)
+:::
+
+# Sequences
+
+## Lists I
+
+```{python}
+my_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+my_list
+```
+
+```{python}
+type(my_list)
+```
+
+```{python}
+len(my_list)
+```
+
+. . . 
+
+```{python}
+my_list[0]
+```
+
+```{python}
+my_list[-1]
+```
+
+## Lists II
+
+```{python}
+'c' in my_list
+```
+
+```{python}
+my_list + ['x', 'y', 'z']
+```
+
+```{python}
+my_list[1:5]
+```
+
+```{python}
+num_list = [1, 5, 7, 3, 4, 2, 8, 0.3]
+f"The smallest element of `num_list` is {min(num_list)}; the largest is {max(num_list)}."
+```
+
+## List mutability I
+
+```{python}
+my_list.reverse()
+my_list
+```
+
+```{python}
+my_list.pop()
+my_list
+```
+
+```{python}
+my_list.append('z')
+my_list
+```
+
+```{python}
+my_list.sort()
+my_list
+```
+
+## List Mutability II
+
+```{python}
+second_list = my_list
+my_list[2] = 'x'
+```
+
+We changed the third element: what is going to happen to `my_list`?
+
+```{python}
+#| output-location: fragment
+my_list
+```
+
+. . .
+
+And what about its copy?
+
+```{python}
+#| output-location: fragment
+second_list
+```
+
+## Lists: notes
+
+- Lists are mutable: a method can change it without having to reassign it.
+
+- Assigning the same list to another variable justs adds a reference point, it does not create a copy.
+
+- We can extract and modify items by their index (which starts at 0!) with the `[index]` notation.
+
+::: {.footer}
+[More about lists](https://docs.python.org/3/library/stdtypes.html#sequence-types-list-tuple-range)
+:::
+
+## Tuples and lists
+
+- [Tuples](https://docs.python.org/3/library/stdtypes.html#tuples) and typically used to store _heterogeneous data_.
+
+```{python}
+my_tuple = ('one', 1, True)
+my_tuple
+```
+
+. . .
+
+- [Sets](https://docs.python.org/3/library/stdtypes.html#set-types-set-frozenset) only have unique elements and cannot be indexed.
+
+```{python}
+my_set = set([1, 1, 1, 4, 6, 4])
+my_set
+```
+
+```{python}
+#| error: true
+my_set[2]
+```
+
+
+## Strings and lists
+
+Like lists, strings have indices.
+
+```{python}
+my_string[0:8]
+```
+
+```{python}
+my_string.find('is')
+```
+
+. . .
+
+It is also very common to switch between strings and lists:
+
+```{python}
+string_as_list = my_string.split(' ')
+string_as_list
+```
+
+```{python}
+'-'.join(string_as_list)
+```
+
+## Dictionaries I
+
+```{python}
+my_dict = {
+    'title' : 'A Hat Full of Sky',
+    'author' : 'Terry Pratchett',
+    'year' : 2004
+}
+my_dict
+```
+
+```{python}
+len(my_dict)
+```
+
+```{python}
+type(my_dict)
+```
+
+## Dictionaries II
+
+```{python}
+my_dict['title']
+```
+
+```{python}
+my_dict['title'] = 'Small gods'
+my_dict
+```
+
+```{python}
+small_gods = {'title' : 'Small Gods', 'year' : 1992}
+my_dict.update(small_gods)
+my_dict
+```
+
+## Dictionaries III
+
+```{python}
+list(my_dict)
+```
+
+```{python}
+'Author' in my_dict
+```
+
+```{python}
+#| error: true
+#| output-location: fragment
+my_dict['Author']
+```
+
+. . .
+
+```{python}
+#| error: true
+#| output-location: fragment
+my_dict[0]
+```
+
+## Dictionaries: notes
+
+- A dictionary has **key-value pairs**: instead of an index you use a named key to retrieve a value.
+
+- The `in` operator to check inclusion checks for *values* in lists and for *keys* in dictionaries.
+
+- Dictionaries are also mutable.
+
+::: {.footer}
+[More about dictionaries](https://docs.python.org/3/library/stdtypes.html#mapping-types-dict)
+:::
+
+# Next up: working with iterables

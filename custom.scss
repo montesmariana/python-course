@@ -1,0 +1,13 @@
+/*-- scss:defaults --*/
+
+$body-bg: white;
+$code-block-font-size: 0.7em;
+
+/*-- scss:rules --*/
+.reveal .slide button.code-copy-button {
+    font-size: 1em;
+  }
+
+.reveal .slide div.source-code {
+    margin-top: 0.5rem
+}

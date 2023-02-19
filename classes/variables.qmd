@@ -1,0 +1,69 @@
+---
+title: "Variables"
+format: html
+date: 2023-02-21
+---
+
+
+Today we learn about [variables](../slides/variables.qmd){target="_blank"}!
+
+- Strings
+- Numbers (integers and floats)
+- Booleans
+- Lists and similar objects
+- Dictionaries
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/variables.html"></iframe>
+```
+</div>
+
+
+# What to do in Jupyter
+
+Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.
+
+## Think about
+
+- Where do you see these kinds of variables in real life, especially at work?
+
+- How do you think you could use a list or a dictionary in translation?
+
+# What to do in VS Code
+
+Since we're just starting, let's keep it simple. Write a dictionary that defines properties of a person, a text, anything that interests you. For example:
+
+```{python}
+my_dict = {
+    'title' : 'A hat full of sky',
+    'author' : 'Terry Pratchett',
+    'year' : 2004,
+    'language' : 'English',
+    'main_characters' : [
+        'Tiffany Aching',
+        'Granny Weatherwax',
+        'Rob Anybody'
+        ]
+}
+my_dict
+```
+
+You can leave Boolean values out, we'll see more about their use later.
+
+Then try to write a number of f-strings that combines different values from inside the dictionary and maybe further operations seen in class or the extra documentation (don't be afraid to Google!).
+
+```{python}
+sent_1 = f"{my_dict['title'].title()} was written by {my_dict['author'].title()} in {my_dict['language']}."
+sent_2 = f"It was published in {my_dict['year']}, that is, {2023-my_dict['year']} years ago."
+sent_3 = f"The main characters are: {', '.join(my_dict['main_characters'])}."
+```
+
+Finally, join them all one last time with "\n", which represents a change of line, and print the final output.
+
+```{python}
+book_description = "\n".join([sent_1, sent_2, sent_3])
+print(book_description)
+```
+
+This kind of procedure can be particularly useful when you need to log the behaviour of your code, i.e. printing information about the current values of variables.

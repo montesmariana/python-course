@@ -1,0 +1,11 @@
+---
+title: "Introduction to Machine Learning using Python"
+listing:
+    contents: classes
+---
+
+Welcome to the website of the course "Introduction to Machine Learning Using Python" (February-May 2023).
+
+Below you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.
+
+# Class notes
