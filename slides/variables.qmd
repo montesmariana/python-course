@@ -1,11 +1,6 @@
 ---
 title: "Variables"
 format: revealjs
-categories:
-    - basics
-    - errors
-execute:
-    output-location: fragment
 ---
 
 ## Basic types

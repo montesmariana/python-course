@@ -2,6 +2,9 @@
 title: "Variables"
 format: html
 date: 2023-02-21
+categories:
+    - basics
+    - errors
 ---
 
 

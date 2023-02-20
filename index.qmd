@@ -2,6 +2,7 @@
 title: "Introduction to Machine Learning using Python"
 listing:
     contents: classes
+    categories: true
 ---
 
 Welcome to the website of the course "Introduction to Machine Learning Using Python" (February-May 2023).
