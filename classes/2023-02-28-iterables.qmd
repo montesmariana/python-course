@@ -1,0 +1,105 @@
+---
+title: "Working with iterables"
+format: html
+date: 2023-02-28
+categories:
+    - sequences
+    - for loop
+    - while
+description: Introduction to iterables and for loops.
+draft: true
+---
+
+
+Today we learn about [iterables](../slides/iterables.qmd){target="_blank"}:
+
+- Going through each element of a list or a dictionary.
+- Combining lists.
+- Generators.
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/iterables.html"></iframe>
+```
+</div>
+
+
+# What to do in Jupyter
+
+Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.
+
+## Think about
+
+- How do you think you could use a list or a dictionary in translation?
+
+# What to do in VS Code
+
+[Last class](2023-02-21-variables.qmd) we created a dictionary with information about a book and wrote some text that uses that variable. I reproduce the dictionary below with a different name:
+
+```{python}
+hat_sky = {
+    'title' : 'A hat full of sky',
+    'author' : 'Terry Pratchett',
+    'year' : 2004,
+    'language' : 'English',
+    'main_characters' : [
+        'Tiffany Aching',
+        'Granny Weatherwax',
+        'Rob Anybody'
+        ]
+}
+```
+
+Now we'll create similar dictionaries for other books:
+
+```{python}
+small_gods = {
+    'title' : 'Small gods',
+    'author' : 'Terry Pratchett',
+    'year' : 1992,
+    'language' : 'English',
+    'main_characters' : [
+        'Om',
+        'Brutha'
+        ]
+}
+color_magic = {
+    'title' : 'The color of magic',
+    'author' : 'Terry Pratchett',
+    'year' : 1983,
+    'language' : 'English',
+    'main_characters' : [
+        'Rincewind',
+        'Twoflower'
+        ]
+}
+shepherd_crown = {
+    'title' : "The shepherd's crown",
+    'author' : 'Terry Pratchett',
+    'year' : 2015,
+    'language' : 'English',
+    'main_characters' : [
+        'Tiffany Aching',
+        'Nightshade',
+        'Peaseblossom'
+        ]
+}
+```
+
+Finally, we'll create a list with our books:
+
+```{python}
+discworld_sample = [color_magic, small_gods, hat_sky, shepherd_crown]
+```
+
+We will then reuse the code of the strings from last class inside a for loop that goes through each of the books.
+
+```{python}
+for book in discworld_sample:
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = " ".join([sent_1, sent_2, sent_3])
+    print(book_description)
+    print()
+```

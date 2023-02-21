@@ -4,6 +4,7 @@ format: html
 date: 2023-02-21
 categories:
     - basics
+    - sequences
     - errors
 description: Introduction to the fundamental data types in Python.
 ---
