@@ -12,11 +12,11 @@ website:
 format:
   html:
     theme: lumen
-    css: styles.css
     toc: true
   revealjs:
-    theme: [solarized, custom.scss]
+    theme: [solarized]
     echo: true
     logo: img/kuleuven.png
 
-
+execute:
+  freeze: true
