@@ -1,0 +1,264 @@
+---
+title: "Working with iterables"
+format: revealjs
+---
+
+## Lists
+
+**Problem**: I have a text and I would like to know:
+
+- How many types and tokens it has
+
+- How long its words are
+
+. . .
+
+**How do we go about this with Python?**
+
+```{python}
+text = ("This is a text with a few words and "
+    "no punctuation and it is easy to work with")
+text
+```
+
+## Basic tokenization
+
+We'll turn the text into all lower case and make a list splitting it via the spaces.
+
+```{python}
+tokenized_text = text.lower().split(' ')
+tokenized_text
+```
+
+## Types and tokens
+
+Tokens are the individual elements.
+
+```{python}
+n_tokens = len(tokenized_text)
+f"My text has {n_tokens} tokens."
+```
+
+. . .
+
+Types are _unique_ elements.
+
+```{python}
+types = set(tokenized_text)
+types
+```
+
+```{python}
+n_types = len(types)
+```
+
+## Info summary
+
+```{python}
+#| code-overflow: wrap
+(f"My text has {n_tokens} tokens and {n_types} types, "
+f"i.e. a type token ratio of {round(n_tokens/n_types, 2)}.")
+```
+
+. . .
+
+OK, what about the length of *each* word?
+
+```{python}
+words = list(types)
+print(words)
+```
+
+## for loops
+
+```{python}
+for word in words:
+    print(word)
+```
+
+::: {.footer}
+[More about `for` loops](https://docs.python.org/3.10/tutorial/controlflow.html#for-statements)
+:::
+
+## for loops
+
+```{python}
+for word in words:
+    print(f'"{word}" is {len(word)} characters long.')
+```
+
+::: {.footer}
+[More about `for` loops](https://docs.python.org/3.10/tutorial/controlflow.html#for-statements)
+:::
+
+## New list with a for loop
+
+We could start an empty list and then, with a `for` loop, go through each token, count its characters and add it to the list.
+
+```{python}
+word_lengths = []
+for word in words:
+    word_lengths.append(len(word))
+print(word_lengths)
+```
+
+::: callout-important
+### Note
+This is not the recommended way to create a new list!
+:::
+
+## List of word lengths
+
+Then we can do different things:
+
+```{python}
+f"The shortest word in my text has {min(word_lengths)} character."
+```
+
+```{python}
+f"The longest word in my text has {max(word_lengths)} characters."
+```
+
+```{python}
+f"The average word length in my text is {round(sum(word_lengths)/len(word_lengths), 2)} characters."
+```
+
+## Combining two lists
+
+We can combine two lists of equal length with `zip()`.
+```{python}
+for item in zip(words, word_lengths):
+    print(item)
+```
+
+## for loop on combined lists
+
+```{python}
+for word, length in zip(words, word_lengths):
+    print(f'The word "{word}" has {length} characters.')
+```
+
+## Generators
+
+`zip()` doesn't return a list but a *generator*:
+```{python}
+zip(words, word_lengths)
+```
+
+. . .
+
+Other useful generators are `range()` and `enumerate()`:
+
+:::: {.columns}
+::: {.column width="40%"}
+```{python}
+range(3)
+```
+
+```{python}
+for i in range(3):
+    print(i)
+```
+:::
+::: {.column width="60%"}
+```{python}
+enumerate(['a', 'b', 'c'])
+```
+```{python}
+for item in enumerate(['a', 'b', 'c']):
+    print(item)
+```
+:::
+::::
+
+## Other generators: `range()`
+
+```{python}
+for i in range(len(words)):
+    print(f'"{words[i]}" is type N.{i+1} in my text'
+    f' and has {word_lengths[i]} characters.')
+```
+
+## Other generators: `enumerate()`
+
+```{python}
+for i, word in enumerate(words):
+    print(f'"{word}" is type N.{i+1} in my text'
+    f' and has {word_lengths[i]} characters.')
+```
+
+## Comprehension lists
+
+The problem of creating a list (like `word_lengths`) with a for loop is that the computer doesn't know how long it is going to be. A more direct way is to use **comprehension lists**.
+
+```{python}
+word_lengths = [len(word) for word in words]
+print(word_lengths)
+```
+
+::: callout-warning
+It's better to create new lists with comprehension lists,
+but if what you want to do is *print some output*, then use a `for` loop (so you don't create anything new).
+:::
+
+## Also for dictionaries!
+
+```{python}
+word_lengths_dict = { w : len(w) for w in words}
+word_lengths_dict
+```
+
+## Use a dictionary in a loop
+
+```{python}
+for key in word_lengths_dict:
+    print(f'The word "{key}" has {word_lengths_dict[key]} characters.')
+```
+
+## Like two lists
+```{python}
+for key, value in word_lengths_dict.items():
+    print(f'The word "{key}" has {value} characters.')
+```
+
+## List of dictionaries
+
+```{python}
+discworld_death = [
+    { 'title' : 'Mort', 'year' : 1987},
+    { 'title' : 'Reaper Man', 'year' : 1991},
+    { 'title' : 'Soul Music', 'year' : 1994},
+    { 'title' : 'Hogfather', 'year' : 1996},
+    { 'title' : 'Thief of time', 'year' : 2001}
+]
+```
+
+. . .
+
+```{python}
+for i, book in enumerate(discworld_death):
+    print(f'Book N.{i+1} of the Death series is "{book["title"]}", published in {book["year"]}.')
+```
+
+# While
+
+## while
+
+In a `for` loop, you have a list or generator and you go through its items one by one.
+
+With `while`, you create a loop that depends on a condition.
+
+```{python}
+#| output-location: slide
+import random
+import time
+random.seed(7)
+i = 0
+while i < 80:
+    print("i is too small yet.")
+    time.sleep(1)
+    i = random.randint(1, 100)
+    print(f"i is now {i}.")
+```
+
+# Next up: conditions
