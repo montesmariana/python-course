@@ -1,12 +1,5 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Introduction to Machine Learning using Python",
-    "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About this course",
@@ -14,11 +7,11 @@
     "text": "Content\n\nFundamentals of Python: I know that the course website says that the focus lies on “NLP, automation, text analysis and machine learning”, but I find it more important to give you a strong basis that helps you feel confident about learning more and gives you the tools to understand tutorials and documentation. We’ll adjust the speed to the students.\nWe’ll try to cover actual fundamentals in the first half, i.e. before easter: types of variables, working with lists and dictionaries, creating functions, using classes, but also opening and saving files, using regular expressions, parsing XML.\nIn the second half we will put the regular expressions and parsing into practice and check out packages for machine learning (scikit-learn) and NLP (nltk, maybe spacy). We’ll also look a bit into testing and documenting, so that you still understand next year what you tried to do today.\n\n\n\nAssignments\n\nThere will be a final assignment that consists of solving a problem with Python code and explaining it/documenting it. For those submitting in June, it will be 80% fo the grade. For those submitting in August, it will be a bit more complex and account for 100% of the grade.\nI will propose problems that you can try to solve, but we can also brainstorm and discuss ideas during the semester as you learn more about the contents.\nThere will be two small assignments during the semester: one due after Easter and one that is a presentation at the end of the semester. Each of them accounts for 10% of the grade.\n\n\n\nRequirements\nMake sure they all have Anaconda (as late a version as possible) and VS Code installed.\nEach class:\n\nOpen Anaconda\nSelect (in Home) or create (in Environments) the appropriate environment. For the first classes we can use a basic one with no additional packages.\nIn Home, make sure that Jupyter Notebook and VS Code are installed for your environment.\nOpen Jupyter Notebook and from its file explored find your way to the folder where you store the scripts for this class. Open an existing notebook or create a new one, as appropriate. Try out the code from the slides in that notebook.\nAfter some experimentation, open VS Code to write a small script and run it in the console. Depending on the rhythm of the class, this might be the last task or something to do at home."
   },
   {
-    "objectID": "slides/variables.html",
-    "href": "slides/variables.html",
+    "objectID": "slides/variables.html#basic-types",
+    "href": "slides/variables.html#basic-types",
     "title": "Variables",
-    "section": "",
-    "text": "my_string = \"This is a string\"\nmy_integer = 7\nmy_float = 3.5\nmy_boolean = True\n\n\nEach with a different type and different methods.\n\ntype(my_string)\n\nstr\n\n\n\n\n\ntype(my_integer)\n\nint\n\n\n\n\n\ntype(my_float)\n\nfloat\n\n\n\n\n\ntype(my_boolean)\n\nbool"
+    "section": "Basic types",
+    "text": "Basic types\n\nmy_string = \"This is a string\"\nmy_integer = 7\nmy_float = 3.5\nmy_boolean = True\n\n\nEach with a different type and different methods.\n\ntype(my_string)\n\nstr\n\n\n\n\n\ntype(my_integer)\n\nint\n\n\n\n\n\ntype(my_float)\n\nfloat\n\n\n\n\n\ntype(my_boolean)\n\nbool"
   },
   {
     "objectID": "slides/variables.html#strings-some-methods",
@@ -168,24 +161,24 @@
     "text": "Dictionaries: notes\n\nA dictionary has key-value pairs: instead of an index you use a named key to retrieve a value.\nThe in operator to check inclusion checks for values in lists and for keys in dictionaries.\nDictionaries are also mutable.\n\n\nMore about dictionaries"
   },
   {
-    "objectID": "classes/variables.html",
-    "href": "classes/variables.html",
+    "objectID": "classes/2023-02-21-variables.html",
+    "href": "classes/2023-02-21-variables.html",
     "title": "Variables",
     "section": "",
     "text": "Today we learn about variables:"
   },
   {
-    "objectID": "classes/variables.html#think-about",
-    "href": "classes/variables.html#think-about",
+    "objectID": "classes/2023-02-21-variables.html#think-about",
+    "href": "classes/2023-02-21-variables.html#think-about",
     "title": "Variables",
     "section": "Think about",
     "text": "Think about\n\nWhere do you see these kinds of variables in real life, especially at work?\nHow do you think you could use a list or a dictionary in translation?"
   },
   {
-    "objectID": "slides/variables.html#basic-types",
-    "href": "slides/variables.html#basic-types",
-    "title": "Variables",
-    "section": "Basic types",
-    "text": "Basic types\n\nmy_string = \"This is a string\"\nmy_integer = 7\nmy_float = 3.5\nmy_boolean = True\n\n\nEach with a different type and different methods.\n\ntype(my_string)\n\nstr\n\n\n\n\n\ntype(my_integer)\n\nint\n\n\n\n\n\ntype(my_float)\n\nfloat\n\n\n\n\n\ntype(my_boolean)\n\nbool"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Introduction to Machine Learning using Python",
+    "section": "",
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
