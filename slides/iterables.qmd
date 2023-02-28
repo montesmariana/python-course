@@ -48,16 +48,13 @@ types = set(tokenized_text)
 types
 ```
 
-```{python}
-n_types = len(types)
-```
-
 ## Info summary
 
 ```{python}
-#| code-overflow: wrap
+n_types = len(types)
+
 (f"My text has {n_tokens} tokens and {n_types} types, "
-f"i.e. a type token ratio of {round(n_tokens/n_types, 2)}.")
+f"i.e. a type token ratio of {round(n_types/n_tokens, 2)}.")
 ```
 
 . . .
