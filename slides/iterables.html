@@ -406,7 +406,7 @@
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a>text <span class="op">=</span> (<span class="st">"This is a text with a few words and "</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="st">"no punctuation and it is easy to work with"</span>)</span>
 <span id="cb1-3"><a href="#cb1-3"></a>text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="258">
+<div class="cell-output cell-output-display" data-execution_count="1">
 <pre><code>'This is a text with a few words and no punctuation and it is easy to work with'</code></pre>
 </div>
 </div>
@@ -418,7 +418,7 @@
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a>tokenized_text <span class="op">=</span> text.lower().split(<span class="st">' '</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a>tokenized_text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="259">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <pre><code>['this',
  'is',
  'a',
@@ -446,7 +446,7 @@
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1"></a>n_tokens <span class="op">=</span> <span class="bu">len</span>(tokenized_text)</span>
 <span id="cb5-2"><a href="#cb5-2"></a><span class="ss">f"My text has </span><span class="sc">{</span>n_tokens<span class="sc">}</span><span class="ss"> tokens."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="260">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <pre><code>'My text has 18 tokens.'</code></pre>
 </div>
 </div>
@@ -455,7 +455,7 @@
 <div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a>types <span class="op">=</span> <span class="bu">set</span>(tokenized_text)</span>
 <span id="cb7-2"><a href="#cb7-2"></a>types</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="261">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>{'a',
  'and',
  'easy',
@@ -472,51 +472,50 @@
  'work'}</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>n_types <span class="op">=</span> <span class="bu">len</span>(types)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
 </div>
 </section>
 <section id="info-summary" class="slide level2">
 <h2>Info summary</h2>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python code-overflow-wrap number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>(<span class="ss">f"My text has </span><span class="sc">{</span>n_tokens<span class="sc">}</span><span class="ss"> tokens and </span><span class="sc">{</span>n_types<span class="sc">}</span><span class="ss"> types, "</span></span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="ss">f"i.e. a type token ratio of </span><span class="sc">{</span><span class="bu">round</span>(n_tokens<span class="op">/</span>n_types, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="263">
-<pre><code>'My text has 18 tokens and 14 types, i.e. a type token ratio of 1.29.'</code></pre>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a>n_types <span class="op">=</span> <span class="bu">len</span>(types)</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>(<span class="ss">f"My text has </span><span class="sc">{</span>n_tokens<span class="sc">}</span><span class="ss"> tokens and </span><span class="sc">{</span>n_types<span class="sc">}</span><span class="ss"> types, "</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="ss">f"i.e. a type token ratio of </span><span class="sc">{</span><span class="bu">round</span>(n_types<span class="op">/</span>n_tokens, <span class="dv">2</span>)<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<pre><code>'My text has 18 tokens and 14 types, i.e. a type token ratio of 0.78.'</code></pre>
 </div>
 </div>
 <div class="fragment">
 <p>OK, what about the length of <em>each</em> word?</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>words <span class="op">=</span> <span class="bu">list</span>(types)</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="bu">print</span>(words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a>words <span class="op">=</span> <span class="bu">list</span>(types)</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="bu">print</span>(words)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>['punctuation', 'with', 'and', 'words', 'no', 'to', 'text', 'easy', 'it', 'this', 'work', 'is', 'few', 'a']</code></pre>
+<pre><code>['is', 'few', 'punctuation', 'easy', 'a', 'with', 'words', 'no', 'to', 'work', 'this', 'it', 'and', 'text']</code></pre>
 </div>
 </div>
 </div>
 </section>
 <section id="for-loops" class="slide level2">
 <h2>for loops</h2>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
-<span id="cb14-2"><a href="#cb14-2"></a>    <span class="bu">print</span>(word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="bu">print</span>(word)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>punctuation
+<pre><code>is
+few
+punctuation
+easy
+a
 with
-and
 words
 no
 to
-text
-easy
-it
-this
 work
-is
-few
-a</code></pre>
+this
+it
+and
+text</code></pre>
 </div>
 </div>
 <div class="footer">
@@ -525,24 +524,24 @@ a</code></pre>
 </section>
 <section id="for-loops-1" class="slide level2">
 <h2>for loops</h2>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
-<span id="cb16-2"><a href="#cb16-2"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is </span><span class="sc">{</span><span class="bu">len</span>(word)<span class="sc">}</span><span class="ss"> characters long.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
+<span id="cb15-2"><a href="#cb15-2"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is </span><span class="sc">{</span><span class="bu">len</span>(word)<span class="sc">}</span><span class="ss"> characters long.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>"punctuation" is 11 characters long.
+<pre><code>"is" is 2 characters long.
+"few" is 3 characters long.
+"punctuation" is 11 characters long.
+"easy" is 4 characters long.
+"a" is 1 characters long.
 "with" is 4 characters long.
-"and" is 3 characters long.
 "words" is 5 characters long.
 "no" is 2 characters long.
 "to" is 2 characters long.
-"text" is 4 characters long.
-"easy" is 4 characters long.
-"it" is 2 characters long.
-"this" is 4 characters long.
 "work" is 4 characters long.
-"is" is 2 characters long.
-"few" is 3 characters long.
-"a" is 1 characters long.</code></pre>
+"this" is 4 characters long.
+"it" is 2 characters long.
+"and" is 3 characters long.
+"text" is 4 characters long.</code></pre>
 </div>
 </div>
 <div class="footer">
@@ -551,19 +550,19 @@ a</code></pre>
 </section>
 <section id="for-loops-continue" class="slide level2">
 <h2>for loops: continue</h2>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
-<span id="cb18-2"><a href="#cb18-2"></a>    <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&lt;</span> <span class="dv">4</span>:</span>
-<span id="cb18-3"><a href="#cb18-3"></a>        <span class="cf">continue</span></span>
-<span id="cb18-4"><a href="#cb18-4"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is </span><span class="sc">{</span><span class="bu">len</span>(word)<span class="sc">}</span><span class="ss"> characters long.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
+<span id="cb17-2"><a href="#cb17-2"></a>    <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb17-3"><a href="#cb17-3"></a>        <span class="cf">continue</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is </span><span class="sc">{</span><span class="bu">len</span>(word)<span class="sc">}</span><span class="ss"> characters long.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>"punctuation" is 11 characters long.
+"easy" is 4 characters long.
 "with" is 4 characters long.
 "words" is 5 characters long.
-"text" is 4 characters long.
-"easy" is 4 characters long.
+"work" is 4 characters long.
 "this" is 4 characters long.
-"work" is 4 characters long.</code></pre>
+"text" is 4 characters long.</code></pre>
 </div>
 </div>
 <div class="footer">
@@ -572,15 +571,11 @@ a</code></pre>
 </section>
 <section id="for-loops-break" class="slide level2">
 <h2>for loops: break</h2>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
-<span id="cb20-2"><a href="#cb20-2"></a>    <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&lt;</span> <span class="dv">4</span>:</span>
-<span id="cb20-3"><a href="#cb20-3"></a>        <span class="cf">break</span></span>
-<span id="cb20-4"><a href="#cb20-4"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is </span><span class="sc">{</span><span class="bu">len</span>(word)<span class="sc">}</span><span class="ss"> characters long.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>"punctuation" is 11 characters long.
-"with" is 4 characters long.</code></pre>
-</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
+<span id="cb19-2"><a href="#cb19-2"></a>    <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&lt;</span> <span class="dv">4</span>:</span>
+<span id="cb19-3"><a href="#cb19-3"></a>        <span class="cf">break</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is </span><span class="sc">{</span><span class="bu">len</span>(word)<span class="sc">}</span><span class="ss"> characters long.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="footer">
 <p><a href="https://docs.python.org/3.10/tutorial/controlflow.html#for-statements">More about <code>for</code> loops</a></p>
@@ -598,13 +593,13 @@ a</code></pre>
 <section id="new-list-with-a-for-loop" class="slide level2">
 <h2>New list with a for loop</h2>
 <p>We could start an empty list and then, with a <code>for</code> loop, go through each token, count its characters and add it to the list.</p>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a>word_lengths <span class="op">=</span> []</span>
-<span id="cb22-2"><a href="#cb22-2"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
-<span id="cb22-3"><a href="#cb22-3"></a>    word_lengths.append(<span class="bu">len</span>(word))</span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="bu">print</span>(word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>word_lengths <span class="op">=</span> []</span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="cf">for</span> word <span class="kw">in</span> words:</span>
+<span id="cb20-3"><a href="#cb20-3"></a>    word_lengths.append(<span class="bu">len</span>(word))</span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="bu">print</span>(word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[11, 4, 3, 5, 2, 2, 4, 4, 2, 4, 4, 2, 3, 1]</code></pre>
+<pre><code>[2, 3, 11, 4, 1, 4, 5, 2, 2, 4, 4, 2, 3, 4]</code></pre>
 </div>
 </div>
 <div class="callout callout-important callout-captioned callout-style-default">
@@ -624,21 +619,21 @@ a</code></pre>
 <section id="list-of-word-lengths" class="slide level2">
 <h2>List of word lengths</h2>
 <p>Then we can do different things:</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="ss">f"The shortest word in my text has </span><span class="sc">{</span><span class="bu">min</span>(word_lengths)<span class="sc">}</span><span class="ss"> character."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="270">
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="ss">f"The shortest word in my text has </span><span class="sc">{</span><span class="bu">min</span>(word_lengths)<span class="sc">}</span><span class="ss"> character."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <pre><code>'The shortest word in my text has 1 character.'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="ss">f"The longest word in my text has </span><span class="sc">{</span><span class="bu">max</span>(word_lengths)<span class="sc">}</span><span class="ss"> characters."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="271">
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="ss">f"The longest word in my text has </span><span class="sc">{</span><span class="bu">max</span>(word_lengths)<span class="sc">}</span><span class="ss"> characters."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
 <pre><code>'The longest word in my text has 11 characters.'</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="ss">f"The average word length in my text is </span><span class="sc">{</span><span class="bu">round</span>(<span class="bu">sum</span>(word_lengths)<span class="op">/</span><span class="bu">len</span>(word_lengths), <span class="dv">2</span>)<span class="sc">}</span><span class="ss"> characters."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="272">
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="ss">f"The average word length in my text is </span><span class="sc">{</span><span class="bu">round</span>(<span class="bu">sum</span>(word_lengths)<span class="op">/</span><span class="bu">len</span>(word_lengths), <span class="dv">2</span>)<span class="sc">}</span><span class="ss"> characters."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="14">
 <pre><code>'The average word length in my text is 3.64 characters.'</code></pre>
 </div>
 </div>
@@ -646,72 +641,72 @@ a</code></pre>
 <section id="combining-two-lists" class="slide level2">
 <h2>Combining two lists</h2>
 <p>We can combine two lists of equal length with <code>zip()</code>.</p>
-<div class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="cf">for</span> item <span class="kw">in</span> <span class="bu">zip</span>(words, word_lengths):</span>
-<span id="cb30-2"><a href="#cb30-2"></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="cf">for</span> item <span class="kw">in</span> <span class="bu">zip</span>(words, word_lengths):</span>
+<span id="cb28-2"><a href="#cb28-2"></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>('punctuation', 11)
+<pre><code>('is', 2)
+('few', 3)
+('punctuation', 11)
+('easy', 4)
+('a', 1)
 ('with', 4)
-('and', 3)
 ('words', 5)
 ('no', 2)
 ('to', 2)
-('text', 4)
-('easy', 4)
-('it', 2)
-('this', 4)
 ('work', 4)
-('is', 2)
-('few', 3)
-('a', 1)</code></pre>
+('this', 4)
+('it', 2)
+('and', 3)
+('text', 4)</code></pre>
 </div>
 </div>
 </section>
 <section id="for-loop-on-combined-lists" class="slide level2">
 <h2>for loop on combined lists</h2>
-<div class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="cf">for</span> word, length <span class="kw">in</span> <span class="bu">zip</span>(words, word_lengths):</span>
-<span id="cb32-2"><a href="#cb32-2"></a>    <span class="bu">print</span>(<span class="ss">f'The word "</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" has </span><span class="sc">{</span>length<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="cf">for</span> word, length <span class="kw">in</span> <span class="bu">zip</span>(words, word_lengths):</span>
+<span id="cb30-2"><a href="#cb30-2"></a>    <span class="bu">print</span>(<span class="ss">f'The word "</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" has </span><span class="sc">{</span>length<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The word "punctuation" has 11 characters.
+<pre><code>The word "is" has 2 characters.
+The word "few" has 3 characters.
+The word "punctuation" has 11 characters.
+The word "easy" has 4 characters.
+The word "a" has 1 characters.
 The word "with" has 4 characters.
-The word "and" has 3 characters.
 The word "words" has 5 characters.
 The word "no" has 2 characters.
 The word "to" has 2 characters.
-The word "text" has 4 characters.
-The word "easy" has 4 characters.
-The word "it" has 2 characters.
-The word "this" has 4 characters.
 The word "work" has 4 characters.
-The word "is" has 2 characters.
-The word "few" has 3 characters.
-The word "a" has 1 characters.</code></pre>
+The word "this" has 4 characters.
+The word "it" has 2 characters.
+The word "and" has 3 characters.
+The word "text" has 4 characters.</code></pre>
 </div>
 </div>
 </section>
 <section id="generators" class="slide level2">
 <h2>Generators</h2>
 <p><code>zip()</code> doesn’t return a list but a <em>generator</em>:</p>
-<div class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="bu">zip</span>(words, word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="275">
-<pre><code>&lt;zip at 0x7f4128f55600&gt;</code></pre>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="bu">zip</span>(words, word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
+<pre><code>&lt;zip at 0x7fdb74379100&gt;</code></pre>
 </div>
 </div>
 <div class="fragment">
 <p>Other useful generators are <code>range()</code> and <code>enumerate()</code>:</p>
 <div class="columns">
 <div class="column" style="width:40%;">
-<div class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="bu">range</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="276">
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1"></a><span class="bu">range</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="18">
 <pre><code>range(0, 3)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
-<span id="cb38-2"><a href="#cb38-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">3</span>):</span>
+<span id="cb36-2"><a href="#cb36-2"></a>    <span class="bu">print</span>(i)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0
 1
@@ -719,15 +714,15 @@ The word "a" has 1 characters.</code></pre>
 </div>
 </div>
 </div><div class="column" style="width:60%;">
+<div class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1"></a><span class="bu">enumerate</span>([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>&lt;enumerate at 0x7fdb7436ca00&gt;</code></pre>
+</div>
+</div>
 <div class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="bu">enumerate</span>([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="278">
-<pre><code>&lt;enumerate at 0x7f4124655b00&gt;</code></pre>
-</div>
-</div>
-<div class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="cf">for</span> item <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]):</span>
-<span id="cb42-2"><a href="#cb42-2"></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1"></a><span class="cf">for</span> item <span class="kw">in</span> <span class="bu">enumerate</span>([<span class="st">'a'</span>, <span class="st">'b'</span>, <span class="st">'c'</span>]):</span>
+<span id="cb40-2"><a href="#cb40-2"></a>    <span class="bu">print</span>(item)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>(0, 'a')
 (1, 'b')
@@ -740,49 +735,49 @@ The word "a" has 1 characters.</code></pre>
 </section>
 <section id="other-generators-range" class="slide level2">
 <h2>Other generators: <code>range()</code></h2>
-<div class="cell" data-execution_count="23">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(words)):</span>
-<span id="cb44-2"><a href="#cb44-2"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>words[i]<span class="sc">}</span><span class="ss">" is type N.</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> in my text'</span></span>
-<span id="cb44-3"><a href="#cb44-3"></a>    <span class="ss">f' and has </span><span class="sc">{</span>word_lengths[i]<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(words)):</span>
+<span id="cb42-2"><a href="#cb42-2"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>words[i]<span class="sc">}</span><span class="ss">" is type N.</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> in my text'</span></span>
+<span id="cb42-3"><a href="#cb42-3"></a>    <span class="ss">f' and has </span><span class="sc">{</span>word_lengths[i]<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>"punctuation" is type N.1 in my text and has 11 characters.
-"with" is type N.2 in my text and has 4 characters.
-"and" is type N.3 in my text and has 3 characters.
-"words" is type N.4 in my text and has 5 characters.
-"no" is type N.5 in my text and has 2 characters.
-"to" is type N.6 in my text and has 2 characters.
-"text" is type N.7 in my text and has 4 characters.
-"easy" is type N.8 in my text and has 4 characters.
-"it" is type N.9 in my text and has 2 characters.
-"this" is type N.10 in my text and has 4 characters.
-"work" is type N.11 in my text and has 4 characters.
-"is" is type N.12 in my text and has 2 characters.
-"few" is type N.13 in my text and has 3 characters.
-"a" is type N.14 in my text and has 1 characters.</code></pre>
+<pre><code>"is" is type N.1 in my text and has 2 characters.
+"few" is type N.2 in my text and has 3 characters.
+"punctuation" is type N.3 in my text and has 11 characters.
+"easy" is type N.4 in my text and has 4 characters.
+"a" is type N.5 in my text and has 1 characters.
+"with" is type N.6 in my text and has 4 characters.
+"words" is type N.7 in my text and has 5 characters.
+"no" is type N.8 in my text and has 2 characters.
+"to" is type N.9 in my text and has 2 characters.
+"work" is type N.10 in my text and has 4 characters.
+"this" is type N.11 in my text and has 4 characters.
+"it" is type N.12 in my text and has 2 characters.
+"and" is type N.13 in my text and has 3 characters.
+"text" is type N.14 in my text and has 4 characters.</code></pre>
 </div>
 </div>
 </section>
 <section id="other-generators-enumerate" class="slide level2">
 <h2>Other generators: <code>enumerate()</code></h2>
-<div class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a><span class="cf">for</span> i, word <span class="kw">in</span> <span class="bu">enumerate</span>(words):</span>
-<span id="cb46-2"><a href="#cb46-2"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is type N.</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> in my text'</span></span>
-<span id="cb46-3"><a href="#cb46-3"></a>    <span class="ss">f' and has </span><span class="sc">{</span>word_lengths[i]<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1"></a><span class="cf">for</span> i, word <span class="kw">in</span> <span class="bu">enumerate</span>(words):</span>
+<span id="cb44-2"><a href="#cb44-2"></a>    <span class="bu">print</span>(<span class="ss">f'"</span><span class="sc">{</span>word<span class="sc">}</span><span class="ss">" is type N.</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> in my text'</span></span>
+<span id="cb44-3"><a href="#cb44-3"></a>    <span class="ss">f' and has </span><span class="sc">{</span>word_lengths[i]<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>"punctuation" is type N.1 in my text and has 11 characters.
-"with" is type N.2 in my text and has 4 characters.
-"and" is type N.3 in my text and has 3 characters.
-"words" is type N.4 in my text and has 5 characters.
-"no" is type N.5 in my text and has 2 characters.
-"to" is type N.6 in my text and has 2 characters.
-"text" is type N.7 in my text and has 4 characters.
-"easy" is type N.8 in my text and has 4 characters.
-"it" is type N.9 in my text and has 2 characters.
-"this" is type N.10 in my text and has 4 characters.
-"work" is type N.11 in my text and has 4 characters.
-"is" is type N.12 in my text and has 2 characters.
-"few" is type N.13 in my text and has 3 characters.
-"a" is type N.14 in my text and has 1 characters.</code></pre>
+<pre><code>"is" is type N.1 in my text and has 2 characters.
+"few" is type N.2 in my text and has 3 characters.
+"punctuation" is type N.3 in my text and has 11 characters.
+"easy" is type N.4 in my text and has 4 characters.
+"a" is type N.5 in my text and has 1 characters.
+"with" is type N.6 in my text and has 4 characters.
+"words" is type N.7 in my text and has 5 characters.
+"no" is type N.8 in my text and has 2 characters.
+"to" is type N.9 in my text and has 2 characters.
+"work" is type N.10 in my text and has 4 characters.
+"this" is type N.11 in my text and has 4 characters.
+"it" is type N.12 in my text and has 2 characters.
+"and" is type N.13 in my text and has 3 characters.
+"text" is type N.14 in my text and has 4 characters.</code></pre>
 </div>
 </div>
 </section></section>
@@ -797,11 +792,11 @@ The word "a" has 1 characters.</code></pre>
 <section id="comprehension-lists" class="slide level2">
 <h2>Comprehension lists</h2>
 <p>The problem of creating a list (like <code>word_lengths</code>) with a for loop is that the computer doesn’t know how long it is going to be. A more direct way is to use <strong>comprehension lists</strong>.</p>
-<div class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>word_lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words]</span>
-<span id="cb48-2"><a href="#cb48-2"></a><span class="bu">print</span>(word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>word_lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words]</span>
+<span id="cb46-2"><a href="#cb46-2"></a><span class="bu">print</span>(word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[11, 4, 3, 5, 2, 2, 4, 4, 2, 4, 4, 2, 3, 1]</code></pre>
+<pre><code>[2, 3, 11, 4, 1, 4, 5, 2, 2, 4, 4, 2, 3, 4]</code></pre>
 </div>
 </div>
 <div class="callout callout-warning callout-captioned callout-style-default">
@@ -823,9 +818,9 @@ The word "a" has 1 characters.</code></pre>
 <ul>
 <li>Get the length of the words with at least four characters.</li>
 </ul>
-<div class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>long_word_lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&gt;</span> <span class="dv">4</span>]</span>
-<span id="cb50-2"><a href="#cb50-2"></a><span class="bu">print</span>(long_word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>long_word_lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> <span class="bu">len</span>(word) <span class="op">&gt;</span> <span class="dv">4</span>]</span>
+<span id="cb48-2"><a href="#cb48-2"></a><span class="bu">print</span>(long_word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[11, 5]</code></pre>
 </div>
@@ -834,9 +829,9 @@ The word "a" has 1 characters.</code></pre>
 <ul>
 <li>Get the length of the words that start with “w”.</li>
 </ul>
-<div class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>w_word_lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word.startswith(<span class="st">'w'</span>)]</span>
-<span id="cb52-2"><a href="#cb52-2"></a><span class="bu">print</span>(w_word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>w_word_lengths <span class="op">=</span> [<span class="bu">len</span>(word) <span class="cf">for</span> word <span class="kw">in</span> words <span class="cf">if</span> word.startswith(<span class="st">'w'</span>)]</span>
+<span id="cb50-2"><a href="#cb50-2"></a><span class="bu">print</span>(w_word_lengths)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[4, 5, 4]</code></pre>
 </div>
@@ -845,88 +840,97 @@ The word "a" has 1 characters.</code></pre>
 </section>
 <section id="also-for-dictionaries" class="slide level2">
 <h2>Also for dictionaries!</h2>
-<div class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>word_lengths_dict <span class="op">=</span> { w : <span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> words}</span>
-<span id="cb54-2"><a href="#cb54-2"></a><span class="bu">print</span>(word_lengths_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>word_lengths_dict <span class="op">=</span> { w : <span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> words}</span>
+<span id="cb52-2"><a href="#cb52-2"></a><span class="bu">print</span>(word_lengths_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>{'punctuation': 11, 'with': 4, 'and': 3, 'words': 5, 'no': 2, 'to': 2, 'text': 4, 'easy': 4, 'it': 2, 'this': 4, 'work': 4, 'is': 2, 'few': 3, 'a': 1}</code></pre>
+<pre><code>{'is': 2, 'few': 3, 'punctuation': 11, 'easy': 4, 'a': 1, 'with': 4, 'words': 5, 'no': 2, 'to': 2, 'work': 4, 'this': 4, 'it': 2, 'and': 3, 'text': 4}</code></pre>
 </div>
 </div>
 <div class="fragment">
 <ul>
 <li>Only for words that start with “w”:</li>
 </ul>
-<div class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a>w_word_lengths_dict <span class="op">=</span> { w : <span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> words <span class="cf">if</span> w.startswith(<span class="st">'w'</span>)}</span>
-<span id="cb56-2"><a href="#cb56-2"></a><span class="bu">print</span>(w_word_lengths_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>w_word_lengths_dict <span class="op">=</span> { w : <span class="bu">len</span>(w) <span class="cf">for</span> w <span class="kw">in</span> words <span class="cf">if</span> w.startswith(<span class="st">'w'</span>)}</span>
+<span id="cb54-2"><a href="#cb54-2"></a><span class="bu">print</span>(w_word_lengths_dict)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>{'with': 4, 'words': 5, 'work': 4}</code></pre>
 </div>
 </div>
 </div>
+</section></section>
+<section>
+<section id="solo-practice-2" class="title-slide slide level1 center">
+<h1>Solo practice</h1>
+<ul>
+<li>Create new lists with comprehension lists.</li>
+<li>Include conditions!</li>
+<li>Create a dictionary with the same method.</li>
+</ul>
 </section>
 <section id="use-a-dictionary-in-a-loop" class="slide level2">
 <h2>Use a dictionary in a loop</h2>
-<div class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="cf">for</span> key <span class="kw">in</span> word_lengths_dict:</span>
-<span id="cb58-2"><a href="#cb58-2"></a>    <span class="bu">print</span>(<span class="ss">f'The word "</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">" has </span><span class="sc">{</span>word_lengths_dict[key]<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1"></a><span class="cf">for</span> key <span class="kw">in</span> word_lengths_dict:</span>
+<span id="cb56-2"><a href="#cb56-2"></a>    <span class="bu">print</span>(<span class="ss">f'The word "</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">" has </span><span class="sc">{</span>word_lengths_dict[key]<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The word "punctuation" has 11 characters.
+<pre><code>The word "is" has 2 characters.
+The word "few" has 3 characters.
+The word "punctuation" has 11 characters.
+The word "easy" has 4 characters.
+The word "a" has 1 characters.
 The word "with" has 4 characters.
-The word "and" has 3 characters.
 The word "words" has 5 characters.
 The word "no" has 2 characters.
 The word "to" has 2 characters.
-The word "text" has 4 characters.
-The word "easy" has 4 characters.
-The word "it" has 2 characters.
-The word "this" has 4 characters.
 The word "work" has 4 characters.
-The word "is" has 2 characters.
-The word "few" has 3 characters.
-The word "a" has 1 characters.</code></pre>
+The word "this" has 4 characters.
+The word "it" has 2 characters.
+The word "and" has 3 characters.
+The word "text" has 4 characters.</code></pre>
 </div>
 </div>
 </section>
 <section id="like-two-lists" class="slide level2">
 <h2>Like two lists</h2>
-<div class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> word_lengths_dict.items():</span>
-<span id="cb60-2"><a href="#cb60-2"></a>    <span class="bu">print</span>(<span class="ss">f'The word "</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">" has </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb58-1"><a href="#cb58-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> word_lengths_dict.items():</span>
+<span id="cb58-2"><a href="#cb58-2"></a>    <span class="bu">print</span>(<span class="ss">f'The word "</span><span class="sc">{</span>key<span class="sc">}</span><span class="ss">" has </span><span class="sc">{</span>value<span class="sc">}</span><span class="ss"> characters.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>The word "punctuation" has 11 characters.
+<pre><code>The word "is" has 2 characters.
+The word "few" has 3 characters.
+The word "punctuation" has 11 characters.
+The word "easy" has 4 characters.
+The word "a" has 1 characters.
 The word "with" has 4 characters.
-The word "and" has 3 characters.
 The word "words" has 5 characters.
 The word "no" has 2 characters.
 The word "to" has 2 characters.
-The word "text" has 4 characters.
-The word "easy" has 4 characters.
-The word "it" has 2 characters.
-The word "this" has 4 characters.
 The word "work" has 4 characters.
-The word "is" has 2 characters.
-The word "few" has 3 characters.
-The word "a" has 1 characters.</code></pre>
+The word "this" has 4 characters.
+The word "it" has 2 characters.
+The word "and" has 3 characters.
+The word "text" has 4 characters.</code></pre>
 </div>
 </div>
 </section>
 <section id="list-of-dictionaries" class="slide level2">
 <h2>List of dictionaries</h2>
-<div class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>discworld_death <span class="op">=</span> [</span>
-<span id="cb62-2"><a href="#cb62-2"></a>    { <span class="st">'title'</span> : <span class="st">'Mort'</span>, <span class="st">'year'</span> : <span class="dv">1987</span>},</span>
-<span id="cb62-3"><a href="#cb62-3"></a>    { <span class="st">'title'</span> : <span class="st">'Reaper Man'</span>, <span class="st">'year'</span> : <span class="dv">1991</span>},</span>
-<span id="cb62-4"><a href="#cb62-4"></a>    { <span class="st">'title'</span> : <span class="st">'Soul Music'</span>, <span class="st">'year'</span> : <span class="dv">1994</span>},</span>
-<span id="cb62-5"><a href="#cb62-5"></a>    { <span class="st">'title'</span> : <span class="st">'Hogfather'</span>, <span class="st">'year'</span> : <span class="dv">1996</span>},</span>
-<span id="cb62-6"><a href="#cb62-6"></a>    { <span class="st">'title'</span> : <span class="st">'Thief of time'</span>, <span class="st">'year'</span> : <span class="dv">2001</span>}</span>
-<span id="cb62-7"><a href="#cb62-7"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>discworld_death <span class="op">=</span> [</span>
+<span id="cb60-2"><a href="#cb60-2"></a>    { <span class="st">'title'</span> : <span class="st">'Mort'</span>, <span class="st">'year'</span> : <span class="dv">1987</span>},</span>
+<span id="cb60-3"><a href="#cb60-3"></a>    { <span class="st">'title'</span> : <span class="st">'Reaper Man'</span>, <span class="st">'year'</span> : <span class="dv">1991</span>},</span>
+<span id="cb60-4"><a href="#cb60-4"></a>    { <span class="st">'title'</span> : <span class="st">'Soul Music'</span>, <span class="st">'year'</span> : <span class="dv">1994</span>},</span>
+<span id="cb60-5"><a href="#cb60-5"></a>    { <span class="st">'title'</span> : <span class="st">'Hogfather'</span>, <span class="st">'year'</span> : <span class="dv">1996</span>},</span>
+<span id="cb60-6"><a href="#cb60-6"></a>    { <span class="st">'title'</span> : <span class="st">'Thief of time'</span>, <span class="st">'year'</span> : <span class="dv">2001</span>}</span>
+<span id="cb60-7"><a href="#cb60-7"></a>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="cf">for</span> i, book <span class="kw">in</span> <span class="bu">enumerate</span>(discworld_death):</span>
-<span id="cb63-2"><a href="#cb63-2"></a>    <span class="bu">print</span>(<span class="ss">f'Book N.</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> of the Death series is '</span></span>
-<span id="cb63-3"><a href="#cb63-3"></a>    <span class="ss">f'"</span><span class="sc">{</span>book[<span class="st">"title"</span>]<span class="sc">}</span><span class="ss">", published in </span><span class="sc">{</span>book[<span class="st">"year"</span>]<span class="sc">}</span><span class="ss">.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb61-1"><a href="#cb61-1"></a><span class="cf">for</span> i, book <span class="kw">in</span> <span class="bu">enumerate</span>(discworld_death):</span>
+<span id="cb61-2"><a href="#cb61-2"></a>    <span class="bu">print</span>(<span class="ss">f'Book N.</span><span class="sc">{</span>i<span class="op">+</span><span class="dv">1</span><span class="sc">}</span><span class="ss"> of the Death series is '</span></span>
+<span id="cb61-3"><a href="#cb61-3"></a>    <span class="ss">f'"</span><span class="sc">{</span>book[<span class="st">"title"</span>]<span class="sc">}</span><span class="ss">", published in </span><span class="sc">{</span>book[<span class="st">"year"</span>]<span class="sc">}</span><span class="ss">.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Book N.1 of the Death series is "Mort", published in 1987.
 Book N.2 of the Death series is "Reaper Man", published in 1991.
@@ -937,6 +941,14 @@ Book N.5 of the Death series is "Thief of time", published in 2001.</code></pre>
 </div>
 </div>
 </section></section>
+<section id="solo-practice-3" class="title-slide slide level1 center">
+<h1>Solo practice</h1>
+<ul>
+<li>Loop over the dictionary you created (or create a new one).</li>
+<li>Use <code>next</code> and/or <code>continue</code>.</li>
+</ul>
+</section>
+
 <section>
 <section id="while" class="title-slide slide level1 center">
 <h1>While</h1>
@@ -946,19 +958,19 @@ Book N.5 of the Death series is "Thief of time", published in 2001.</code></pre>
 <h2>while</h2>
 <p>In a <code>for</code> loop, you have a list or generator and you go through its items one by one.</p>
 <p>With <code>while</code>, you create a loop that depends on a condition.</p>
-<div class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb65-1"><a href="#cb65-1"></a><span class="im">import</span> random</span>
-<span id="cb65-2"><a href="#cb65-2"></a><span class="im">import</span> time</span>
-<span id="cb65-3"><a href="#cb65-3"></a>random.seed(<span class="dv">7</span>)</span>
-<span id="cb65-4"><a href="#cb65-4"></a>i <span class="op">=</span> <span class="dv">0</span></span>
-<span id="cb65-5"><a href="#cb65-5"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">80</span>:</span>
-<span id="cb65-6"><a href="#cb65-6"></a>    <span class="bu">print</span>(<span class="st">"i is too small yet."</span>)</span>
-<span id="cb65-7"><a href="#cb65-7"></a>    time.sleep(<span class="dv">1</span>)</span>
-<span id="cb65-8"><a href="#cb65-8"></a>    i <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">100</span>)</span>
-<span id="cb65-9"><a href="#cb65-9"></a>    <span class="bu">print</span>(<span class="ss">f"i is now </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb63-1"><a href="#cb63-1"></a><span class="im">import</span> random</span>
+<span id="cb63-2"><a href="#cb63-2"></a><span class="im">import</span> time</span>
+<span id="cb63-3"><a href="#cb63-3"></a>random.seed(<span class="dv">7</span>)</span>
+<span id="cb63-4"><a href="#cb63-4"></a>i <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb63-5"><a href="#cb63-5"></a><span class="cf">while</span> i <span class="op">&lt;</span> <span class="dv">80</span>:</span>
+<span id="cb63-6"><a href="#cb63-6"></a>    <span class="bu">print</span>(<span class="st">"i is too small yet."</span>)</span>
+<span id="cb63-7"><a href="#cb63-7"></a>    time.sleep(<span class="dv">1</span>)</span>
+<span id="cb63-8"><a href="#cb63-8"></a>    i <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">100</span>)</span>
+<span id="cb63-9"><a href="#cb63-9"></a>    <span class="bu">print</span>(<span class="ss">f"i is now </span><span class="sc">{</span>i<span class="sc">}</span><span class="ss">."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 
-</section><section id="while-1-output" class="slide level2 output-location-slide"><h2>while</h2><div class="cell output-location-slide" data-execution_count="34">
+</section><section id="while-1-output" class="slide level2 output-location-slide"><h2>while</h2><div class="cell output-location-slide" data-execution_count="33">
 <div class="cell-output cell-output-stdout">
 <pre><code>i is too small yet.</code></pre>
 </div>
