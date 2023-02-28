@@ -322,6 +322,20 @@
     "text": "Dictionaries: notes\n\nA dictionary has key-value pairs: instead of an index you use a named key to retrieve a value.\nThe in operator to check inclusion checks for values in lists and for keys in dictionaries.\nDictionaries are also mutable.\n\n\nMore about dictionaries"
   },
   {
+    "objectID": "classes/2023-02-28-iterables.html",
+    "href": "classes/2023-02-28-iterables.html",
+    "title": "Working with iterables",
+    "section": "",
+    "text": "Today we learn about iterables:"
+  },
+  {
+    "objectID": "classes/2023-02-28-iterables.html#think-about",
+    "href": "classes/2023-02-28-iterables.html#think-about",
+    "title": "Working with iterables",
+    "section": "Think about",
+    "text": "Think about\n\nHow do you think you could use a list or a dictionary in translation?"
+  },
+  {
     "objectID": "classes/2023-02-21-variables.html",
     "href": "classes/2023-02-21-variables.html",
     "title": "Variables",
@@ -340,6 +354,6 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -2,22 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://montesmariana.github.io/python-course/about.html</loc>
-    <lastmod>2023-02-28T06:16:22.970Z</lastmod>
+    <lastmod>2023-02-28T06:18:09.490Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/iterables.html</loc>
-    <lastmod>2023-02-28T06:16:24.170Z</lastmod>
+    <lastmod>2023-02-28T06:18:10.560Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/variables.html</loc>
-    <lastmod>2023-02-28T06:16:25.230Z</lastmod>
+    <lastmod>2023-02-28T06:18:11.500Z</lastmod>
+  </url>
+  <url>
+    <loc>https://montesmariana.github.io/python-course/classes/2023-02-28-iterables.html</loc>
+    <lastmod>2023-02-28T06:18:12.370Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-02-21-variables.html</loc>
-    <lastmod>2023-02-28T06:16:27.380Z</lastmod>
+    <lastmod>2023-02-28T06:18:13.140Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/index.html</loc>
-    <lastmod>2023-02-28T06:16:29.000Z</lastmod>
+    <lastmod>2023-02-28T06:18:15.150Z</lastmod>
   </url>
 </urlset>
