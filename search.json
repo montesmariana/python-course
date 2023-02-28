@@ -32,28 +32,28 @@
     "href": "slides/iterables.html#info-summary",
     "title": "Working with iterables",
     "section": "Info summary",
-    "text": "Info summary\n\nn_types = len(types)\n\n(f\"My text has {n_tokens} tokens and {n_types} types, \"\nf\"i.e. a type token ratio of {round(n_types/n_tokens, 2)}.\")\n\n'My text has 18 tokens and 14 types, i.e. a type token ratio of 0.78.'\n\n\n\nOK, what about the length of each word?\n\nwords = list(types)\nprint(words)\n\n['is', 'few', 'punctuation', 'easy', 'a', 'with', 'words', 'no', 'to', 'work', 'this', 'it', 'and', 'text']"
+    "text": "Info summary\n\nn_types = len(types)\n\n(f\"My text has {n_tokens} tokens and {n_types} types, \"\nf\"i.e. a type token ratio of {round(n_types/n_tokens, 2)}.\")\n\n'My text has 18 tokens and 14 types, i.e. a type token ratio of 0.78.'\n\n\n\nOK, what about the length of each word?\n\nwords = list(types)\nprint(words)\n\n['it', 'to', 'work', 'no', 'with', 'a', 'text', 'this', 'is', 'easy', 'words', 'punctuation', 'few', 'and']"
   },
   {
     "objectID": "slides/iterables.html#for-loops",
     "href": "slides/iterables.html#for-loops",
     "title": "Working with iterables",
     "section": "for loops",
-    "text": "for loops\n\nfor word in words:\n    print(word)\n\nis\nfew\npunctuation\neasy\na\nwith\nwords\nno\nto\nwork\nthis\nit\nand\ntext\n\n\n\nMore about for loops"
+    "text": "for loops\n\nfor word in words:\n    print(word)\n\nit\nto\nwork\nno\nwith\na\ntext\nthis\nis\neasy\nwords\npunctuation\nfew\nand\n\n\n\nMore about for loops"
   },
   {
     "objectID": "slides/iterables.html#for-loops-1",
     "href": "slides/iterables.html#for-loops-1",
     "title": "Working with iterables",
     "section": "for loops",
-    "text": "for loops\n\nfor word in words:\n    print(f'\"{word}\" is {len(word)} characters long.')\n\n\"is\" is 2 characters long.\n\"few\" is 3 characters long.\n\"punctuation\" is 11 characters long.\n\"easy\" is 4 characters long.\n\"a\" is 1 characters long.\n\"with\" is 4 characters long.\n\"words\" is 5 characters long.\n\"no\" is 2 characters long.\n\"to\" is 2 characters long.\n\"work\" is 4 characters long.\n\"this\" is 4 characters long.\n\"it\" is 2 characters long.\n\"and\" is 3 characters long.\n\"text\" is 4 characters long.\n\n\n\nMore about for loops"
+    "text": "for loops\n\nfor word in words:\n    print(f'\"{word}\" is {len(word)} characters long.')\n\n\"it\" is 2 characters long.\n\"to\" is 2 characters long.\n\"work\" is 4 characters long.\n\"no\" is 2 characters long.\n\"with\" is 4 characters long.\n\"a\" is 1 characters long.\n\"text\" is 4 characters long.\n\"this\" is 4 characters long.\n\"is\" is 2 characters long.\n\"easy\" is 4 characters long.\n\"words\" is 5 characters long.\n\"punctuation\" is 11 characters long.\n\"few\" is 3 characters long.\n\"and\" is 3 characters long.\n\n\n\nMore about for loops"
   },
   {
     "objectID": "slides/iterables.html#for-loops-continue",
     "href": "slides/iterables.html#for-loops-continue",
     "title": "Working with iterables",
     "section": "for loops: continue",
-    "text": "for loops: continue\n\nfor word in words:\n    if len(word) < 4:\n        continue\n    print(f'\"{word}\" is {len(word)} characters long.')\n\n\"punctuation\" is 11 characters long.\n\"easy\" is 4 characters long.\n\"with\" is 4 characters long.\n\"words\" is 5 characters long.\n\"work\" is 4 characters long.\n\"this\" is 4 characters long.\n\"text\" is 4 characters long.\n\n\n\nMore about for loops"
+    "text": "for loops: continue\n\nfor word in words:\n    if len(word) < 4:\n        continue\n    print(f'\"{word}\" is {len(word)} characters long.')\n\n\"work\" is 4 characters long.\n\"with\" is 4 characters long.\n\"text\" is 4 characters long.\n\"this\" is 4 characters long.\n\"easy\" is 4 characters long.\n\"words\" is 5 characters long.\n\"punctuation\" is 11 characters long.\n\n\n\nMore about for loops"
   },
   {
     "objectID": "slides/iterables.html#for-loops-break",
@@ -67,7 +67,7 @@
     "href": "slides/iterables.html#new-list-with-a-for-loop",
     "title": "Working with iterables",
     "section": "New list with a for loop",
-    "text": "New list with a for loop\nWe could start an empty list and then, with a for loop, go through each token, count its characters and add it to the list.\n\nword_lengths = []\nfor word in words:\n    word_lengths.append(len(word))\nprint(word_lengths)\n\n[2, 3, 11, 4, 1, 4, 5, 2, 2, 4, 4, 2, 3, 4]\n\n\n\n\n\n\n\n\nNote\n\n\nThis is not the recommended way to create a new list!"
+    "text": "New list with a for loop\nWe could start an empty list and then, with a for loop, go through each token, count its characters and add it to the list.\n\nword_lengths = []\nfor word in words:\n    word_lengths.append(len(word))\nprint(word_lengths)\n\n[2, 2, 4, 2, 4, 1, 4, 4, 2, 4, 5, 11, 3, 3]\n\n\n\n\n\n\n\n\nNote\n\n\nThis is not the recommended way to create a new list!"
   },
   {
     "objectID": "slides/iterables.html#list-of-word-lengths",
@@ -81,70 +81,70 @@
     "href": "slides/iterables.html#combining-two-lists",
     "title": "Working with iterables",
     "section": "Combining two lists",
-    "text": "Combining two lists\nWe can combine two lists of equal length with zip().\n\nfor item in zip(words, word_lengths):\n    print(item)\n\n('is', 2)\n('few', 3)\n('punctuation', 11)\n('easy', 4)\n('a', 1)\n('with', 4)\n('words', 5)\n('no', 2)\n('to', 2)\n('work', 4)\n('this', 4)\n('it', 2)\n('and', 3)\n('text', 4)"
+    "text": "Combining two lists\nWe can combine two lists of equal length with zip().\n\nfor item in zip(words, word_lengths):\n    print(item)\n\n('it', 2)\n('to', 2)\n('work', 4)\n('no', 2)\n('with', 4)\n('a', 1)\n('text', 4)\n('this', 4)\n('is', 2)\n('easy', 4)\n('words', 5)\n('punctuation', 11)\n('few', 3)\n('and', 3)"
   },
   {
     "objectID": "slides/iterables.html#for-loop-on-combined-lists",
     "href": "slides/iterables.html#for-loop-on-combined-lists",
     "title": "Working with iterables",
     "section": "for loop on combined lists",
-    "text": "for loop on combined lists\n\nfor word, length in zip(words, word_lengths):\n    print(f'The word \"{word}\" has {length} characters.')\n\nThe word \"is\" has 2 characters.\nThe word \"few\" has 3 characters.\nThe word \"punctuation\" has 11 characters.\nThe word \"easy\" has 4 characters.\nThe word \"a\" has 1 characters.\nThe word \"with\" has 4 characters.\nThe word \"words\" has 5 characters.\nThe word \"no\" has 2 characters.\nThe word \"to\" has 2 characters.\nThe word \"work\" has 4 characters.\nThe word \"this\" has 4 characters.\nThe word \"it\" has 2 characters.\nThe word \"and\" has 3 characters.\nThe word \"text\" has 4 characters."
+    "text": "for loop on combined lists\n\nfor word, length in zip(words, word_lengths):\n    print(f'The word \"{word}\" has {length} characters.')\n\nThe word \"it\" has 2 characters.\nThe word \"to\" has 2 characters.\nThe word \"work\" has 4 characters.\nThe word \"no\" has 2 characters.\nThe word \"with\" has 4 characters.\nThe word \"a\" has 1 characters.\nThe word \"text\" has 4 characters.\nThe word \"this\" has 4 characters.\nThe word \"is\" has 2 characters.\nThe word \"easy\" has 4 characters.\nThe word \"words\" has 5 characters.\nThe word \"punctuation\" has 11 characters.\nThe word \"few\" has 3 characters.\nThe word \"and\" has 3 characters."
   },
   {
     "objectID": "slides/iterables.html#generators",
     "href": "slides/iterables.html#generators",
     "title": "Working with iterables",
     "section": "Generators",
-    "text": "Generators\nzip() doesn’t return a list but a generator:\n\nzip(words, word_lengths)\n\n<zip at 0x7fdb74379100>\n\n\n\nOther useful generators are range() and enumerate():\n\n\n\nrange(3)\n\nrange(0, 3)\n\n\n\nfor i in range(3):\n    print(i)\n\n0\n1\n2\n\n\n\n\nenumerate(['a', 'b', 'c'])\n\n<enumerate at 0x7fdb7436ca00>\n\n\n\nfor item in enumerate(['a', 'b', 'c']):\n    print(item)\n\n(0, 'a')\n(1, 'b')\n(2, 'c')"
+    "text": "Generators\nzip() doesn’t return a list but a generator:\n\nzip(words, word_lengths)\n\n<zip at 0x7f55e052fe40>\n\n\n\nOther useful generators are range() and enumerate():\n\n\n\nrange(3)\n\nrange(0, 3)\n\n\n\nfor i in range(3):\n    print(i)\n\n0\n1\n2\n\n\n\n\nenumerate(['a', 'b', 'c'])\n\n<enumerate at 0x7f55e052d200>\n\n\n\nfor item in enumerate(['a', 'b', 'c']):\n    print(item)\n\n(0, 'a')\n(1, 'b')\n(2, 'c')"
   },
   {
     "objectID": "slides/iterables.html#other-generators-range",
     "href": "slides/iterables.html#other-generators-range",
     "title": "Working with iterables",
     "section": "Other generators: range()",
-    "text": "Other generators: range()\n\nfor i in range(len(words)):\n    print(f'\"{words[i]}\" is type N.{i+1} in my text'\n    f' and has {word_lengths[i]} characters.')\n\n\"is\" is type N.1 in my text and has 2 characters.\n\"few\" is type N.2 in my text and has 3 characters.\n\"punctuation\" is type N.3 in my text and has 11 characters.\n\"easy\" is type N.4 in my text and has 4 characters.\n\"a\" is type N.5 in my text and has 1 characters.\n\"with\" is type N.6 in my text and has 4 characters.\n\"words\" is type N.7 in my text and has 5 characters.\n\"no\" is type N.8 in my text and has 2 characters.\n\"to\" is type N.9 in my text and has 2 characters.\n\"work\" is type N.10 in my text and has 4 characters.\n\"this\" is type N.11 in my text and has 4 characters.\n\"it\" is type N.12 in my text and has 2 characters.\n\"and\" is type N.13 in my text and has 3 characters.\n\"text\" is type N.14 in my text and has 4 characters."
+    "text": "Other generators: range()\n\nfor i in range(len(words)):\n    print(f'\"{words[i]}\" is type N.{i+1} in my text'\n    f' and has {word_lengths[i]} characters.')\n\n\"it\" is type N.1 in my text and has 2 characters.\n\"to\" is type N.2 in my text and has 2 characters.\n\"work\" is type N.3 in my text and has 4 characters.\n\"no\" is type N.4 in my text and has 2 characters.\n\"with\" is type N.5 in my text and has 4 characters.\n\"a\" is type N.6 in my text and has 1 characters.\n\"text\" is type N.7 in my text and has 4 characters.\n\"this\" is type N.8 in my text and has 4 characters.\n\"is\" is type N.9 in my text and has 2 characters.\n\"easy\" is type N.10 in my text and has 4 characters.\n\"words\" is type N.11 in my text and has 5 characters.\n\"punctuation\" is type N.12 in my text and has 11 characters.\n\"few\" is type N.13 in my text and has 3 characters.\n\"and\" is type N.14 in my text and has 3 characters."
   },
   {
     "objectID": "slides/iterables.html#other-generators-enumerate",
     "href": "slides/iterables.html#other-generators-enumerate",
     "title": "Working with iterables",
     "section": "Other generators: enumerate()",
-    "text": "Other generators: enumerate()\n\nfor i, word in enumerate(words):\n    print(f'\"{word}\" is type N.{i+1} in my text'\n    f' and has {word_lengths[i]} characters.')\n\n\"is\" is type N.1 in my text and has 2 characters.\n\"few\" is type N.2 in my text and has 3 characters.\n\"punctuation\" is type N.3 in my text and has 11 characters.\n\"easy\" is type N.4 in my text and has 4 characters.\n\"a\" is type N.5 in my text and has 1 characters.\n\"with\" is type N.6 in my text and has 4 characters.\n\"words\" is type N.7 in my text and has 5 characters.\n\"no\" is type N.8 in my text and has 2 characters.\n\"to\" is type N.9 in my text and has 2 characters.\n\"work\" is type N.10 in my text and has 4 characters.\n\"this\" is type N.11 in my text and has 4 characters.\n\"it\" is type N.12 in my text and has 2 characters.\n\"and\" is type N.13 in my text and has 3 characters.\n\"text\" is type N.14 in my text and has 4 characters."
+    "text": "Other generators: enumerate()\n\nfor i, word in enumerate(words):\n    print(f'\"{word}\" is type N.{i+1} in my text'\n    f' and has {word_lengths[i]} characters.')\n\n\"it\" is type N.1 in my text and has 2 characters.\n\"to\" is type N.2 in my text and has 2 characters.\n\"work\" is type N.3 in my text and has 4 characters.\n\"no\" is type N.4 in my text and has 2 characters.\n\"with\" is type N.5 in my text and has 4 characters.\n\"a\" is type N.6 in my text and has 1 characters.\n\"text\" is type N.7 in my text and has 4 characters.\n\"this\" is type N.8 in my text and has 4 characters.\n\"is\" is type N.9 in my text and has 2 characters.\n\"easy\" is type N.10 in my text and has 4 characters.\n\"words\" is type N.11 in my text and has 5 characters.\n\"punctuation\" is type N.12 in my text and has 11 characters.\n\"few\" is type N.13 in my text and has 3 characters.\n\"and\" is type N.14 in my text and has 3 characters."
   },
   {
     "objectID": "slides/iterables.html#comprehension-lists",
     "href": "slides/iterables.html#comprehension-lists",
     "title": "Working with iterables",
     "section": "Comprehension lists",
-    "text": "Comprehension lists\nThe problem of creating a list (like word_lengths) with a for loop is that the computer doesn’t know how long it is going to be. A more direct way is to use comprehension lists.\n\nword_lengths = [len(word) for word in words]\nprint(word_lengths)\n\n[2, 3, 11, 4, 1, 4, 5, 2, 2, 4, 4, 2, 3, 4]\n\n\n\n\n\n\n\n\nWarning\n\n\nIt’s better to create new lists with comprehension lists, but if what you want to do is print some output, then use a for loop (so you don’t create anything new)."
+    "text": "Comprehension lists\nThe problem of creating a list (like word_lengths) with a for loop is that the computer doesn’t know how long it is going to be. A more direct way is to use comprehension lists.\n\nword_lengths = [len(word) for word in words]\nprint(word_lengths)\n\n[2, 2, 4, 2, 4, 1, 4, 4, 2, 4, 5, 11, 3, 3]\n\n\n\n\n\n\n\n\nWarning\n\n\nIt’s better to create new lists with comprehension lists, but if what you want to do is print some output, then use a for loop (so you don’t create anything new)."
   },
   {
     "objectID": "slides/iterables.html#with-conditions",
     "href": "slides/iterables.html#with-conditions",
     "title": "Working with iterables",
     "section": "With conditions",
-    "text": "With conditions\n\nGet the length of the words with at least four characters.\n\n\nlong_word_lengths = [len(word) for word in words if len(word) > 4]\nprint(long_word_lengths)\n\n[11, 5]\n\n\n\n\nGet the length of the words that start with “w”.\n\n\nw_word_lengths = [len(word) for word in words if word.startswith('w')]\nprint(w_word_lengths)\n\n[4, 5, 4]"
+    "text": "With conditions\n\nGet the length of the words with at least four characters.\n\n\nlong_word_lengths = [len(word) for word in words if len(word) > 4]\nprint(long_word_lengths)\n\n[5, 11]\n\n\n\n\nGet the length of the words that start with “w”.\n\n\nw_word_lengths = [len(word) for word in words if word.startswith('w')]\nprint(w_word_lengths)\n\n[4, 4, 5]"
   },
   {
     "objectID": "slides/iterables.html#also-for-dictionaries",
     "href": "slides/iterables.html#also-for-dictionaries",
     "title": "Working with iterables",
     "section": "Also for dictionaries!",
-    "text": "Also for dictionaries!\n\nword_lengths_dict = { w : len(w) for w in words}\nprint(word_lengths_dict)\n\n{'is': 2, 'few': 3, 'punctuation': 11, 'easy': 4, 'a': 1, 'with': 4, 'words': 5, 'no': 2, 'to': 2, 'work': 4, 'this': 4, 'it': 2, 'and': 3, 'text': 4}\n\n\n\n\nOnly for words that start with “w”:\n\n\nw_word_lengths_dict = { w : len(w) for w in words if w.startswith('w')}\nprint(w_word_lengths_dict)\n\n{'with': 4, 'words': 5, 'work': 4}"
+    "text": "Also for dictionaries!\n\nword_lengths_dict = { w : len(w) for w in words}\nprint(word_lengths_dict)\n\n{'it': 2, 'to': 2, 'work': 4, 'no': 2, 'with': 4, 'a': 1, 'text': 4, 'this': 4, 'is': 2, 'easy': 4, 'words': 5, 'punctuation': 11, 'few': 3, 'and': 3}\n\n\n\n\nOnly for words that start with “w”:\n\n\nw_word_lengths_dict = { w : len(w) for w in words if w.startswith('w')}\nprint(w_word_lengths_dict)\n\n{'work': 4, 'with': 4, 'words': 5}"
   },
   {
     "objectID": "slides/iterables.html#use-a-dictionary-in-a-loop",
     "href": "slides/iterables.html#use-a-dictionary-in-a-loop",
     "title": "Working with iterables",
     "section": "Use a dictionary in a loop",
-    "text": "Use a dictionary in a loop\n\nfor key in word_lengths_dict:\n    print(f'The word \"{key}\" has {word_lengths_dict[key]} characters.')\n\nThe word \"is\" has 2 characters.\nThe word \"few\" has 3 characters.\nThe word \"punctuation\" has 11 characters.\nThe word \"easy\" has 4 characters.\nThe word \"a\" has 1 characters.\nThe word \"with\" has 4 characters.\nThe word \"words\" has 5 characters.\nThe word \"no\" has 2 characters.\nThe word \"to\" has 2 characters.\nThe word \"work\" has 4 characters.\nThe word \"this\" has 4 characters.\nThe word \"it\" has 2 characters.\nThe word \"and\" has 3 characters.\nThe word \"text\" has 4 characters."
+    "text": "Use a dictionary in a loop\n\nfor key in word_lengths_dict:\n    print(f'The word \"{key}\" has {word_lengths_dict[key]} characters.')\n\nThe word \"it\" has 2 characters.\nThe word \"to\" has 2 characters.\nThe word \"work\" has 4 characters.\nThe word \"no\" has 2 characters.\nThe word \"with\" has 4 characters.\nThe word \"a\" has 1 characters.\nThe word \"text\" has 4 characters.\nThe word \"this\" has 4 characters.\nThe word \"is\" has 2 characters.\nThe word \"easy\" has 4 characters.\nThe word \"words\" has 5 characters.\nThe word \"punctuation\" has 11 characters.\nThe word \"few\" has 3 characters.\nThe word \"and\" has 3 characters."
   },
   {
     "objectID": "slides/iterables.html#like-two-lists",
     "href": "slides/iterables.html#like-two-lists",
     "title": "Working with iterables",
     "section": "Like two lists",
-    "text": "Like two lists\n\nfor key, value in word_lengths_dict.items():\n    print(f'The word \"{key}\" has {value} characters.')\n\nThe word \"is\" has 2 characters.\nThe word \"few\" has 3 characters.\nThe word \"punctuation\" has 11 characters.\nThe word \"easy\" has 4 characters.\nThe word \"a\" has 1 characters.\nThe word \"with\" has 4 characters.\nThe word \"words\" has 5 characters.\nThe word \"no\" has 2 characters.\nThe word \"to\" has 2 characters.\nThe word \"work\" has 4 characters.\nThe word \"this\" has 4 characters.\nThe word \"it\" has 2 characters.\nThe word \"and\" has 3 characters.\nThe word \"text\" has 4 characters."
+    "text": "Like two lists\n\nfor key, value in word_lengths_dict.items():\n    print(f'The word \"{key}\" has {value} characters.')\n\nThe word \"it\" has 2 characters.\nThe word \"to\" has 2 characters.\nThe word \"work\" has 4 characters.\nThe word \"no\" has 2 characters.\nThe word \"with\" has 4 characters.\nThe word \"a\" has 1 characters.\nThe word \"text\" has 4 characters.\nThe word \"this\" has 4 characters.\nThe word \"is\" has 2 characters.\nThe word \"easy\" has 4 characters.\nThe word \"words\" has 5 characters.\nThe word \"punctuation\" has 11 characters.\nThe word \"few\" has 3 characters.\nThe word \"and\" has 3 characters."
   },
   {
     "objectID": "slides/iterables.html#list-of-dictionaries",
