@@ -168,6 +168,90 @@
     "text": "while\n\ni is too small yet.\n\n\ni is now 42.\ni is too small yet.\n\n\ni is now 20.\ni is too small yet.\n\n\ni is now 51.\ni is too small yet.\n\n\ni is now 84."
   },
   {
+    "objectID": "slides/if-functions.html#booleans",
+    "href": "slides/if-functions.html#booleans",
+    "title": "If-statements and functions",
+    "section": "Booleans",
+    "text": "Booleans\n\nThings can be True or False.\nif x runs something when x is True, but not when it is False.\n\n\nif True:\n    print(\"This is true\")\n\nThis is true\n\n\n\n\nif False:\n    print(\"This is false\")"
+  },
+  {
+    "objectID": "slides/if-functions.html#control-flow",
+    "href": "slides/if-functions.html#control-flow",
+    "title": "If-statements and functions",
+    "section": "Control flow",
+    "text": "Control flow\n\nThe point is to decide when to run things based on a condition that may or may not be true.\n\n\nbool_list = [True, False, False, True]\nfor i, b in enumerate(bool_list):\n    if b:\n        print(i, \"- This is true\")\n\n0 - This is true\n3 - This is true"
+  },
+  {
+    "objectID": "slides/if-functions.html#boolean-statements",
+    "href": "slides/if-functions.html#boolean-statements",
+    "title": "If-statements and functions",
+    "section": "Boolean statements",
+    "text": "Boolean statements\n\nnum_list = [1, 4, 7, 2, 9, 7, 3]\nprint([x < 3 for x in num_list])\n\n[True, False, False, True, False, False, False]\n\n\n\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(i, f\"- {x} is smaller than 3\")\n\n0 - 1 is smaller than 3\n3 - 2 is smaller than 3\n\n\n\n\n\n[x for x in num_list if x < 3]\n\n[1, 2]"
+  },
+  {
+    "objectID": "slides/if-functions.html#which-flow",
+    "href": "slides/if-functions.html#which-flow",
+    "title": "If-statements and functions",
+    "section": "Which flow?",
+    "text": "Which flow?\n\n\n\n\nflowchart LR\n    A[num_list] --> B{Is it smaller than 3?}\n    B -- Yes --> C[Print something]\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n    A[num_list] --> B{Is it smaller than 3?}\n    B -- Yes --> C[Print something]\n    B -- No --> D[Print something else]"
+  },
+  {
+    "objectID": "slides/if-functions.html#if-else",
+    "href": "slides/if-functions.html#if-else",
+    "title": "If-statements and functions",
+    "section": "if-else",
+    "text": "if-else\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(i, f\"- {x} is smaller than 3\")\n    else:\n        print(i, f\"- {x} is not smaller than 3\")\n\n0 - 1 is smaller than 3\n1 - 4 is not smaller than 3\n2 - 7 is not smaller than 3\n3 - 2 is smaller than 3\n4 - 9 is not smaller than 3\n5 - 7 is not smaller than 3\n6 - 3 is not smaller than 3"
+  },
+  {
+    "objectID": "slides/if-functions.html#multiple-options",
+    "href": "slides/if-functions.html#multiple-options",
+    "title": "If-statements and functions",
+    "section": "Multiple options",
+    "text": "Multiple options\n\n\n\n\nflowchart LR\n    A[num_list] --> B{Is it smaller than 3?}\n    B -- Yes --> C[Print something]\n    B -- No --> D{Is it smaller than or equal to 7?}\n    D -- Yes --> E[Print that]\n    D -- No --> F[Print something else]"
+  },
+  {
+    "objectID": "slides/if-functions.html#if-elif-else",
+    "href": "slides/if-functions.html#if-elif-else",
+    "title": "If-statements and functions",
+    "section": "if-elif-else",
+    "text": "if-elif-else\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(i, f\"- {x} is smaller than 3\")\n    elif x <= 7:\n        print(i, f\"- {x} is smaller than or equal to 7\")\n    else:\n        print(i, f\"- {x} is larger than 7\")\n\n0 - 1 is smaller than 3\n1 - 4 is smaller than or equal to 7\n2 - 7 is smaller than or equal to 7\n3 - 2 is smaller than 3\n4 - 9 is larger than 7\n5 - 7 is smaller than or equal to 7\n6 - 3 is smaller than or equal to 7"
+  },
+  {
+    "objectID": "slides/if-functions.html#other-truths",
+    "href": "slides/if-functions.html#other-truths",
+    "title": "If-statements and functions",
+    "section": "Other truths",
+    "text": "Other truths\n\nfor i in [3, 5, 0, 1]:\n    if i:\n        print(i)\n    else:\n        print(f\"{i} is false\")\n\n\n\n3\n5\n0 is false\n1\n\n\n\nMore about truth-value testing"
+  },
+  {
+    "objectID": "slides/if-functions.html#other-truths-1",
+    "href": "slides/if-functions.html#other-truths-1",
+    "title": "If-statements and functions",
+    "section": "Other truths",
+    "text": "Other truths\n\nfor x in [\"A true statement\", \"A false statement\",\n            \"\", \"False\"]:\n    if x:\n        print(x)\n    else:\n        print(f\"{x} is false\")\n\n\n\nA true statement\nA false statement\n is false\nFalse\n\n\n\nMore about truth-value testing"
+  },
+  {
+    "objectID": "slides/if-functions.html#why-use-a-function",
+    "href": "slides/if-functions.html#why-use-a-function",
+    "title": "If-statements and functions",
+    "section": "Why use a function?",
+    "text": "Why use a function?\n\nIt encapsulates a chain of actions that you may want to repeat multiple times.\nThe chain of actions is conceptualized as “one” action or thing that takes an input (or more) and, normally, returns an output."
+  },
+  {
+    "objectID": "slides/if-functions.html#define-a-function",
+    "href": "slides/if-functions.html#define-a-function",
+    "title": "If-statements and functions",
+    "section": "Define a function",
+    "text": "Define a function\n\ndef sum_two(arg1, arg2):"
+  },
+  {
+    "objectID": "slides/if-functions.html#define-a-function-1",
+    "href": "slides/if-functions.html#define-a-function-1",
+    "title": "If-statements and functions",
+    "section": "Define a function",
+    "text": "Define a function\n\ndef sum_two(arg1, arg2):\n    return arg1 + arg2\n\n\n\ndef sum_two(arg1, arg2):\n    return arg1 + arg2\n\n\nsum_two(1, 4)\n\n5"
+  },
+  {
     "objectID": "slides/variables.html#basic-types",
     "href": "slides/variables.html#basic-types",
     "title": "Variables",
@@ -354,6 +438,6 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
