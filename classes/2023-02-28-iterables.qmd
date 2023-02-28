@@ -7,7 +7,6 @@ categories:
     - for loop
     - while
 description: Introduction to iterables and for loops.
-draft: true
 ---
 
 
@@ -27,6 +26,12 @@ Today we learn about [iterables](../slides/iterables.qmd){target="_blank"}:
 # What to do in Jupyter
 
 Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.
+
+::: callout-tip
+## Suggestion
+
+Think of something of your daily/professional life that could be represented as a list and try these concepts out on that list.
+:::
 
 ## Think about
 

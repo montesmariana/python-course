@@ -91,6 +91,38 @@ for word in words:
 [More about `for` loops](https://docs.python.org/3.10/tutorial/controlflow.html#for-statements)
 :::
 
+## for loops: continue
+
+```{python}
+for word in words:
+    if len(word) < 4:
+        continue
+    print(f'"{word}" is {len(word)} characters long.')
+```
+
+::: {.footer}
+[More about `for` loops](https://docs.python.org/3.10/tutorial/controlflow.html#for-statements)
+:::
+
+## for loops: break
+
+```{python}
+for word in words:
+    if len(word) < 4:
+        break
+    print(f'"{word}" is {len(word)} characters long.')
+```
+
+::: {.footer}
+[More about `for` loops](https://docs.python.org/3.10/tutorial/controlflow.html#for-statements)
+:::
+
+# Solo practice
+
+- Loop over a list
+- Print and/or manipulate your items
+- Use `continue` and `break`
+
 ## New list with a for loop
 
 We could start an empty list and then, with a `for` loop, go through each token, count its characters and add it to the list.
@@ -187,6 +219,11 @@ for i, word in enumerate(words):
     f' and has {word_lengths[i]} characters.')
 ```
 
+# Solo practice
+
+- Use `range()`, `enumerate()` and/or `zip()` and loop over the result.
+- You may use `continue` or `break`.
+
 ## Comprehension lists
 
 The problem of creating a list (like `word_lengths`) with a for loop is that the computer doesn't know how long it is going to be. A more direct way is to use **comprehension lists**.
@@ -201,12 +238,45 @@ It's better to create new lists with comprehension lists,
 but if what you want to do is *print some output*, then use a `for` loop (so you don't create anything new).
 :::
 
+## With conditions
+
+- Get the length of the words with at least four characters.
+
+```{python}
+long_word_lengths = [len(word) for word in words if len(word) > 4]
+print(long_word_lengths)
+```
+
+. . .
+
+- Get the length of the words that start with "w".
+
+```{python}
+w_word_lengths = [len(word) for word in words if word.startswith('w')]
+print(w_word_lengths)
+```
+
 ## Also for dictionaries!
 
 ```{python}
 word_lengths_dict = { w : len(w) for w in words}
-word_lengths_dict
+print(word_lengths_dict)
 ```
+
+. . .
+
+- Only for words that start with "w":
+
+```{python}
+w_word_lengths_dict = { w : len(w) for w in words if w.startswith('w')}
+print(w_word_lengths_dict)
+```
+
+# Solo practice
+
+- Create new lists with comprehension lists.
+- Include conditions!
+- Create a dictionary with the same method.
 
 ## Use a dictionary in a loop
 
@@ -237,8 +307,14 @@ discworld_death = [
 
 ```{python}
 for i, book in enumerate(discworld_death):
-    print(f'Book N.{i+1} of the Death series is "{book["title"]}", published in {book["year"]}.')
+    print(f'Book N.{i+1} of the Death series is '
+    f'"{book["title"]}", published in {book["year"]}.')
 ```
+
+# Solo practice
+
+- Loop over the dictionary you created (or create a new one).
+- Use `next` and/or `continue`.
 
 # While
 
