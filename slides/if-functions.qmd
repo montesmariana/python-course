@@ -1,0 +1,592 @@
+---
+title: "If-statements and functions"
+format: revealjs
+---
+
+## Booleans
+
+- Things can be `True` or `False`.
+
+- Given a statement `if x: y`, `y` runs when `x` is `True`.
+
+```{python}
+if True:
+    print("This is true")
+```
+
+. . .
+
+- `y` won't run if `x` is `False`.
+
+```{python}
+if False:
+    print("This is false")
+```
+
+## Control flow
+
+- The point is to decide when to run things based on a condition that may or may not be true.
+
+```{python}
+bool_list = [True, False, False, True]
+for i, b in enumerate(bool_list):
+    if b: # the same as 'if b == True:'
+        print(i, "- This is true")
+```
+
+## Booleans from comparisons
+
+```{python}
+x = 1
+x < 3
+```
+
+```{python}
+num_list = [1, 4, 7, 2, 9, 7, 3]
+[x < 3 for x in num_list]
+```
+
+. . .
+
+```{python}
+for i, x in enumerate(num_list):
+    if x < 3:
+        print(f"{i} - {x} is smaller than 3")
+```
+
+. . .
+
+```{python}
+[x for x in num_list if x < 3]
+```
+
+## Booleans from methods
+
+```{python}
+x = 'blue'
+x.startswith('b')
+```
+
+```{python}
+color_list = ['blue', 'red', 'brown', 'black', 'white']
+[x.startswith('b') for x in color_list]
+```
+
+. . .
+
+```{python}
+for i, x in enumerate(color_list):
+    if x.startswith('b'):
+        print(f"{i} - {x} starts with 'b'.")
+```
+
+. . .
+
+```{python}
+[x for x in color_list if x.startswith('b')]
+```
+
+## Flow control what?
+
+```{dot}
+//| echo: false
+digraph G {
+    node [fontname = "Lato"]
+    edge [fontname = "Lato"]
+    
+    start [
+        label = "color_list";
+        shape = rect;
+    ];
+    question [
+        label = "Does it start\nwith 'b'?";
+        shape = diamond;
+    ];
+    withb [
+        label = "Print that\nit starts with 'b'";
+    ];
+    
+    start -> question;
+    question -> withb [ label = "Yes" ];
+  
+}
+```
+
+## What if NOT?
+
+
+```{dot}
+//| echo: false
+digraph G {
+    node [fontname = "Lato"]
+    edge [fontname = "Lato"]
+    
+    start [
+        label = "color_list";
+        shape = rect;
+    ];
+    question [
+        label = "Does it start\nwith 'b'?";
+        shape = diamond;
+    ];
+    withb [
+        label = "Print that\nit starts with 'b'";
+    ];
+    without [
+        label = "Print that it does not\nstart with 'b'";
+    ]
+    
+    start -> question;
+    question -> withb [ label = "Yes" ];
+    question -> without [ label = "No" ];
+  
+}
+```
+
+## if-else
+
+```{python}
+for i, x in enumerate(color_list):
+    if x.startswith('b'):
+        print(f"{i} - {x} starts with 'b'.")
+    else:
+        print(f"{i} - {x} does not start with 'b'.")
+```
+
+## What if something else?
+
+```{dot}
+//| echo: false
+digraph G {
+    node [fontname = "Lato"];
+    edge [fontname = "Lato"];
+    
+    start [
+        label = "color_list";
+        shape = rect;
+    ];
+    question [
+        label = "Does it start\nwith 'b'?";
+        shape = diamond;
+    ];
+    withb [
+        label = "Print that\nit starts with 'b'";
+    ];
+    question2 [
+        label = "Is it 'red'?";
+        shape = diamond;
+    ]
+    red [
+        label = "Print that\nit is 'red'."
+    ]
+    without [
+        label = "Print that it does not\nstart with 'b'\nnor is it red.";
+    ]
+    
+    start -> question;
+    question -> withb [ label = "Yes" ];
+    question -> question2 [ label = "No" ];
+    question2 -> red [ label = "Yes" ];
+    question2 -> without [ label = "No" ];  
+}
+```
+
+## if-elif-else
+
+```{python}
+for i, x in enumerate(color_list):
+    if x.startswith('b'):
+        print(i, f"- {x} starts with 'b'.")
+    elif x == 'red':
+        print(i, f"- {x} is 'red'.")
+    else:
+        print(i, f"- {x} does not start with 'b' nor is it 'red'.")
+```
+
+# Solo practice
+
+- Create a list to loop over
+- Draw a flow chart with two options in each split
+- Translate the flow chart to an if(-elif)-else chain
+
+## Other truths
+
+```{python}
+#| output-location: fragment
+for i in [3, 5, 0, 1]:
+    if i:
+        print(i)
+    else:
+        print(f"{i} is false")
+```
+
+::: {.footer}
+[More about truth-value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing)
+:::
+
+## Other truths
+
+```{python}
+#| output-location: fragment
+for x in ["A true statement", "A false statement",
+            "", "False"]:
+    if x:
+        print(x)
+    else:
+        print(f"{x} is false")
+```
+
+::: {.footer}
+[More about truth-value testing](https://docs.python.org/3/library/stdtypes.html#truth-value-testing)
+:::
+
+# Functions
+
+## Why use a function?
+
+- It encapsulates a chain of actions that you may want to repeat multiple times.
+
+- The chain of actions is conceptualized as "one" action or process that takes an input (or more) and, normally, returns an output.
+
+## Define a function
+
+- `def` + function name + `(` + argument names separated by commas + `)` + `:`
+
+```{python}
+#| eval: false
+def sum_two(arg1, arg2):
+```
+
+## Define a function
+
+- indent + whatever the function does
+
+```{python}
+#| eval: false
+def sum_two(arg1, arg2):
+    res = arg1 + arg2
+```
+
+## Define a function
+
+- End with `return` and the output
+
+```{python}
+def sum_two(arg1, arg2):
+    res = arg1 + arg2
+    return res
+```
+
+. . .
+
+- Call with: function name + `(` + arguments separated by commas + `)`
+
+```{python}
+sum_two(1, 4)
+```
+
+# Solo practice
+
+- Write a function that takes a name (string) and an age (value) as arguments and returns a sentence describing the situation. It should work like this:
+
+```{python}
+#| include: false
+def print_age(name, age):
+    return f"{name} is {age} years old."
+```
+```{python}
+print_age("Mila", 26)
+```
+
+## If-statements within functions
+
+- Maybe you don't want to print the age but whether someone is underage.
+
+```{python}
+def is_underage(name, age):
+    if age < 18:
+        return f"{name} is underage."
+    else:
+        return f"{name} is already an adult."
+is_underage("Mila", 26)
+```
+
+```{python}
+is_underage("Ken", 15)
+```
+
+## Bad arguments
+
+- What if we don't provide the age as a number?
+
+```{python}
+#| error: true
+#| output-location: fragment
+is_underage("Mila", "26")
+```
+
+- Or something else wrong for the name?
+
+```{python}
+#| error: true
+#| output-location: fragment
+is_underage(["Mila", "Ari"], 26)
+```
+
+
+## Checking arguments
+
+```{python}
+def is_underage(name, age):
+    # check that age is an integer
+    if type(age) != int:
+        return "Age should be an integer!"
+    # check that name is a string
+    if type(name) != str:
+        return "The name should be a string!"
+    # run
+    if age < 18:
+        return f"{name} is underage."
+    else:
+        return f"{name} is already an adult."
+```
+
+## Checking arguments
+
+- Get the right messages when bad arguments are provided.
+
+```{python}
+is_underage("Mila", "26")
+```
+
+```{python}
+is_underage(["Mila", "Ari"], 26)
+```
+
+. . .
+
+- It should still work with good arguments.
+
+```{python}
+is_underage("Mila", 26)
+```
+
+```{python}
+is_underage("Ken", 15)
+```
+
+# Solo practice
+
+- Create a function that takes the name of a fruit from the dictionary below and returns its price. Consider the output if the fruit is not in the dictionary.
+
+```{python}
+fruits = {'banana' : 0.6, 'orange' : 1.2, 'lemon' : 0.8}
+```
+
+```{python}
+#| include: false
+def get_price(fruit):
+    if (fruit in fruits):
+        return f"The price of the {fruit} is €{fruits[fruit]}/kg."
+    else:
+        return f"I don't know the price of {fruit}."
+```
+
+```{python}
+print(get_price('banana'))
+```
+
+```{python}
+print(get_price('kiwi'))
+```
+
+## Raising exceptions
+
+::: {.callout-important}
+### Errors
+Errors (aka Exceptions in Python) stop execution. Messages will keep it running.
+:::
+
+```{python}
+def is_underage_error(name, age):
+    # raise errors if the arguments are wrong
+    if type(age) != int:
+        raise TypeError("Age should be an integer!")
+    if type(name) != str:
+        raise TypeError("The name should be a string!")
+    # run
+    if age < 18:
+        return f"{name} is underage."
+    else:
+        return f"{name} is already an adult."
+```
+
+## Implementation
+
+A message will keep things running.
+```{python}
+[is_underage("Ursula", age) for age in [15, 20, "5", 80]]
+```
+
+An error will let you know that something is wrong.
+```{python}
+#| error: true
+[is_underage_error("Ursula", age) for age in [15, 20, "5", 80]]
+```
+
+## Positional arguments
+
+- Based on the position in the call: `name` is the first argument, `age` is the second argument.
+
+```{python}
+#| error: true
+is_underage(26, "Mila")
+```
+
+. . .
+
+- You get an error if they are missing.
+
+```{python}
+#| error: true
+is_underage("Robbie")
+```
+
+. . .
+
+::: {.callout-important}
+Positional arguments are compulsory.
+:::
+
+## Optional arguments
+
+- If you don't want to require an argument, you can provide a default value.
+
+```{python}
+def is_underage_default(age, name = "This person"):
+    if type(age) != int:
+        raise TypeError("Age should be an integer!")
+    if age < 18:
+        return f"{name} is underage."
+    else:
+        return f"{name} is already an adult."
+```
+
+::: {.callout-warning}
+### Argument order
+
+Optional arguments should be defined after positional arguments.
+:::
+
+## Optional arguments
+
+```{python}
+is_underage_default(26)
+```
+
+. . .
+
+```{python}
+is_underage_default(26, "Mila")
+```
+
+. . .
+
+- For clarification, you can also provide the names of the arguments.
+
+```{python}
+is_underage_default(age = 26, name = "Mila")
+```
+
+## Naming arguments
+
+- You could change the order, but it's **bad practice**.
+
+```{python}
+is_underage_default(name = "Mila", age = 26)
+```
+
+```{python}
+is_underage(age = 26, name = "Mila")
+```
+
+. . .
+
+- A named argument creates a variable *inside the scope* of a function: it is not valid outside.
+
+```{python}
+#| error: true
+print(age)
+```
+
+# Solo practice
+
+- Write a function with a positional argument, that is a string, and an optional argument that is boolean. The function should turn the string to upper case and, if the optional argument is `True` (the default value), add three exclamation marks:
+
+```{python}
+#| include: false
+def scream(some_string, with_bash = True):
+    if with_bash:
+        some_string = some_string + "!!!"
+    return some_string.upper()
+```
+
+```{python}
+scream("I solved it")
+```
+
+```{python}
+scream("I solved it", False)
+```
+
+## Create a generator
+
+- A generator is a function that ends in `yield` instead of `return`.
+
+- Based on a `for` loop or `while` statement, it returns (or *yields*) one item at a time.
+
+```{python}
+def fruit_offering():
+    for fruit in fruits:
+        yield f"The price of the {fruit} is €{fruits[fruit]}/kg."
+```
+
+## Use a generator
+
+```{python}
+my_fruits = fruit_offering()
+list(my_fruits)
+```
+
+. . .
+
+```{python}
+my_fruits = fruit_offering()
+next(my_fruits)
+```
+
+```{python}
+#| output-location: fragment
+for fruit in my_fruits:
+    print(fruit)
+```
+
+## While generating
+
+```{python}
+def birthday():
+    age = 0
+    while True:
+        age += 1
+        year = "year" if age == 1 else "years"
+        yield f"Happy birthday! You are {age} {year} old!"
+```
+```{python}
+bday = birthday()
+next(bday)
+```
+```{python}
+next(bday)
+```
+
+# Next up: Files

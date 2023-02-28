@@ -7,6 +7,7 @@ categories:
     - for loop
     - while
     - conditions
+    - basics
 description: Introduction to iterables and for loops.
 ---
 

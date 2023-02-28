@@ -1,0 +1,211 @@
+---
+title: "Working with iterables"
+format: html
+date: 2023-03-07
+categories:
+    - conditions
+    - functions
+    - errors
+    - basics
+description: Introduction to if-statements and functions.
+draft: true
+---
+
+
+Today we learn about [if-statements and functions](../slides/if-functions.qmd){target="_blank"}:
+
+- Creating and if(-else)-statement.
+- Boolean statements.
+- Defining a function.
+- Reserved words: `return`, `raise`, `yield`...
+- `NameError`.
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/if-functions.html"></iframe>
+```
+</div>
+
+
+# What to do in Jupyter
+
+Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.
+
+Write the code for the "solo practice" sections.
+
+# What to do in VS Code
+
+[Last class](2023-02-28-iterables.qmd) we created a list of dictionaries and ran a loop across them to print some statements.
+
+```{python}
+#| code-fold: true
+#| code-summary: "Show the code"
+#| output: false
+hat_sky = {
+    'title' : 'A hat full of sky',
+    'author' : 'Terry Pratchett',
+    'year' : 2004,
+    'language' : 'English',
+    'main_characters' : [
+        'Tiffany Aching',
+        'Granny Weatherwax',
+        'Rob Anybody'
+        ]
+}
+small_gods = {
+    'title' : 'Small gods',
+    'author' : 'Terry Pratchett',
+    'year' : 1992,
+    'language' : 'English',
+    'main_characters' : [
+        'Om',
+        'Brutha'
+        ]
+}
+color_magic = {
+    'title' : 'The color of magic',
+    'author' : 'Terry Pratchett',
+    'year' : 1983,
+    'language' : 'English',
+    'main_characters' : [
+        'Rincewind',
+        'Twoflower'
+        ]
+}
+shepherd_crown = {
+    'title' : "The shepherd's crown",
+    'author' : 'Terry Pratchett',
+    'year' : 2015,
+    'language' : 'English',
+    'main_characters' : [
+        'Tiffany Aching',
+        'Nightshade',
+        'Peaseblossom'
+        ]
+}
+discworld_sample = [color_magic, small_gods, hat_sky, shepherd_crown]
+for book in discworld_sample:
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = " ".join([sent_1, sent_2, sent_3])
+    print(book_description)
+    print()
+```
+
+Now we will write a function that runs the piece of code that we applied to each book. We will also change the separator between sentences to a line change ("\n").
+
+```{python}
+def describe_book(book):
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = "\n".join([sent_1, sent_2, sent_3])
+    print(book_description)
+```
+
+We also want to check that the input argument `book` is a dictionary, that it contains the right keys and that their values are of the correct type. If any of these conditions are not fulfilled, we will raise an error.
+
+```{python}
+def describe_book(book):
+    # check that the input is a dictionary
+    if type(book) != dict:
+        raise TypeError("Please provide a dictionary!")
+    
+    # check that the dict has the right keys
+    for key in ['title', 'author', 'language', 'year', 'main_characters']:
+        if not key in book:
+            raise KeyError(f"'{key}' is missing from the dictionary!")
+        # check the types
+        if key == 'year':
+            if type(book[key]) != int:
+                raise TypeError(f"The year should be an integer!")
+        elif key == "main_characters":
+            if type(book[key]) != list:
+                raise TypeError(f"The main characters should be provided as a list!")
+        elif type(book[key]) != str:
+            raise TypeError(f"The {key} should be a string!")
+
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = "\n".join([sent_1, sent_2, sent_3])
+    print(book_description)
+```
+
+This function is getting very long, so we can create a different function to make our checks.
+
+```{python}
+def check_book(book):
+    # check that the input is a dictionary
+    if type(book) != dict:
+        raise TypeError("Please provide a dictionary!")
+    
+    # check that the dict has the right keys
+
+    for key in ['title', 'author', 'language', 'year', 'main_characters']:
+        if not key in book:
+            raise KeyError(f"'{key}' is missing from the dictionary!")
+        # check the types
+        if key == 'year':
+            if type(book[key]) != int:
+                raise TypeError(f"The year should be an integer!")
+        elif key == "main_characters":
+            if type(book[key]) != list:
+                raise TypeError(f"The main characters should be provided as a list!")
+        elif type(book[key]) != str:
+            raise TypeError(f"The {key} should be a string!")
+    return
+
+def describe_book(book):
+    # check that the input is correct
+    check_book(book)
+
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = "\n".join([sent_1, sent_2, sent_3])
+    print(book_description)
+```
+
+Then we can call our function with whatever we want: the right input and wrong input.
+
+```{python}
+describe_book(color_magic)
+```
+
+```{python}
+for book in discworld_sample:
+    describe_book(book)
+    print()
+```
+
+You can try (in Jupyter Notebook) different bad-outputs to stress-test the checks.
+
+```{python}
+#| error: true
+describe_book("The color of magic")
+```
+
+We can also add if-statements that don't raise erros.
+
+```{python}
+def describe_book(book):
+    # check that the input is correct
+    check_book(book)
+
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    if book['year'] < 1990:
+        sent_2 = sent_2 + " (That's so long ago!)"
+
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = "\n".join([sent_1, sent_2, sent_3])
+    print(book_description)
+describe_book(color_magic)
+```
+
+```{python}
+describe_book(shepherd_crown)
+```
