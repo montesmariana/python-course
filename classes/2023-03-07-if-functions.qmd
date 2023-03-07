@@ -1,5 +1,5 @@
 ---
-title: "Working with iterables"
+title: "Conditionals and functions"
 format: html
 date: 2023-03-07
 categories:
@@ -8,7 +8,6 @@ categories:
     - errors
     - basics
 description: Introduction to if-statements and functions.
-draft: true
 ---
 
 
@@ -93,7 +92,7 @@ for book in discworld_sample:
     print()
 ```
 
-Now we will write a function that runs the piece of code that we applied to each book. We will also change the separator between sentences to a line change ("\n").
+Now we will write a function that runs the piece of code that we applied to each book. We will also change the separator between sentences to a line change (`\n`).
 
 ```{python}
 def describe_book(book):

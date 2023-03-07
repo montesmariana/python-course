@@ -206,7 +206,7 @@ for i, x in enumerate(color_list):
 # Solo practice
 
 - Create a list to loop over
-- Draw a flow chart with two options in each split
+- Draw a flow chart with binary splits
 - Translate the flow chart to an if(-elif)-else chain
 
 ## Other truths

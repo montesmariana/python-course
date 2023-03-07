@@ -12,12 +12,15 @@ website:
 format:
   html:
     theme: lumen
+    css: styles.css
     toc: true
+    highlight-style: pygments
   revealjs:
     theme: [solarized, custom.scss]
     echo: true
     code-overflow: wrap
     logo: img/kuleuven.png
+    highlight-style: pygments
 
 execute:
   freeze: true

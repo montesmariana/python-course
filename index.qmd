@@ -4,6 +4,7 @@ format: html
 listing:
     contents: classes
     categories: true
+    sort: "date desc"
 ---
 
 Welcome to the website of the course "Introduction to Machine Learning Using Python" (February-May 2023).
