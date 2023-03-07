@@ -2,30 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://montesmariana.github.io/python-course/about.html</loc>
-    <lastmod>2023-02-28T10:15:13.647Z</lastmod>
+    <lastmod>2023-03-07T08:55:09.382Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/iterables.html</loc>
-    <lastmod>2023-02-28T10:15:14.927Z</lastmod>
+    <lastmod>2023-03-07T08:55:10.162Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/if-functions.html</loc>
-    <lastmod>2023-02-28T10:15:15.507Z</lastmod>
+    <lastmod>2023-03-07T08:55:10.812Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/variables.html</loc>
-    <lastmod>2023-02-28T10:15:16.467Z</lastmod>
+    <lastmod>2023-03-07T08:55:11.472Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-02-28-iterables.html</loc>
-    <lastmod>2023-02-28T10:15:18.667Z</lastmod>
+    <lastmod>2023-03-07T08:55:12.192Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-02-21-variables.html</loc>
-    <lastmod>2023-02-28T10:15:19.577Z</lastmod>
+    <lastmod>2023-03-07T08:55:12.792Z</lastmod>
+  </url>
+  <url>
+    <loc>https://montesmariana.github.io/python-course/classes/2023-03-07-if-functions.html</loc>
+    <lastmod>2023-03-07T08:55:13.502Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/index.html</loc>
-    <lastmod>2023-02-28T10:15:21.977Z</lastmod>
+    <lastmod>2023-03-07T08:55:15.762Z</lastmod>
   </url>
 </urlset>

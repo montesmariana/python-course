@@ -172,49 +172,63 @@
     "href": "slides/if-functions.html#booleans",
     "title": "If-statements and functions",
     "section": "Booleans",
-    "text": "Booleans\n\nThings can be True or False.\nif x runs something when x is True, but not when it is False.\n\n\nif True:\n    print(\"This is true\")\n\nThis is true\n\n\n\n\nif False:\n    print(\"This is false\")"
+    "text": "Booleans\n\nThings can be True or False.\nGiven a statement if x: y, y runs when x is True.\n\n\nif True:\n    print(\"This is true\")\n\nThis is true\n\n\n\n\ny won’t run if x is False.\n\n\nif False:\n    print(\"This is false\")"
   },
   {
     "objectID": "slides/if-functions.html#control-flow",
     "href": "slides/if-functions.html#control-flow",
     "title": "If-statements and functions",
     "section": "Control flow",
-    "text": "Control flow\n\nThe point is to decide when to run things based on a condition that may or may not be true.\n\n\nbool_list = [True, False, False, True]\nfor i, b in enumerate(bool_list):\n    if b:\n        print(i, \"- This is true\")\n\n0 - This is true\n3 - This is true"
+    "text": "Control flow\n\nThe point is to decide when to run things based on a condition that may or may not be true.\n\n\nbool_list = [True, False, False, True]\nfor i, b in enumerate(bool_list):\n    if b: # the same as 'if b == True:'\n        print(i, \"- This is true\")\n\n0 - This is true\n3 - This is true"
   },
   {
-    "objectID": "slides/if-functions.html#boolean-statements",
-    "href": "slides/if-functions.html#boolean-statements",
+    "objectID": "slides/if-functions.html#booleans-from-comparisons",
+    "href": "slides/if-functions.html#booleans-from-comparisons",
     "title": "If-statements and functions",
-    "section": "Boolean statements",
-    "text": "Boolean statements\n\nnum_list = [1, 4, 7, 2, 9, 7, 3]\nprint([x < 3 for x in num_list])\n\n[True, False, False, True, False, False, False]\n\n\n\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(i, f\"- {x} is smaller than 3\")\n\n0 - 1 is smaller than 3\n3 - 2 is smaller than 3\n\n\n\n\n\n[x for x in num_list if x < 3]\n\n[1, 2]"
+    "section": "Booleans from comparisons",
+    "text": "Booleans from comparisons\n\nx = 1\nx < 3\n\nTrue\n\n\n\nnum_list = [1, 4, 7, 2, 9, 7, 3]\n[x < 3 for x in num_list]\n\n[True, False, False, True, False, False, False]\n\n\n\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(f\"{i} - {x} is smaller than 3\")\n\n0 - 1 is smaller than 3\n3 - 2 is smaller than 3\n\n\n\n\n\n[x for x in num_list if x < 3]\n\n[1, 2]"
   },
   {
-    "objectID": "slides/if-functions.html#which-flow",
-    "href": "slides/if-functions.html#which-flow",
+    "objectID": "slides/if-functions.html#booleans-from-methods",
+    "href": "slides/if-functions.html#booleans-from-methods",
     "title": "If-statements and functions",
-    "section": "Which flow?",
-    "text": "Which flow?\n\n\n\n\nflowchart LR\n    A[num_list] --> B{Is it smaller than 3?}\n    B -- Yes --> C[Print something]\n\n\n\n\n\n\n\n\n\n\n\n\n\nflowchart LR\n    A[num_list] --> B{Is it smaller than 3?}\n    B -- Yes --> C[Print something]\n    B -- No --> D[Print something else]"
+    "section": "Booleans from methods",
+    "text": "Booleans from methods\n\nx = 'blue'\nx.startswith('b')\n\nTrue\n\n\n\ncolor_list = ['blue', 'red', 'brown', 'black', 'white']\n[x.startswith('b') for x in color_list]\n\n[True, False, True, True, False]\n\n\n\n\nfor i, x in enumerate(color_list):\n    if x.startswith('b'):\n        print(f\"{i} - {x} starts with 'b'.\")\n\n0 - blue starts with 'b'.\n2 - brown starts with 'b'.\n3 - black starts with 'b'.\n\n\n\n\n\n[x for x in color_list if x.startswith('b')]\n\n['blue', 'brown', 'black']"
+  },
+  {
+    "objectID": "slides/if-functions.html#flow-control-what",
+    "href": "slides/if-functions.html#flow-control-what",
+    "title": "If-statements and functions",
+    "section": "Flow control what?",
+    "text": "Flow control what?\n\n\n\n\n\n\n\nG\n\n  \n\nstart\n\n color_list   \n\nquestion\n\n Does it start with ‘b’?   \n\nstart->question\n\n    \n\nwithb\n\n Print that it starts with ‘b’   \n\nquestion->withb\n\n  Yes"
+  },
+  {
+    "objectID": "slides/if-functions.html#what-if-not",
+    "href": "slides/if-functions.html#what-if-not",
+    "title": "If-statements and functions",
+    "section": "What if NOT?",
+    "text": "What if NOT?\n\n\n\n\n\n\n\nG\n\n  \n\nstart\n\n color_list   \n\nquestion\n\n Does it start with ‘b’?   \n\nstart->question\n\n    \n\nwithb\n\n Print that it starts with ‘b’   \n\nquestion->withb\n\n  Yes   \n\nwithout\n\n Print that it does not start with ‘b’   \n\nquestion->without\n\n  No"
   },
   {
     "objectID": "slides/if-functions.html#if-else",
     "href": "slides/if-functions.html#if-else",
     "title": "If-statements and functions",
     "section": "if-else",
-    "text": "if-else\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(i, f\"- {x} is smaller than 3\")\n    else:\n        print(i, f\"- {x} is not smaller than 3\")\n\n0 - 1 is smaller than 3\n1 - 4 is not smaller than 3\n2 - 7 is not smaller than 3\n3 - 2 is smaller than 3\n4 - 9 is not smaller than 3\n5 - 7 is not smaller than 3\n6 - 3 is not smaller than 3"
+    "text": "if-else\n\nfor i, x in enumerate(color_list):\n    if x.startswith('b'):\n        print(f\"{i} - {x} starts with 'b'.\")\n    else:\n        print(f\"{i} - {x} does not start with 'b'.\")\n\n0 - blue starts with 'b'.\n1 - red does not start with 'b'.\n2 - brown starts with 'b'.\n3 - black starts with 'b'.\n4 - white does not start with 'b'."
   },
   {
-    "objectID": "slides/if-functions.html#multiple-options",
-    "href": "slides/if-functions.html#multiple-options",
+    "objectID": "slides/if-functions.html#what-if-something-else",
+    "href": "slides/if-functions.html#what-if-something-else",
     "title": "If-statements and functions",
-    "section": "Multiple options",
-    "text": "Multiple options\n\n\n\n\nflowchart LR\n    A[num_list] --> B{Is it smaller than 3?}\n    B -- Yes --> C[Print something]\n    B -- No --> D{Is it smaller than or equal to 7?}\n    D -- Yes --> E[Print that]\n    D -- No --> F[Print something else]"
+    "section": "What if something else?",
+    "text": "What if something else?\n\n\n\n\n\n\n\nG\n\n  \n\nstart\n\n color_list   \n\nquestion\n\n Does it start with ‘b’?   \n\nstart->question\n\n    \n\nwithb\n\n Print that it starts with ‘b’   \n\nquestion->withb\n\n  Yes   \n\nquestion2\n\n Is it ‘red’?   \n\nquestion->question2\n\n  No   \n\nred\n\n Print that it is ‘red’.   \n\nquestion2->red\n\n  Yes   \n\nwithout\n\n Print that it does not start with ‘b’ nor is it red.   \n\nquestion2->without\n\n  No"
   },
   {
     "objectID": "slides/if-functions.html#if-elif-else",
     "href": "slides/if-functions.html#if-elif-else",
     "title": "If-statements and functions",
     "section": "if-elif-else",
-    "text": "if-elif-else\n\nfor i, x in enumerate(num_list):\n    if x < 3:\n        print(i, f\"- {x} is smaller than 3\")\n    elif x <= 7:\n        print(i, f\"- {x} is smaller than or equal to 7\")\n    else:\n        print(i, f\"- {x} is larger than 7\")\n\n0 - 1 is smaller than 3\n1 - 4 is smaller than or equal to 7\n2 - 7 is smaller than or equal to 7\n3 - 2 is smaller than 3\n4 - 9 is larger than 7\n5 - 7 is smaller than or equal to 7\n6 - 3 is smaller than or equal to 7"
+    "text": "if-elif-else\n\nfor i, x in enumerate(color_list):\n    if x.startswith('b'):\n        print(i, f\"- {x} starts with 'b'.\")\n    elif x == 'red':\n        print(i, f\"- {x} is 'red'.\")\n    else:\n        print(i, f\"- {x} does not start with 'b' nor is it 'red'.\")\n\n0 - blue starts with 'b'.\n1 - red is 'red'.\n2 - brown starts with 'b'.\n3 - black starts with 'b'.\n4 - white does not start with 'b' nor is it 'red'."
   },
   {
     "objectID": "slides/if-functions.html#other-truths",
@@ -235,21 +249,119 @@
     "href": "slides/if-functions.html#why-use-a-function",
     "title": "If-statements and functions",
     "section": "Why use a function?",
-    "text": "Why use a function?\n\nIt encapsulates a chain of actions that you may want to repeat multiple times.\nThe chain of actions is conceptualized as “one” action or thing that takes an input (or more) and, normally, returns an output."
+    "text": "Why use a function?\n\nIt encapsulates a chain of actions that you may want to repeat multiple times.\nThe chain of actions is conceptualized as “one” action or process that takes an input (or more) and, normally, returns an output."
   },
   {
     "objectID": "slides/if-functions.html#define-a-function",
     "href": "slides/if-functions.html#define-a-function",
     "title": "If-statements and functions",
     "section": "Define a function",
-    "text": "Define a function\n\ndef sum_two(arg1, arg2):"
+    "text": "Define a function\n\ndef + function name + ( + argument names separated by commas + ) + :\n\n\ndef sum_two(arg1, arg2):"
   },
   {
     "objectID": "slides/if-functions.html#define-a-function-1",
     "href": "slides/if-functions.html#define-a-function-1",
     "title": "If-statements and functions",
     "section": "Define a function",
-    "text": "Define a function\n\ndef sum_two(arg1, arg2):\n    return arg1 + arg2\n\n\n\ndef sum_two(arg1, arg2):\n    return arg1 + arg2\n\n\nsum_two(1, 4)\n\n5"
+    "text": "Define a function\n\nindent + whatever the function does\n\n\ndef sum_two(arg1, arg2):\n    res = arg1 + arg2"
+  },
+  {
+    "objectID": "slides/if-functions.html#define-a-function-2",
+    "href": "slides/if-functions.html#define-a-function-2",
+    "title": "If-statements and functions",
+    "section": "Define a function",
+    "text": "Define a function\n\nEnd with return and the output\n\n\ndef sum_two(arg1, arg2):\n    res = arg1 + arg2\n    return res\n\n\n\nCall with: function name + ( + arguments separated by commas + )\n\n\nsum_two(1, 4)\n\n5"
+  },
+  {
+    "objectID": "slides/if-functions.html#if-statements-within-functions",
+    "href": "slides/if-functions.html#if-statements-within-functions",
+    "title": "If-statements and functions",
+    "section": "If-statements within functions",
+    "text": "If-statements within functions\n\nMaybe you don’t want to print the age but whether someone is underage.\n\n\ndef is_underage(name, age):\n    if age < 18:\n        return f\"{name} is underage.\"\n    else:\n        return f\"{name} is already an adult.\"\nis_underage(\"Mila\", 26)\n\n'Mila is already an adult.'\n\n\n\nis_underage(\"Ken\", 15)\n\n'Ken is underage.'"
+  },
+  {
+    "objectID": "slides/if-functions.html#bad-arguments",
+    "href": "slides/if-functions.html#bad-arguments",
+    "title": "If-statements and functions",
+    "section": "Bad arguments",
+    "text": "Bad arguments\n\nWhat if we don’t provide the age as a number?\n\n\nis_underage(\"Mila\", \"26\")\n\n\n\nTypeError: '<' not supported between instances of 'str' and 'int'\n\n\n\nOr something else wrong for the name?\n\n\nis_underage([\"Mila\", \"Ari\"], 26)\n\n\n\n\"['Mila', 'Ari'] is already an adult.\""
+  },
+  {
+    "objectID": "slides/if-functions.html#checking-arguments",
+    "href": "slides/if-functions.html#checking-arguments",
+    "title": "If-statements and functions",
+    "section": "Checking arguments",
+    "text": "Checking arguments\n\ndef is_underage(name, age):\n    # check that age is an integer\n    if type(age) != int:\n        return \"Age should be an integer!\"\n    # check that name is a string\n    if type(name) != str:\n        return \"The name should be a string!\"\n    # run\n    if age < 18:\n        return f\"{name} is underage.\"\n    else:\n        return f\"{name} is already an adult.\""
+  },
+  {
+    "objectID": "slides/if-functions.html#checking-arguments-1",
+    "href": "slides/if-functions.html#checking-arguments-1",
+    "title": "If-statements and functions",
+    "section": "Checking arguments",
+    "text": "Checking arguments\n\nGet the right messages when bad arguments are provided.\n\n\nis_underage(\"Mila\", \"26\")\n\n'Age should be an integer!'\n\n\n\nis_underage([\"Mila\", \"Ari\"], 26)\n\n'The name should be a string!'\n\n\n\n\nIt should still work with good arguments.\n\n\nis_underage(\"Mila\", 26)\n\n'Mila is already an adult.'\n\n\n\nis_underage(\"Ken\", 15)\n\n'Ken is underage.'"
+  },
+  {
+    "objectID": "slides/if-functions.html#raising-exceptions",
+    "href": "slides/if-functions.html#raising-exceptions",
+    "title": "If-statements and functions",
+    "section": "Raising exceptions",
+    "text": "Raising exceptions\n\n\n\n\n\n\nErrors\n\n\nErrors (aka Exceptions in Python) stop execution. Messages will keep it running.\n\n\n\n\ndef is_underage_error(name, age):\n    # raise errors if the arguments are wrong\n    if type(age) != int:\n        raise TypeError(\"Age should be an integer!\")\n    if type(name) != str:\n        raise TypeError(\"The name should be a string!\")\n    # run\n    if age < 18:\n        return f\"{name} is underage.\"\n    else:\n        return f\"{name} is already an adult.\""
+  },
+  {
+    "objectID": "slides/if-functions.html#implementation",
+    "href": "slides/if-functions.html#implementation",
+    "title": "If-statements and functions",
+    "section": "Implementation",
+    "text": "Implementation\nA message will keep things running.\n\n[is_underage(\"Ursula\", age) for age in [15, 20, \"5\", 80]]\n\n['Ursula is underage.',\n 'Ursula is already an adult.',\n 'Age should be an integer!',\n 'Ursula is already an adult.']\n\n\nAn error will let you know that something is wrong.\n\n[is_underage_error(\"Ursula\", age) for age in [15, 20, \"5\", 80]]\n\nTypeError: Age should be an integer!"
+  },
+  {
+    "objectID": "slides/if-functions.html#positional-arguments",
+    "href": "slides/if-functions.html#positional-arguments",
+    "title": "If-statements and functions",
+    "section": "Positional arguments",
+    "text": "Positional arguments\n\nBased on the position in the call: name is the first argument, age is the second argument.\n\n\nis_underage(26, \"Mila\")\n\n'Age should be an integer!'\n\n\n\n\nYou get an error if they are missing.\n\n\nis_underage(\"Robbie\")\n\nTypeError: is_underage() missing 1 required positional argument: 'age'\n\n\n\n\n\n\n\n\n\n\nImportant\n\n\nPositional arguments are compulsory."
+  },
+  {
+    "objectID": "slides/if-functions.html#optional-arguments",
+    "href": "slides/if-functions.html#optional-arguments",
+    "title": "If-statements and functions",
+    "section": "Optional arguments",
+    "text": "Optional arguments\n\nIf you don’t want to require an argument, you can provide a default value.\n\n\ndef is_underage_default(age, name = \"This person\"):\n    if type(age) != int:\n        raise TypeError(\"Age should be an integer!\")\n    if age < 18:\n        return f\"{name} is underage.\"\n    else:\n        return f\"{name} is already an adult.\"\n\n\n\n\n\n\n\nArgument order\n\n\nOptional arguments should be defined after positional arguments."
+  },
+  {
+    "objectID": "slides/if-functions.html#optional-arguments-1",
+    "href": "slides/if-functions.html#optional-arguments-1",
+    "title": "If-statements and functions",
+    "section": "Optional arguments",
+    "text": "Optional arguments\n\nis_underage_default(26)\n\n'This person is already an adult.'\n\n\n\n\nis_underage_default(26, \"Mila\")\n\n'Mila is already an adult.'\n\n\n\n\n\nFor clarification, you can also provide the names of the arguments.\n\n\nis_underage_default(age = 26, name = \"Mila\")\n\n'Mila is already an adult.'"
+  },
+  {
+    "objectID": "slides/if-functions.html#naming-arguments",
+    "href": "slides/if-functions.html#naming-arguments",
+    "title": "If-statements and functions",
+    "section": "Naming arguments",
+    "text": "Naming arguments\n\nYou could change the order, but it’s bad practice.\n\n\nis_underage_default(name = \"Mila\", age = 26)\n\n'Mila is already an adult.'\n\n\n\nis_underage(age = 26, name = \"Mila\")\n\n'Mila is already an adult.'\n\n\n\n\nA named argument creates a variable inside the scope of a function: it is not valid outside.\n\n\nprint(age)\n\nNameError: name 'age' is not defined"
+  },
+  {
+    "objectID": "slides/if-functions.html#create-a-generator",
+    "href": "slides/if-functions.html#create-a-generator",
+    "title": "If-statements and functions",
+    "section": "Create a generator",
+    "text": "Create a generator\n\nA generator is a function that ends in yield instead of return.\nBased on a for loop or while statement, it returns (or yields) one item at a time.\n\n\ndef fruit_offering():\n    for fruit in fruits:\n        yield f\"The price of the {fruit} is €{fruits[fruit]}/kg.\""
+  },
+  {
+    "objectID": "slides/if-functions.html#use-a-generator",
+    "href": "slides/if-functions.html#use-a-generator",
+    "title": "If-statements and functions",
+    "section": "Use a generator",
+    "text": "Use a generator\n\nmy_fruits = fruit_offering()\nlist(my_fruits)\n\n['The price of the banana is €0.6/kg.',\n 'The price of the orange is €1.2/kg.',\n 'The price of the lemon is €0.8/kg.']\n\n\n\n\nmy_fruits = fruit_offering()\nnext(my_fruits)\n\n'The price of the banana is €0.6/kg.'\n\n\n\nfor fruit in my_fruits:\n    print(fruit)\n\n\n\nThe price of the orange is €1.2/kg.\nThe price of the lemon is €0.8/kg."
+  },
+  {
+    "objectID": "slides/if-functions.html#while-generating",
+    "href": "slides/if-functions.html#while-generating",
+    "title": "If-statements and functions",
+    "section": "While generating",
+    "text": "While generating\n\ndef birthday():\n    age = 0\n    while True:\n        age += 1\n        year = \"year\" if age == 1 else \"years\"\n        yield f\"Happy birthday! You are {age} {year} old!\"\n\n\nbday = birthday()\nnext(bday)\n\n'Happy birthday! You are 1 year old!'\n\n\n\nnext(bday)\n\n'Happy birthday! You are 2 years old!'"
   },
   {
     "objectID": "slides/variables.html#basic-types",
@@ -434,10 +546,17 @@
     "text": "Think about\n\nWhere do you see these kinds of variables in real life, especially at work?\nHow do you think you could use a list or a dictionary in translation?"
   },
   {
+    "objectID": "classes/2023-03-07-if-functions.html",
+    "href": "classes/2023-03-07-if-functions.html",
+    "title": "Working with iterables",
+    "section": "",
+    "text": "Today we learn about if-statements and functions:\n\nCreating and if(-else)-statement.\nBoolean statements.\nDefining a function.\nReserved words: return, raise, yield…\nNameError.\n\n\n\n\n\nWhat to do in Jupyter\nFollow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.\nWrite the code for the “solo practice” sections.\n\n\nWhat to do in VS Code\nLast class we created a list of dictionaries and ran a loop across them to print some statements.\n\n\nShow the code\nhat_sky = {\n    'title' : 'A hat full of sky',\n    'author' : 'Terry Pratchett',\n    'year' : 2004,\n    'language' : 'English',\n    'main_characters' : [\n        'Tiffany Aching',\n        'Granny Weatherwax',\n        'Rob Anybody'\n        ]\n}\nsmall_gods = {\n    'title' : 'Small gods',\n    'author' : 'Terry Pratchett',\n    'year' : 1992,\n    'language' : 'English',\n    'main_characters' : [\n        'Om',\n        'Brutha'\n        ]\n}\ncolor_magic = {\n    'title' : 'The color of magic',\n    'author' : 'Terry Pratchett',\n    'year' : 1983,\n    'language' : 'English',\n    'main_characters' : [\n        'Rincewind',\n        'Twoflower'\n        ]\n}\nshepherd_crown = {\n    'title' : \"The shepherd's crown\",\n    'author' : 'Terry Pratchett',\n    'year' : 2015,\n    'language' : 'English',\n    'main_characters' : [\n        'Tiffany Aching',\n        'Nightshade',\n        'Peaseblossom'\n        ]\n}\ndiscworld_sample = [color_magic, small_gods, hat_sky, shepherd_crown]\nfor book in discworld_sample:\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \" \".join([sent_1, sent_2, sent_3])\n    print(book_description)\n    print()\n\n\nNow we will write a function that runs the piece of code that we applied to each book. We will also change the separator between sentences to a line change (“”).\n\ndef describe_book(book):\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\n\nWe also want to check that the input argument book is a dictionary, that it contains the right keys and that their values are of the correct type. If any of these conditions are not fulfilled, we will raise an error.\n\ndef describe_book(book):\n    # check that the input is a dictionary\n    if type(book) != dict:\n        raise TypeError(\"Please provide a dictionary!\")\n    \n    # check that the dict has the right keys\n    for key in ['title', 'author', 'language', 'year', 'main_characters']:\n        if not key in book:\n            raise KeyError(f\"'{key}' is missing from the dictionary!\")\n        # check the types\n        if key == 'year':\n            if type(book[key]) != int:\n                raise TypeError(f\"The year should be an integer!\")\n        elif key == \"main_characters\":\n            if type(book[key]) != list:\n                raise TypeError(f\"The main characters should be provided as a list!\")\n        elif type(book[key]) != str:\n            raise TypeError(f\"The {key} should be a string!\")\n\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\n\nThis function is getting very long, so we can create a different function to make our checks.\n\ndef check_book(book):\n    # check that the input is a dictionary\n    if type(book) != dict:\n        raise TypeError(\"Please provide a dictionary!\")\n    \n    # check that the dict has the right keys\n\n    for key in ['title', 'author', 'language', 'year', 'main_characters']:\n        if not key in book:\n            raise KeyError(f\"'{key}' is missing from the dictionary!\")\n        # check the types\n        if key == 'year':\n            if type(book[key]) != int:\n                raise TypeError(f\"The year should be an integer!\")\n        elif key == \"main_characters\":\n            if type(book[key]) != list:\n                raise TypeError(f\"The main characters should be provided as a list!\")\n        elif type(book[key]) != str:\n            raise TypeError(f\"The {key} should be a string!\")\n    return\n\ndef describe_book(book):\n    # check that the input is correct\n    check_book(book)\n\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\n\nThen we can call our function with whatever we want: the right input and wrong input.\n\ndescribe_book(color_magic)\n\nThe Color Of Magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago.\nThe main characters are: Rincewind, Twoflower.\n\n\n\nfor book in discworld_sample:\n    describe_book(book)\n    print()\n\nThe Color Of Magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago.\nThe main characters are: Rincewind, Twoflower.\n\nSmall Gods was written by Terry Pratchett in English.\nIt was published in 1992, that is, 31 years ago.\nThe main characters are: Om, Brutha.\n\nA Hat Full Of Sky was written by Terry Pratchett in English.\nIt was published in 2004, that is, 19 years ago.\nThe main characters are: Tiffany Aching, Granny Weatherwax, Rob Anybody.\n\nThe Shepherd'S Crown was written by Terry Pratchett in English.\nIt was published in 2015, that is, 8 years ago.\nThe main characters are: Tiffany Aching, Nightshade, Peaseblossom.\n\n\n\nYou can try (in Jupyter Notebook) different bad-outputs to stress-test the checks.\n\ndescribe_book(\"The color of magic\")\n\nTypeError: Please provide a dictionary!\n\n\nWe can also add if-statements that don’t raise erros.\n\ndef describe_book(book):\n    # check that the input is correct\n    check_book(book)\n\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    \n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    if book['year'] < 1990:\n        sent_2 = sent_2 + \" (That's so long ago!)\"\n\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\ndescribe_book(color_magic)\n\nThe Color Of Magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago. (That's so long ago!)\nThe main characters are: Rincewind, Twoflower.\n\n\n\ndescribe_book(shepherd_crown)\n\nThe Shepherd'S Crown was written by Terry Pratchett in English.\nIt was published in 2015, that is, 8 years ago.\nThe main characters are: Tiffany Aching, Nightshade, Peaseblossom."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]

@@ -57,40 +57,39 @@
       }
     pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
     div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
+      {   }
     @media screen {
     pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
     }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
     code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
     code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css" id="theme">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -381,9 +380,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
-  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
-  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -400,7 +396,7 @@
 <h2>Booleans</h2>
 <ul>
 <li><p>Things can be <code>True</code> or <code>False</code>.</p></li>
-<li><p><code>if x</code> runs something when <code>x</code> is <code>True</code>, but not when it is <code>False</code>.</p></li>
+<li><p>Given a statement <code>if x: y</code>, <code>y</code> runs when <code>x</code> is <code>True</code>.</p></li>
 </ul>
 <div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="cf">if</span> <span class="va">True</span>:</span>
@@ -410,6 +406,9 @@
 </div>
 </div>
 <div class="fragment">
+<ul>
+<li><code>y</code> won’t run if <code>x</code> is <code>False</code>.</li>
+</ul>
 <div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1"></a><span class="cf">if</span> <span class="va">False</span>:</span>
 <span id="cb3-2"><a href="#cb3-2"></a>    <span class="bu">print</span>(<span class="st">"This is false"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -424,7 +423,7 @@
 <div class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>bool_list <span class="op">=</span> [<span class="va">True</span>, <span class="va">False</span>, <span class="va">False</span>, <span class="va">True</span>]</span>
 <span id="cb4-2"><a href="#cb4-2"></a><span class="cf">for</span> i, b <span class="kw">in</span> <span class="bu">enumerate</span>(bool_list):</span>
-<span id="cb4-3"><a href="#cb4-3"></a>    <span class="cf">if</span> b:</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="cf">if</span> b: <span class="co"># the same as 'if b == True:'</span></span>
 <span id="cb4-4"><a href="#cb4-4"></a>        <span class="bu">print</span>(i, <span class="st">"- This is true"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 - This is true
@@ -432,20 +431,27 @@
 </div>
 </div>
 </section>
-<section id="boolean-statements" class="slide level2">
-<h2>Boolean statements</h2>
+<section id="booleans-from-comparisons" class="slide level2">
+<h2>Booleans from comparisons</h2>
 <div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>num_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">3</span>]</span>
-<span id="cb6-2"><a href="#cb6-2"></a><span class="bu">print</span>([x <span class="op">&lt;</span> <span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> num_list])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a>x <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>x <span class="op">&lt;</span> <span class="dv">3</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<pre><code>True</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>num_list <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">2</span>, <span class="dv">9</span>, <span class="dv">7</span>, <span class="dv">3</span>]</span>
+<span id="cb8-2"><a href="#cb8-2"></a>[x <span class="op">&lt;</span> <span class="dv">3</span> <span class="cf">for</span> x <span class="kw">in</span> num_list]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="5">
 <pre><code>[True, False, False, True, False, False, False]</code></pre>
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(num_list):</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">3</span>:</span>
-<span id="cb8-3"><a href="#cb8-3"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is smaller than 3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(num_list):</span>
+<span id="cb10-2"><a href="#cb10-2"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">3</span>:</span>
+<span id="cb10-3"><a href="#cb10-3"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is smaller than 3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>0 - 1 is smaller than 3
 3 - 2 is smaller than 3</code></pre>
@@ -453,108 +459,230 @@
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> num_list <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="260">
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> num_list <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">3</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="7">
 <pre><code>[1, 2]</code></pre>
 </div>
 </div>
 </div>
 </section>
-<section id="which-flow" class="slide level2">
-<h2>Which flow?</h2>
-<div class="cell" data-reveal="true">
-<div class="cell-output-display">
-<div>
-<p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-1">flowchart LR
-    A[num_list] --&gt; B{Is it smaller than 3?}
-    B -- Yes --&gt; C[Print something]
-</pre>
-<div id="mermaid-tooltip-1" class="mermaidTooltip">
-
+<section id="booleans-from-methods" class="slide level2">
+<h2>Booleans from methods</h2>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a>x <span class="op">=</span> <span class="st">'blue'</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>x.startswith(<span class="st">'b'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="8">
+<pre><code>True</code></pre>
 </div>
-<p></p>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a>color_list <span class="op">=</span> [<span class="st">'blue'</span>, <span class="st">'red'</span>, <span class="st">'brown'</span>, <span class="st">'black'</span>, <span class="st">'white'</span>]</span>
+<span id="cb16-2"><a href="#cb16-2"></a>[x.startswith(<span class="st">'b'</span>) <span class="cf">for</span> x <span class="kw">in</span> color_list]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
+<pre><code>[True, False, True, True, False]</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(color_list):</span>
+<span id="cb18-2"><a href="#cb18-2"></a>    <span class="cf">if</span> x.startswith(<span class="st">'b'</span>):</span>
+<span id="cb18-3"><a href="#cb18-3"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> starts with 'b'."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>0 - blue starts with 'b'.
+2 - brown starts with 'b'.
+3 - black starts with 'b'.</code></pre>
 </div>
 </div>
 </div>
 <div class="fragment">
-<div class="cell" data-reveal="true">
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1"></a>[x <span class="cf">for</span> x <span class="kw">in</span> color_list <span class="cf">if</span> x.startswith(<span class="st">'b'</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<pre><code>['blue', 'brown', 'black']</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="flow-control-what" class="slide level2">
+<h2>Flow control what?</h2>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-2">flowchart LR
-    A[num_list] --&gt; B{Is it smaller than 3?}
-    B -- Yes --&gt; C[Print something]
-    B -- No --&gt; D[Print something else]
-</pre>
-<div id="mermaid-tooltip-2" class="mermaidTooltip">
-
+<svg width="960" height="480" viewbox="0.00 0.00 175.31 275.83" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 271.83)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-271.83 171.31,-271.83 171.31,4 -4,4"></polygon> <!-- start --> <g id="node1" class="node">
+<title>
+start
+</title>
+<polygon fill="none" stroke="black" points="118.04,-267.83 49.27,-267.83 49.27,-231.83 118.04,-231.83 118.04,-267.83"></polygon> <text text-anchor="middle" x="83.66" y="-245.63" font-family="Lato" font-size="14.00">color_list</text> </g> <!-- question --> <g id="node2" class="node">
+<title>
+question
+</title>
+<polygon fill="none" stroke="black" points="83.66,-194.93 -0.16,-153.23 83.66,-111.53 167.47,-153.23 83.66,-194.93"></polygon> <text text-anchor="middle" x="83.66" y="-157.43" font-family="Lato" font-size="14.00">Does it start</text> <text text-anchor="middle" x="83.66" y="-140.63" font-family="Lato" font-size="14.00">with ‘b’?</text> </g> <!-- start&#45;&gt;question --> <g id="edge1" class="edge">
+<title>
+start-&gt;question
+</title>
+<path fill="none" stroke="black" d="M83.66,-231.48C83.66,-223.96 83.66,-214.72 83.66,-205.28"></path> <polygon fill="black" stroke="black" points="87.16,-205.04 83.66,-195.04 80.16,-205.04 87.16,-205.04"></polygon> </g> <!-- withb --> <g id="node3" class="node">
+<title>
+withb
+</title>
+<ellipse fill="none" stroke="black" cx="83.66" cy="-29.42" rx="71" ry="29.33"></ellipse> <text text-anchor="middle" x="83.66" y="-33.62" font-family="Lato" font-size="14.00">Print that</text> <text text-anchor="middle" x="83.66" y="-16.82" font-family="Lato" font-size="14.00">it starts with ‘b’</text> </g> <!-- question&#45;&gt;withb --> <g id="edge2" class="edge">
+<title>
+question-&gt;withb
+</title>
+<path fill="none" stroke="black" d="M83.66,-111.33C83.66,-97.8 83.66,-82.8 83.66,-69.42"></path> <polygon fill="black" stroke="black" points="87.16,-69.1 83.66,-59.1 80.16,-69.1 87.16,-69.1"></polygon> <text text-anchor="middle" x="94.54" y="-81.03" font-family="Lato" font-size="14.00">Yes</text> </g> </g>
+</svg>
+</p>
 </div>
-<p></p>
 </div>
+</div>
+</section>
+<section id="what-if-not" class="slide level2">
+<h2>What if NOT?</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="480" viewbox="0.00 0.00 351.86 275.83" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 271.83)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-271.83 347.86,-271.83 347.86,4 -4,4"></polygon> <!-- start --> <g id="node1" class="node">
+<title>
+start
+</title>
+<polygon fill="none" stroke="black" points="195.63,-267.83 126.87,-267.83 126.87,-231.83 195.63,-231.83 195.63,-267.83"></polygon> <text text-anchor="middle" x="161.25" y="-245.63" font-family="Lato" font-size="14.00">color_list</text> </g> <!-- question --> <g id="node2" class="node">
+<title>
+question
+</title>
+<polygon fill="none" stroke="black" points="161.25,-194.93 77.44,-153.23 161.25,-111.53 245.06,-153.23 161.25,-194.93"></polygon> <text text-anchor="middle" x="161.25" y="-157.43" font-family="Lato" font-size="14.00">Does it start</text> <text text-anchor="middle" x="161.25" y="-140.63" font-family="Lato" font-size="14.00">with ‘b’?</text> </g> <!-- start&#45;&gt;question --> <g id="edge1" class="edge">
+<title>
+start-&gt;question
+</title>
+<path fill="none" stroke="black" d="M161.25,-231.48C161.25,-223.96 161.25,-214.72 161.25,-205.28"></path> <polygon fill="black" stroke="black" points="164.75,-205.04 161.25,-195.04 157.75,-205.04 164.75,-205.04"></polygon> </g> <!-- withb --> <g id="node3" class="node">
+<title>
+withb
+</title>
+<ellipse fill="none" stroke="black" cx="71.25" cy="-29.42" rx="71" ry="29.33"></ellipse> <text text-anchor="middle" x="71.25" y="-33.62" font-family="Lato" font-size="14.00">Print that</text> <text text-anchor="middle" x="71.25" y="-16.82" font-family="Lato" font-size="14.00">it starts with ‘b’</text> </g> <!-- question&#45;&gt;withb --> <g id="edge2" class="edge">
+<title>
+question-&gt;withb
+</title>
+<path fill="none" stroke="black" d="M139.24,-122.43C126.71,-105.48 110.95,-84.14 97.75,-66.28"></path> <polygon fill="black" stroke="black" points="100.26,-63.79 91.5,-57.82 94.63,-67.95 100.26,-63.79"></polygon> <text text-anchor="middle" x="127.14" y="-81.03" font-family="Lato" font-size="14.00">Yes</text> </g> <!-- without --> <g id="node4" class="node">
+<title>
+without
+</title>
+<ellipse fill="none" stroke="black" cx="252.25" cy="-29.42" rx="91.71" ry="29.33"></ellipse> <text text-anchor="middle" x="252.25" y="-33.62" font-family="Lato" font-size="14.00">Print that it does not</text> <text text-anchor="middle" x="252.25" y="-16.82" font-family="Lato" font-size="14.00">start with ‘b’</text> </g> <!-- question&#45;&gt;without --> <g id="edge3" class="edge">
+<title>
+question-&gt;without
+</title>
+<path fill="none" stroke="black" d="M183.51,-122.43C196.08,-105.6 211.89,-84.45 225.17,-66.66"></path> <polygon fill="black" stroke="black" points="228.29,-68.34 231.47,-58.24 222.68,-64.15 228.29,-68.34"></polygon> <text text-anchor="middle" x="222.81" y="-81.03" font-family="Lato" font-size="14.00">No</text> </g> </g>
+</svg>
+</p>
 </div>
 </div>
 </div>
 </section>
 <section id="if-else" class="slide level2">
 <h2>if-else</h2>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(num_list):</span>
-<span id="cb12-2"><a href="#cb12-2"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">3</span>:</span>
-<span id="cb12-3"><a href="#cb12-3"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is smaller than 3"</span>)</span>
-<span id="cb12-4"><a href="#cb12-4"></a>    <span class="cf">else</span>:</span>
-<span id="cb12-5"><a href="#cb12-5"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is not smaller than 3"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(color_list):</span>
+<span id="cb22-2"><a href="#cb22-2"></a>    <span class="cf">if</span> x.startswith(<span class="st">'b'</span>):</span>
+<span id="cb22-3"><a href="#cb22-3"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> starts with 'b'."</span>)</span>
+<span id="cb22-4"><a href="#cb22-4"></a>    <span class="cf">else</span>:</span>
+<span id="cb22-5"><a href="#cb22-5"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> does not start with 'b'."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 - 1 is smaller than 3
-1 - 4 is not smaller than 3
-2 - 7 is not smaller than 3
-3 - 2 is smaller than 3
-4 - 9 is not smaller than 3
-5 - 7 is not smaller than 3
-6 - 3 is not smaller than 3</code></pre>
+<pre><code>0 - blue starts with 'b'.
+1 - red does not start with 'b'.
+2 - brown starts with 'b'.
+3 - black starts with 'b'.
+4 - white does not start with 'b'.</code></pre>
 </div>
 </div>
 </section>
-<section id="multiple-options" class="slide level2">
-<h2>Multiple options</h2>
-<div class="cell" data-reveal="true">
+<section id="what-if-something-else" class="slide level2">
+<h2>What if something else?</h2>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <p>
-</p><pre class="mermaid mermaid-js" data-tooltip-selector="#mermaid-tooltip-3">flowchart LR
-    A[num_list] --&gt; B{Is it smaller than 3?}
-    B -- Yes --&gt; C[Print something]
-    B -- No --&gt; D{Is it smaller than or equal to 7?}
-    D -- Yes --&gt; E[Print that]
-    D -- No --&gt; F[Print something else]
-</pre>
-<div id="mermaid-tooltip-3" class="mermaidTooltip">
-
-</div>
-<p></p>
+<svg width="960" height="480" viewbox="0.00 0.00 406.86 411.22" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 407.22)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-407.22 402.86,-407.22 402.86,4 -4,4"></polygon> <!-- start --> <g id="node1" class="node">
+<title>
+start
+</title>
+<polygon fill="none" stroke="black" points="127.63,-403.22 58.87,-403.22 58.87,-367.22 127.63,-367.22 127.63,-403.22"></polygon> <text text-anchor="middle" x="93.25" y="-381.02" font-family="Lato" font-size="14.00">color_list</text> </g> <!-- question --> <g id="node2" class="node">
+<title>
+question
+</title>
+<polygon fill="none" stroke="black" points="93.25,-330.32 9.44,-288.62 93.25,-246.92 177.06,-288.62 93.25,-330.32"></polygon> <text text-anchor="middle" x="93.25" y="-292.82" font-family="Lato" font-size="14.00">Does it start</text> <text text-anchor="middle" x="93.25" y="-276.02" font-family="Lato" font-size="14.00">with ‘b’?</text> </g> <!-- start&#45;&gt;question --> <g id="edge1" class="edge">
+<title>
+start-&gt;question
+</title>
+<path fill="none" stroke="black" d="M93.25,-366.87C93.25,-359.35 93.25,-350.11 93.25,-340.67"></path> <polygon fill="black" stroke="black" points="96.75,-340.43 93.25,-330.43 89.75,-340.43 96.75,-340.43"></polygon> </g> <!-- withb --> <g id="node3" class="node">
+<title>
+withb
+</title>
+<ellipse fill="none" stroke="black" cx="71.25" cy="-164.81" rx="71" ry="29.33"></ellipse> <text text-anchor="middle" x="71.25" y="-169.01" font-family="Lato" font-size="14.00">Print that</text> <text text-anchor="middle" x="71.25" y="-152.21" font-family="Lato" font-size="14.00">it starts with ‘b’</text> </g> <!-- question&#45;&gt;withb --> <g id="edge2" class="edge">
+<title>
+question-&gt;withb
+</title>
+<path fill="none" stroke="black" d="M86.47,-250.08C83.87,-235.68 80.9,-219.22 78.28,-204.7"></path> <polygon fill="black" stroke="black" points="81.66,-203.74 76.44,-194.52 74.77,-204.98 81.66,-203.74"></polygon> <text text-anchor="middle" x="93.14" y="-216.42" font-family="Lato" font-size="14.00">Yes</text> </g> <!-- question2 --> <g id="node4" class="node">
+<title>
+question2
+</title>
+<polygon fill="none" stroke="black" points="229.25,-182.81 161.13,-164.81 229.25,-146.81 297.37,-164.81 229.25,-182.81"></polygon> <text text-anchor="middle" x="229.25" y="-160.61" font-family="Lato" font-size="14.00">Is it ‘red’?</text> </g> <!-- question&#45;&gt;question2 --> <g id="edge3" class="edge">
+<title>
+question-&gt;question2
+</title>
+<path fill="none" stroke="black" d="M122.76,-261.19C148.06,-238.53 183.95,-206.38 206.92,-185.81"></path> <polygon fill="black" stroke="black" points="209.36,-188.33 214.47,-179.05 204.69,-183.11 209.36,-188.33"></polygon> <text text-anchor="middle" x="182.81" y="-216.42" font-family="Lato" font-size="14.00">No</text> </g> <!-- red --> <g id="node5" class="node">
+<title>
+red
+</title>
+<ellipse fill="none" stroke="black" cx="150.25" cy="-41.3" rx="47.77" ry="29.33"></ellipse> <text text-anchor="middle" x="150.25" y="-45.5" font-family="Lato" font-size="14.00">Print that</text> <text text-anchor="middle" x="150.25" y="-28.7" font-family="Lato" font-size="14.00">it is ‘red’.</text> </g> <!-- question2&#45;&gt;red --> <g id="edge4" class="edge">
+<title>
+question2-&gt;red
+</title>
+<path fill="none" stroke="black" d="M219.57,-148.91C208.04,-131.18 188.43,-101.02 173,-77.28"></path> <polygon fill="black" stroke="black" points="175.91,-75.34 167.53,-68.87 170.04,-79.16 175.91,-75.34"></polygon> <text text-anchor="middle" x="208.14" y="-104.79" font-family="Lato" font-size="14.00">Yes</text> </g> <!-- without --> <g id="node6" class="node">
+<title>
+without
+</title>
+<ellipse fill="none" stroke="black" cx="307.25" cy="-41.3" rx="91.71" ry="41.09"></ellipse> <text text-anchor="middle" x="307.25" y="-53.9" font-family="Lato" font-size="14.00">Print that it does not</text> <text text-anchor="middle" x="307.25" y="-37.1" font-family="Lato" font-size="14.00">start with ‘b’</text> <text text-anchor="middle" x="307.25" y="-20.3" font-family="Lato" font-size="14.00">nor is it red.</text> </g> <!-- question2&#45;&gt;without --> <g id="edge5" class="edge">
+<title>
+question2-&gt;without
+</title>
+<path fill="none" stroke="black" d="M238.82,-148.91C248.29,-134.15 263.31,-110.75 276.86,-89.64"></path> <polygon fill="black" stroke="black" points="279.91,-91.37 282.36,-81.07 274.02,-87.59 279.91,-91.37"></polygon> <text text-anchor="middle" x="276.81" y="-104.79" font-family="Lato" font-size="14.00">No</text> </g> </g>
+</svg>
+</p>
 </div>
 </div>
 </div>
 </section>
 <section id="if-elif-else" class="slide level2">
 <h2>if-elif-else</h2>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(num_list):</span>
-<span id="cb14-2"><a href="#cb14-2"></a>    <span class="cf">if</span> x <span class="op">&lt;</span> <span class="dv">3</span>:</span>
-<span id="cb14-3"><a href="#cb14-3"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is smaller than 3"</span>)</span>
-<span id="cb14-4"><a href="#cb14-4"></a>    <span class="cf">elif</span> x <span class="op">&lt;=</span> <span class="dv">7</span>:</span>
-<span id="cb14-5"><a href="#cb14-5"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is smaller than or equal to 7"</span>)</span>
-<span id="cb14-6"><a href="#cb14-6"></a>    <span class="cf">else</span>:</span>
-<span id="cb14-7"><a href="#cb14-7"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is larger than 7"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1"></a><span class="cf">for</span> i, x <span class="kw">in</span> <span class="bu">enumerate</span>(color_list):</span>
+<span id="cb24-2"><a href="#cb24-2"></a>    <span class="cf">if</span> x.startswith(<span class="st">'b'</span>):</span>
+<span id="cb24-3"><a href="#cb24-3"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> starts with 'b'."</span>)</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="cf">elif</span> x <span class="op">==</span> <span class="st">'red'</span>:</span>
+<span id="cb24-5"><a href="#cb24-5"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is 'red'."</span>)</span>
+<span id="cb24-6"><a href="#cb24-6"></a>    <span class="cf">else</span>:</span>
+<span id="cb24-7"><a href="#cb24-7"></a>        <span class="bu">print</span>(i, <span class="ss">f"- </span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> does not start with 'b' nor is it 'red'."</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>0 - 1 is smaller than 3
-1 - 4 is smaller than or equal to 7
-2 - 7 is smaller than or equal to 7
-3 - 2 is smaller than 3
-4 - 9 is larger than 7
-5 - 7 is smaller than or equal to 7
-6 - 3 is smaller than or equal to 7</code></pre>
+<pre><code>0 - blue starts with 'b'.
+1 - red is 'red'.
+2 - brown starts with 'b'.
+3 - black starts with 'b'.
+4 - white does not start with 'b' nor is it 'red'.</code></pre>
 </div>
 </div>
 </section>
@@ -563,20 +691,20 @@
 <h1>Solo practice</h1>
 <ul>
 <li>Create a list to loop over</li>
-<li>Draw a flow chart with two options in each split</li>
+<li>Draw a flow chart with binary splits</li>
 <li>Translate the flow chart to an if(-elif)-else chain</li>
 </ul>
 </section>
 <section id="other-truths" class="slide level2">
 <h2>Other truths</h2>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>]:</span>
-<span id="cb16-2"><a href="#cb16-2"></a>    <span class="cf">if</span> i:</span>
-<span id="cb16-3"><a href="#cb16-3"></a>        <span class="bu">print</span>(i)</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    <span class="cf">else</span>:</span>
-<span id="cb16-5"><a href="#cb16-5"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> is false"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="14">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1"></a><span class="cf">for</span> i <span class="kw">in</span> [<span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">0</span>, <span class="dv">1</span>]:</span>
+<span id="cb26-2"><a href="#cb26-2"></a>    <span class="cf">if</span> i:</span>
+<span id="cb26-3"><a href="#cb26-3"></a>        <span class="bu">print</span>(i)</span>
+<span id="cb26-4"><a href="#cb26-4"></a>    <span class="cf">else</span>:</span>
+<span id="cb26-5"><a href="#cb26-5"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>i<span class="sc">}</span><span class="ss"> is false"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="9">
+<div class="cell fragment" data-execution_count="14">
 <div class="cell-output cell-output-stdout">
 <pre><code>3
 5
@@ -590,15 +718,15 @@
 </section>
 <section id="other-truths-1" class="slide level2">
 <h2>Other truths</h2>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="st">"A true statement"</span>, <span class="st">"A false statement"</span>,</span>
-<span id="cb18-2"><a href="#cb18-2"></a>            <span class="st">""</span>, <span class="st">"False"</span>]:</span>
-<span id="cb18-3"><a href="#cb18-3"></a>    <span class="cf">if</span> x:</span>
-<span id="cb18-4"><a href="#cb18-4"></a>        <span class="bu">print</span>(x)</span>
-<span id="cb18-5"><a href="#cb18-5"></a>    <span class="cf">else</span>:</span>
-<span id="cb18-6"><a href="#cb18-6"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is false"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1"></a><span class="cf">for</span> x <span class="kw">in</span> [<span class="st">"A true statement"</span>, <span class="st">"A false statement"</span>,</span>
+<span id="cb28-2"><a href="#cb28-2"></a>            <span class="st">""</span>, <span class="st">"False"</span>]:</span>
+<span id="cb28-3"><a href="#cb28-3"></a>    <span class="cf">if</span> x:</span>
+<span id="cb28-4"><a href="#cb28-4"></a>        <span class="bu">print</span>(x)</span>
+<span id="cb28-5"><a href="#cb28-5"></a>    <span class="cf">else</span>:</span>
+<span id="cb28-6"><a href="#cb28-6"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> is false"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell fragment" data-execution_count="10">
+<div class="cell fragment" data-execution_count="15">
 <div class="cell-output cell-output-stdout">
 <pre><code>A true statement
 A false statement
@@ -619,39 +747,451 @@ False</code></pre>
 <h2>Why use a function?</h2>
 <ul>
 <li><p>It encapsulates a chain of actions that you may want to repeat multiple times.</p></li>
-<li><p>The chain of actions is conceptualized as “one” action or thing that takes an input (or more) and, normally, returns an output.</p></li>
+<li><p>The chain of actions is conceptualized as “one” action or process that takes an input (or more) and, normally, returns an output.</p></li>
 </ul>
 </section>
-<section id="define-a-function" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Define a function</h2>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource python number-lines code-with-copy" data-id="quarto-animate-code"><code class="sourceCode python hljs"><span id="cb20-1" class="hljs-ln-code"><a href="#cb20-1"></a><span class="kw">def</span> sum_two(arg1, arg2):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="define-a-function" class="slide level2">
+<h2>Define a function</h2>
+<ul>
+<li><code>def</code> + function name + <code>(</code> + argument names separated by commas + <code>)</code> + <code>:</code></li>
+</ul>
+<div class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">def</span> sum_two(arg1, arg2):</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="define-a-function-1" class="slide level2" data-auto-animate="true">
-<h2 data-id="quarto-animate-title">Define a function</h2>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1"></a><span class="kw">def</span> sum_two(arg1, arg2):</span>
-<span id="cb21-2"><a href="#cb21-2"></a>    <span class="cf">return</span> arg1 <span class="op">+</span> arg2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="define-a-function-1" class="slide level2">
+<h2>Define a function</h2>
+<ul>
+<li>indent + whatever the function does</li>
+</ul>
+<div class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1"></a><span class="kw">def</span> sum_two(arg1, arg2):</span>
+<span id="cb31-2"><a href="#cb31-2"></a>    res <span class="op">=</span> arg1 <span class="op">+</span> arg2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="define-a-function-2" class="slide level2">
+<h2>Define a function</h2>
+<ul>
+<li>End with <code>return</code> and the output</li>
+</ul>
+<div class="cell" data-execution_count="18">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1"></a><span class="kw">def</span> sum_two(arg1, arg2):</span>
+<span id="cb32-2"><a href="#cb32-2"></a>    res <span class="op">=</span> arg1 <span class="op">+</span> arg2</span>
+<span id="cb32-3"><a href="#cb32-3"></a>    <span class="cf">return</span> res</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="fragment">
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1"></a><span class="kw">def</span> sum_two(arg1, arg2):</span>
-<span id="cb22-2"><a href="#cb22-2"></a>    <span class="cf">return</span> arg1 <span class="op">+</span> arg2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1"></a>sum_two(<span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="267">
+<ul>
+<li>Call with: function name + <code>(</code> + arguments separated by commas + <code>)</code></li>
+</ul>
+<div class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1"></a>sum_two(<span class="dv">1</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="17">
 <pre><code>5</code></pre>
 </div>
 </div>
-
-<p><img src="../img/kuleuven.png" class="slide-logo"></p>
-<div class="footer footer-default">
-
+</div>
+</section></section>
+<section>
+<section id="solo-practice-1" class="title-slide slide level1 center">
+<h1>Solo practice</h1>
+<ul>
+<li>Write a function that takes a name (string) and an age (value) as arguments and returns a sentence describing the situation. It should work like this:</li>
+</ul>
+<div class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1"></a>print_age(<span class="st">"Mila"</span>, <span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="19">
+<pre><code>'Mila is 26 years old.'</code></pre>
+</div>
+</div>
+</section>
+<section id="if-statements-within-functions" class="slide level2">
+<h2>If-statements within functions</h2>
+<ul>
+<li>Maybe you don’t want to print the age but whether someone is underage.</li>
+</ul>
+<div class="cell" data-execution_count="22">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1"></a><span class="kw">def</span> is_underage(name, age):</span>
+<span id="cb37-2"><a href="#cb37-2"></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb37-3"><a href="#cb37-3"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is underage."</span></span>
+<span id="cb37-4"><a href="#cb37-4"></a>    <span class="cf">else</span>:</span>
+<span id="cb37-5"><a href="#cb37-5"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is already an adult."</span></span>
+<span id="cb37-6"><a href="#cb37-6"></a>is_underage(<span class="st">"Mila"</span>, <span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="20">
+<pre><code>'Mila is already an adult.'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="23">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1"></a>is_underage(<span class="st">"Ken"</span>, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<pre><code>'Ken is underage.'</code></pre>
+</div>
+</div>
+</section>
+<section id="bad-arguments" class="slide level2">
+<h2>Bad arguments</h2>
+<ul>
+<li>What if we don’t provide the age as a number?</li>
+</ul>
+<div class="cell" data-execution_count="24">
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1"></a>is_underage(<span class="st">"Mila"</span>, <span class="st">"26"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="24">
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: '&lt;' not supported between instances of 'str' and 'int'</code></pre>
+</div>
+</div>
+<ul>
+<li>Or something else wrong for the name?</li>
+</ul>
+<div class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb43-1"><a href="#cb43-1"></a>is_underage([<span class="st">"Mila"</span>, <span class="st">"Ari"</span>], <span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="25">
+<div class="cell-output cell-output-display" data-execution_count="23">
+<pre><code>"['Mila', 'Ari'] is already an adult."</code></pre>
+</div>
+</div>
+</section>
+<section id="checking-arguments" class="slide level2">
+<h2>Checking arguments</h2>
+<div class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb45-1"><a href="#cb45-1"></a><span class="kw">def</span> is_underage(name, age):</span>
+<span id="cb45-2"><a href="#cb45-2"></a>    <span class="co"># check that age is an integer</span></span>
+<span id="cb45-3"><a href="#cb45-3"></a>    <span class="cf">if</span> <span class="bu">type</span>(age) <span class="op">!=</span> <span class="bu">int</span>:</span>
+<span id="cb45-4"><a href="#cb45-4"></a>        <span class="cf">return</span> <span class="st">"Age should be an integer!"</span></span>
+<span id="cb45-5"><a href="#cb45-5"></a>    <span class="co"># check that name is a string</span></span>
+<span id="cb45-6"><a href="#cb45-6"></a>    <span class="cf">if</span> <span class="bu">type</span>(name) <span class="op">!=</span> <span class="bu">str</span>:</span>
+<span id="cb45-7"><a href="#cb45-7"></a>        <span class="cf">return</span> <span class="st">"The name should be a string!"</span></span>
+<span id="cb45-8"><a href="#cb45-8"></a>    <span class="co"># run</span></span>
+<span id="cb45-9"><a href="#cb45-9"></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb45-10"><a href="#cb45-10"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is underage."</span></span>
+<span id="cb45-11"><a href="#cb45-11"></a>    <span class="cf">else</span>:</span>
+<span id="cb45-12"><a href="#cb45-12"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is already an adult."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="checking-arguments-1" class="slide level2">
+<h2>Checking arguments</h2>
+<ul>
+<li>Get the right messages when bad arguments are provided.</li>
+</ul>
+<div class="cell" data-execution_count="27">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1"></a>is_underage(<span class="st">"Mila"</span>, <span class="st">"26"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="25">
+<pre><code>'Age should be an integer!'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1"></a>is_underage([<span class="st">"Mila"</span>, <span class="st">"Ari"</span>], <span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="26">
+<pre><code>'The name should be a string!'</code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>It should still work with good arguments.</li>
+</ul>
+<div class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1"></a>is_underage(<span class="st">"Mila"</span>, <span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="27">
+<pre><code>'Mila is already an adult.'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1"></a>is_underage(<span class="st">"Ken"</span>, <span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="28">
+<pre><code>'Ken is underage.'</code></pre>
+</div>
 </div>
 </div>
 </section></section>
+<section>
+<section id="solo-practice-2" class="title-slide slide level1 center">
+<h1>Solo practice</h1>
+<ul>
+<li>Create a function that takes the name of a fruit from the dictionary below and returns its price. Consider the output if the fruit is not in the dictionary.</li>
+</ul>
+<div class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1"></a>fruits <span class="op">=</span> {<span class="st">'banana'</span> : <span class="fl">0.6</span>, <span class="st">'orange'</span> : <span class="fl">1.2</span>, <span class="st">'lemon'</span> : <span class="fl">0.8</span>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb55-1"><a href="#cb55-1"></a><span class="bu">print</span>(get_price(<span class="st">'banana'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The price of the banana is €0.6/kg.</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1"></a><span class="bu">print</span>(get_price(<span class="st">'kiwi'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>I don't know the price of kiwi.</code></pre>
+</div>
+</div>
+</section>
+<section id="raising-exceptions" class="slide level2">
+<h2>Raising exceptions</h2>
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Errors</strong></p>
+</div>
+<div class="callout-content">
+<p>Errors (aka Exceptions in Python) stop execution. Messages will keep it running.</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1"></a><span class="kw">def</span> is_underage_error(name, age):</span>
+<span id="cb59-2"><a href="#cb59-2"></a>    <span class="co"># raise errors if the arguments are wrong</span></span>
+<span id="cb59-3"><a href="#cb59-3"></a>    <span class="cf">if</span> <span class="bu">type</span>(age) <span class="op">!=</span> <span class="bu">int</span>:</span>
+<span id="cb59-4"><a href="#cb59-4"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"Age should be an integer!"</span>)</span>
+<span id="cb59-5"><a href="#cb59-5"></a>    <span class="cf">if</span> <span class="bu">type</span>(name) <span class="op">!=</span> <span class="bu">str</span>:</span>
+<span id="cb59-6"><a href="#cb59-6"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"The name should be a string!"</span>)</span>
+<span id="cb59-7"><a href="#cb59-7"></a>    <span class="co"># run</span></span>
+<span id="cb59-8"><a href="#cb59-8"></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb59-9"><a href="#cb59-9"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is underage."</span></span>
+<span id="cb59-10"><a href="#cb59-10"></a>    <span class="cf">else</span>:</span>
+<span id="cb59-11"><a href="#cb59-11"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is already an adult."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="implementation" class="slide level2">
+<h2>Implementation</h2>
+<p>A message will keep things running.</p>
+<div class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb60-1"><a href="#cb60-1"></a>[is_underage(<span class="st">"Ursula"</span>, age) <span class="cf">for</span> age <span class="kw">in</span> [<span class="dv">15</span>, <span class="dv">20</span>, <span class="st">"5"</span>, <span class="dv">80</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<pre><code>['Ursula is underage.',
+ 'Ursula is already an adult.',
+ 'Age should be an integer!',
+ 'Ursula is already an adult.']</code></pre>
+</div>
+</div>
+<p>An error will let you know that something is wrong.</p>
+<div class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb62-1"><a href="#cb62-1"></a>[is_underage_error(<span class="st">"Ursula"</span>, age) <span class="cf">for</span> age <span class="kw">in</span> [<span class="dv">15</span>, <span class="dv">20</span>, <span class="st">"5"</span>, <span class="dv">80</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: Age should be an integer!</code></pre>
+</div>
+</div>
+</section>
+<section id="positional-arguments" class="slide level2">
+<h2>Positional arguments</h2>
+<ul>
+<li>Based on the position in the call: <code>name</code> is the first argument, <code>age</code> is the second argument.</li>
+</ul>
+<div class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb64-1"><a href="#cb64-1"></a>is_underage(<span class="dv">26</span>, <span class="st">"Mila"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="36">
+<pre><code>'Age should be an integer!'</code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>You get an error if they are missing.</li>
+</ul>
+<div class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb66-1"><a href="#cb66-1"></a>is_underage(<span class="st">"Robbie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>TypeError: is_underage() missing 1 required positional argument: 'age'</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Positional arguments are compulsory.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-arguments" class="slide level2">
+<h2>Optional arguments</h2>
+<ul>
+<li>If you don’t want to require an argument, you can provide a default value.</li>
+</ul>
+<div class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb68-1"><a href="#cb68-1"></a><span class="kw">def</span> is_underage_default(age, name <span class="op">=</span> <span class="st">"This person"</span>):</span>
+<span id="cb68-2"><a href="#cb68-2"></a>    <span class="cf">if</span> <span class="bu">type</span>(age) <span class="op">!=</span> <span class="bu">int</span>:</span>
+<span id="cb68-3"><a href="#cb68-3"></a>        <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"Age should be an integer!"</span>)</span>
+<span id="cb68-4"><a href="#cb68-4"></a>    <span class="cf">if</span> age <span class="op">&lt;</span> <span class="dv">18</span>:</span>
+<span id="cb68-5"><a href="#cb68-5"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is underage."</span></span>
+<span id="cb68-6"><a href="#cb68-6"></a>    <span class="cf">else</span>:</span>
+<span id="cb68-7"><a href="#cb68-7"></a>        <span class="cf">return</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss"> is already an adult."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="callout callout-warning callout-captioned callout-style-default">
+<div class="callout-body">
+<div class="callout-caption">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Argument order</strong></p>
+</div>
+<div class="callout-content">
+<p>Optional arguments should be defined after positional arguments.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="optional-arguments-1" class="slide level2">
+<h2>Optional arguments</h2>
+<div class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb69"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb69-1"><a href="#cb69-1"></a>is_underage_default(<span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
+<pre><code>'This person is already an adult.'</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb71"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb71-1"><a href="#cb71-1"></a>is_underage_default(<span class="dv">26</span>, <span class="st">"Mila"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
+<pre><code>'Mila is already an adult.'</code></pre>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>For clarification, you can also provide the names of the arguments.</li>
+</ul>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb73"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb73-1"><a href="#cb73-1"></a>is_underage_default(age <span class="op">=</span> <span class="dv">26</span>, name <span class="op">=</span> <span class="st">"Mila"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
+<pre><code>'Mila is already an adult.'</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="naming-arguments" class="slide level2">
+<h2>Naming arguments</h2>
+<ul>
+<li>You could change the order, but it’s <strong>bad practice</strong>.</li>
+</ul>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb75"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb75-1"><a href="#cb75-1"></a>is_underage_default(name <span class="op">=</span> <span class="st">"Mila"</span>, age <span class="op">=</span> <span class="dv">26</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<pre><code>'Mila is already an adult.'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="45">
+<div class="sourceCode cell-code" id="cb77"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb77-1"><a href="#cb77-1"></a>is_underage(age <span class="op">=</span> <span class="dv">26</span>, name <span class="op">=</span> <span class="st">"Mila"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<pre><code>'Mila is already an adult.'</code></pre>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>A named argument creates a variable <em>inside the scope</em> of a function: it is not valid outside.</li>
+</ul>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb79"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb79-1"><a href="#cb79-1"></a><span class="bu">print</span>(age)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-error">
+<pre><code>NameError: name 'age' is not defined</code></pre>
+</div>
+</div>
+</div>
+</section></section>
+<section>
+<section id="solo-practice-3" class="title-slide slide level1 center">
+<h1>Solo practice</h1>
+<ul>
+<li>Write a function with a positional argument, that is a string, and an optional argument that is boolean. The function should turn the string to upper case and, if the optional argument is <code>True</code> (the default value), add three exclamation marks:</li>
+</ul>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb81"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb81-1"><a href="#cb81-1"></a>scream(<span class="st">"I solved it"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="46">
+<pre><code>'I SOLVED IT!!!'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="49">
+<div class="sourceCode cell-code" id="cb83"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb83-1"><a href="#cb83-1"></a>scream(<span class="st">"I solved it"</span>, <span class="va">False</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>'I SOLVED IT'</code></pre>
+</div>
+</div>
+</section>
+<section id="create-a-generator" class="slide level2">
+<h2>Create a generator</h2>
+<ul>
+<li><p>A generator is a function that ends in <code>yield</code> instead of <code>return</code>.</p></li>
+<li><p>Based on a <code>for</code> loop or <code>while</code> statement, it returns (or <em>yields</em>) one item at a time.</p></li>
+</ul>
+<div class="cell" data-execution_count="50">
+<div class="sourceCode cell-code" id="cb85"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb85-1"><a href="#cb85-1"></a><span class="kw">def</span> fruit_offering():</span>
+<span id="cb85-2"><a href="#cb85-2"></a>    <span class="cf">for</span> fruit <span class="kw">in</span> fruits:</span>
+<span id="cb85-3"><a href="#cb85-3"></a>        <span class="cf">yield</span> <span class="ss">f"The price of the </span><span class="sc">{</span>fruit<span class="sc">}</span><span class="ss"> is €</span><span class="sc">{</span>fruits[fruit]<span class="sc">}</span><span class="ss">/kg."</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="use-a-generator" class="slide level2">
+<h2>Use a generator</h2>
+<div class="cell" data-execution_count="51">
+<div class="sourceCode cell-code" id="cb86"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb86-1"><a href="#cb86-1"></a>my_fruits <span class="op">=</span> fruit_offering()</span>
+<span id="cb86-2"><a href="#cb86-2"></a><span class="bu">list</span>(my_fruits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="49">
+<pre><code>['The price of the banana is €0.6/kg.',
+ 'The price of the orange is €1.2/kg.',
+ 'The price of the lemon is €0.8/kg.']</code></pre>
+</div>
+</div>
+<div class="fragment">
+<div class="cell" data-execution_count="52">
+<div class="sourceCode cell-code" id="cb88"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb88-1"><a href="#cb88-1"></a>my_fruits <span class="op">=</span> fruit_offering()</span>
+<span id="cb88-2"><a href="#cb88-2"></a><span class="bu">next</span>(my_fruits)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="50">
+<pre><code>'The price of the banana is €0.6/kg.'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="53">
+<div class="sourceCode cell-code" id="cb90"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb90-1"><a href="#cb90-1"></a><span class="cf">for</span> fruit <span class="kw">in</span> my_fruits:</span>
+<span id="cb90-2"><a href="#cb90-2"></a>    <span class="bu">print</span>(fruit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell fragment" data-execution_count="53">
+<div class="cell-output cell-output-stdout">
+<pre><code>The price of the orange is €1.2/kg.
+The price of the lemon is €0.8/kg.</code></pre>
+</div>
+</div>
+</div>
+</section>
+<section id="while-generating" class="slide level2">
+<h2>While generating</h2>
+<div class="cell" data-execution_count="54">
+<div class="sourceCode cell-code" id="cb92"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb92-1"><a href="#cb92-1"></a><span class="kw">def</span> birthday():</span>
+<span id="cb92-2"><a href="#cb92-2"></a>    age <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb92-3"><a href="#cb92-3"></a>    <span class="cf">while</span> <span class="va">True</span>:</span>
+<span id="cb92-4"><a href="#cb92-4"></a>        age <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb92-5"><a href="#cb92-5"></a>        year <span class="op">=</span> <span class="st">"year"</span> <span class="cf">if</span> age <span class="op">==</span> <span class="dv">1</span> <span class="cf">else</span> <span class="st">"years"</span></span>
+<span id="cb92-6"><a href="#cb92-6"></a>        <span class="cf">yield</span> <span class="ss">f"Happy birthday! You are </span><span class="sc">{</span>age<span class="sc">}</span><span class="ss"> </span><span class="sc">{</span>year<span class="sc">}</span><span class="ss"> old!"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="55">
+<div class="sourceCode cell-code" id="cb93"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb93-1"><a href="#cb93-1"></a>bday <span class="op">=</span> birthday()</span>
+<span id="cb93-2"><a href="#cb93-2"></a><span class="bu">next</span>(bday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="53">
+<pre><code>'Happy birthday! You are 1 year old!'</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="56">
+<div class="sourceCode cell-code" id="cb95"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb95-1"><a href="#cb95-1"></a><span class="bu">next</span>(bday)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="54">
+<pre><code>'Happy birthday! You are 2 years old!'</code></pre>
+</div>
+</div>
+</section></section>
+<section id="next-up-files" class="title-slide slide level1 center">
+<h1>Next up: Files</h1>
+
+
+<img src="../img/kuleuven.png" class="slide-logo r-stretch"><div class="footer footer-default">
+
+</div>
+</section>
     </div>
   </div>
 
