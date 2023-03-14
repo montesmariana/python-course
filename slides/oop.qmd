@@ -1,0 +1,411 @@
+---
+title: "Object oriented programming"
+format: revealjs
+---
+
+## Functional vs OO programming
+
+Functional programming
+:   Like a recipe: gives steps to follow
+
+Object-oriented programming
+:   Code developed around objects and their properties
+
+## Create your own objects
+
+- Create a custom class with `class`.
+
+- Name the class with CamelCase.
+
+```{python}
+class Book:
+    pass
+```
+
+- Instantiate by calling the class with `()`.
+
+```{python}
+my_book = Book()
+type(my_book)
+```
+
+## Instances
+
+Two instances of a class are different objects.
+```{python}
+x = Book()
+y = Book()
+x == y
+```
+
+. . .
+
+Cf. basic types.
+
+```{python}
+a = ""
+b = ""
+a == b
+```
+
+## Class attributes
+
+- Defined under the `class` line.
+
+```{python}
+class Book:
+    language = "English"
+    pass
+
+my_book = Book()
+my_book
+```
+
+. . .
+
+- Call with dot notation.
+
+```{python}
+my_book.language
+```
+
+## Instance attributes
+
+- Defined inside the `__init__()` method.
+
+```{python}
+class Book:
+    language = "English"
+
+    def __init__(self, title):
+        self.title = title
+```
+
+- The first argument of a method is `self`, which represents the object itself.
+
+## Instance attributes
+
+- The rest of the `__init__()` arguments are provided _when instantiating a class_.
+
+```{python}
+# provide the `title` argument to `Book()`
+my_book1 = Book("A hat full of sky")
+my_book1.title
+```
+
+. . .
+
+The values of instance attributes can be different for different instances.
+
+```{python}
+my_book2 = Book("Small gods")
+my_book2.title
+```
+
+## Instance attributes
+
+```{python}
+class Book:
+    language = "English"
+
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+```
+
+```{python}
+my_book = Book("A hat full of sky", "Terry Pratchett", 1980)
+my_book.title
+```
+
+```{python}
+my_book.author
+```
+
+```{python}
+my_book.year
+```
+
+## Instance methods I
+
+Methods are functions defined inside of classes.
+
+```{python}
+from datetime import date
+class Book:
+    language = "English"
+
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        
+        this_year = date.today().year
+        self.age = this_year - self.year
+
+    def get_age(self):
+        if self.age < 0:
+            return f"This book will be published in {-self.age} years."
+        else:
+            return f"This book is {self.age} years old."
+```
+
+## Instance methods I
+
+- They are called with the dot notation.
+
+- The first argument is `self`, which represents the instance.
+
+- Other arguments, if present, are provided in the call.
+
+```{python}
+my_book = Book("A hat full of sky", "Terry Pratchett", 1980)
+my_book.get_age()
+```
+
+## Instance methods II
+
+```{python}
+class Book:
+    language = "English"
+
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        
+        this_year = date.today().year
+        self.age = this_year - self.year
+
+        self.characters = set()
+
+    def get_age(self):
+        if self.age < 0:
+            return f"This book will be published in {-self.age} years."
+        else:
+            return f"This book is {self.age} years old."
+
+    def add_character(self, name):
+        self.characters.add(name)
+```
+
+## Instance Methods II
+
+We started with an empty set of characters in the definition (`__init__()`).
+
+```{python}
+my_book = Book("A hat full of sky", "Terry Pratchett", 1980)
+my_book.characters
+```
+
+We can modify the instance by calling the appropriate method.
+
+```{python}
+my_book.add_character('Tiffany Aching')
+my_book.add_character('Granny Weatherwax')
+my_book.add_character('Rob Anybody')
+my_book.characters
+```
+
+## Printing method
+
+```{python}
+print(my_book)
+```
+
+- Classes can have special methods that start and end with `__`: **dunder** methods.
+
+- These methods are not called with dot notation.
+
+- Examples:
+
+    + `__init__()` is the constructor.
+
+    + `__str__()` defines the behavior of `print()`.
+
+
+
+## Printing method
+
+
+```{python}
+class Book:
+    language = "English"
+
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        
+        this_year = date.today().year
+        self.age = this_year - self.year
+
+        self.characters = set()
+
+    def get_age(self):
+        if self.age < 0:
+            return f"This book will be published in {-self.age} years."
+        else:
+            return f"This book is {self.age} years old."
+
+    def add_character(self, name):
+        self.characters.add(name)
+
+    def __str__(self):
+        sent_1 = f"{self.title} was written by {self.author} in {self.language}."
+        sent_2 = f"It was published in {self.year}, that is, {self.age} years ago."
+        if len(self.characters) > 0:
+            sent_3 = f"The main characters are: {', '.join(self.characters)}."
+        else:
+            sent_3 = ""
+        return "\n".join([sent_1, sent_2, sent_3])
+```
+
+## Printing method
+
+```{python}
+my_book = Book("A hat full of sky", "Terry Pratchett", 1980)
+print(my_book)
+```
+
+As we defined it, the method is sensitive to whether the characters have been defined.
+
+```{python}
+my_book.add_character('Tiffany Aching')
+my_book.add_character('Granny Weatherwax')
+my_book.add_character('Rob Anybody')
+print(my_book)
+```
+
+## Child classes
+
+- Defined by including the parent class name.
+
+- Internally call parent attributes and methods with `super()`.
+
+```{python}
+class DiscWorldBook(Book):
+    def __init__(self, title, year):
+        # this is a specification of Book with always Terry Pratchett as author
+        super().__init__(title, "Terry Pratchett", year)
+```
+
+- Attributes and methods are inherited.
+
+```{python}
+my_book = DiscWorldBook("A hat full of sky", 1980)
+my_book.language
+```
+
+```{python}
+my_book.get_age()
+```
+
+## Child classes II
+
+- A child class can extend a parent class.
+
+```{python}
+class DiscWorldBook(Book):
+    # specific class attribute
+    series = "Discworld"
+
+    def __init__(self, title, year):
+        super().__init__(title, "Terry Pratchett", year)
+        # specific (empty) instance attribute
+        self.subseries = ""
+
+    # specific instance method
+    def set_subseries(self, subseries):
+        self.subseries = subseries
+    
+    # specification of the print() behavior
+    def __str__(self):
+        parent = super().__str__()
+        if self.subseries:
+            return parent + f'This book belongs to the "{self.subseries}" subseries of {self.series}.'
+        else:
+            return parent
+```
+
+## Child classes II
+
+```{python}
+my_book = DiscWorldBook("A hat full of sky", 1980)
+my_book.series
+```
+```{python}
+print(my_book)
+```
+
+. . .
+
+```{python}
+my_book.set_subseries("Tiffany Aching")
+print(my_book)
+```
+
+## Child classes III
+
+Child-specific attributes and methods are not available to the parent class.
+
+```{python}
+other_book = Book("All Systems Red", "Martha Wells", 2017)
+other_book.language
+```
+```{python}
+other_book.get_age()
+```
+
+```{python}
+#| error: true
+other_book.series
+```
+
+But you can add an attribute to an instance.
+
+```{python}
+other_book.series = "The Murderbot Diaries"
+other_book.series
+```
+
+# Other packages
+
+You have already worked with "custom" classes:
+
+## `requests.models.Response` {.smaller}
+
+`requests.get()` returns an object of class `Response` defined in the `models` module of the `requests` package.
+
+```{python}
+import requests
+html_page = requests.get("https://www.gutenberg.org/cache/epub/84/pg84-images.html")
+type(html_page)
+```
+
+It has several methods and attributes, such as `.content`, `.json`, `.raw` and `.text`.
+
+```{python}
+class_content = [x for x in dir(html_page) if not x.startswith('_')]
+print(class_content)
+```
+
+## `bs4.BeautifulSoup` {.smaller}
+
+`BeautifulSoup` _is_ a custom class defined within the `bs4` package.
+
+```{python}
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html_page.content, 'html.parser')
+type(soup)
+```
+
+It has lots of methods and attributes, among which `.find_all()`, `.prettify()` and `.text`.
+
+```{python}
+class_content = [x for x in dir(soup) if not x.startswith('_')]
+print(class_content)
+```
+
+# Next up: review

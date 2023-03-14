@@ -1,0 +1,114 @@
+---
+title: "Working with files"
+format: html
+date: 2023-03-21
+categories:
+    - classes
+    - basics
+description: Different ways of working with files and parsing text.
+---
+
+Today we learn about [object oriented programming](../slides/oop.qmd){target="_blank"}:
+
+- Creating and instantiating custom classes
+- Attributes and methods
+- Children and inheritance
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/oop.html"></iframe>
+```
+</div>
+
+# What to do in Jupyter
+
+Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.
+
+# What to do in VS Code
+
+[Last class](2023-03-14-files.qmd) we used some functions created before and applied them to a dictionary read from a file.
+
+This time, instead, we will read the same contents from [a file](_resources/books.json) but instead of using the functions we will create instances of the `Book` and `DiscWorldBook` classes defined in the slides.
+
+The first step is to load the libraries.
+```{python}
+import json # to read the json
+from datetime import date # to find out the current year
+```
+
+Afterwards we can define our classes.
+
+```{python}
+class Book:
+    language = "English"
+
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        
+        this_year = date.today().year
+        self.age = this_year - self.year
+
+        self.characters = set()
+
+    def get_age(self):
+        if self.age < 0:
+            return f"This book will be published in {-self.age} years."
+        else:
+            return f"This book is {self.age} years old."
+
+    def add_character(self, name):
+        self.characters.add(name)
+
+    def __str__(self):
+        sent_1 = f"{self.title} was written by {self.author} in {self.language}."
+        sent_2 = f"It was published in {self.year}, that is, {self.age} years ago."
+        if len(self.characters) > 0:
+            sent_3 = f"The main characters are: {', '.join(self.characters)}."
+        else:
+            sent_3 = ""
+        return "\n".join([sent_1, sent_2, sent_3])
+
+class DiscWorldBook(Book):
+    series = "Discworld"
+
+    def __init__(self, title, year):
+        super().__init__(title, "Terry Pratchett", year)
+        self.subseries = ""
+
+    def set_subseries(self, subseries):
+        self.subseries = subseries
+    
+    def __str__(self):
+        parent = super().__str__()
+        if self.subseries:
+            return parent + f'\nThis book belongs to the "{self.subseries}" subseries of {self.series}.'
+        else:
+            return parent
+```
+
+Next we can read the json file.
+```{python}
+books_file = '_resources/books.json'
+with open(books_file, encoding = 'utf-8') as f:
+    books = json.load(f)
+len(books)
+```
+
+The output is a list with small dictionaries, each of which has the following keys: "title", "author", "year", "language" and "main_characters". In one case, the language is not "English" and there are no characters. In addition, Discworld books also have a "subseries" key. We can use this information to distinguish which books should be turned into instances of `DiscWorldBook` and which into instances of `Book`.
+
+```{python}
+for book in books:
+    if 'subseries' in book:
+        my_book = DiscWorldBook(book['title'], book['year'])
+        my_book.subseries = book['subseries']
+    else:
+        my_book = Book(book['title'], book['author'], book['year'])
+    if book['language'] != "English":
+        my_book.language = book['language']
+    for character in book['main_characters']:
+        my_book.add_character(character)
+    print(my_book)
+    print('----')
+```
