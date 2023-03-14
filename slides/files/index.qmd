@@ -1,0 +1,606 @@
+---
+title: "Working with files"
+format: revealjs
+---
+
+## Setup
+
+Before opening Jupyter Notebook, create a new environment in Anaconda and install the following packages:
+
+- requests
+- bs4
+- pandas
+
+Work from that environment.
+
+# Download and parse
+
+## Download a file
+
+- We'll first go to <https://www.gutenberg.org/ebooks/84>, the Gutenberg Project version of Mary Shelley's _Frankenstein_.
+
+    + Check the HTML file.
+    + Check the "plain text" file.
+
+- We'll copy the URLs to these files.
+
+```{python}
+html_url = "https://www.gutenberg.org/cache/epub/84/pg84-images.html"
+txt_url = "https://www.gutenberg.org/cache/epub/84/pg84.txt"
+```
+
+## Read the page
+
+We can "download" a page based on their URL with the `requests` library.
+
+```{python}
+#| output-location: slide
+import requests
+html_page = requests.get(html_url)
+print(html_page.text)
+```
+
+## Importing packages
+
+- A package is imported with: `import package_name`.
+
+- All `import` calls should be at the **beginning** of your code.
+
+- A function or other variables imported from a package are called with the **dot notation**: `package_name.function_name()`.
+
+::: callout-warning
+The dot notation in `html_page.text` is something else: it's an attribute from a class, which we'll learn about next week.
+::: 
+
+## Parsing HTML
+
+```{python}
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html_page.content, 'html.parser')
+print(soup.prettify())
+```
+
+::: footer
+[More about Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+:::
+
+## Importing modules
+
+A package may contain several modules, which are different subdirectories in the directory of the package.
+
+- To import a module from a package, we can do:
+
+```{python}
+#| eval: false
+from package_name import module_name
+```
+
+- Then we can call a function inside the module as `module_name.function_name()`.
+
+- If we did just `import package_name`, we would have to do `package_name.module_name.function_name()`.
+
+## Extract tags
+
+```{python}
+soup.find_all('h2')
+```
+
+::: footer
+[More about Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+:::
+
+
+## Extract tags
+
+```{python}
+soup.find_all('div', class_ = 'chapter')
+```
+
+::: footer
+[More about Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+:::
+
+## Extract tags
+
+```{python}
+first_chapter = soup.find_all('div', class_ = 'chapter')[1]
+sentences = first_chapter.find_all('p')
+sentences
+```
+
+::: footer
+[More about Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+:::
+
+## Extract text
+
+```{python}
+[x.text for x in sentences]
+```
+
+::: footer
+[More about Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+:::
+
+## Extract text
+
+```{python}
+[x.text.strip() for x in sentences]
+```
+
+::: footer
+[More about Beautiful Soup](https://beautiful-soup-4.readthedocs.io/en/latest/)
+:::
+
+## Read plain text
+
+```{python}
+txt_page = requests.get(txt_url)
+txt_page.text
+```
+
+## Read plain text
+
+```{python}
+[x for x in txt_page.text.split('\r\n') if x]
+```
+
+# Open local files
+
+## Open text file in Python
+
+- Use the `open()` function with filename and, if necessary, encoding.
+
+```{python}
+#| eval: false
+f = open('my_filename.txt', encoding = 'utf-8')
+text = f.read()
+f.close()
+```
+
+- Run it inside a `with` statement so that the file closes afterwards.
+
+```{python}
+#| eval: false
+with open('my_filename.txt', encoding = 'utf-8') as f:
+    text = f.read()
+```
+
+::: footer
+[More about I/O](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)
+:::
+
+## Open the HTML file
+
+```{python}
+with open('frankenstein.html', encoding = 'utf-8') as f:
+    local_html = f.read()
+soup = BeautifulSoup(local_html, 'html.parser')
+print(soup.prettify())
+```
+
+::: footer
+[More about I/O](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)
+:::
+
+## Open the plain text file
+
+```{python}
+with open('pg84.txt', encoding = 'utf-8') as f:
+    local_txt = [x.strip() for x in f.readlines()]
+local_txt[:5]
+```
+
+::: footer
+[More about I/O](https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files)
+:::
+
+# Regular expressions
+
+## What are regex?
+
+- Strings that may include wildcards and special symbols.
+- Used to match (portions of) strings in complex queries.
+- In Python we can use the `re` library.
+
+```{python}
+import re
+```
+
+## Main `re` functions
+
+- `pattern` = regular expression
+- `string` = where to look for it
+
+Function | Looks for
+---- | -------
+`re.match(pattern, string)` | match at the beginning
+`re.search(pattern, string)` | first match anywhere
+`re.findall(pattern, string)` | all matches
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Regex example I
+
+A sequence of non-special characters is taken literally.
+
+```{python}
+re.match('A', 'A sandwich with 3 ingredients.')
+```
+
+```{python}
+re.match('a', 'A sandwich with 3 ingredients.')
+```
+
+```{python}
+re.search('a', 'A sandwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.findall('a', 'A sandwich with 3 ingredients.')
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Wildcards
+
+The most important wildcard is the `.`, that represents **any character**.
+
+```{python}
+re.search('.', 'A sandwich with 3 ingredients.')
+```
+
+Two dots match a sequence of two characters; three dots a sequences of three characters...
+
+```{python}
+re.search('...', 'A sandwich with 3 ingredients.')
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Escaping
+
+If you want to capture a literal period, you need to escape it with `.`
+
+```{python}
+re.search('..\.', 'A sandwich with 3 ingredients.')
+```
+
+Other special characters we'll see can also be escaped with `\`.
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Other useful symbols
+
+- `\w` = word character
+- `\s` = space character
+- `\d` = digit
+- `\b` = word boundary
+- `^` = beginning of a _line_
+- `$` = end of a _line_
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Brackets
+
+You can match one of several options by including them in brackets.
+
+```{python}
+re.findall('[Aa]', 'A sandwich with 3 ingredients.')
+```
+
+The options can be in a range; `[a-z]` indicates all lowercase letters; `[A-Z]` all uppercase letters, `[0-9]` all digits...
+
+```{python}
+re.search('san[a-z]', 'A sandwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.search('[0-9]', 'A sandwich with 3 ingredients.')[0]
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Quantifiers
+
+To find a pattern of something repeated multiple times, you can ask that in several ways.
+
+The most common one is by attaching `*`, `+` or `?` to a character or group.
+
+(We'll see more about groups in a bit).
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Asterisk
+
+An `*` asks for something that occurs **zero or more times**.
+
+```{python}
+re.search('sand*wich', 'A sanddddwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.search('sand*wich', 'A sanwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.search('sand*wich', 'A sandwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.search('[0-9][a-z]* ingredients', 'A sandwich with 3 ingredients.')[0]
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Plus
+
+A `+` asks for something that occurs **one or more times**.
+
+```{python}
+re.search('[0-9]+ ingredients', 'A sandwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.search('sandiche+', 'A sandwich with 3 ingredients.')
+# returns nothing
+```
+
+```{python}
+re.findall('\w+', 'A sandwich with 3 ingredients.')
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Question mark
+
+A `?` asks for something that occurs **zero or one times**.
+
+```{python}
+re.search('[0-9]? ingredients', 'A sandwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.search('sandwiche?', 'A sandwich with 3 ingredients.')[0]
+```
+
+```{python}
+re.findall('s[a-z]?', 'A sandwich with 3 ingredients.')
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Groups
+
+We can make groups by surrounding fragments of the regex in parentheses.
+
+- To apply a quantifier to the full group.
+
+```{python}
+re.search('([a-z]+ )+', 'A sandwich with 3 ingredients.')[0]
+```
+
+- To retrieve the groups
+
+```{python}
+re.match('(A ).+(\d+)', 'A sandwich with 3 ingredients.').groups()
+```
+
+::: footer
+[More about regex](https://docs.python.org/3/library/re.html#regular-expression-syntax)
+:::
+
+## Task I: metadata
+
+```{python}
+soup.find(id='pg-machine-header')
+```
+
+## Task I: metadata
+
+```{python}
+soup.find(id='pg-machine-header').find_all('p')
+```
+
+## Task I: metadata
+
+```{python}
+meta_info = [x.text.strip() for x in soup.find(id='pg-machine-header').find_all('p')]
+meta_info
+```
+
+## Task I: metadata
+
+- Capture based on the colon.
+
+```{python}
+re.match('([\w ]+): (.+)', meta_info[0].strip()).groups()
+```
+
+```{python}
+meta_list = [re.match('([\w ]+): (.+)', x.strip()).groups() for x in meta_info]
+meta_list
+```
+
+## Task I: metadata
+
+Turn to dictionary.
+
+```{python}
+meta_dict = dict(meta_list)
+meta_dict
+```
+
+# Pandas and JSON
+
+## Task II: Concordance
+
+Let's collect all instances of "Frankenstein" and up to 100 characters to each side.
+
+```{python}
+conc = re.findall('(.{0,100})(Frankenstein)(.{0,100})', txt_page.text)
+conc[:5]
+```
+
+## Task II: Concordance
+
+```{python}
+conc_dict = [{'left': left, 'match' : match, 'right': right.strip()}
+    for left, match, right in conc]
+conc_dict
+```
+
+## Task II: Concordance {.smaller}
+
+```{python}
+import pandas as pd
+conc_pd = pd.DataFrame.from_dict(conc_dict)
+conc_pd.head(5)
+```
+
+## Import packages
+
+- You can "rename" packages or modules you import with `as`.
+
+- There are some conventions, e.g. `pandas` as `pd`.
+
+- If you do `import pandas`, the functions are called as `pandas.function_name()`.
+
+- With `import pandas as pd`, the functions are called as `pd.function_name()`.
+
+## Save a dataframe {.smaller}
+
+```{python}
+conc_pd.to_csv('frankenstein_concordance.csv', sep='\t', index = False)
+```
+
+You can open such a file with `pd.read_csv()`:
+
+```{python}
+conc_new = pd.read_csv('frankenstein_concordance.csv', sep = '\t', index_col = False, keep_default_na = False)
+conc_new.head(5)
+```
+
+## JSON files
+
+JSON is a format meant for storing dictionary-like objects (and lists).
+
+```{python}
+meta_dict
+```
+
+## JSON files
+
+```{python}
+import json
+with open('meta_dict.json', 'w', encoding='utf-8') as f:
+    json.dump(meta_dict, f)
+with open('meta_dict.json', 'r', encoding='utf-8') as f:
+    meta_dict2 = json.load(f)
+meta_dict2
+```
+
+# OS
+
+```{python}
+import os
+```
+
+## Looking at the file system
+
+Check if a file exists.
+```{python}
+os.path.exists('meta_dict.json')
+```
+
+Rename (or move!) a file.
+
+```{python}
+os.rename('meta_dict.json', 'frankenstein_metadata.json')
+```
+
+```{python}
+os.path.exists('meta_dict.json')
+```
+
+## OSError
+
+```{python}
+#| error: true
+with open('meta_dict.json', 'r', encoding='utf-8') as f:
+    meta_dict2 = json.load(f)
+meta_dict2
+```
+
+We can first check with `if...`:
+
+```{python}
+fname = 'meta_dict.json'
+if os.path.exists(fname):
+    with open(fname, 'r', encoding='utf-8') as f:
+        meta_dict2 = json.load(f)
+    print(meta_dict2)
+else:
+    print(f"{fname} does not exist")
+```
+
+## Catch errors
+
+```{python}
+fname = 'meta_dict.json'
+try:
+    with open(fname, 'r', encoding='utf-8') as f:
+        meta_dict2 = json.load(f)
+    print(meta_dict2)
+except FileNotFoundError:
+    print(f"{fname} does not exist")
+```
+
+::: callout-tip
+### OSError
+There are [different kinds](https://docs.python.org/3/library/exceptions.html#os-exceptions) of `OSError`. You can use `OSError` instead of `FileNotFoundError` to catch any of them.
+:::
+
+## Useful functions for directories
+
+- `os.getcwd()`: check where you are (directory).
+- `os.path.join("path1", "path2")`: join pieces of a path ("path1/path2")
+
+- `os.mkdir("new_directory")`: create a directory.
+- `os.listdir("existing_directory")`: check contents of your directory.
+- `os.rmdir("dir_to_remove")`: remove an empty directory.
+
+## Useful functions for files
+
+- `os.remove("somefile.txt")`: remove a file.
+- `os.path.getsize("somefile.txt")`: get the size of a file in bytes.
+
+# Next up: Object Oriented Programming
+
+```{python}
+#| label: housecleaning
+#| include: false
+import os
+os.remove('frankenstein_concordance.csv')
+os.remove('frankenstein_metadata.json')
+```

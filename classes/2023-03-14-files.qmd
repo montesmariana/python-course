@@ -1,0 +1,71 @@
+---
+title: "Working with files"
+format: html
+date: 2023-03-07
+categories:
+    - files
+    - regex
+    - errors
+    - parsing
+description: Different ways of working with files and parsing text.
+---
+
+Today we learn about [files](../slides/files/index.qmd){target="_blank"}:
+
+- Download a file based on the URL with `requests`
+- HTML file structure and `bs4`
+- Regular expressions with `re`
+- Dataframes with `pandas`
+- JSON files
+- `OSError`, `try` and `except`
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/files/index.html"></iframe>
+```
+</div>
+
+
+# What to do in Jupyter
+
+Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.
+
+# What to do in VS Code
+
+[Last class](2023-03-07-if-functions.qmd) we created a function to work on a list of dictionaries.
+
+```{python}
+def check_book(book):
+    # check that the input is a dictionary
+    if type(book) != dict:
+        raise TypeError("Please provide a dictionary!")
+    
+    # check that the dict has the right keys
+
+    for key in ['title', 'author', 'language', 'year', 'main_characters']:
+        if not key in book:
+            raise KeyError(f"'{key}' is missing from the dictionary!")
+        # check the types
+        if key == 'year':
+            if type(book[key]) != int:
+                raise TypeError(f"The year should be an integer!")
+        elif key == "main_characters":
+            if type(book[key]) != list:
+                raise TypeError(f"The main characters should be provided as a list!")
+        elif type(book[key]) != str:
+            raise TypeError(f"The {key} should be a string!")
+    return
+
+def describe_book(book):
+    # check that the input is correct
+    check_book(book)
+
+    sent_1 = f"{book['title'].title()} was written by {book['author'].title()} in {book['language']}."
+    sent_2 = f"It was published in {book['year']}, that is, {2023-book['year']} years ago."
+    sent_3 = f"The main characters are: {', '.join(book['main_characters'])}."
+    book_description = "\n".join([sent_1, sent_2, sent_3])
+    print(book_description)
+```
+
+Rewrite the script so that, instead of defining the contents of the dictionary manually, it reads them from a JSON file.
+You can also write another script that has the contents and _writes_ them to the JSON file.
