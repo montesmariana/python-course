@@ -1,0 +1,66 @@
+[
+    {
+        "title": "A hat full of sky",
+        "author": "Terry Pratchett",
+        "year": 2004,
+        "language": "English",
+        "main_characters": [
+            "Tiffany Aching",
+            "Granny Weatherwax",
+            "Rob Anybody"
+        ],
+        "subseries" : "Tiffany Aching"
+    },
+    {
+        "title": "Small gods",
+        "author": "Terry Pratchett",
+        "year": 1992,
+        "language": "English",
+        "main_characters": [
+            "Om",
+            "Brutha"
+        ],
+        "subseries" : "Gods"
+    },
+    {
+        "title": "The color of magic",
+        "author": "Terry Pratchett",
+        "year": 1983,
+        "language": "English",
+        "main_characters": [
+            "Rincewind",
+            "Twoflower"
+        ],
+        "subseries" : "Unseen University"
+    },
+    {
+        "title": "The shepherd's crown",
+        "author": "Terry Pratchett",
+        "year": 2015,
+        "language": "English",
+        "main_characters": [
+            "Tiffany Aching",
+            "Nightshade",
+            "Peaseblossom"
+        ],
+        "subseries" : "Tiffany Aching"
+    },
+    {
+        "title": "All systems red",
+        "author": "Martha Wells",
+        "year": 2017,
+        "language": "English",
+        "main_characters": [
+            "Murderbot",
+            "Dr. Mensah",
+            "Arada"
+        ]
+    },
+    {
+        "title": "El libro de los abrazos",
+        "author": "Eduardo Galeano",
+        "year": 1989,
+        "language": "Spanish",
+        "main_characters" : []
+    }
+]

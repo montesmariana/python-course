@@ -364,6 +364,216 @@
     "text": "While generating\n\ndef birthday():\n    age = 0\n    while True:\n        age += 1\n        year = \"year\" if age == 1 else \"years\"\n        yield f\"Happy birthday! You are {age} {year} old!\"\n\n\nbday = birthday()\nnext(bday)\n\n'Happy birthday! You are 1 year old!'\n\n\n\nnext(bday)\n\n'Happy birthday! You are 2 years old!'"
   },
   {
+    "objectID": "slides/oop.html#functional-vs-oo-programming",
+    "href": "slides/oop.html#functional-vs-oo-programming",
+    "title": "Object oriented programming",
+    "section": "Functional vs OO programming",
+    "text": "Functional vs OO programming\n\nFunctional programming\n\nLike a recipe: gives steps to follow\n\nObject-oriented programming\n\nCode developed around objects and their properties"
+  },
+  {
+    "objectID": "slides/oop.html#create-your-own-objects",
+    "href": "slides/oop.html#create-your-own-objects",
+    "title": "Object oriented programming",
+    "section": "Create your own objects",
+    "text": "Create your own objects\n\nCreate a custom class with class.\nName the class with CamelCase.\n\n\nclass Book:\n    pass\n\n\nInstantiate by calling the class with ().\n\n\nmy_book = Book()\ntype(my_book)\n\n__main__.Book"
+  },
+  {
+    "objectID": "slides/oop.html#instances",
+    "href": "slides/oop.html#instances",
+    "title": "Object oriented programming",
+    "section": "Instances",
+    "text": "Instances\nTwo instances of a class are different objects.\n\nx = Book()\ny = Book()\nx == y\n\nFalse\n\n\n\nCf. basic types.\n\na = \"\"\nb = \"\"\na == b\n\nTrue"
+  },
+  {
+    "objectID": "slides/oop.html#class-attributes",
+    "href": "slides/oop.html#class-attributes",
+    "title": "Object oriented programming",
+    "section": "Class attributes",
+    "text": "Class attributes\n\nDefined under the class line.\n\n\nclass Book:\n    language = \"English\"\n    pass\n\nmy_book = Book()\nmy_book\n\n<__main__.Book at 0x7fd4ffe9ca60>\n\n\n\n\nCall with dot notation.\n\n\nmy_book.language\n\n'English'"
+  },
+  {
+    "objectID": "slides/oop.html#modifying-attributes",
+    "href": "slides/oop.html#modifying-attributes",
+    "title": "Object oriented programming",
+    "section": "Modifying attributes",
+    "text": "Modifying attributes\n\nCommon assignment can be used.\n\n\nmy_book.language = \"Spanish\"\nmy_book.language\n\n'Spanish'\n\n\n\nThe initial values are like default, but can always be set up.\nBy convention, attributes and methods starting with _ are ‘private’\n\nthey cannot be directly accessed\nthey cannot be modified"
+  },
+  {
+    "objectID": "slides/oop.html#instance-attributes",
+    "href": "slides/oop.html#instance-attributes",
+    "title": "Object oriented programming",
+    "section": "Instance attributes",
+    "text": "Instance attributes\n\nDefined inside the __init__() method.\n\n\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title):\n        self.title = title\n\n\nThe first argument of a method is self, which represents the object itself."
+  },
+  {
+    "objectID": "slides/oop.html#instance-attributes-1",
+    "href": "slides/oop.html#instance-attributes-1",
+    "title": "Object oriented programming",
+    "section": "Instance attributes",
+    "text": "Instance attributes\n\nThe rest of the __init__() arguments are provided when instantiating a class.\n\n\n# provide the `title` argument to `Book()`\nmy_book1 = Book(\"A hat full of sky\")\nmy_book1.title\n\n'A hat full of sky'\n\n\n\nThe values of instance attributes can be different for different instances.\n\nmy_book2 = Book(\"Small gods\")\nmy_book2.title\n\n'Small gods'"
+  },
+  {
+    "objectID": "slides/oop.html#more-instance-attributes",
+    "href": "slides/oop.html#more-instance-attributes",
+    "title": "Object oriented programming",
+    "section": "More instance attributes",
+    "text": "More instance attributes\n\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title, author, year):\n        self.title = title\n        self.author = author\n        self.year = year\n\n\nmy_book = Book(\"A hat full of sky\", \"Terry Pratchett\", 1980)\nmy_book.title\n\n'A hat full of sky'\n\n\n\nmy_book.author\n\n'Terry Pratchett'\n\n\n\nmy_book.year\n\n1980"
+  },
+  {
+    "objectID": "slides/oop.html#even-more-instance-attributes",
+    "href": "slides/oop.html#even-more-instance-attributes",
+    "title": "Object oriented programming",
+    "section": "Even more instance attributes",
+    "text": "Even more instance attributes\n\nCan also be computed inside the class definition.\n\n\nfrom datetime import date\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title, author, year):\n        self.title = title\n        self.author = author\n        self.year = year\n        \n        this_year = date.today().year\n        self.age = this_year - self.year"
+  },
+  {
+    "objectID": "slides/oop.html#even-more-instance-attributes-1",
+    "href": "slides/oop.html#even-more-instance-attributes-1",
+    "title": "Object oriented programming",
+    "section": "Even more instance attributes",
+    "text": "Even more instance attributes\n\nmy_book = Book(\"A hat full of sky\", \"Terry Pratchett\", 1980)\nmy_book.age\n\n43\n\n\n\nInternal variables are not accessible\n\n\nthis_year\n\nNameError: name 'this_year' is not defined\n\n\n\nmy_book.this_year\n\nAttributeError: 'Book' object has no attribute 'this_year'"
+  },
+  {
+    "objectID": "slides/oop.html#instance-methods-i",
+    "href": "slides/oop.html#instance-methods-i",
+    "title": "Object oriented programming",
+    "section": "Instance methods I",
+    "text": "Instance methods I\nMethods are functions defined inside of classes.\n\nfrom datetime import date\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title, author, year):\n        self.title = title\n        self.author = author\n        self.year = year\n        \n        this_year = date.today().year\n        self.age = this_year - self.year\n\n    def get_age(self):\n        if self.age < 0:\n            return f\"This book will be published in {-self.age} years.\"\n        else:\n            return f\"This book is {self.age} years old.\""
+  },
+  {
+    "objectID": "slides/oop.html#instance-methods-i-1",
+    "href": "slides/oop.html#instance-methods-i-1",
+    "title": "Object oriented programming",
+    "section": "Instance methods I",
+    "text": "Instance methods I\n\nThey are called with the dot notation.\nThe first argument is self, which represents the instance.\nOther arguments, if present, are provided in the call.\n\n\nmy_book = Book(\"A hat full of sky\", \"Terry Pratchett\", 1980)\nmy_book.get_age()\n\n'This book is 43 years old.'"
+  },
+  {
+    "objectID": "slides/oop.html#instance-methods-ii",
+    "href": "slides/oop.html#instance-methods-ii",
+    "title": "Object oriented programming",
+    "section": "Instance methods II",
+    "text": "Instance methods II\n\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title, author, year):\n        self.title = title\n        self.author = author\n        self.year = year\n        \n        this_year = date.today().year\n        self.age = this_year - self.year\n\n        self.characters = set()\n\n    def get_age(self):\n        if self.age < 0:\n            return f\"This book will be published in {-self.age} years.\"\n        else:\n            return f\"This book is {self.age} years old.\"\n\n    def add_character(self, name):\n        self.characters.add(name)"
+  },
+  {
+    "objectID": "slides/oop.html#instance-methods-ii-1",
+    "href": "slides/oop.html#instance-methods-ii-1",
+    "title": "Object oriented programming",
+    "section": "Instance Methods II",
+    "text": "Instance Methods II\nWe started with an empty set of characters in the definition (__init__()).\n\nmy_book = Book(\"A hat full of sky\", \"Terry Pratchett\", 1980)\nmy_book.characters\n\nset()\n\n\nWe can modify the instance by calling the appropriate method.\n\nmy_book.add_character('Tiffany Aching')\nmy_book.add_character('Granny Weatherwax')\nmy_book.add_character('Rob Anybody')\nmy_book.characters\n\n{'Granny Weatherwax', 'Rob Anybody', 'Tiffany Aching'}"
+  },
+  {
+    "objectID": "slides/oop.html#printing-method",
+    "href": "slides/oop.html#printing-method",
+    "title": "Object oriented programming",
+    "section": "Printing method",
+    "text": "Printing method\n\nprint(my_book)\n\n<__main__.Book object at 0x7fd4ffe9fa00>\n\n\n\nClasses can have special methods that start and end with __: dunder methods.\nThese methods are not called with dot notation.\nExamples:\n\n__init__() is the constructor.\n__str__() defines the behavior of print()."
+  },
+  {
+    "objectID": "slides/oop.html#printing-method-1",
+    "href": "slides/oop.html#printing-method-1",
+    "title": "Object oriented programming",
+    "section": "Printing method",
+    "text": "Printing method\n\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title, author, year):\n        self.title = title\n        self.author = author\n        self.year = year\n        \n        this_year = date.today().year\n        self.age = this_year - self.year\n\n        self.characters = set()\n\n    def get_age(self):\n        if self.age < 0:\n            return f\"This book will be published in {-self.age} years.\"\n        else:\n            return f\"This book is {self.age} years old.\"\n\n    def add_character(self, name):\n        self.characters.add(name)\n\n    def __str__(self):\n        sent_1 = f\"{self.title} was written by {self.author} in {self.language}.\"\n        sent_2 = f\"It was published in {self.year}, that is, {self.age} years ago.\"\n        if len(self.characters) > 0:\n            sent_3 = f\"The main characters are: {', '.join(self.characters)}.\"\n        else:\n            sent_3 = \"\"\n        return \"\\n\".join([sent_1, sent_2, sent_3])"
+  },
+  {
+    "objectID": "slides/oop.html#printing-method-2",
+    "href": "slides/oop.html#printing-method-2",
+    "title": "Object oriented programming",
+    "section": "Printing method",
+    "text": "Printing method\n\nmy_book = Book(\"A hat full of sky\", \"Terry Pratchett\", 1980)\nprint(my_book)\n\nA hat full of sky was written by Terry Pratchett in English.\nIt was published in 1980, that is, 43 years ago.\n\n\n\nAs we defined it, the method is sensitive to whether the characters have been defined.\n\nmy_book.add_character('Tiffany Aching')\nmy_book.add_character('Granny Weatherwax')\nmy_book.add_character('Rob Anybody')\nprint(my_book)\n\nA hat full of sky was written by Terry Pratchett in English.\nIt was published in 1980, that is, 43 years ago.\nThe main characters are: Granny Weatherwax, Tiffany Aching, Rob Anybody."
+  },
+  {
+    "objectID": "slides/oop.html#child-classes",
+    "href": "slides/oop.html#child-classes",
+    "title": "Object oriented programming",
+    "section": "Child classes",
+    "text": "Child classes\n\nDefined by including the parent class name.\nInternally call parent attributes and methods with super().\n\n\nclass DiscWorldBook(Book):\n    def __init__(self, title, year):\n        # this is a specification of Book with\n        # always Terry Pratchett as author\n        super().__init__(title, \"Terry Pratchett\", year)"
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-1",
+    "href": "slides/oop.html#child-classes-1",
+    "title": "Object oriented programming",
+    "section": "Child classes",
+    "text": "Child classes\n\nAttributes and methods are inherited.\n\n\nmy_book = DiscWorldBook(\"A hat full of sky\", 1980)\nmy_book.language\n\n'English'\n\n\n\nmy_book.get_age()\n\n'This book is 43 years old.'\n\n\n\nmy_book.author\n\n'Terry Pratchett'"
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-specific-attributes",
+    "href": "slides/oop.html#child-classes-specific-attributes",
+    "title": "Object oriented programming",
+    "section": "Child classes: specific attributes",
+    "text": "Child classes: specific attributes\n\nA child class can extend a parent class.\n\n\nclass DiscWorldBook(Book):\n    # specific class attribute\n    series = \"Discworld\"\n\n    def __init__(self, title, year):\n        super().__init__(title, \"Terry Pratchett\", year)\n        # specific (empty) instance attribute\n        self.subseries = \"\""
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-specific-attributes-1",
+    "href": "slides/oop.html#child-classes-specific-attributes-1",
+    "title": "Object oriented programming",
+    "section": "Child classes: specific attributes",
+    "text": "Child classes: specific attributes\n\nmy_book = DiscWorldBook(\"A hat full of sky\", 1980)\nmy_book.series\n\n'Discworld'\n\n\n\nmy_book.subseries\n\n''\n\n\n\nprint(my_book)\n\nA hat full of sky was written by Terry Pratchett in English.\nIt was published in 1980, that is, 43 years ago."
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-specific-methods",
+    "href": "slides/oop.html#child-classes-specific-methods",
+    "title": "Object oriented programming",
+    "section": "Child classes: specific methods",
+    "text": "Child classes: specific methods\n\nclass DiscWorldBook(Book):\n    series = \"Discworld\"\n\n    def __init__(self, title, year):\n        super().__init__(title, \"Terry Pratchett\", year)\n        self.subseries = \"\"\n\n    # specific instance method\n    def set_subseries(self, subseries):\n        self.subseries = subseries"
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-specific-methods-1",
+    "href": "slides/oop.html#child-classes-specific-methods-1",
+    "title": "Object oriented programming",
+    "section": "Child classes: specific methods",
+    "text": "Child classes: specific methods\n\nmy_book = DiscWorldBook(\"A hat full of sky\", 1980)\nmy_book.series\n\n'Discworld'\n\n\n\nmy_book.subseries\n\n''\n\n\n\nmy_book.set_subseries(\"Tiffany Aching\")\nmy_book.subseries\n\n'Tiffany Aching'"
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-extend-methods",
+    "href": "slides/oop.html#child-classes-extend-methods",
+    "title": "Object oriented programming",
+    "section": "Child classes: extend methods",
+    "text": "Child classes: extend methods\n\nclass DiscWorldBook(Book):\n    series = \"Discworld\"\n\n    def __init__(self, title, year):\n        super().__init__(title, \"Terry Pratchett\", year)\n        self.subseries = \"\"\n\n    def set_subseries(self, subseries):\n        self.subseries = subseries\n    \n    # extension of the print() behavior\n    def __str__(self):\n        parent = super().__str__()\n        if self.subseries:\n            return parent + f'This book belongs to the \"{self.subseries}\" subseries of {self.series}.'\n        else:\n            return parent"
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-extend-methods-1",
+    "href": "slides/oop.html#child-classes-extend-methods-1",
+    "title": "Object oriented programming",
+    "section": "Child classes: extend methods",
+    "text": "Child classes: extend methods\n\nmy_book = DiscWorldBook(\"A hat full of sky\", 1980)\nmy_book.series\n\n'Discworld'\n\n\n\nprint(my_book)\n\nA hat full of sky was written by Terry Pratchett in English.\nIt was published in 1980, that is, 43 years ago.\n\n\n\n\n\nmy_book.set_subseries(\"Tiffany Aching\")\nprint(my_book)\n\nA hat full of sky was written by Terry Pratchett in English.\nIt was published in 1980, that is, 43 years ago.\nThis book belongs to the \"Tiffany Aching\" subseries of Discworld."
+  },
+  {
+    "objectID": "slides/oop.html#child-classes-and-parent-classes",
+    "href": "slides/oop.html#child-classes-and-parent-classes",
+    "title": "Object oriented programming",
+    "section": "Child classes and parent classes",
+    "text": "Child classes and parent classes\nChild-specific attributes and methods are not available to the parent class.\n\nother_book = Book(\"All Systems Red\", \"Martha Wells\", 2017)\nother_book.language\n\n'English'\n\n\n\nother_book.get_age()\n\n'This book is 6 years old.'\n\n\n\nother_book.series\n\nAttributeError: 'Book' object has no attribute 'series'"
+  },
+  {
+    "objectID": "slides/oop.html#extend-an-object",
+    "href": "slides/oop.html#extend-an-object",
+    "title": "Object oriented programming",
+    "section": "Extend an object",
+    "text": "Extend an object\n\nYou can add an attribute to an instance that was not defined with the class.\n\n\nother_book.series\n\nAttributeError: 'Book' object has no attribute 'series'\n\n\n\nother_book.series = \"The Murderbot Diaries\"\nother_book.series\n\n'The Murderbot Diaries'"
+  },
+  {
+    "objectID": "slides/oop.html#requests.models.response",
+    "href": "slides/oop.html#requests.models.response",
+    "title": "Object oriented programming",
+    "section": "requests.models.Response",
+    "text": "requests.models.Response\nrequests.get() returns an object of class Response defined in the models module of the requests package.\n\nimport requests\nhtml_page = requests.get(\"https://www.gutenberg.org/cache/epub/84/pg84-images.html\")\ntype(html_page)\n\nrequests.models.Response\n\n\nIt has several methods and attributes, such as .content, .json, .raw and .text.\n\nclass_content = [x for x in dir(html_page) if not x.startswith('_')]\nprint(class_content)\n\n['apparent_encoding', 'close', 'connection', 'content', 'cookies', 'elapsed', 'encoding', 'headers', 'history', 'is_permanent_redirect', 'is_redirect', 'iter_content', 'iter_lines', 'json', 'links', 'next', 'ok', 'raise_for_status', 'raw', 'reason', 'request', 'status_code', 'text', 'url']"
+  },
+  {
+    "objectID": "slides/oop.html#bs4.beautifulsoup",
+    "href": "slides/oop.html#bs4.beautifulsoup",
+    "title": "Object oriented programming",
+    "section": "bs4.BeautifulSoup",
+    "text": "bs4.BeautifulSoup\nBeautifulSoup is a custom class defined within the bs4 package.\n\nfrom bs4 import BeautifulSoup\nsoup = BeautifulSoup(html_page.content, 'html.parser')\ntype(soup)\n\nbs4.BeautifulSoup\n\n\nIt has lots of methods and attributes, among which .find_all(), .prettify() and .text.\n\nclass_content = [x for x in dir(soup) if not x.startswith('_')]\nprint(class_content)\n\n['ASCII_SPACES', 'DEFAULT_BUILDER_FEATURES', 'DEFAULT_INTERESTING_STRING_TYPES', 'NO_PARSER_SPECIFIED_WARNING', 'ROOT_TAG_NAME', 'append', 'attrs', 'builder', 'can_be_empty_element', 'cdata_list_attributes', 'childGenerator', 'children', 'clear', 'contains_replacement_characters', 'contents', 'currentTag', 'current_data', 'declared_html_encoding', 'decode', 'decode_contents', 'decompose', 'decomposed', 'default', 'descendants', 'element_classes', 'encode', 'encode_contents', 'endData', 'extend', 'extract', 'fetchNextSiblings', 'fetchParents', 'fetchPrevious', 'fetchPreviousSiblings', 'find', 'findAll', 'findAllNext', 'findAllPrevious', 'findChild', 'findChildren', 'findNext', 'findNextSibling', 'findNextSiblings', 'findParent', 'findParents', 'findPrevious', 'findPreviousSibling', 'findPreviousSiblings', 'find_all', 'find_all_next', 'find_all_previous', 'find_next', 'find_next_sibling', 'find_next_siblings', 'find_parent', 'find_parents', 'find_previous', 'find_previous_sibling', 'find_previous_siblings', 'format_string', 'formatter_for_name', 'get', 'getText', 'get_attribute_list', 'get_text', 'handle_data', 'handle_endtag', 'handle_starttag', 'has_attr', 'has_key', 'hidden', 'index', 'insert', 'insert_after', 'insert_before', 'interesting_string_types', 'isSelfClosing', 'is_empty_element', 'is_xml', 'known_xml', 'markup', 'name', 'namespace', 'new_string', 'new_tag', 'next', 'nextGenerator', 'nextSibling', 'nextSiblingGenerator', 'next_element', 'next_elements', 'next_sibling', 'next_siblings', 'object_was_parsed', 'open_tag_counter', 'original_encoding', 'parent', 'parentGenerator', 'parents', 'parse_only', 'parserClass', 'parser_class', 'popTag', 'prefix', 'preserve_whitespace_tag_stack', 'preserve_whitespace_tags', 'prettify', 'previous', 'previousGenerator', 'previousSibling', 'previousSiblingGenerator', 'previous_element', 'previous_elements', 'previous_sibling', 'previous_siblings', 'pushTag', 'recursiveChildGenerator', 'renderContents', 'replaceWith', 'replaceWithChildren', 'replace_with', 'replace_with_children', 'reset', 'select', 'select_one', 'setup', 'smooth', 'string', 'string_container', 'string_container_stack', 'strings', 'stripped_strings', 'tagStack', 'text', 'unwrap', 'wrap']"
+  },
+  {
+    "objectID": "slides/oop.html#datetime.date",
+    "href": "slides/oop.html#datetime.date",
+    "title": "Object oriented programming",
+    "section": "datetime.date",
+    "text": "datetime.date\ndatetime.date.today() is an alternative constructor for the date class defined in the datetime package, providing the current date.\n\nfrom datetime import date\ntoday = date.today()\ntype(today)\n\ndatetime.date\n\n\nIt has several methods and attributes, among which .day, .month and .year.\n\nclass_content = [x for x in dir(today) if not x.startswith('_')]\nprint(class_content)\n\n['ctime', 'day', 'fromisocalendar', 'fromisoformat', 'fromordinal', 'fromtimestamp', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'min', 'month', 'replace', 'resolution', 'strftime', 'timetuple', 'today', 'toordinal', 'weekday', 'year']"
+  },
+  {
     "objectID": "slides/variables.html#basic-types",
     "href": "slides/variables.html#basic-types",
     "title": "Variables",
@@ -516,13 +726,6 @@
     "title": "Variables",
     "section": "Dictionaries: notes",
     "text": "Dictionaries: notes\n\nA dictionary has key-value pairs: instead of an index you use a named key to retrieve a value.\nThe in operator to check inclusion checks for values in lists and for keys in dictionaries.\nDictionaries are also mutable.\n\n\nMore about dictionaries"
-  },
-  {
-    "objectID": "slides/files/index.html#contents",
-    "href": "slides/files/index.html#contents",
-    "title": "Working with files",
-    "section": "Contents",
-    "text": "Contents\n\nDownload a file based on the URL with requests\nHTML file structure and bs4\nRegular expressions with re\nDataframes with pandas\nJSON files\nOSError, try and except"
   },
   {
     "objectID": "slides/files/index.html#setup",
@@ -875,6 +1078,13 @@
     "text": "Think about\n\nWhere do you see these kinds of variables in real life, especially at work?\nHow do you think you could use a list or a dictionary in translation?"
   },
   {
+    "objectID": "classes/2023-03-21-oop.html",
+    "href": "classes/2023-03-21-oop.html",
+    "title": "Working with files",
+    "section": "",
+    "text": "Today we learn about object oriented programming:\n\nCreating and instantiating custom classes\nAttributes and methods\nChildren and inheritance\n\n\n\n\n\nWhat to do in Jupyter\nFollow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.\n\n\nWhat to do in VS Code\nLast class we used some functions created before and applied them to a dictionary read from a file.\nThis time, instead, we will read the same contents from a file but instead of using the functions we will create instances of the Book and DiscWorldBook classes defined in the slides.\nThe first step is to load the libraries.\n\nimport json # to read the json\nfrom datetime import date # to find out the current year\n\nAfterwards we can define our classes.\n\nclass Book:\n    language = \"English\"\n\n    def __init__(self, title, author, year):\n        self.title = title\n        self.author = author\n        self.year = year\n        \n        this_year = date.today().year\n        self.age = this_year - self.year\n\n        self.characters = set()\n\n    def get_age(self):\n        if self.age < 0:\n            return f\"This book will be published in {-self.age} years.\"\n        else:\n            return f\"This book is {self.age} years old.\"\n\n    def add_character(self, name):\n        self.characters.add(name)\n\n    def __str__(self):\n        sent_1 = f\"{self.title} was written by {self.author} in {self.language}.\"\n        sent_2 = f\"It was published in {self.year}, that is, {self.age} years ago.\"\n        if len(self.characters) > 0:\n            sent_3 = f\"The main characters are: {', '.join(self.characters)}.\"\n        else:\n            sent_3 = \"\"\n        return \"\\n\".join([sent_1, sent_2, sent_3])\n\nclass DiscWorldBook(Book):\n    series = \"Discworld\"\n\n    def __init__(self, title, year):\n        super().__init__(title, \"Terry Pratchett\", year)\n        self.subseries = \"\"\n\n    def set_subseries(self, subseries):\n        self.subseries = subseries\n    \n    def __str__(self):\n        parent = super().__str__()\n        if self.subseries:\n            return parent + f'\\nThis book belongs to the \"{self.subseries}\" subseries of {self.series}.'\n        else:\n            return parent\n\nNext we can read the json file.\n\nbooks_file = '_resources/books.json'\nwith open(books_file, encoding = 'utf-8') as f:\n    books = json.load(f)\nlen(books)\n\n6\n\n\nThe output is a list with small dictionaries, each of which has the following keys: “title”, “author”, “year”, “language” and “main_characters”. In one case, the language is not “English” and there are no characters. In addition, Discworld books also have a “subseries” key. We can use this information to distinguish which books should be turned into instances of DiscWorldBook and which into instances of Book.\n\nfor book in books:\n    if 'subseries' in book:\n        my_book = DiscWorldBook(book['title'], book['year'])\n        my_book.subseries = book['subseries']\n    else:\n        my_book = Book(book['title'], book['author'], book['year'])\n    if book['language'] != \"English\":\n        my_book.language = book['language']\n    for character in book['main_characters']:\n        my_book.add_character(character)\n    print(my_book)\n    print('----')\n\nA hat full of sky was written by Terry Pratchett in English.\nIt was published in 2004, that is, 19 years ago.\nThe main characters are: Tiffany Aching, Granny Weatherwax, Rob Anybody.\nThis book belongs to the \"Tiffany Aching\" subseries of Discworld.\n----\nSmall gods was written by Terry Pratchett in English.\nIt was published in 1992, that is, 31 years ago.\nThe main characters are: Brutha, Om.\nThis book belongs to the \"Gods\" subseries of Discworld.\n----\nThe color of magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago.\nThe main characters are: Twoflower, Rincewind.\nThis book belongs to the \"Unseen University\" subseries of Discworld.\n----\nThe shepherd's crown was written by Terry Pratchett in English.\nIt was published in 2015, that is, 8 years ago.\nThe main characters are: Tiffany Aching, Nightshade, Peaseblossom.\nThis book belongs to the \"Tiffany Aching\" subseries of Discworld.\n----\nAll systems red was written by Martha Wells in English.\nIt was published in 2017, that is, 6 years ago.\nThe main characters are: Dr. Mensah, Murderbot, Arada.\n----\nEl libro de los abrazos was written by Eduardo Galeano in Spanish.\nIt was published in 1989, that is, 34 years ago.\n\n----"
+  },
+  {
     "objectID": "classes/2023-03-07-if-functions.html",
     "href": "classes/2023-03-07-if-functions.html",
     "title": "Working with iterables",
@@ -893,6 +1103,6 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   }
 ]
