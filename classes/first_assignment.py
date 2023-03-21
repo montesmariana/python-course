@@ -1,3 +1,22 @@
+"""Describe some books from a shelf
+
+This notebook defines some classes and instantiates them based on a list of dictionary.
+Each dictionary represents a book and has some information that will be printed in a descriptive format.
+
+Each dictionary has the following keys:
+    
+    - "title" (a string) indicates the book title
+    - "author" (a string) indicates the author of the book
+    - "year" (an integer) indicates the publication year
+    - "language" (a string) indicates the language of the book
+    - "main_characters" (a list of strings) lists the names of the main characters.
+    
+In one case, the language is not "English" and there are no characters.
+In addition, Discworld books also have a "subseries" key.
+We can use this information to distinguish which books should be turned
+into instances of `DiscWorldBook` and which into instances of `Book`.
+"""
+
 # make the necessary packages available
 import json # json package to read the json file
 from datetime import date # date module of datetime package to get current year
@@ -35,7 +54,7 @@ class Book:
             # if the publication date is in the future
             return f"This book will be published in {-self.age} years."
         else:
-            # if the publication thate is not in the future
+            # if the publication date is not in the future
             return f"This book is {self.age} years old."
 
     def add_character(self, name):
@@ -59,7 +78,7 @@ class Book:
             sent_3 = f"The main characters are: {', '.join(self.characters)}."
         else:
             sent_3 = ""
-        # pritn one line per sentence
+        # print each sentence in a different line
         return "\n".join([sent_1, sent_2, sent_3])
 
 # define DiscWorldBook class, a child of the Book class
@@ -105,23 +124,8 @@ class DiscWorldBook(Book):
 books_file = 'books.json' # assign filename to a string variable
 with open(books_file, encoding = 'utf-8') as f:
     # open file and use json to parse it
-    books = json.load(f)
-    """books is now a list of dictionaries.
+    books = json.load(f) # books is now a list of dictionaries.    
     
-    Each dictionary has the following keys:
-    
-    - "title" (a string) indicates the book title
-    - "author" (a string) indicates the author of the book
-    - "year" (an integer) indicates the publication year
-    - "language" (a string) indicates the language of the book
-    - "main_characters" (a list of strings) lists the names of the main characters.
-    
-    In one case, the language is not "English" and there are no characters.
-    In addition, Discworld books also have a "subseries" key.
-    We can use this information to distinguish which books should be turned
-    into instances of `DiscWorldBook` and which into instances of `Book`.
-    """
-
 # go through each of the items in the list
 for book in books:
     # if there is a 'subseries' key, it is a Discworld book

@@ -1,0 +1,57 @@
+---
+title: "First assignment"
+format: html
+---
+
+::: callout-important
+## Dates
+
+**Due** on 18-04-2023.
+
+You can work on it _in class_ and ask questions/advice/tips on 28-03-2023.
+:::
+
+# Assignment description
+
+Write a Jupyter Notebook in which you:
+
+1. Define a class with:
+
+	- at least one class attribute;
+
+	- at least one instance attribute provided via the constructor `__init__()`;
+
+	- at least one computed instance attribute;
+
+	- at least one method AND, additionally, a `__str__()` method.
+
+You can also define multiple classes: only one needs to satisfy all the criteria above.
+
+2. Illustrate the class with examples, as done in [the OOP slides](../slides/oop.qmd).
+
+3. Read a list of dictionaries from a local JSON file (or a dataframe with `pandas`, since dataframes are essentially lists of dictionaries).
+
+4. Turn each dictionary of your list into an instance of your class (or one of your classes) and print it. The output should be a meaningful description of the entity represented by your class.
+
+The notebook should be **thoroughly commented**, as if it was a tutorial in which you explain every step and decision. The idea is that you show that (and how) you understand what you are doing. See the example below for guidance.
+
+# Submission and example
+
+The submission should include both the Jupyter Notebook, which can have printed output but I should be able to run autonomously, and the file that will be opened.
+
+To see an example, you can download [this jupyter notebook](_resources/first-assignment.ipynb) and [this json file](_resources/books.json), store them next to each other in the same folder and run the Jupyter Notebook.
+
+# Ideas
+
+@tbl-ideas summarizes possible ideas to base your notebook on. For example, the last row suggests that your list of dictionaries represents a holiday trip organization, with items that represent (train, airplane...) trips or (hotel, bnb...) stays. The code could define classes for the trips and the stays, with source, destination and duration for the trips, location and beginning and end for stays, and price for both. Depending on how you initialize your classes, you could compute durations, distances (if you use coordinates, for example), daily price... All of these are possible attributes, and the computation can be done via a method.
+
+You don't necessarily know _everything_ you need to know to approach the problem: that is part of the training. During the class of 28/03, the idea is that you can ask, and we can brainstorm, about anything you might want/need to add: regex validation, using coordinates, manipulating dates and times, reading dataframes with pandas...
+
+List | Class | Attributes | Computation | Methods | Extras
+--- | -- | ------ | ---- | ---- | ----
+Shopping list or recipe ingredients | Ingredient or product to buy | Name, category, amount needed, price | Total price | Compute total price | Subclass for specific categories; compute the full cost of the expense
+Contact book | Person | Name(s), birth date, social media, phone number, address | Age, days to next birthday | Print a demo birthday email/card with the right address, date and name | Regex validation of fields
+School schedule | Course | Name, lecturer, days and times, categories | Hours per week, hours to next class | Add time for next assignment, print whn the next class/assignment is due | Validation for dates and times
+Holiday organization | Trip, Stay | From and to (place, date, time), price | Duration, distance, price per day | Compute duration and price per day (or total price) | Classes for stays and for transportation, compute distances based on coordinates
+
+: Some possible classes to design. {#tbl-ideas}

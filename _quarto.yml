@@ -8,6 +8,9 @@ website:
       - href: index.qmd
         text: Home
       - about.qmd
+      - text: "Assignments"
+        menu:
+          - assignments/2023-04-18-first-assignment.qmd
 
 format:
   html:
