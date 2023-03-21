@@ -1,11 +1,11 @@
 ---
-title: "Working with files"
+title: "Object oriented programming"
 format: html
 date: 2023-03-21
 categories:
     - classes
     - basics
-description: Different ways of working with files and parsing text.
+description: Creating and understanding Python classes.
 ---
 
 Today we learn about [object oriented programming](../slides/oop.qmd){target="_blank"}:

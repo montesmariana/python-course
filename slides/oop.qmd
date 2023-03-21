@@ -69,6 +69,22 @@ my_book
 my_book.language
 ```
 
+## Modifying attributes
+
+- Common assignment can be used.
+
+```{python}
+my_book.language = "Spanish"
+my_book.language
+```
+
+- The initial values are like default, but can always be set up.
+
+- By convention, attributes and methods starting with `_` are 'private'
+
+    + they cannot be directly accessed
+    + they cannot be modified
+
 ## Instance attributes
 
 - Defined inside the `__init__()` method.
@@ -102,7 +118,7 @@ my_book2 = Book("Small gods")
 my_book2.title
 ```
 
-## Instance attributes
+## More instance attributes
 
 ```{python}
 class Book:
@@ -125,6 +141,42 @@ my_book.author
 
 ```{python}
 my_book.year
+```
+
+## Even more instance attributes
+
+- Can also be computed inside the class definition.
+
+```{python}
+from datetime import date
+class Book:
+    language = "English"
+
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        
+        this_year = date.today().year
+        self.age = this_year - self.year
+```
+
+## Even more instance attributes
+```{python}
+my_book = Book("A hat full of sky", "Terry Pratchett", 1980)
+my_book.age
+```
+
+- Internal variables are not accessible
+
+```{python}
+#| error: true
+this_year
+```
+
+```{python}
+#| error: true
+my_book.this_year
 ```
 
 ## Instance methods I
@@ -228,7 +280,6 @@ print(my_book)
 
 ## Printing method
 
-
 ```{python}
 class Book:
     language = "English"
@@ -287,9 +338,12 @@ print(my_book)
 ```{python}
 class DiscWorldBook(Book):
     def __init__(self, title, year):
-        # this is a specification of Book with always Terry Pratchett as author
+        # this is a specification of Book with
+        # always Terry Pratchett as author
         super().__init__(title, "Terry Pratchett", year)
 ```
+
+## Child classes
 
 - Attributes and methods are inherited.
 
@@ -302,7 +356,11 @@ my_book.language
 my_book.get_age()
 ```
 
-## Child classes II
+```{python}
+my_book.author
+```
+
+## Child classes: specific attributes
 
 - A child class can extend a parent class.
 
@@ -315,12 +373,65 @@ class DiscWorldBook(Book):
         super().__init__(title, "Terry Pratchett", year)
         # specific (empty) instance attribute
         self.subseries = ""
+```
+
+## Child classes: specific attributes
+
+```{python}
+my_book = DiscWorldBook("A hat full of sky", 1980)
+my_book.series
+```
+
+```{python}
+my_book.subseries
+```
+```{python}
+print(my_book)
+```
+
+## Child classes: specific methods
+```{python}
+class DiscWorldBook(Book):
+    series = "Discworld"
+
+    def __init__(self, title, year):
+        super().__init__(title, "Terry Pratchett", year)
+        self.subseries = ""
 
     # specific instance method
     def set_subseries(self, subseries):
         self.subseries = subseries
+```
+
+## Child classes: specific methods
+
+```{python}
+my_book = DiscWorldBook("A hat full of sky", 1980)
+my_book.series
+```
+
+```{python}
+my_book.subseries
+```
+```{python}
+my_book.set_subseries("Tiffany Aching")
+my_book.subseries
+```
+
+## Child classes: extend methods
+
+```{python}
+class DiscWorldBook(Book):
+    series = "Discworld"
+
+    def __init__(self, title, year):
+        super().__init__(title, "Terry Pratchett", year)
+        self.subseries = ""
+
+    def set_subseries(self, subseries):
+        self.subseries = subseries
     
-    # specification of the print() behavior
+    # extension of the print() behavior
     def __str__(self):
         parent = super().__str__()
         if self.subseries:
@@ -329,12 +440,13 @@ class DiscWorldBook(Book):
             return parent
 ```
 
-## Child classes II
+## Child classes: extend methods
 
 ```{python}
 my_book = DiscWorldBook("A hat full of sky", 1980)
 my_book.series
 ```
+
 ```{python}
 print(my_book)
 ```
@@ -346,7 +458,7 @@ my_book.set_subseries("Tiffany Aching")
 print(my_book)
 ```
 
-## Child classes III
+## Child classes and parent classes
 
 Child-specific attributes and methods are not available to the parent class.
 
@@ -363,8 +475,14 @@ other_book.get_age()
 other_book.series
 ```
 
-But you can add an attribute to an instance.
+## Extend an object
 
+- You can add an attribute to an instance that was not defined with the class.
+
+```{python}
+#| error: true
+other_book.series
+```
 ```{python}
 other_book.series = "The Murderbot Diaries"
 other_book.series
@@ -407,5 +525,23 @@ It has lots of methods and attributes, among which `.find_all()`, `.prettify()` 
 class_content = [x for x in dir(soup) if not x.startswith('_')]
 print(class_content)
 ```
+
+## `datetime.date` {.smaller}
+
+`datetime.date.today()` is an alternative constructor for the `date` class defined in the `datetime` package, providing the current date.
+
+```{python}
+from datetime import date
+today = date.today()
+type(today)
+```
+
+It has several methods and attributes, among which `.today()`, `.day`, `.month` and `.year`.
+
+```{python}
+class_content = [x for x in dir(today) if not x.startswith('_')]
+print(class_content)
+```
+
 
 # Next up: review
