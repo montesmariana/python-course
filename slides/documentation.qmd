@@ -1,0 +1,378 @@
+---
+title: "Documentation"
+format: revealjs
+---
+
+# Docstrings
+
+## Read function documentation
+
+```{python}
+help(print)
+```
+
+## Write function documentation: docstrings {auto-animate="true"}
+
+- Numpy style
+
+- **Google style**
+
+- reST style
+
+## Write function documentation: docstrings {auto-animate="true"}
+
+- **Google style**
+
+```{python}
+def print_repeated_def(name, times = 1):
+    """Print a message a number of times.
+
+    Print an excited message one or more times.
+
+    Args:
+        name (str): The name that the message is directed to.
+        times (int, optional): The number of times to
+        print the message. Defaults to 1.
+
+    Returns:
+        str: A welcome message.
+    """
+    return f"Hello, {name}! "* max(abs(times), 0)
+```
+
+## Function documentation
+
+- `?print_repeated_def`
+
+- `help(print_repeated_def)`
+
+- `print_repeated_def.__doc__`
+
+. . .
+```{python}
+#| echo: false
+print(print_repeated_def.__doc__)
+```
+
+## Docstrings
+
+- As long comments, surrounded by `"""` or `'''` on each side.
+
+- Written inside the definition of the function / method / class.
+
+- At least a short summary or description. Optionally a longer paragraph after one blank line.
+
+```{python}
+def print_something():
+    """Print some message."""
+    print("You are awesome.")
+```
+
+::: footer
+[Google docstrings examples](https://gist.github.com/redlotus/3bc387c2591e3e908c9b63b97b11d24e)
+:::
+
+## Function arguments I
+
+- Under the `Args` subtitle.
+
+- Optionally (but preferably), specify the type.
+
+```{python}
+def print_repeated(name, times):
+    """Dedicate a message to someone.
+
+    Args:
+        name (str): Name to dedicate the message to.
+        times (int): Number of times to print the message.
+    """
+    print(f"Hello, {name}! " * times)
+```
+
+## Function arguments II
+
+- Use [PEP 484](https://peps.python.org/pep-0484/) annotations for the types.
+
+```{python}
+def print_repeated2(name: str, times: int):
+    """Dedicate a message to someone.
+
+    Args:
+        name: Name to dedicate the message to.
+        times: Number of times to print the message.
+    """
+    print(f"Hello, {name}! " * times)
+```
+
+- Can be retrieved with `__annotations__` attribute:
+
+```{python}
+print(print_repeated2.__annotations__)
+```
+
+## Optional arguments
+
+```{python}
+def print_repeated_default(name, times = 1):
+    """Dedicate a message to someone.
+
+    Args:
+        name (str): Name to dedicate the message to.
+        times (int, optional): Number of times to print the message.
+        Defaults to 1.
+    """
+    print(f"Hello, {name}! " * times)
+```
+
+## Return value I
+
+- Under the `Returns:` heading.
+
+```{python}
+def return_repeated(name, times = 1):
+    """Dedicate a message to someone.
+
+    Args:
+        name (str): Name to dedicate the message to.
+        times (int, optional): Number of times to print the message.
+        Defaults to 1.
+
+    Returns:
+        str: A dedicated message repeated a number of times.
+    """
+    return f"Hello, {name}! " * times
+```
+
+## Return value II
+
+- With [PEP 484](https://peps.python.org/pep-0484/) annotations.
+
+```{python}
+def return_repeated(name: str, times: int = 1) -> str:
+    """Dedicate a message to someone.
+
+    Args:
+        name: Name to dedicate the message to.
+        times (optional): Number of times to print the message.
+        Defaults to 1.
+
+    Returns:
+        A dedicated message repeated a number of times.
+    """
+    return f"Hello, {name}! " * times
+```
+
+## Exceptions
+
+- Under the `Raises` heading.
+```{python}
+def return_repeated_witherror(name: str, times: int = 1) -> str:
+    """Dedicate a message to someone.
+
+    Args:
+        name: Name to dedicate the message to.
+        times (optional): Number of times to print the message.
+        Defaults to 1.
+
+    Returns:
+        A dedicated message repeated a number of times.
+
+    Raises:
+        TypeError: If `times` is not an integer.
+        ValueError: If `times` is smaller than or equal to 0.
+    """
+    if type(times) != int:
+        raise TypeError("The number of times should be an integer!")
+    if (times <= 0):
+        raise ValueError("The number of times must be one or larger!")
+    return f"Hello, {name}! " * times
+```
+
+## Examples
+
+- Optional, to show how a function is used.
+
+```{python}
+def return_repeated_help(name: str, times: int = 1) -> str:
+    """Dedicate a message to someone.
+
+    Args:
+        name: Name to dedicate the message to.
+        times (optional): Number of times to print the message.
+        Defaults to 1.
+
+    Returns:
+        A dedicated message repeated a number of times.
+    
+    Examples:
+        >>> return_repeated("Kiki", 3)
+        "Hello, Kiki! Hello, Kiki! Hello, Kiki! "
+    """
+    return f"Hello, {name}! " * times
+```
+
+## Documenting classes
+
+- Document at class level or inside `__init__()`:
+
+```{python}
+class Person:
+    def __init__(self, name, age = 20):
+        """Class that represents a person.
+
+        Args:
+            name (str): Name of the person
+            age (int, optional): Current age of the person.
+            Defaults to 20.
+            
+        Attributes:
+            name (str): Name of the person
+            age (int): Current age of the person.
+            underage (bool): Whether the person is younger
+            than 18 years old.
+        """
+        self.name = str(name).upper()
+        self.age = age
+        self.underage = self.age < 18
+```
+
+## More about docstrings
+
+- Methods are documented like any other function.
+
+- Dunder methods (e.g. `__str__`) and private methods don't need to be documented.
+
+- A `Note` section can be added for further notes.
+
+# Argparse
+
+## Argparse
+
+- Library to parse command line arguments.
+
+- For example, run the code in "myscript.py" providing the argument "filename".
+
+```shell
+python myscript.py filename
+```
+
+- Create documentation for the script that can be read with:
+
+```shell
+python myscript.py --help
+```
+
+## Mini example
+
+In a script that can be run in the command line, you would write something like this:
+
+```{python}
+#| eval: false
+import argparse # import the package
+parser = argparse.ArgumentParser()
+parser.add_argument('filename')
+args = parser.parse_args()
+```
+
+. . .
+
+Let's go bit by bit, assuming `import argparse` has been run.
+
+```{python}
+#| include: false
+import argparse
+```
+
+## Create a parser
+
+```{python}
+parser = argparse.ArgumentParser()
+```
+
+We start up a parser that can have some arguments, such as:
+
+- `prog` = name of your program
+- `description` = what your program does
+- `epilog` = message at the end of your documentation page
+
+```{python}
+#| eval: false
+parser = argparse.ArgumentParser(
+    'filereader',
+    description = 'Read a file and do something with it.',
+    epilog = 'And the file was happy ever after.')
+```
+
+## Add arguments
+
+- Add a positional argument named 'filename'.
+
+- After `args = parser.parse_args()`, it can be accessed as `args.filename`.
+```{python}
+#| eval: false
+parser.add_argument('filename')
+```
+
+. . .
+
+- Specify the type (it gets converted).
+
+```{python}
+#| eval: false
+parser.add_argument('filename', type=str)
+```
+
+. . .
+
+- Add a description.
+
+```{python}
+#| eval: false
+parser.add_argument(
+    'filename', type=str,
+    help="The name of a file")
+```
+
+## File as type
+
+- If you want to open the file for reading or writing, there is a special type. Then you don't need to use `open()` inside your script.
+
+```{python}
+#| eval: false
+parser.add_argument(
+    'filename',
+    type=argparse.FileType('r', encoding='utf-8'))
+```
+
+- You can make it an optional argument if you want to allow the standard input/output as default.
+
+```{python}
+#| eval: false
+library(sys)
+parser.add_argument(
+    'filename', nargs='?',
+    type=argparse.FileType('r', encoding='utf-8'),
+    default = sys.stdin)
+```
+
+## Options
+
+- Create optional arguments with `-n` and `--name` for a `name` argument.
+
+- You can limit the possible values of your arguments with `choices`.
+
+- You can accept several values for a list with `nargs`
+
+## Retrieve your arguments
+
+```{python}
+args = parser.parse_args(...)
+```
+
+## Run a script in command line
+
+- `if __name__ == '__main__':`
+
+Give examples with a script in VSCode that gets call from Jupyter notebook with `%run`.
+
+# Next up: Web scraping
