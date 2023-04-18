@@ -234,14 +234,59 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li><p>Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook.</p></li>
 <li><p>Then copy the documented functions to a “.py” file in VS Code.</p></li>
+<li><p>Complete the <code>Person</code> definition so that it looks like <a href="#lst-person">Listing&nbsp;1</a>.</p></li>
 </ul></li>
+</ul>
+<div id="lst-person" class="listing">
+<p>Listing&nbsp;1: Definition of the Person class.</p>
+<div class="sourceCode" id="lst-person" data-lst-cap="Definition of the Person class."><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="lst-person-1"><a href="#lst-person-1" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> Person:</span>
+<span id="lst-person-2"><a href="#lst-person-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, name, age <span class="op">=</span> <span class="dv">20</span>):</span>
+<span id="lst-person-3"><a href="#lst-person-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Create a new Person with name and age.</span></span>
+<span id="lst-person-4"><a href="#lst-person-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="lst-person-5"><a href="#lst-person-5" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
+<span id="lst-person-6"><a href="#lst-person-6" aria-hidden="true" tabindex="-1"></a><span class="co">            name (str): Name of the person.</span></span>
+<span id="lst-person-7"><a href="#lst-person-7" aria-hidden="true" tabindex="-1"></a><span class="co">            age (int, optional): Current age of the person. Defaults to 20.</span></span>
+<span id="lst-person-8"><a href="#lst-person-8" aria-hidden="true" tabindex="-1"></a><span class="co">            </span></span>
+<span id="lst-person-9"><a href="#lst-person-9" aria-hidden="true" tabindex="-1"></a><span class="co">        Attributes:</span></span>
+<span id="lst-person-10"><a href="#lst-person-10" aria-hidden="true" tabindex="-1"></a><span class="co">            name (str): Name of the person.</span></span>
+<span id="lst-person-11"><a href="#lst-person-11" aria-hidden="true" tabindex="-1"></a><span class="co">            age (int): Age of the person.</span></span>
+<span id="lst-person-12"><a href="#lst-person-12" aria-hidden="true" tabindex="-1"></a><span class="co">            underage (bool): Whether the person is younger than 18.</span></span>
+<span id="lst-person-13"><a href="#lst-person-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="lst-person-14"><a href="#lst-person-14" aria-hidden="true" tabindex="-1"></a><span class="co">        Raises:</span></span>
+<span id="lst-person-15"><a href="#lst-person-15" aria-hidden="true" tabindex="-1"></a><span class="co">            TypeError: If `age` is not an integer.</span></span>
+<span id="lst-person-16"><a href="#lst-person-16" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="lst-person-17"><a href="#lst-person-17" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.name <span class="op">=</span> <span class="bu">str</span>(name).upper()</span>
+<span id="lst-person-18"><a href="#lst-person-18" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="bu">type</span>(age) <span class="op">!=</span> <span class="bu">int</span>:</span>
+<span id="lst-person-19"><a href="#lst-person-19" aria-hidden="true" tabindex="-1"></a>            <span class="cf">raise</span> <span class="pp">TypeError</span>(<span class="st">"The age should be an integer!"</span>)</span>
+<span id="lst-person-20"><a href="#lst-person-20" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">=</span> age</span>
+<span id="lst-person-21"><a href="#lst-person-21" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.underage <span class="op">=</span> <span class="va">self</span>.age <span class="op">&lt;</span> <span class="dv">18</span></span>
+<span id="lst-person-22"><a href="#lst-person-22" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="lst-person-23"><a href="#lst-person-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> greet(<span class="va">self</span>, message <span class="op">=</span> <span class="st">"Hello"</span>):</span>
+<span id="lst-person-24"><a href="#lst-person-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Send a greeting message to the person.</span></span>
+<span id="lst-person-25"><a href="#lst-person-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="lst-person-26"><a href="#lst-person-26" aria-hidden="true" tabindex="-1"></a><span class="co">        Args:</span></span>
+<span id="lst-person-27"><a href="#lst-person-27" aria-hidden="true" tabindex="-1"></a><span class="co">            message (str, optional): Greeting message. Defaults to "Hello".</span></span>
+<span id="lst-person-28"><a href="#lst-person-28" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="lst-person-29"><a href="#lst-person-29" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"</span><span class="sc">{</span>message<span class="sc">}</span><span class="ss">, </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>name<span class="sc">}</span><span class="ss">!"</span>)</span>
+<span id="lst-person-30"><a href="#lst-person-30" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="lst-person-31"><a href="#lst-person-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> birthday(<span class="va">self</span>):</span>
+<span id="lst-person-32"><a href="#lst-person-32" aria-hidden="true" tabindex="-1"></a>        <span class="co">"""Celebrate the person's birthday.</span></span>
+<span id="lst-person-33"><a href="#lst-person-33" aria-hidden="true" tabindex="-1"></a><span class="co">        </span></span>
+<span id="lst-person-34"><a href="#lst-person-34" aria-hidden="true" tabindex="-1"></a><span class="co">        Add an year to the person's age and send a happy birthday message.</span></span>
+<span id="lst-person-35"><a href="#lst-person-35" aria-hidden="true" tabindex="-1"></a><span class="co">        """</span></span>
+<span id="lst-person-36"><a href="#lst-person-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.age <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="lst-person-37"><a href="#lst-person-37" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.underage <span class="op">=</span> <span class="va">self</span>.age <span class="op">&lt;</span> <span class="dv">18</span></span>
+<span id="lst-person-38"><a href="#lst-person-38" aria-hidden="true" tabindex="-1"></a>        <span class="va">self</span>.greet(<span class="st">"Happy birthday"</span>)</span>
+<span id="lst-person-39"><a href="#lst-person-39" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"You are now </span><span class="sc">{</span><span class="va">self</span><span class="sc">.</span>age<span class="sc">}</span><span class="ss"> years old!"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
 <li><p>For the <code>argparse</code> section:</p>
 <ul>
-<li>Not all the code can be run in Jupyter notebook. Just for practice, add <code>import argparse</code> to the top of your script and in the end add the code in <a href="#lst-arguments">Listing&nbsp;1</a>.</li>
+<li>Not all the code can be run in Jupyter notebook. Just for practice, add <code>import argparse</code> to the top of your script and in the end add the code in <a href="#lst-arguments">Listing&nbsp;2</a>.</li>
 </ul></li>
 </ul>
 <div id="lst-arguments" class="listing">
-<p>Listing&nbsp;1: Argparse code for a script.</p>
+<p>Listing&nbsp;2: Argparse code for a script.</p>
 <div class="sourceCode" id="lst-arguments" data-lst-cap="Argparse code for a script."><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="lst-arguments-1"><a href="#lst-arguments-1" aria-hidden="true" tabindex="-1"></a>parser <span class="op">=</span> argparse.ArgumentParser(<span class="st">"docstrings"</span>)</span>
 <span id="lst-arguments-2"><a href="#lst-arguments-2" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">"name"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">str</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Name of the person to greet"</span>)</span>
 <span id="lst-arguments-3"><a href="#lst-arguments-3" aria-hidden="true" tabindex="-1"></a>parser.add_argument(<span class="st">"--age"</span>, <span class="bu">type</span><span class="op">=</span><span class="bu">int</span>, default <span class="op">=</span> <span class="dv">25</span>, <span class="bu">help</span><span class="op">=</span><span class="st">"Age of the person before their birthday."</span>)</span>
