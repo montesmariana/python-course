@@ -364,6 +364,258 @@
     "text": "While generating\n\ndef birthday():\n    age = 0\n    while True:\n        age += 1\n        year = \"year\" if age == 1 else \"years\"\n        yield f\"Happy birthday! You are {age} {year} old!\"\n\n\nbday = birthday()\nnext(bday)\n\n'Happy birthday! You are 1 year old!'\n\n\n\nnext(bday)\n\n'Happy birthday! You are 2 years old!'"
   },
   {
+    "objectID": "slides/regex-bs4.html#vocabulary",
+    "href": "slides/regex-bs4.html#vocabulary",
+    "title": "Documentation",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\nregex / regular expression\n\na pattern describing a certain amount of text.\n\nmatch\n\npiece of text or sequence of bytes/characters that a pattern corresponds to.\n\nstring\n\nsequence of characters that the regular expression is applied to\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#regular-expression-object",
+    "href": "slides/regex-bs4.html#regular-expression-object",
+    "title": "Documentation",
+    "section": "Regular expression object",
+    "text": "Regular expression object\nWith re.compile(regex[, flags]) you get a re.Pattern object. Useful if you want to use the same pattern multiple times.\n\npattern = re.compile(r'\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\b', re.I)\ntype(pattern)\n\nre.Pattern\n\n\n\nUseful attributes: pattern and groups.\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\\\b'\n\n\n\npattern.groups\n\n2"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#match-object",
+    "href": "slides/regex-bs4.html#match-object",
+    "title": "Documentation",
+    "section": "Match object",
+    "text": "Match object\nOutput of re.search(), re.match(), re.fullmatch() and the search(), match() and fullmatch() methods of a re.Pattern object.\n\nemail = pattern.search('My email is mariana.montes@kuleuven.be')\nemail\n\n<re.Match object; span=(12, 38), match='mariana.montes@kuleuven.be'>\n\n\n\nastring = re.search(r'[a-z]+\\.$', 'Here is my email.')\nastring\n\n<re.Match object; span=(11, 17), match='email.'>"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#match-object-components",
+    "href": "slides/regex-bs4.html#match-object-components",
+    "title": "Documentation",
+    "section": "Match object: components",
+    "text": "Match object: components\n\nemail.re\n\nre.compile(r'\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\b',\n           re.IGNORECASE|re.UNICODE)\n\n\n\nemail.string\n\n'My email is mariana.montes@kuleuven.be'\n\n\n\nastring.re\n\nre.compile(r'[a-z]+\\.$', re.UNICODE)\n\n\n\nastring.string\n\n'Here is my email.'\n\n\nAlso useful:\n\nemail.expand(r'The username is \\g<username> and the domain is \\2.')\n\n'The username is mariana.montes and the domain is kuleuven.be.'"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#match-object-matches",
+    "href": "slides/regex-bs4.html#match-object-matches",
+    "title": "Documentation",
+    "section": "Match object: matches",
+    "text": "Match object: matches\n\nemail.group()\n\n'mariana.montes@kuleuven.be'\n\n\n\nemail.groups()\n\n('mariana.montes', 'kuleuven.be')\n\n\n\nemail.group('username')\n\n'mariana.montes'\n\n\n\nemail.group(1)\n\n'mariana.montes'\n\n\n\nastring.group()\n\n'email.'\n\n\n\nastring.groups()\n\n()"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#match-object-indices",
+    "href": "slides/regex-bs4.html#match-object-indices",
+    "title": "Documentation",
+    "section": "Match object: indices",
+    "text": "Match object: indices\n\nemail.span()\n\n(12, 38)\n\n\n\nemail.string[email.start():email.end()]\n\n'mariana.montes@kuleuven.be'\n\n\n\nemail.string[:email.start()]\n\n'My email is '\n\n\n\nastring.span()\n\n(11, 17)\n\n\n\nastring.string[email.start():email.end()]\n\n'mail.'"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#special-characters",
+    "href": "slides/regex-bs4.html#special-characters",
+    "title": "Documentation",
+    "section": "Special characters",
+    "text": "Special characters\n\\, ^, $, ., |, ?, *, +, (, ), [, {.\n\nSpecial meaning\nIf used where they shouldn’t (e.g. + at the beginning): error\nUsed literally if escaped with \\. Combining \\ with another character may result in a special meaning.\n] is literal always unless you already used [ and didn’t close it yet."
+  },
+  {
+    "objectID": "slides/regex-bs4.html#escaping-and-quotes",
+    "href": "slides/regex-bs4.html#escaping-and-quotes",
+    "title": "Documentation",
+    "section": "Escaping and quotes",
+    "text": "Escaping and quotes\n\nQuotation marks may have to be escaped if they match the ones you use to surround your regex.\nRecommended to use raw strings to avoid escaping too much:\n\n\nshort_string = r\"a one line raw string\"\nshort_string\n\n'a one line raw string'\n\n\n\nlong_string = r\"\"\"a raw string\nwith\nmany lines\n\"\"\"\nlong_string\n\n'a raw string\\nwith\\nmany lines\\n'"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#non-printable-characters",
+    "href": "slides/regex-bs4.html#non-printable-characters",
+    "title": "Documentation",
+    "section": "Non-printable characters",
+    "text": "Non-printable characters\n\n\\t = tab\n\\r = carriage return\n\\n = line feed\n\n\nprint(short_string)\nre.findall(r'\\n', short_string)\n\na one line raw string\n\n\n[]\n\n\n\nprint(long_string)\nre.findall(r'\\n', long_string)\n\na raw string\nwith\nmany lines\n\n\n\n['\\n', '\\n', '\\n']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#character-classes",
+    "href": "slides/regex-bs4.html#character-classes",
+    "title": "Documentation",
+    "section": "Character classes",
+    "text": "Character classes\n\nMatch one out of several characters by placing them between [].\nNegate the match by starting with ^. It can also match line break characters. It has to match something.\n\n\n\n\n\n\n\n\nExample\n\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\\\b'\n\n\n\n[a-z0-9_.] matches any lowercase letter, digit, _ or .\n[a-z] only matches lowercase letters.\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#character-classes-1",
+    "href": "slides/regex-bs4.html#character-classes-1",
+    "title": "Documentation",
+    "section": "Character classes",
+    "text": "Character classes\n\nOnly special characters inside are ], \\, ^ , -. They can be escaped with a backslash or by changing the position so they don’t take their special meaning.\nA ?, * or + afterwards matches the character class, not the matched character (see Backreferences)\n\n\n\n\n\n\n\nExample\n\n\n\n[a-z0-9_.]+ matches any combination of one or more lowercase letters, digits, _ or .\n[a-z]+ matches one or more lowecase letters, not necessarily the same letter repeated.\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#shorthand-character-classes-digits",
+    "href": "slides/regex-bs4.html#shorthand-character-classes-digits",
+    "title": "Documentation",
+    "section": "Shorthand character classes: digits",
+    "text": "Shorthand character classes: digits\n\ntest_string = \"\"\"A string (test_string) with 3 numbers:\n1, 2 and the one-mentioned-before.\"\"\"\n\n\n\\d = [0-9] (but also other scripts). \\D is the opposite.\n\n\nre.findall(r'\\d+', test_string)\n\n['3', '1', '2']\n\n\n\nre.findall(r'\\D+', test_string)\n\n['A string (test_string) with ',\n ' numbers:\\n',\n ', ',\n ' and the one-mentioned-before.']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#shorthand-character-classes-words",
+    "href": "slides/regex-bs4.html#shorthand-character-classes-words",
+    "title": "Documentation",
+    "section": "Shorthand character classes: words",
+    "text": "Shorthand character classes: words\n\ntest_string\n\n'A string (test_string) with 3 numbers:\\n1, 2 and the one-mentioned-before.'\n\n\n\n\\w = [A-Za-z0-9_]. \\W is the opposite.\n\n\nprint(re.findall(r'\\w+', test_string))\n\n['A', 'string', 'test_string', 'with', '3', 'numbers', '1', '2', 'and', 'the', 'one', 'mentioned', 'before']\n\n\n\nre.findall(r'\\W+', test_string)\n\n[' ', ' (', ') ', ' ', ' ', ':\\n', ', ', ' ', ' ', ' ', '-', '-', '.']\n\n\n\nIt matches other scripts too:\n\n\nre.findall('\\w+', '言葉 means \"word\".')\n\n['言葉', 'means', 'word']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#shorthand-character-classes-spaces",
+    "href": "slides/regex-bs4.html#shorthand-character-classes-spaces",
+    "title": "Documentation",
+    "section": "Shorthand character classes: spaces",
+    "text": "Shorthand character classes: spaces\n\ntest_string\n\n'A string (test_string) with 3 numbers:\\n1, 2 and the one-mentioned-before.'\n\n\n\n\\s = [ \\t\\r\\n\\f] (\\f = form feed). \\S is the opposite.\n\n\nre.findall(r'\\s+', test_string)\n\n[' ', ' ', ' ', ' ', ' ', '\\n', ' ', ' ', ' ', ' ']\n\n\n\nprint(re.findall(r'\\S+', test_string))\n\n['A', 'string', '(test_string)', 'with', '3', 'numbers:', '1,', '2', 'and', 'the', 'one-mentioned-before.']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#shorthand-character-classes",
+    "href": "slides/regex-bs4.html#shorthand-character-classes",
+    "title": "Documentation",
+    "section": "Shorthand character classes",
+    "text": "Shorthand character classes\n\ntest_string\n\n'A string (test_string) with 3 numbers:\\n1, 2 and the one-mentioned-before.'\n\n\n\nThey can also be used inside brackets.\n\n\n# any sequence of digits + spaces\nre.findall(r'[\\d\\s]+', test_string)\n\n[' ', ' ', ' ', ' 3 ', '\\n1', ' 2 ', ' ', ' ']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#dot",
+    "href": "slides/regex-bs4.html#dot",
+    "title": "Documentation",
+    "section": "Dot",
+    "text": "Dot\n\nMatches anything except for line breaks.\nUse sparingly: it can match things you don’t want to match! Sometimes a negated character class is better.\n\n\nre.search('(.+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()\n\n('mariana.montes@kuleuven.be or anothermail',)\n\n\n\nre.search('([^@]+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()\n\n('mariana.montes',)\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#anchors",
+    "href": "slides/regex-bs4.html#anchors",
+    "title": "Documentation",
+    "section": "Anchors",
+    "text": "Anchors\n\nDoes not match a character but a position\n^ , $, \\b (for word boundaries: between something that matches \\w and either the beginning or end of the string or something that does not match \\w). ::: footer regular-expressions.info :::"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#alternation",
+    "href": "slides/regex-bs4.html#alternation",
+    "title": "Documentation",
+    "section": "Alternation",
+    "text": "Alternation\n| to match either one sequence or another ::: footer regular-expressions.info :::"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#optional-items",
+    "href": "slides/regex-bs4.html#optional-items",
+    "title": "Documentation",
+    "section": "Optional items",
+    "text": "Optional items\n? make the preceding token (character or group) optional It will try to match if possible and only return a match without if that’s the only option\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#repetition",
+    "href": "slides/regex-bs4.html#repetition",
+    "title": "Documentation",
+    "section": "Repetition",
+    "text": "Repetition\n* and +, {min,max}\n\n{0,1} = ?\n{0,} = *\n{1,} = +\n\n{x} = repeat exactly x times\n\n? after one of this makes the search lazy instead of greedy. (but negated character class is more efficient) ::: footer regular-expressions.info :::"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#grouping-and-capturing",
+    "href": "slides/regex-bs4.html#grouping-and-capturing",
+    "title": "Documentation",
+    "section": "Grouping and capturing",
+    "text": "Grouping and capturing\nwith ()\n\nto apply a quantifier or limit an alternation\ncreates a numbered group unless it starts with ?: (non-capturing group)\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#backreferences",
+    "href": "slides/regex-bs4.html#backreferences",
+    "title": "Documentation",
+    "section": "Backreferences",
+    "text": "Backreferences\nto match the same text again\n\n\\1 for the first capturing group, \\2 for the second… (non-capturing groups are excluded)\ndifference between [ab]+ and (a|b)\\1+\nReplace with re.sub(regex, replacement, subject).\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#named-groups",
+    "href": "slides/regex-bs4.html#named-groups",
+    "title": "Documentation",
+    "section": "Named groups",
+    "text": "Named groups\n?P<name> at the beginning of a capturing group, then backreference is (?P=name): this does not capture ::: footer regular-expressions.info :::"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#free-spacing-and-comments",
+    "href": "slides/regex-bs4.html#free-spacing-and-comments",
+    "title": "Documentation",
+    "section": "Free spacing and comments",
+    "text": "Free spacing and comments\n\nAllow to use spaces between “logical sections”\nAdd comments with #\nWith the re.X flag in Python\n\n\nregular-expressions.info - re.X"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#unicode",
+    "href": "slides/regex-bs4.html#unicode",
+    "title": "Documentation",
+    "section": "Unicode",
+    "text": "Unicode\nSTILL TO STUDY\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#mode-modifiers",
+    "href": "slides/regex-bs4.html#mode-modifiers",
+    "title": "Documentation",
+    "section": "Mode modifiers",
+    "text": "Mode modifiers\nre.compile() and flags\n\n\n\nMode\nFlag in (?<flag>)\nre. flag\n\n\n\n\nCase insensitive\ni\nI\n\n\nFree-spacing\nx\nX\n\n\nMultiline\nm\nM\n\n\nDot matches also new lines\ns\nS\n\n\n\n\nre.findall() and re.finditer() do not support the flags. re.match() and re.search() do.\n\n\nregular-expressions.info - re.compile()"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#lookahead-and-lookbehind",
+    "href": "slides/regex-bs4.html#lookahead-and-lookbehind",
+    "title": "Documentation",
+    "section": "Lookahead and lookbehind",
+    "text": "Lookahead and lookbehind\n\nDon’t return matches but whether a match is made or not.\n\nq(?!u) matches a ‘q’ that is NOT followed by an ‘u’\nq(?=u) matches a ‘q’ followed by an ‘u’ but not the ‘u’ itself.\n\nq(?=u)i can never match anything!\nCan be very useful to find a match with n characters, e.g. \\b(?=\\w{6}\\b)\\w*cat\\w* matches a word with exactly 6 characters that contains the pattern cat.\n\n(?<!a)b matches a ‘b’ NOT preceded by an ‘a’\n(?<=)b matches a ‘b’ preceded by an ‘a’, but not the ‘a’.\n\nLookbehind: no quantifiers or backreferences, alternation only if they have the same length.\nNot capturing groups (but can have groups inside)\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#conditionals",
+    "href": "slides/regex-bs4.html#conditionals",
+    "title": "Documentation",
+    "section": "Conditionals",
+    "text": "Conditionals\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#vocabulary-1",
+    "href": "slides/regex-bs4.html#vocabulary-1",
+    "title": "Documentation",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\ntag\n\ndefinition of tag\n\nattribute-value\n\ndefinition of attr\n\ntext?\n\nThe contents?"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#common-tags-and-how-they-are-used-html",
+    "href": "slides/regex-bs4.html#common-tags-and-how-they-are-used-html",
+    "title": "Documentation",
+    "section": "Common tags and how they are used: html",
+    "text": "Common tags and how they are used: html\n\nclass\nid"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#common-tags-in-tei-compliant-xml",
+    "href": "slides/regex-bs4.html#common-tags-in-tei-compliant-xml",
+    "title": "Documentation",
+    "section": "Common tags in TEI-compliant XML",
+    "text": "Common tags in TEI-compliant XML\n(Use ‘xml’ for parser)"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#get-one-tag",
+    "href": "slides/regex-bs4.html#get-one-tag",
+    "title": "Documentation",
+    "section": "Get one tag",
+    "text": "Get one tag\nProperties: name, attrs\n\nBeautifulSoup"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#find-all-tags",
+    "href": "slides/regex-bs4.html#find-all-tags",
+    "title": "Documentation",
+    "section": "Find all tags",
+    "text": "Find all tags\n\nBeautifulSoup"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#find-based-on-attribute",
+    "href": "slides/regex-bs4.html#find-based-on-attribute",
+    "title": "Documentation",
+    "section": "Find based on attribute",
+    "text": "Find based on attribute\n\nBeautifulSoup"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#get-the-text",
+    "href": "slides/regex-bs4.html#get-the-text",
+    "title": "Documentation",
+    "section": "Get the text",
+    "text": "Get the text\n\nBeautifulSoup"
+  },
+  {
+    "objectID": "slides/regex-bs4.html#example-with-tei-version-of-brown",
+    "href": "slides/regex-bs4.html#example-with-tei-version-of-brown",
+    "title": "Documentation",
+    "section": "Example with TEI-version of Brown",
+    "text": "Example with TEI-version of Brown"
+  },
+  {
     "objectID": "slides/oop.html#functional-vs-oo-programming",
     "href": "slides/oop.html#functional-vs-oo-programming",
     "title": "Object oriented programming",
@@ -572,6 +824,188 @@
     "title": "Object oriented programming",
     "section": "datetime.date",
     "text": "datetime.date\ndatetime.date.today() is an alternative constructor for the date class defined in the datetime package, providing the current date.\n\nfrom datetime import date\ntoday = date.today()\ntype(today)\n\ndatetime.date\n\n\nIt has several methods and attributes, among which .day, .month and .year.\n\nclass_content = [x for x in dir(today) if not x.startswith('_')]\nprint(class_content)\n\n['ctime', 'day', 'fromisocalendar', 'fromisoformat', 'fromordinal', 'fromtimestamp', 'isocalendar', 'isoformat', 'isoweekday', 'max', 'min', 'month', 'replace', 'resolution', 'strftime', 'timetuple', 'today', 'toordinal', 'weekday', 'year']"
+  },
+  {
+    "objectID": "slides/documentation.html#read-function-documentation",
+    "href": "slides/documentation.html#read-function-documentation",
+    "title": "Documentation",
+    "section": "Read function documentation",
+    "text": "Read function documentation\n\nhelp(print)\n\nHelp on built-in function print in module builtins:\n\nprint(...)\n    print(value, ..., sep=' ', end='\\n', file=sys.stdout, flush=False)\n    \n    Prints the values to a stream, or to sys.stdout by default.\n    Optional keyword arguments:\n    file:  a file-like object (stream); defaults to the current sys.stdout.\n    sep:   string inserted between values, default a space.\n    end:   string appended after the last value, default a newline.\n    flush: whether to forcibly flush the stream."
+  },
+  {
+    "objectID": "slides/documentation.html#write-function-documentation-docstrings",
+    "href": "slides/documentation.html#write-function-documentation-docstrings",
+    "title": "Documentation",
+    "section": "Write function documentation: docstrings",
+    "text": "Write function documentation: docstrings\n\nNumpy style\nGoogle style\nreST style"
+  },
+  {
+    "objectID": "slides/documentation.html#write-function-documentation-docstrings-1",
+    "href": "slides/documentation.html#write-function-documentation-docstrings-1",
+    "title": "Documentation",
+    "section": "Write function documentation: docstrings",
+    "text": "Write function documentation: docstrings\n\nGoogle style\n\n\ndef print_repeated_def(name, times = 1):\n    \"\"\"Print a message a number of times.\n\n    Print an excited message one or more times.\n\n    Args:\n        name (str): The name that the message is directed to.\n        times (int, optional): The number of times to\n        print the message. Defaults to 1.\n\n    Returns:\n        str: A welcome message.\n    \"\"\"\n    return f\"Hello, {name}! \"* max(abs(times), 0)"
+  },
+  {
+    "objectID": "slides/documentation.html#function-documentation",
+    "href": "slides/documentation.html#function-documentation",
+    "title": "Documentation",
+    "section": "Function documentation",
+    "text": "Function documentation\n\n?print_repeated_def\nhelp(print_repeated_def)\nprint_repeated_def.__doc__\n\n\n\n\nPrint a message a number of times.\n\n    Print an excited message one or more times.\n\n    Args:\n        name (str): The name that the message is directed to.\n        times (int, optional): The number of times to\n        print the message. Defaults to 1.\n\n    Returns:\n        str: A welcome message."
+  },
+  {
+    "objectID": "slides/documentation.html#docstrings-1",
+    "href": "slides/documentation.html#docstrings-1",
+    "title": "Documentation",
+    "section": "Docstrings",
+    "text": "Docstrings\n\nAs long comments, surrounded by \"\"\" or ''' on each side.\nWritten inside the definition of the function / method / class.\nAt least a short summary or description. Optionally a longer paragraph after one blank line.\n\n\ndef print_something():\n    \"\"\"Print some message.\"\"\"\n    print(\"You are awesome.\")\n\n\nGoogle docstrings examples"
+  },
+  {
+    "objectID": "slides/documentation.html#function-arguments-i",
+    "href": "slides/documentation.html#function-arguments-i",
+    "title": "Documentation",
+    "section": "Function arguments I",
+    "text": "Function arguments I\n\nUnder the Args subtitle.\nOptionally (but preferably), specify the type.\n\n\ndef print_repeated(name, times):\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name (str): Name to dedicate the message to.\n        times (int): Number of times to print the message.\n    \"\"\"\n    print(f\"Hello, {name}! \" * times)"
+  },
+  {
+    "objectID": "slides/documentation.html#function-arguments-ii",
+    "href": "slides/documentation.html#function-arguments-ii",
+    "title": "Documentation",
+    "section": "Function arguments II",
+    "text": "Function arguments II\n\nUse PEP 484 annotations for the types.\n\n\ndef print_repeated2(name: str, times: int):\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name: Name to dedicate the message to.\n        times: Number of times to print the message.\n    \"\"\"\n    print(f\"Hello, {name}! \" * times)\n\n\nCan be retrieved with __annotations__ attribute:\n\n\nprint(print_repeated2.__annotations__)\n\n{'name': <class 'str'>, 'times': <class 'int'>}"
+  },
+  {
+    "objectID": "slides/documentation.html#optional-arguments",
+    "href": "slides/documentation.html#optional-arguments",
+    "title": "Documentation",
+    "section": "Optional arguments",
+    "text": "Optional arguments\n\ndef print_repeated_default(name, times = 1):\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name (str): Name to dedicate the message to.\n        times (int, optional): Number of times to print the message.\n        Defaults to 1.\n    \"\"\"\n    print(f\"Hello, {name}! \" * times)"
+  },
+  {
+    "objectID": "slides/documentation.html#return-value-i",
+    "href": "slides/documentation.html#return-value-i",
+    "title": "Documentation",
+    "section": "Return value I",
+    "text": "Return value I\n\nUnder the Returns: heading.\n\n\ndef return_repeated(name, times = 1):\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name (str): Name to dedicate the message to.\n        times (int, optional): Number of times to print the message.\n        Defaults to 1.\n\n    Returns:\n        str: A dedicated message repeated a number of times.\n    \"\"\"\n    return f\"Hello, {name}! \" * times"
+  },
+  {
+    "objectID": "slides/documentation.html#return-value-ii",
+    "href": "slides/documentation.html#return-value-ii",
+    "title": "Documentation",
+    "section": "Return value II",
+    "text": "Return value II\n\nWith PEP 484 annotations.\n\n\ndef return_repeated(name: str, times: int = 1) -> str:\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name: Name to dedicate the message to.\n        times (optional): Number of times to print the message.\n        Defaults to 1.\n\n    Returns:\n        A dedicated message repeated a number of times.\n    \"\"\"\n    return f\"Hello, {name}! \" * times"
+  },
+  {
+    "objectID": "slides/documentation.html#exceptions",
+    "href": "slides/documentation.html#exceptions",
+    "title": "Documentation",
+    "section": "Exceptions",
+    "text": "Exceptions\n\nUnder the Raises heading.\n\n\ndef return_repeated_witherror(name: str, times: int = 1) -> str:\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name: Name to dedicate the message to.\n        times (optional): Number of times to print the message.\n        Defaults to 1.\n\n    Returns:\n        A dedicated message repeated a number of times.\n\n    Raises:\n        TypeError: If `times` is not an integer.\n        ValueError: If `times` is smaller than or equal to 0.\n    \"\"\"\n    if type(times) != int:\n        raise TypeError(\"The number of times should be an integer!\")\n    if (times <= 0):\n        raise ValueError(\"The number of times must be one or larger!\")\n    return f\"Hello, {name}! \" * times"
+  },
+  {
+    "objectID": "slides/documentation.html#examples",
+    "href": "slides/documentation.html#examples",
+    "title": "Documentation",
+    "section": "Examples",
+    "text": "Examples\n\nOptional, to show how a function is used.\n\n\ndef return_repeated_help(name: str, times: int = 1) -> str:\n    \"\"\"Dedicate a message to someone.\n\n    Args:\n        name: Name to dedicate the message to.\n        times (optional): Number of times to print the message.\n        Defaults to 1.\n\n    Returns:\n        A dedicated message repeated a number of times.\n    \n    Examples:\n        >>> return_repeated(\"Kiki\", 3)\n        \"Hello, Kiki! Hello, Kiki! Hello, Kiki! \"\n    \"\"\"\n    return f\"Hello, {name}! \" * times"
+  },
+  {
+    "objectID": "slides/documentation.html#documenting-classes",
+    "href": "slides/documentation.html#documenting-classes",
+    "title": "Documentation",
+    "section": "Documenting classes",
+    "text": "Documenting classes\n\nDocument at class level or inside __init__():\n\n\nclass Person:\n    def __init__(self, name, age = 20):\n        \"\"\"Class that represents a person.\n\n        Args:\n            name (str): Name of the person\n            age (int, optional): Current age of the person.\n            Defaults to 20.\n            \n        Attributes:\n            name (str): Name of the person\n            age (int): Current age of the person.\n            underage (bool): Whether the person is younger\n            than 18 years old.\n        \"\"\"\n        self.name = str(name).upper()\n        self.age = age\n        self.underage = self.age < 18"
+  },
+  {
+    "objectID": "slides/documentation.html#more-about-docstrings",
+    "href": "slides/documentation.html#more-about-docstrings",
+    "title": "Documentation",
+    "section": "More about docstrings",
+    "text": "More about docstrings\n\nMethods are documented like any other function.\nDunder methods (e.g. __str__) and private methods don’t need to be documented.\nA Note section can be added for further notes."
+  },
+  {
+    "objectID": "slides/documentation.html#argparse-1",
+    "href": "slides/documentation.html#argparse-1",
+    "title": "Documentation",
+    "section": "Argparse",
+    "text": "Argparse\n\nLibrary to parse command line arguments.\nFor example, run the code in “myscript.py” providing the argument “filename”.\n\npython myscript.py filename\n\nCreate documentation for the script that can be read with:\n\npython myscript.py --help"
+  },
+  {
+    "objectID": "slides/documentation.html#mini-example",
+    "href": "slides/documentation.html#mini-example",
+    "title": "Documentation",
+    "section": "Mini example",
+    "text": "Mini example\nIn a script that can be run in the command line, you would write something like this:\n\nimport argparse # import the package\nparser = argparse.ArgumentParser()\nparser.add_argument('filename')\nargs = parser.parse_args()\n\n\nLet’s go bit by bit, assuming import argparse has been run."
+  },
+  {
+    "objectID": "slides/documentation.html#create-a-parser",
+    "href": "slides/documentation.html#create-a-parser",
+    "title": "Documentation",
+    "section": "Create a parser",
+    "text": "Create a parser\n\nparser = argparse.ArgumentParser()\n\nWe start up a parser that can have some arguments, such as:\n\nprog = name of your program\ndescription = what your program does\nepilog = message at the end of your documentation page\n\n\nparser = argparse.ArgumentParser(\n    'filereader',\n    description = 'Read a file and do something with it.',\n    epilog = 'And the file was happy ever after.')"
+  },
+  {
+    "objectID": "slides/documentation.html#add-arguments",
+    "href": "slides/documentation.html#add-arguments",
+    "title": "Documentation",
+    "section": "Add arguments",
+    "text": "Add arguments\n\nAdd a positional argument named ‘filename’.\nAfter args = parser.parse_args(), it can be accessed as args.filename.\n\n\nparser.add_argument('filename')\n\n\n\nSpecify the type (it gets converted).\n\n\nparser.add_argument('filename', type=str)\n\n\n\n\nAdd a description.\n\n\nparser.add_argument(\n    'filename', type=str,\n    help=\"The name of a file\")"
+  },
+  {
+    "objectID": "slides/documentation.html#file-as-type",
+    "href": "slides/documentation.html#file-as-type",
+    "title": "Documentation",
+    "section": "File as type",
+    "text": "File as type\n\nIf you want to open the file for reading or writing, there is a special type. Then you don’t need to use open() inside your script.\n\n\nparser.add_argument(\n    'filename',\n    type=argparse.FileType('r', encoding='utf-8'))\n\n\nYou can make it an optional argument if you want to allow the standard input/output as default.\n\n\nimport sys\nparser.add_argument(\n    'filename', nargs='?',\n    type=argparse.FileType('r', encoding='utf-8'),\n    default = sys.stdin)"
+  },
+  {
+    "objectID": "slides/documentation.html#options",
+    "href": "slides/documentation.html#options",
+    "title": "Documentation",
+    "section": "Options",
+    "text": "Options\n\nCreate optional arguments with -n and --name for a name argument.\nLimit the possible values of your arguments with choices.\nAccept an arbitrary number of values for a list with nargs."
+  },
+  {
+    "objectID": "slides/documentation.html#example-positional-argument",
+    "href": "slides/documentation.html#example-positional-argument",
+    "title": "Documentation",
+    "section": "Example: positional argument",
+    "text": "Example: positional argument\n\nimport sys\nparser.add_argument('filename', nargs='?',\n    type=argparse.FileType('r', encoding='utf-8'),\n    default = sys.stdin)\nparser.parse_args(['files/frankenstein.html'])\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>)\n\n\n\n\n# without any value\nparser.parse_args([])\n\nNamespace(filename=<_io.TextIOWrapper name='<stdin>' mode='r' encoding='utf-8'>)"
+  },
+  {
+    "objectID": "slides/documentation.html#example-optional-argument-with-choices",
+    "href": "slides/documentation.html#example-optional-argument-with-choices",
+    "title": "Documentation",
+    "section": "Example: optional argument with choices",
+    "text": "Example: optional argument with choices\n\nparser.add_argument('-n', '--name', type=str,\n    choices = ['Chi', 'Sai', 'Panchita'])\nparser.parse_args('files/frankenstein.html -n Chi'.split())\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>, name='Chi')\n\n\n\n\n# without any value\nparser.parse_args(['files/frankenstein.html'])\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>, name=None)\n\n\n\n\n\n# with wrong value\nparser.parse_args('files/frankenstein.html -n Chiquita'.split())\n\nAssertionError:"
+  },
+  {
+    "objectID": "slides/documentation.html#example-optional-argument-with-multiple-values",
+    "href": "slides/documentation.html#example-optional-argument-with-multiple-values",
+    "title": "Documentation",
+    "section": "Example: optional argument with multiple values",
+    "text": "Example: optional argument with multiple values\n\nparser.add_argument('-f', '--favorite-food', type=str, nargs='+')\nparser.parse_args('files/frankenstein.html -n Chi -f catfood plants salmon'.split())\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>, name='Chi', favorite_food=['catfood', 'plants', 'salmon'])\n\n\n\n\n# only one value\nparser.parse_args('files/frankenstein.html -n Chi -f catfood'.split())\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>, name='Chi', favorite_food=['catfood'])\n\n\n\n\n\n# no values\nparser.parse_args('files/frankenstein.html -n Chi'.split())\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>, name='Chi', favorite_food=None)"
+  },
+  {
+    "objectID": "slides/documentation.html#example-numeric-argument",
+    "href": "slides/documentation.html#example-numeric-argument",
+    "title": "Documentation",
+    "section": "Example: numeric argument",
+    "text": "Example: numeric argument\n\n# also positional\nparser.add_argument('age', type=int)\nparser.parse_args('files/frankenstein.html 3 -n Chi -f catfood plants salmon'.split())\n\nNamespace(filename=<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>, name='Chi', favorite_food=['catfood', 'plants', 'salmon'], age=3)\n\n\n\n\n# different order\nparser.parse_args('files/frankenstein.html -n Chi -f catfood plants salmon 3'.split())\n\nAssertionError: \n\n\n\n\n\n# different order\nparser.parse_args('3 files/frankenstein.html -n Chi -f catfood plants salmon'.split())\n\nAssertionError:"
+  },
+  {
+    "objectID": "slides/documentation.html#retrieve-your-values",
+    "href": "slides/documentation.html#retrieve-your-values",
+    "title": "Documentation",
+    "section": "Retrieve your values",
+    "text": "Retrieve your values\n\nargs = parser.parse_args('files/frankenstein.html 3 -n Chi -f catfood plants salmon'.split())\nargs.filename\n\n<_io.TextIOWrapper name='files/frankenstein.html' mode='r' encoding='utf-8'>\n\n\n\nargs.filename.readlines()[:2]\n\n['<!DOCTYPE html>\\n',\n '<!-- saved from url=(0056)https://www.gutenberg.org/cache/epub/84/pg84-images.html -->\\n']\n\n\n\nargs.name\n\n'Chi'\n\n\n\nargs.favorite_food\n\n['catfood', 'plants', 'salmon']\n\n\n\ntype(args.age)\n\nint"
+  },
+  {
+    "objectID": "slides/documentation.html#runimport-a-script",
+    "href": "slides/documentation.html#runimport-a-script",
+    "title": "Documentation",
+    "section": "Run/import a script",
+    "text": "Run/import a script\n\nRun a script (with or without arguments)\n\nVS Code: “Run” button (only without arguments).\nConsole: python name_of_your_script.py.\nJupyter: %run name_of_your_script.py.\n\nImport: import name_of_your_script. -> make functions, classes… available\n\n\n\n\n\n\n\nif __name__ == '__main__':\n\n\nCode inside this if statement is ONLY executed when you run a script, not when you import it."
   },
   {
     "objectID": "slides/variables.html#basic-types",
@@ -1092,6 +1526,13 @@
     "text": "Today we learn about if-statements and functions:\n\nCreating and if(-else)-statement.\nBoolean statements.\nDefining a function.\nReserved words: return, raise, yield…\nNameError.\n\n\n\n\n\nWhat to do in Jupyter\nFollow along the presentation and copy (or rewrite) the code in your Jupyter Notebook. You can also write down extra notes as markdown and experiment with the different variable types.\nWrite the code for the “solo practice” sections.\n\n\nWhat to do in VS Code\nLast class we created a list of dictionaries and ran a loop across them to print some statements.\n\n\nShow the code\nhat_sky = {\n    'title' : 'A hat full of sky',\n    'author' : 'Terry Pratchett',\n    'year' : 2004,\n    'language' : 'English',\n    'main_characters' : [\n        'Tiffany Aching',\n        'Granny Weatherwax',\n        'Rob Anybody'\n        ]\n}\nsmall_gods = {\n    'title' : 'Small gods',\n    'author' : 'Terry Pratchett',\n    'year' : 1992,\n    'language' : 'English',\n    'main_characters' : [\n        'Om',\n        'Brutha'\n        ]\n}\ncolor_magic = {\n    'title' : 'The color of magic',\n    'author' : 'Terry Pratchett',\n    'year' : 1983,\n    'language' : 'English',\n    'main_characters' : [\n        'Rincewind',\n        'Twoflower'\n        ]\n}\nshepherd_crown = {\n    'title' : \"The shepherd's crown\",\n    'author' : 'Terry Pratchett',\n    'year' : 2015,\n    'language' : 'English',\n    'main_characters' : [\n        'Tiffany Aching',\n        'Nightshade',\n        'Peaseblossom'\n        ]\n}\ndiscworld_sample = [color_magic, small_gods, hat_sky, shepherd_crown]\nfor book in discworld_sample:\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \" \".join([sent_1, sent_2, sent_3])\n    print(book_description)\n    print()\n\n\nNow we will write a function that runs the piece of code that we applied to each book. We will also change the separator between sentences to a line change (“”).\n\ndef describe_book(book):\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\n\nWe also want to check that the input argument book is a dictionary, that it contains the right keys and that their values are of the correct type. If any of these conditions are not fulfilled, we will raise an error.\n\ndef describe_book(book):\n    # check that the input is a dictionary\n    if type(book) != dict:\n        raise TypeError(\"Please provide a dictionary!\")\n    \n    # check that the dict has the right keys\n    for key in ['title', 'author', 'language', 'year', 'main_characters']:\n        if not key in book:\n            raise KeyError(f\"'{key}' is missing from the dictionary!\")\n        # check the types\n        if key == 'year':\n            if type(book[key]) != int:\n                raise TypeError(f\"The year should be an integer!\")\n        elif key == \"main_characters\":\n            if type(book[key]) != list:\n                raise TypeError(f\"The main characters should be provided as a list!\")\n        elif type(book[key]) != str:\n            raise TypeError(f\"The {key} should be a string!\")\n\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\n\nThis function is getting very long, so we can create a different function to make our checks.\n\ndef check_book(book):\n    # check that the input is a dictionary\n    if type(book) != dict:\n        raise TypeError(\"Please provide a dictionary!\")\n    \n    # check that the dict has the right keys\n\n    for key in ['title', 'author', 'language', 'year', 'main_characters']:\n        if not key in book:\n            raise KeyError(f\"'{key}' is missing from the dictionary!\")\n        # check the types\n        if key == 'year':\n            if type(book[key]) != int:\n                raise TypeError(f\"The year should be an integer!\")\n        elif key == \"main_characters\":\n            if type(book[key]) != list:\n                raise TypeError(f\"The main characters should be provided as a list!\")\n        elif type(book[key]) != str:\n            raise TypeError(f\"The {key} should be a string!\")\n    return\n\ndef describe_book(book):\n    # check that the input is correct\n    check_book(book)\n\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\n\nThen we can call our function with whatever we want: the right input and wrong input.\n\ndescribe_book(color_magic)\n\nThe Color Of Magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago.\nThe main characters are: Rincewind, Twoflower.\n\n\n\nfor book in discworld_sample:\n    describe_book(book)\n    print()\n\nThe Color Of Magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago.\nThe main characters are: Rincewind, Twoflower.\n\nSmall Gods was written by Terry Pratchett in English.\nIt was published in 1992, that is, 31 years ago.\nThe main characters are: Om, Brutha.\n\nA Hat Full Of Sky was written by Terry Pratchett in English.\nIt was published in 2004, that is, 19 years ago.\nThe main characters are: Tiffany Aching, Granny Weatherwax, Rob Anybody.\n\nThe Shepherd'S Crown was written by Terry Pratchett in English.\nIt was published in 2015, that is, 8 years ago.\nThe main characters are: Tiffany Aching, Nightshade, Peaseblossom.\n\n\n\nYou can try (in Jupyter Notebook) different bad-outputs to stress-test the checks.\n\ndescribe_book(\"The color of magic\")\n\nTypeError: Please provide a dictionary!\n\n\nWe can also add if-statements that don’t raise erros.\n\ndef describe_book(book):\n    # check that the input is correct\n    check_book(book)\n\n    sent_1 = f\"{book['title'].title()} was written by {book['author'].title()} in {book['language']}.\"\n    \n    sent_2 = f\"It was published in {book['year']}, that is, {2023-book['year']} years ago.\"\n    if book['year'] < 1990:\n        sent_2 = sent_2 + \" (That's so long ago!)\"\n\n    sent_3 = f\"The main characters are: {', '.join(book['main_characters'])}.\"\n    book_description = \"\\n\".join([sent_1, sent_2, sent_3])\n    print(book_description)\ndescribe_book(color_magic)\n\nThe Color Of Magic was written by Terry Pratchett in English.\nIt was published in 1983, that is, 40 years ago. (That's so long ago!)\nThe main characters are: Rincewind, Twoflower.\n\n\n\ndescribe_book(shepherd_crown)\n\nThe Shepherd'S Crown was written by Terry Pratchett in English.\nIt was published in 2015, that is, 8 years ago.\nThe main characters are: Tiffany Aching, Nightshade, Peaseblossom."
   },
   {
+    "objectID": "classes/2023-04-18-docs.html",
+    "href": "classes/2023-04-18-docs.html",
+    "title": "Docstrings and script arguments",
+    "section": "",
+    "text": "Today we learn about docstrings and argparse:\n\nDocumenting functions and classes with docstrings\nCreating scripts that take arguments with argparse\nRunning vs importing scripts\n\n\n\n\n\nWhat to do during the class\n\nFor the “docstrings” section:\n\nFollow along the presentation and copy (or rewrite) the code in your Jupyter Notebook.\nThen copy the documented functions to a “.py” file in VS Code.\n\nFor the argparse section:\n\nNot all the code can be run in Jupyter notebook. Just for practice, add import argparse to the top of your script and in the end add the code in Listing 1.\n\n\n\nListing 1: Argparse code for a script.\nparser = argparse.ArgumentParser(\"docstrings\")\nparser.add_argument(\"name\", type=str, help=\"Name of the person to greet\")\nparser.add_argument(\"--age\", type=int, default = 25, help=\"Age of the person before their birthday.\")\nargs = parser.parse_args()\nprsn = Person(args.name, args.age)\nprsn.greet()\nprsn.birthday()\n\n\n\nFinal exercise\nFor your assignment, you wrote a Jupyter notebook documenting some class definitions, exemplifying them and running them. Use the same contents but change the format:\n\nDocument your class and function definitions with docstrings.\nMove them to a script.\nAdd a description to the script itself as a docstring.\nImport argparse (at the beginning of your script) and, at the end, add an if __name__ == '__main__': section in which you run the final code of your notebook based on the appropriate arguments.\n\nCrucially, the name of the file you need to open.\nOptionally, an argument that returns a list of items to select from your list of dictionaries (you can combine nargs and choices!).\n\nIn your Jupyter Notebook:\n\nImport your script and try checking the documentation of your classes / functions.\nExemplify your classes like you did before, but using them as imported from the script. (Don’t forget to prefix the class name with the script name!)\nRun your script with %run and the appropriate arguments.\n\n\n\n\n\n\n\n\nFinal paper\n\n\n\nThe final project in June will have this format!"
+  },
+  {
     "objectID": "classes/2023-03-14-files.html",
     "href": "classes/2023-03-14-files.html",
     "title": "Working with files",
@@ -1103,7 +1544,7 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/2023-04-18-first-assignment.html",
