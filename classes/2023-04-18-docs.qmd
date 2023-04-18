@@ -28,6 +28,50 @@ Today we learn about [docstrings and argparse](../slides/documentation.qmd){targ
 
     + Then copy the documented functions to a ".py" file in VS Code.
 
+    + Complete the `Person` definition so that it looks like @lst-person.
+
+```{#lst-person .python lst-cap="Definition of the Person class."}
+class Person:
+    def __init__(self, name, age = 20):
+        """Create a new Person with name and age.
+
+        Args:
+            name (str): Name of the person.
+            age (int, optional): Current age of the person. Defaults to 20.
+            
+        Attributes:
+            name (str): Name of the person.
+            age (int): Age of the person.
+            underage (bool): Whether the person is younger than 18.
+
+        Raises:
+            TypeError: If `age` is not an integer.
+        """
+        self.name = str(name).upper()
+        if type(age) != int:
+            raise TypeError("The age should be an integer!")
+        self.age = age
+        self.underage = self.age < 18
+    
+    def greet(self, message = "Hello"):
+        """Send a greeting message to the person.
+
+        Args:
+            message (str, optional): Greeting message. Defaults to "Hello".
+        """
+        print(f"{message}, {self.name}!")
+    
+    def birthday(self):
+        """Celebrate the person's birthday.
+        
+        Add an year to the person's age and send a happy birthday message.
+        """
+        self.age += 1
+        self.underage = self.age < 18
+        self.greet("Happy birthday")
+        print(f"You are now {self.age} years old!")
+```
+
 - For the `argparse` section:
 
     + Not all the code can be run in Jupyter notebook. Just for practice, add `import argparse` to the top of your script and in the end add the code in @lst-arguments.
