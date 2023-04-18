@@ -1,0 +1,74 @@
+---
+title: "Docstrings and script arguments"
+format: html
+date: 2023-04-18
+categories:
+    - documentation
+    - scripting
+description: Documenting Python functions, classes and scripts.
+---
+
+Today we learn about [docstrings and argparse](../slides/documentation.qmd){target="_blank"}:
+
+- Documenting functions and classes with docstrings
+- Creating scripts that take arguments with `argparse`
+- Running vs importing scripts
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/documentation.html"></iframe>
+```
+</div>
+
+# What to do during the class
+
+- For the "docstrings" section:
+
+    + Follow along the presentation and copy (or rewrite) the code in your Jupyter Notebook.
+
+    + Then copy the documented functions to a ".py" file in VS Code.
+
+- For the `argparse` section:
+
+    + Not all the code can be run in Jupyter notebook. Just for practice, add `import argparse` to the top of your script and in the end add the code in @lst-arguments.
+
+```{#lst-arguments .python lst-cap="Argparse code for a script."}
+parser = argparse.ArgumentParser("docstrings")
+parser.add_argument("name", type=str, help="Name of the person to greet")
+parser.add_argument("--age", type=int, default = 25, help="Age of the person before their birthday.")
+args = parser.parse_args()
+prsn = Person(args.name, args.age)
+prsn.greet()
+prsn.birthday()
+```
+
+# Final exercise
+
+For your assignment, you wrote a Jupyter notebook documenting some class definitions, exemplifying them and running them. Use the same contents but change the format:
+
+- Document your class and function definitions with docstrings.
+
+- Move them to a script.
+
+- Add a description to the script itself as a docstring.
+
+- Import `argparse` (at the beginning of your script) and, at the end, add an `if __name__ == '__main__':` section in which you run the final code of your notebook based on the appropriate arguments.
+
+    + Crucially, the name of the file you need to open.
+
+    + Optionally, an argument that returns a list of items to select from your list of dictionaries (you can combine `nargs` and `choices`!).
+
+- In your Jupyter Notebook:
+
+    + Import your script and try checking the documentation of your classes / functions.
+    
+    + Exemplify your classes like you did before, but using them as imported from the script. (Don't forget to prefix the class name with the script name!)
+
+    + Run your script with `%run` and the appropriate arguments.
+
+::: callout-tip
+## Final paper
+
+The final project in June will have this format!
+
+:::

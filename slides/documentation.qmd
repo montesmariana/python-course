@@ -308,6 +308,7 @@ parser = argparse.ArgumentParser(
 - Add a positional argument named 'filename'.
 
 - After `args = parser.parse_args()`, it can be accessed as `args.filename`.
+
 ```{python}
 #| eval: false
 parser.add_argument('filename')
@@ -333,7 +334,7 @@ parser.add_argument(
     help="The name of a file")
 ```
 
-## File as type
+## File as type {.smaller}
 
 - If you want to open the file for reading or writing, there is a special type. Then you don't need to use `open()` inside your script.
 
@@ -348,7 +349,7 @@ parser.add_argument(
 
 ```{python}
 #| eval: false
-library(sys)
+import sys
 parser.add_argument(
     'filename', nargs='?',
     type=argparse.FileType('r', encoding='utf-8'),
@@ -359,20 +360,134 @@ parser.add_argument(
 
 - Create optional arguments with `-n` and `--name` for a `name` argument.
 
-- You can limit the possible values of your arguments with `choices`.
+- Limit the possible values of your arguments with `choices`.
 
-- You can accept several values for a list with `nargs`
+- Accept an arbitrary number of values for a list with `nargs`.
 
-## Retrieve your arguments
+## Example: positional argument
 
 ```{python}
-args = parser.parse_args(...)
+import sys
+parser.add_argument('filename', nargs='?',
+    type=argparse.FileType('r', encoding='utf-8'),
+    default = sys.stdin)
+parser.parse_args(['files/frankenstein.html'])
 ```
 
-## Run a script in command line
+. . .
 
-- `if __name__ == '__main__':`
+```{python}
+# without any value
+parser.parse_args([])
+```
 
-Give examples with a script in VSCode that gets call from Jupyter notebook with `%run`.
+## Example: optional argument with choices
 
-# Next up: Web scraping
+```{python}
+parser.add_argument('-n', '--name', type=str,
+    choices = ['Chi', 'Sai', 'Panchita'])
+parser.parse_args('files/frankenstein.html -n Chi'.split())
+```
+
+. . .
+
+```{python}
+# without any value
+parser.parse_args(['files/frankenstein.html'])
+```
+
+. . .
+
+```{python}
+#| error: true
+# with wrong value
+parser.parse_args('files/frankenstein.html -n Chiquita'.split())
+```
+
+## Example: optional argument with multiple values
+
+```{python}
+parser.add_argument('-f', '--favorite-food', type=str, nargs='+')
+parser.parse_args('files/frankenstein.html -n Chi -f catfood plants salmon'.split())
+```
+
+. . .
+
+```{python}
+# only one value
+parser.parse_args('files/frankenstein.html -n Chi -f catfood'.split())
+```
+
+. . .
+
+```{python}
+# no values
+parser.parse_args('files/frankenstein.html -n Chi'.split())
+```
+
+## Example: numeric argument
+
+```{python}
+# also positional
+parser.add_argument('age', type=int)
+parser.parse_args('files/frankenstein.html 3 -n Chi -f catfood plants salmon'.split())
+```
+
+. . .
+
+```{python}
+#| error: true
+# different order
+parser.parse_args('files/frankenstein.html -n Chi -f catfood plants salmon 3'.split())
+```
+
+. . .
+
+```{python}
+#| error: true
+# different order
+parser.parse_args('3 files/frankenstein.html -n Chi -f catfood plants salmon'.split())
+```
+
+## Retrieve your values
+
+```{python}
+args = parser.parse_args('files/frankenstein.html 3 -n Chi -f catfood plants salmon'.split())
+args.filename
+```
+
+```{python}
+args.filename.readlines()[:2]
+```
+
+```{python}
+args.name
+```
+
+```{python}
+args.favorite_food
+```
+```{python}
+type(args.age)
+```
+
+## Run/import a script
+
+- Run a script (with or without arguments)
+
+    + VS Code: "Run" button (only without arguments).
+
+    + Console: `python name_of_your_script.py`.
+
+    + Jupyter: `%run name_of_your_script.py`.
+
+- Import: `import name_of_your_script`. -> make functions, classes... available
+
+::: callout-important
+### `if __name__ == '__main__':`
+
+Code inside this `if` statement is ONLY executed when you *run* a script, not when you import it.
+
+:::
+
+# Next up: re & bs4
