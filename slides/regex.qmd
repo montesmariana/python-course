@@ -1,0 +1,595 @@
+---
+title: "More on regular expressions"
+format: revealjs
+---
+
+# Regular expressions
+
+```{python}
+import re
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/tutorial.html)
+:::
+
+## Vocabulary
+
+regex / regular expression
+:    a pattern describing a certain amount of text.
+
+match
+:    piece of text or sequence of bytes/characters that a pattern corresponds to.
+
+string
+:    sequence of characters that the regular expression is applied to.
+
+> We try to get a **match** of a **regex** in a **string**.
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/tutorial.html)
+:::
+
+## Regular expression object
+
+`re.compile(regex[, flags])` &rarr; `re.Pattern` object. Useful if you want to use the same pattern multiple times.
+
+```{python}
+email_regex = r'\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\.[a-z]{2,4})\b'
+pattern = re.compile(email_regex, re.I)
+type(pattern)
+```
+
+. . .
+
+```{python}
+pattern.pattern
+```
+```{python}
+pattern.groups
+```
+
+## Match object
+
+Output of `re.search()`, `re.match()`, `re.fullmatch()` and the `search()`, `match()` and `fullmatch()` methods of a `re.Pattern` object.
+
+```{python}
+email = pattern.search('My email is mariana.montes@kuleuven.be')
+email
+```
+
+```{python}
+astring = re.search(r'[a-z]+\.$', 'Here is my email.')
+astring
+```
+
+## Match object: components
+
+```{python}
+email.re
+```
+
+```{python}
+email.string
+```
+
+```{python}
+astring.re
+```
+
+```{python}
+astring.string
+```
+
+. . .
+
+```{python}
+email.expand(r'The username is \g<username> and the domain is \2.')
+```
+
+## Match object: matches
+
+```{python}
+email.group()
+```
+
+```{python}
+email.groups()
+```
+
+```{python}
+email.group('username')
+```
+
+```{python}
+email.group(1)
+```
+
+```{python}
+astring.group()
+```
+
+```{python}
+astring.groups()
+```
+
+## Match object: indices
+
+```{python}
+email.span()
+```
+
+```{python}
+email.string[email.start():email.end()]
+```
+
+```{python}
+email.string[:email.start()]
+```
+
+```{python}
+astring.span()
+```
+
+```{python}
+astring.string[email.start():email.end()]
+```
+
+## Special characters
+
+`\`, `^`, `$`, `.`, `|`, `?`, `*`, `+`, `(`, `)`, `[`, `{`.
+
+- Special meaning
+
+- If used where they shouldn't (e.g. `+` at the beginning): error
+
+- Used literally if escaped with `\`. Combining `\` with another character may result in a special meaning.
+
+- `]` is literal always unless you already used `[` and didn't close it yet.
+
+## Escaping and quotes
+
+- Quotation marks may have to be escaped if they match the ones you use to surround your regex.
+
+- Recommended to use raw strings to avoid escaping too much:
+
+```{python}
+short_string = r"a one line raw string"
+short_string
+```
+```{python}
+long_string = r"""a raw string
+with
+many lines
+"""
+long_string
+```
+
+## Non-printable characters
+
+::: div
+
+- `\t` = tab
+- `\r` = carriage return
+- `\n` = line feed
+
+:::
+
+:::: columns
+
+::: column
+
+```{python}
+print(short_string)
+re.findall(r'\n', short_string)
+```
+
+:::
+
+::: column
+
+```{python}
+print(long_string)
+re.findall(r'\n', long_string)
+```
+
+:::
+::::
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/nonprint.html)
+:::
+
+## Character classes
+
+- Match one out of several characters by placing them between `[]`.
+
+- Negate the match by starting with `^`. It can also match line break characters. It has to match _something_.
+
+. . .
+
+::: callout-note
+### Example
+
+```{python}
+pattern.pattern
+```
+
+- `[a-z0-9_.]` matches any lowercase letter, digit, `_` or `.`
+
+- `[a-z]` only matches lowercase letters.
+
+:::
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/charclass.html)
+:::
+
+## Character classes
+
+- Only special characters inside are `]`, `\`, `^` , `-`. They can be escaped with a backslash or by changing the position so they don't take their special meaning.
+
+- A `?`, `*` or `+` afterwards matches the character _class_, not the matched character (see Backreferences).
+
+::: callout-note
+### Example
+
+- `[a-z0-9_.]+` matches any _combination_ of one or more lowercase letters, digits, `_` or `.`.
+
+- `[a-z]+` matches one or more lowecase letters, not necessarily the same letter repeated.
+:::
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/charclass.html)
+:::
+
+## Shorthand character classes: digits
+
+```{python}
+test_string = """A string (test_string) with 3 numbers:
+1, 2 and the one-mentioned-before."""
+```
+
+- `\d` = `[0-9]` (but also other scripts). `\D` is the opposite.
+
+```{python}
+re.findall(r'\d+', test_string)
+```
+
+```{python}
+re.findall(r'\D+', test_string)
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/shorthand.html)
+:::
+
+## Shorthand character classes: words
+
+- `\w` = `[A-Za-z0-9_]`. `\W` is the opposite.
+
+```{python}
+print(re.findall(r'\w+', test_string))
+```
+
+```{python}
+re.findall(r'\W+', test_string)
+```
+
+. . .
+
+- It matches other scripts too:
+
+```{python}
+re.findall('\w+', '言葉 means "word".')
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/shorthand.html)
+:::
+
+## Shorthand character classes: spaces
+
+```{python}
+print(test_string)
+```
+
+- `\s` = `[ \t\r\n\f]` (`\f` = form feed). `\S` is the opposite.
+
+```{python}
+re.findall(r'\s+', test_string)
+```
+
+```{python}
+print(re.findall(r'\S+', test_string))
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/shorthand.html)
+:::
+
+## Shorthand character classes
+
+```{python}
+print(test_string)
+```
+
+- They can also be used inside brackets.
+
+```{python}
+# any sequence of digits + spaces
+re.findall(r'[\d\s]+', test_string)
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/shorthand.html)
+:::
+
+## Dot
+
+- Matches anything except for line breaks (unless `re.S` flag is used).
+
+- Use sparingly: it can match things you don't want to match! Sometimes a negated character class is better.
+
+```{python}
+re.search('(.+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()
+```
+
+```{python}
+re.search('([^@]+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/dot.html)
+:::
+
+## Anchors
+
+- Does not match a character but a position
+
+- `^` = beginning of a line
+
+- `$` = end of a lne
+
+- `\b` = word boundaries: between something that matches `\w` and beginning/end of the string or something that matches `\W`.
+
+::: callout-note
+### Example
+
+```{python}
+pattern.pattern
+```
+:::
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/anchors.html)
+:::
+
+## Alternation
+
+`|` to match either one sequence or another.
+
+```{python}
+print(long_string)
+re.findall('(string|lines)', long_string)
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/alternation.html)
+:::
+
+## Repetition
+
+- `{0,1}` = `?` = zero or one times
+- `{0,}` = `*` = zero or more times
+- `{1,}` = `+` = one or more times
+- `{x}` = repeat exactly `x` times
+
+::: callout-tip
+ `?` after one of this makes the search lazy instead of greedy. A negated character class is more efficient, though.
+:::
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/repeat.html)
+:::
+
+## Repetition
+
+```{python}
+pattern.pattern
+```
+
+- `[a-zO-9_.]+` = _at least one_ lower case letter, digit, underscore or period.
+- `[a-z]{2,4}` = _two to four_ lower case letters.
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/repeat.html)
+:::
+
+## Grouping and capturing
+
+Done with `()`:
+
+- to apply a quantifier or limit an alternation
+- creates a numbered group unless it starts with `?:` (non-capturing group)
+- creates a named group if it starts with `?P<name>`
+
+::: callout-note
+### Example
+
+```{python}
+pattern.pattern
+```
+
+:::
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/brackets.html)
+:::
+
+## Backreferences
+
+To match the same text again
+
+- `\1` for the first capturing group, `\2` for the second... (non-capturing groups are excluded)
+
+```{python}
+email.re.pattern
+```
+```{python}
+email.string
+```
+```{python}
+email.expand(r'The username is \1 and the domain is \2.')
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/backref.html)
+:::
+
+## Backreferences
+
+There is a difference between `[ab]+` and `(a|b)\1+`:
+
+```{python}
+re.search(r'[ab]+', "abby").group()
+```
+
+```{python}
+re.search(r'(a|b)\1+', "abby").group()
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/backref.html)
+:::
+
+## Backreferences for replacement
+
+```{python}
+re.sub(
+    '([a-z]+)@([A-Za-z]+.com)', # regex
+    r'The username is \1 and the domain is \2.', # replacement
+    'lowercase@UpperCase.com', #string
+    )
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/backref.html)
+:::
+
+## Free spacing and comments
+
+- Allow to use spaces between "logical sections".
+
+- Add comments with `#`.
+
+- With the `re.X` flag.
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/freespacing.html) - [re.X](https://docs.python.org/2/library/re.html#re.X)
+:::
+
+## Free spacing and comments
+
+```{python}
+pat = re.compile(
+    r"""\b               # word boundary
+        (?P<username>    # username group
+        [a-z0-9_.] +     # one or more lowercase/digits/underscore/period
+        )
+        @                # at symbol
+        (?P<domain>      # domain group
+        [a-z0-9.-] +     # one or more lowercase/digits/period/dash
+        \.               # a literal period
+        [a-z]     {2,4}  # two to four lowercase letters
+        )
+        \b               # word boundary""", re.X)
+pat.search('mariana.montes@kuleuven.be').groups()
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/freespacing.html) - [re.X](https://docs.python.org/2/library/re.html#re.X)
+:::
+
+## Mode modifiers
+
+- Case insensitive (`i`) and free-spacing + comments (`x`)
+```{python}
+re.search(r'(?xi) [a-z] +', 'AaBbCc')
+```
+
+```{python}
+re.compile(r'  [a-z] +  ', re.I | re.X).search('AaBbCc')
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/modifiers.html) - [`re.compile()`](https://docs.python.org/2/library/re.html#re.compile)
+:::
+
+## Mode modifiers: multilinear
+```{python}
+alliter = """apple
+banana
+melon
+milk
+"""
+re.search(r'(?m)^a[a-z]+$', alliter)
+```
+
+. . .
+
+```{python}
+re.compile(r'^b[a-z]+$', re.M).search(alliter)
+```
+
+. . .
+
+```{python}
+re.search(r'^a[a-z]+$', alliter)
+```
+
+. . .
+
+```{python}
+re.search(r'^a[a-z\n]+$', alliter)
+```
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/modifiers.html) - [`re.compile()`](https://docs.python.org/2/library/re.html#re.compile)
+:::
+
+## Lookaround
+
+- Don't return matches but whether a match is made or not.
+
+- Not capturing groups (but can have groups inside if you want to capture).
+
+- Options: lookahead (`(?...)`) or lookbehind (`(?<...)`).
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/lookaround.html)
+:::
+
+## Lookahead
+
++ `q(?!u)` matches a 'q' that is NOT followed by an 'u'.
++ `q(?=u)` matches a 'q' followed by an 'u' but not the 'u' itself.
+    - `q(?=u)i` can never match anything!
+    - Can be very useful to find a match with *n* characters, e.g. `\b(?=\w{6}\b)\w*cat\w*` matches a word with exactly 6 characters that contains the pattern _cat_.
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/lookaround.html)
+:::
+
+## Lookbehind
+
+- No quantifiers or backreferences, alternation only if they have the same length.
+
++ `(?<!a)b` matches a 'b' NOT preceded by an 'a'
++ `(?<=a)b` matches a 'b' preceded by an 'a', but not the 'a'.
+
+::: footer
+[regular-expressions.info](https://www.regular-expressions.info/lookaround.html)
+:::
+
+# Next up: scikit-learn

@@ -1,0 +1,11 @@
+{
+  "hash": "d411ae1929efb24bcab469d34c6b8f8d",
+  "result": {
+    "markdown": "---\ntitle: \"More on regular expressions\"\nformat: html\ndate: 2023-04-25\ncategories:\n    - regex\n    - basics\ndescription: A deeper dive into regular expressions.\n---\n\nToday we learn a bit more about [regular expressions](../slides/regex.qmd){target=\"_blank\"}:\n\n- How to use them in Python\n- Basic and not so basic techniques\n\n<div>\n\n```{=html}\n<iframe class=\"slide-deck\" src=\"../slides/regex.html\"></iframe>\n```\n\n</div>\n\n# What to do during the class\n\nCopy the code from the slides in a Jupyter Notebook. You can also experiment with some other string you make up!\n\n::: callout-important\nDo not forget to import the `re` package!\n\n::: {.cell execution_count=1}\n``` {.python .cell-code}\nimport re\n```\n:::\n\n\n:::\n\n# Final exercise\n\nFor your final project, you will have to add validation in you code, so that you make sure that users are providing what you expect them to (even if the only user would be yourself). Try to think what kind of character data your project will use and how you can validate its format with regular expressions. For example:\n\n- Validate an email.\n- Validate a date in one or more formats.\n- Validate a home address.\n\nYou can also use regex groups to extract information from a fragment of text. For example, try to write regexes to:\n\n- Extract username and domain from the email.\n- Extract given name and last name from a name.\n- Extract day, month and year from a date.\n\nFinally, you could write a template message in which you replace certain values with another string of text. We have been doing this with `f\"...{}...\"`, but you could also use `re.sub()` or `re.Pattern.expand()` to replace a text.\n\n",
+    "supporting": [
+      "2023-04-25-regex_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}

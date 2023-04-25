@@ -1,0 +1,50 @@
+---
+title: "More on regular expressions"
+format: html
+date: 2023-04-25
+categories:
+    - regex
+    - basics
+description: A deeper dive into regular expressions.
+---
+
+Today we learn a bit more about [regular expressions](../slides/regex.qmd){target="_blank"}:
+
+- How to use them in Python
+- Basic and not so basic techniques
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/regex.html"></iframe>
+```
+</div>
+
+# What to do during the class
+
+Copy the code from the slides in a Jupyter Notebook. You can also experiment with some other string you make up!
+
+::: callout-important
+Do not forget to import the `re` package!
+
+```{python}
+#| eval: false
+import re
+```
+:::
+
+# Final exercise
+
+For your final project, you will have to add validation in you code, so that you make sure that users are providing what you expect them to (even if the only user would be yourself). Try to think what kind of character data your project will use and how you can validate its format with regular expressions. For example:
+
+- Validate an email.
+- Validate a date in one or more formats.
+- Validate a home address.
+
+You can also use regex groups to extract information from a fragment of text. For example, try to write regexes to:
+
+- Extract username and domain from the email.
+- Extract given name and last name from a name.
+- Extract day, month and year from a date.
+
+Finally, you could write a template message in which you replace certain values with another string of text. We have been doing this with `f"...{}..."`, but you could also use `re.sub()` or `re.Pattern.expand()` to replace a text.
+
