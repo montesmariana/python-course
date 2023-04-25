@@ -113,7 +113,10 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assignment-description" id="toc-assignment-description" class="nav-link active" data-scroll-target="#assignment-description">Assignment description</a></li>
+  <li><a href="#steps-to-take" id="toc-steps-to-take" class="nav-link active" data-scroll-target="#steps-to-take">Steps to take</a>
+  <ul class="collapse">
+  <li><a href="#process" id="toc-process" class="nav-link" data-scroll-target="#process">Process</a></li>
+  </ul></li>
   <li><a href="#requirements" id="toc-requirements" class="nav-link" data-scroll-target="#requirements">Requirements</a></li>
   <li><a href="#additionals" id="toc-additionals" class="nav-link" data-scroll-target="#additionals">Additionals</a></li>
   <li><a href="#non-requirements" id="toc-non-requirements" class="nav-link" data-scroll-target="#non-requirements">Non requirements</a></li>
@@ -140,6 +143,7 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>The main task is: think of a problem you can solve with Python and do so with a script. Create, document and illustrate your program.</p>
 <div class="callout-important callout callout-style-default callout-captioned">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -154,41 +158,58 @@ Dates
 <p>As part of the second assignment (worth 2/20 points) you have to <em>present</em> your plan by the end of the course.</p>
 </div>
 </div>
-<section id="assignment-description" class="level1">
-<h1>Assignment description</h1>
+<section id="steps-to-take" class="level1">
+<h1>Steps to take</h1>
 <ul>
-<li><p>Fork the <a href="https://github.com/montesmariana/intro_machine_learning_using_python/">GitHub repository</a> for the assignment.</p></li>
-<li><p>Clone your fork so you can work on it locally.</p></li>
+<li><p>Fork the <a href="https://github.com/montesmariana/intro_machine_learning_using_python/">GitHub repository</a> for the assignment (done in class).</p></li>
+<li><p>Clone your fork so you can work on it locally (done in class).</p></li>
 <li><p>Insert your own content in the placeholder files (the current content is JUST guidance, make sure to make it your own!):</p>
 <ul>
 <li>A README.md file describing your repository and illustrating how to use your code both as module and by running the script. Reading the README should be enough for any random person to understand the basics of what your code does and what for. If you want, you can generate it via Jupyter and replace it.</li>
 <li>A Jupyter notebook or markdown file derived from a Jupyter Notebook (or both) in which you illustrate how your code works, like a tutorial with narrative documentation (<code>tutorial.md</code> in the example).</li>
-<li>A script with your function and class definitions and some basic functionality when the script is run (rather than imported). This is called <code>script.py</code> in the repository, but please rename it to something more meaningful for your program.</li>
-<li>One (or more) example files for an user to test out your code; you can also use this for the illustration. The repository has an empty <code>example.json</code> file; you can add your content there or change it to a different name, different format…</li>
+<li>A script with your function and class definitions and some basic functionality when the script is run (rather than imported). This is called <code>script.py</code> in the repository, but please rename it to something more meaningful for your program. Remember that if your script is called <code>shoppinglist.py</code>, you will import it with <code>import shoppinglist</code>.</li>
+<li>One (or more) example file(s) for an user to test out your code; you can also use this for the illustration. The repository has an empty <code>example.json</code> file; you can add your content there or change it to a different name, different format…</li>
 </ul></li>
 <li><p>Make a pull request, preferably to the branch of the repository with your name. Send me an e-mail when you consider that is your final submission.</p></li>
 <li><p>You will receive feedback as comments on your pull request.</p></li>
 </ul>
+<section id="process" class="level2">
+<h2 class="anchored" data-anchor-id="process">Process</h2>
+<p>You can actually submit everything as a zipped folder via e-mail if you only make one submission, but I strongly recommend that you start working as soon as possible and practice with Git, PRs and the different tasks that you have. I can then try to give you feedback when I have the time.</p>
+</section>
 </section>
 <section id="requirements" class="level1">
 <h1>Requirements</h1>
-<p>Next to the presence of all the files described above, there are also some requirements that need to be fulfilled <em>for the project to be approved</em>.</p>
+<p>Next to the presence of all the files described above, there are also some requirements that need to be fulfilled <em>to get a passing grade</em>.</p>
 <ul>
-<li><p>Your script should be documented with docstrings: one for the script itself and proper docstring documentation for each function and/or class you define. This documentation should be correct (e.g.&nbsp;document the arguments that are present, describe what the function actually does…).</p></li>
-<li><p>You should use <code>argparse</code> to receive arguments when your script is run and add a help message for each argument and the program itself. The part of the code that reads and processes the arguments should be inside an <code>if __name__ == "__main__":</code> statement.</p></li>
-<li><p>Your code should include at least one class with attributes and a method. This looks less strict than the first assignment but it is only meant to give you more freedom in defining which kind of attributes and methods you need for your project and keep you from adding features that are pointless just for the sake of it.</p></li>
-<li><p>Use validation in every user interaction. That is: your code should be able to deal with bad input from the user and you should explain why you deal with it that way. For example, if you expect a date, what happens when the user does not provide a date? Is there an error (and what message will you provide)? Or can you just keep going with a default value or some other alternative path? I will stress-test your code with bad input to see how it reacts. If your validation is very complex, you can add an additional markdown file explaining your reasoning, to avoid too many comments in your script.</p></li>
-<li><p>The code has to work as expected. I will run the code in the tutorial and the output should be the same or at least comparable. If I follow your instructions I should get no errors.</p></li>
+<li><p>Your script should be <strong>documented with docstrings</strong>: one for the script itself and proper docstring documentation for each function and/or class you define. This documentation should be correct (e.g.&nbsp;document the arguments that are present, describe what the function actually does…).</p></li>
+<li><p>You should <strong>use <code>argparse</code> to receive arguments</strong> (at least one) when your script is run and add a help message for each argument and the program itself. The part of the code that reads and processes the arguments should be inside an <code>if __name__ == "__main__":</code> statement.</p></li>
+<li><p>Your code should include <strong>at least one class</strong> with attributes and a method. This looks less strict than the first assignment but it is only meant to give you more freedom in defining which kind of attributes and methods you need for your project and keep you from adding features that are pointless just for the sake of it.</p></li>
+<li><p><strong>Use validation</strong> in every user interaction. That is: your code should be able to deal with bad input from the user and you should explain why you deal with it that way. For example, if you expect a date, what happens when the user does not provide a date? Is there an error (and what message will you provide)? Or can you just keep going with a default value or some other alternative path? I will stress-test your code with bad input to see how it reacts - maybe you miss some cases, and that’s ok, but the most obvious vulnerabilities should be covered. If your validation is very complex, you can add an additional markdown file explaining your reasoning, to avoid too many comments in your script.</p></li>
+<li><p><strong>The code has to work as expected</strong>. I will run the code in the tutorial and the output should be the same or at least comparable. If I follow your instructions I should get no errors.</p></li>
 </ul>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>These items are necessary in order to pass the exam, please read them carefully, give them priority in the design of your program, and ask anything that is not clear! If any item is not fulfilled, the project will fail.</p>
+</div>
+</div>
 </section>
 <section id="additionals" class="level1">
 <h1>Additionals</h1>
-<p>The points above are necessary in order to pass the exam. If any of them is not fulfilled, the project will fail, so please take care of them. In addition, there are other points that will help you get a higher and higher grade. You can still pass without them, but you need them to get a higher grade.</p>
+<p>The points in this section will help you get a higher and higher grade. You can still pass without them, but this is how you get a higher grade.</p>
 <ul>
-<li><p>Use regular expressions at some point (for example in validation).</p></li>
-<li><p>Open a file to read or write data (or do both). You can also read data from an URL with <code>requests</code> as an alternative.</p></li>
-<li><p>Write a meaningful, proper tutorial with appropriate markdown (headings, bullet points, proper formatting…), in narrative English that introduces an user to your program. Maybe try showing it to a friend and see what they understand?</p></li>
-<li><p>The attributes and methods of the class should make sense in terms of what they represent in the real world. Messages you print should be readable in clear English. (You can also add extra languages as an option for extra points, but at least English should be there.)</p></li>
+<li><p>Use <strong>regular expressions</strong> at some point (for example in validation).</p></li>
+<li><p><strong>Open a file</strong> to read or write data (or do both). You can also read data from an URL with <code>requests</code> as an alternative.</p></li>
+<li><p>Write a meaningful, proper tutorial with <strong>appropriate markdown</strong> (headings, bullet points, proper formatting…), in narrative English that introduces an user to your program. Maybe try showing it to a friend and see what they understand?</p></li>
+<li><p>The attributes and methods of the class should <strong>make sense</strong> in terms of what they represent in the real world. Messages you print should be readable in <strong>clear English</strong>. (You can also add extra languages as an option for extra points, but at least English should be there.)</p></li>
 <li><p>Write an extra markdown file that describes the <em>format</em> that you expect in files like your example file(s). For example, is it a list of dictionaries? What keys should those dictionaries have? Or do you need a certain folder structure?</p></li>
 </ul>
 </section>
@@ -197,6 +218,7 @@ Dates
 <ul>
 <li><p>There is no restriction on what type of file you should use for your example data. It can be tabular (e.g.&nbsp;csv), JSON, YAML, just raw text…</p></li>
 <li><p>There is no specification on what number or kind of arguments your script should take, as long as there is at least one argument.</p></li>
+<li><p>It is not important whether you submit everything at once as a zipped folder or via a PR in the repository; the Git(Hub) way is to give you the chance to get more feedback in the process of fulfilling the assignment.</p></li>
 </ul>
 
 

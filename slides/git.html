@@ -685,39 +685,412 @@ Quickly see the difference between the current state and the latest commit or be
 <h2>Branches</h2>
 <div class="sourceCode" id="cb9"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="co"># do some work on main and stage</span></span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Graph with one or more commits in <code>main</code>.</p>
+<div class="cell" data-fig-height="2">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="192" viewbox="0.00 0.00 209.00 100.80" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 96.8)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-96.8 205,-96.8 205,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-8 8,-84.8 193,-84.8 193,-8 8,-8"></polygon> <text text-anchor="middle" x="100.5" y="-68.2" font-family="Times,serif" font-size="14.00">main</text> </g> <!-- M2 --> <g id="node1" class="node">
+<title>
+M2
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">M2</text> </g> <!-- M1 --> <g id="node2" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-29.8" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge1" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-34C85.29,-34 104.19,-34 120.59,-34"></path> <polygon fill="black" stroke="black" points="120.94,-37.5 130.94,-34 120.94,-30.5 120.94,-37.5"></polygon> <text text-anchor="middle" x="100.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
 </section>
 <section id="branches-3" class="slide level2">
 <h2>Branches</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> dev</span>
-<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># do some work and stage</span></span>
-<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Same graph, now we have a new branch <code>dev</code> with a commit. Small symbol where the user stands.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig-height="4">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="384" viewbox="0.00 0.00 209.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 205,-208.4 205,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+clusterdev
+</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="123,-8 123,-84.8 193,-84.8 193,-8 123,-8"></polygon> <text text-anchor="middle" x="158" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <g id="clust2" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-119.6 8,-196.4 193,-196.4 193,-119.6 8,-119.6"></polygon> <text text-anchor="middle" x="100.5" y="-179.8" font-family="Times,serif" font-size="14.00">main</text> </g> <!-- D1 --> <g id="node1" class="node">
+<title>
+D1
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">D1</text> </g> <!-- M1 --> <g id="node2" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M2 --> <g id="node3" class="node">
+<title>
+M2
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge1" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge2" class="edge">
+<title>
+M2-&gt;D1
+</title>
+<path fill="none" stroke="black" d="M158,-127.47C158,-110.02 158,-82.69 158,-62.25"></path> <polygon fill="black" stroke="black" points="161.5,-62 158,-52 154.5,-62 161.5,-62"></polygon> <text text-anchor="middle" x="177.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
 </section>
 <section id="branches-4" class="slide level2">
 <h2>Branches</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">git</span> checkout main</span>
-<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># do some work and stage</span></span>
-<span id="cb11-3"><a href="#cb11-3"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Same graph, now symbol is back in <code>main</code>. New commit.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># do some work on dev and stage</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig-height="4">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="384" viewbox="0.00 0.00 324.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 320,-208.4 320,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+clusterdev
+</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="123,-8 123,-84.8 308,-84.8 308,-8 123,-8"></polygon> <text text-anchor="middle" x="215.5" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <g id="clust3" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-119.6 8,-196.4 193,-196.4 193,-119.6 8,-119.6"></polygon> <text text-anchor="middle" x="100.5" y="-179.8" font-family="Times,serif" font-size="14.00">main</text> </g> <!-- D2 --> <g id="node1" class="node">
+<title>
+D2
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="273" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">D2</text> </g> <!-- D1 --> <g id="node2" class="node">
+<title>
+D1
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
+<title>
+D1-&gt;D2
+</title>
+<path fill="none" stroke="black" d="M185.25,-34C200.29,-34 219.19,-34 235.59,-34"></path> <polygon fill="black" stroke="black" points="235.94,-37.5 245.94,-34 235.94,-30.5 235.94,-37.5"></polygon> <text text-anchor="middle" x="215.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M1 --> <g id="node3" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M2 --> <g id="node4" class="node">
+<title>
+M2
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge2" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge3" class="edge">
+<title>
+M2-&gt;D1
+</title>
+<path fill="none" stroke="black" d="M158,-127.47C158,-110.02 158,-82.69 158,-62.25"></path> <polygon fill="black" stroke="black" points="161.5,-62 158,-52 154.5,-62 161.5,-62"></polygon> <text text-anchor="middle" x="177.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
 </section>
 <section id="branches-5" class="slide level2">
 <h2>Branches</h2>
-<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> checkout dev</span>
-<span id="cb12-2"><a href="#cb12-2"></a><span class="fu">git</span> merge main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>Same graph, now symbol is in <code>dev</code> and an arrow brings the latest commit to <code>dev</code>.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">git</span> checkout main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig-height="4">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="384" viewbox="0.00 0.00 324.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 320,-208.4 320,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+clusterdev
+</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="123,-8 123,-84.8 308,-84.8 308,-8 123,-8"></polygon> <text text-anchor="middle" x="215.5" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <g id="clust3" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-119.6 8,-196.4 193,-196.4 193,-119.6 8,-119.6"></polygon> <text text-anchor="middle" x="100.5" y="-179.8" font-family="Times,serif" font-size="14.00">main</text> </g> <!-- D1 --> <g id="node1" class="node">
+<title>
+D1
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D2 --> <g id="node2" class="node">
+<title>
+D2
+</title>
+<ellipse fill="none" stroke="black" cx="273" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-29.8" font-family="Segoe UI" font-size="14.00">D2</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
+<title>
+D1-&gt;D2
+</title>
+<path fill="none" stroke="black" d="M185.25,-34C200.29,-34 219.19,-34 235.59,-34"></path> <polygon fill="black" stroke="black" points="235.94,-37.5 245.94,-34 235.94,-30.5 235.94,-37.5"></polygon> <text text-anchor="middle" x="215.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2 --> <g id="node3" class="node">
+<title>
+M2
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00" fill="white">M2</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge3" class="edge">
+<title>
+M2-&gt;D1
+</title>
+<path fill="none" stroke="black" d="M158,-127.47C158,-110.02 158,-82.69 158,-62.25"></path> <polygon fill="black" stroke="black" points="161.5,-62 158,-52 154.5,-62 161.5,-62"></polygon> <text text-anchor="middle" x="177.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> <!-- M1 --> <g id="node4" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge2" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="branches-6" class="slide level2">
+<h2>Branches</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="co"># do some work on main and stage</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig-height="4">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="384" viewbox="0.00 0.00 324.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 320,-208.4 320,4 -4,4"></polygon> <g id="clust1" class="cluster">
+<title>
+clusterdev
+</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="123,-8 123,-84.8 308,-84.8 308,-8 123,-8"></polygon> <text text-anchor="middle" x="215.5" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <g id="clust3" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-119.6 8,-196.4 308,-196.4 308,-119.6 8,-119.6"></polygon> <text text-anchor="middle" x="158" y="-179.8" font-family="Times,serif" font-size="14.00">main</text> </g> <!-- D1 --> <g id="node1" class="node">
+<title>
+D1
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D2 --> <g id="node2" class="node">
+<title>
+D2
+</title>
+<ellipse fill="none" stroke="black" cx="273" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-29.8" font-family="Segoe UI" font-size="14.00">D2</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
+<title>
+D1-&gt;D2
+</title>
+<path fill="none" stroke="black" d="M185.25,-34C200.29,-34 219.19,-34 235.59,-34"></path> <polygon fill="black" stroke="black" points="235.94,-37.5 245.94,-34 235.94,-30.5 235.94,-37.5"></polygon> <text text-anchor="middle" x="215.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M3 --> <g id="node3" class="node">
+<title>
+M3
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="273" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-141.4" font-family="Segoe UI" font-size="14.00" fill="white">M3</text> </g> <!-- M1 --> <g id="node4" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M2 --> <g id="node5" class="node">
+<title>
+M2
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge2" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge4" class="edge">
+<title>
+M2-&gt;D1
+</title>
+<path fill="none" stroke="black" d="M158,-127.47C158,-110.02 158,-82.69 158,-62.25"></path> <polygon fill="black" stroke="black" points="161.5,-62 158,-52 154.5,-62 161.5,-62"></polygon> <text text-anchor="middle" x="177.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> <!-- M2&#45;&gt;M3 --> <g id="edge3" class="edge">
+<title>
+M2-&gt;M3
+</title>
+<path fill="none" stroke="black" d="M185.25,-145.6C200.29,-145.6 219.19,-145.6 235.59,-145.6"></path> <polygon fill="black" stroke="black" points="235.94,-149.1 245.94,-145.6 235.94,-142.1 235.94,-149.1"></polygon> <text text-anchor="middle" x="215.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="branches-7" class="slide level2">
+<h2>Branches</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">git</span> checkout dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig-height="4">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="384" viewbox="0.00 0.00 324.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 320,-208.4 320,4 -4,4"></polygon> <g id="clust3" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-119.6 8,-196.4 308,-196.4 308,-119.6 8,-119.6"></polygon> <text text-anchor="middle" x="158" y="-179.8" font-family="Times,serif" font-size="14.00">main</text> </g> <g id="clust1" class="cluster">
+<title>
+clusterdev
+</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="123,-8 123,-84.8 308,-84.8 308,-8 123,-8"></polygon> <text text-anchor="middle" x="215.5" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <!-- D2 --> <g id="node1" class="node">
+<title>
+D2
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="273" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">D2</text> </g> <!-- D1 --> <g id="node2" class="node">
+<title>
+D1
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
+<title>
+D1-&gt;D2
+</title>
+<path fill="none" stroke="black" d="M185.25,-34C200.29,-34 219.19,-34 235.59,-34"></path> <polygon fill="black" stroke="black" points="235.94,-37.5 245.94,-34 235.94,-30.5 235.94,-37.5"></polygon> <text text-anchor="middle" x="215.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M1 --> <g id="node3" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M2 --> <g id="node4" class="node">
+<title>
+M2
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge2" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge4" class="edge">
+<title>
+M2-&gt;D1
+</title>
+<path fill="none" stroke="black" d="M158,-127.47C158,-110.02 158,-82.69 158,-62.25"></path> <polygon fill="black" stroke="black" points="161.5,-62 158,-52 154.5,-62 161.5,-62"></polygon> <text text-anchor="middle" x="177.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> <!-- M3 --> <g id="node5" class="node">
+<title>
+M3
+</title>
+<ellipse fill="none" stroke="black" cx="273" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-141.4" font-family="Segoe UI" font-size="14.00">M3</text> </g> <!-- M2&#45;&gt;M3 --> <g id="edge3" class="edge">
+<title>
+M2-&gt;M3
+</title>
+<path fill="none" stroke="black" d="M185.25,-145.6C200.29,-145.6 219.19,-145.6 235.59,-145.6"></path> <polygon fill="black" stroke="black" points="235.94,-149.1 245.94,-145.6 235.94,-142.1 235.94,-149.1"></polygon> <text text-anchor="middle" x="215.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+</section>
+<section id="branches-8" class="slide level2">
+<h2>Branches</h2>
+<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> merge main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-fig-height="4">
+<div class="cell-output-display">
+<div>
+<p>
+<svg width="960" height="384" viewbox="0.00 0.00 351.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 347,-208.4 347,4 -4,4"></polygon> <g id="clust3" class="cluster">
+<title>
+clustermain
+</title>
+<polygon fill="#cae1ff" stroke="#cae1ff" points="8,-119.6 8,-196.4 308,-196.4 308,-119.6 8,-119.6"></polygon> <text text-anchor="middle" x="158" y="-179.8" font-family="Times,serif" font-size="14.00">main</text> </g> <g id="clust1" class="cluster">
+<title>
+clusterdev
+</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="43,-8 43,-84.8 335,-84.8 335,-8 43,-8"></polygon> <text text-anchor="middle" x="189" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <!-- D3 --> <g id="node1" class="node">
+<title>
+D3
+</title>
+<ellipse fill="#800000" stroke="#800000" cx="300" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="300" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">D3</text> </g> <!-- D1 --> <g id="node2" class="node">
+<title>
+D1
+</title>
+<ellipse fill="none" stroke="black" cx="78" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="78" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D2 --> <g id="node3" class="node">
+<title>
+D2
+</title>
+<ellipse fill="none" stroke="black" cx="193" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="193" y="-29.8" font-family="Segoe UI" font-size="14.00">D2</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
+<title>
+D1-&gt;D2
+</title>
+<path fill="none" stroke="black" d="M105.25,-34C120.29,-34 139.19,-34 155.59,-34"></path> <polygon fill="black" stroke="black" points="155.94,-37.5 165.94,-34 155.94,-30.5 155.94,-37.5"></polygon> <text text-anchor="middle" x="135.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- D2&#45;&gt;D3 --> <g id="edge2" class="edge">
+<title>
+D2-&gt;D3
+</title>
+<path fill="none" stroke="black" d="M220,-34C232.83,-34 248.37,-34 262.34,-34"></path> <polygon fill="black" stroke="black" points="262.64,-37.5 272.64,-34 262.64,-30.5 262.64,-37.5"></polygon> <text text-anchor="middle" x="246.5" y="-41.2" font-family="Monospace" font-size="14.00">merge</text> </g> <!-- M1 --> <g id="node4" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M2 --> <g id="node5" class="node">
+<title>
+M2
+</title>
+<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge3" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge5" class="edge">
+<title>
+M2-&gt;D1
+</title>
+<path fill="none" stroke="black" d="M146.54,-128.9C133.17,-110.59 110.93,-80.12 95.43,-58.87"></path> <polygon fill="black" stroke="black" points="98.16,-56.69 89.44,-50.67 92.51,-60.81 98.16,-56.69"></polygon> <text text-anchor="middle" x="151.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> <!-- M3 --> <g id="node6" class="node">
+<title>
+M3
+</title>
+<ellipse fill="none" stroke="black" cx="273" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-141.4" font-family="Segoe UI" font-size="14.00">M3</text> </g> <!-- M2&#45;&gt;M3 --> <g id="edge4" class="edge">
+<title>
+M2-&gt;M3
+</title>
+<path fill="none" stroke="black" d="M185.25,-145.6C200.29,-145.6 219.19,-145.6 235.59,-145.6"></path> <polygon fill="black" stroke="black" points="235.94,-149.1 245.94,-145.6 235.94,-142.1 235.94,-149.1"></polygon> <text text-anchor="middle" x="215.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M3&#45;&gt;D3 --> <g id="edge6" class="edge">
+<title>
+M3-&gt;D3
+</title>
+<path fill="none" stroke="black" d="M277.22,-127.47C281.54,-109.94 288.31,-82.43 293.36,-61.97"></path> <polygon fill="black" stroke="black" points="296.82,-62.55 295.81,-52 290.02,-60.88 296.82,-62.55"></polygon> <text text-anchor="middle" x="302.49" y="-97" font-family="Monospace" font-size="14.00">merge</text> </g> </g>
+</svg>
+</p>
+</div>
+</div>
+</div>
+<ul>
+<li>D3 is up to date with both <code>main</code> and <code>dev</code>, and lives in the <code>dev</code> branch.</li>
+</ul>
 </section>
 <section id="exercise-1" class="slide level2">
 <h2>Exercise</h2>
 <ol type="1">
 <li>In your repository, create a new branch called <code>tutorial</code>.</li>
 </ol>
-<div class="sourceCode" id="cb13"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
 <li>Make some changes in <code>tutorial.md</code>, stage and commit.</li>
 </ol>
-<div class="sourceCode" id="cb14"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1"></a><span class="fu">git</span> add tutorial.md</span>
-<span id="cb14-2"><a href="#cb14-2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update tutorial"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">git</span> add tutorial.md</span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update tutorial"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="3" type="1">
 <li>Go back to the main branch and open <code>tutorial.md</code> again. Your changes are gone!</li>
 </ol>
@@ -727,12 +1100,12 @@ Quickly see the difference between the current state and the latest commit or be
 <ol start="4" type="1">
 <li>Bring the changes to the <code>main</code> branch.</li>
 </ol>
-<div class="sourceCode" id="cb15"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1"></a><span class="fu">git</span> checkout main <span class="co"># and open the File</span></span>
-<span id="cb15-2"><a href="#cb15-2"></a><span class="fu">git</span> merge tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">git</span> checkout main <span class="co"># and open the File</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">git</span> merge tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="1">
 <li>Delete the <code>tutorial</code> branch.</li>
 </ol>
-<div class="sourceCode" id="cb16"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb16-1"><a href="#cb16-1"></a><span class="fu">git</span> branch <span class="at">-D</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">git</span> branch <span class="at">-D</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="github" class="title-slide slide level1 center">
@@ -776,13 +1149,13 @@ Upload the changes in your local repository to the remote version.
 <section id="exercise-3" class="slide level2">
 <h2>Exercise</h2>
 <p>You have made changes to your local version of your repo. They do not show up in the remote version! Send them up.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercise-4" class="slide level2">
 <h2>Exercise</h2>
 <p>I made changes to the original repository. GitHub suggests that you bring your fork in sync. Do so on the website.</p>
 <p>Now your local version is outdated! Bring it up to speed.</p>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-important callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">
@@ -815,6 +1188,9 @@ Upload the changes in your local repository to the remote version.
 <li>You can synchronize with the original.</li>
 <li>You can contribute to the original with a PR.</li>
 </ul>
+<div class="footer">
+<p><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks">Forks</a></p>
+</div>
 </section>
 <section id="pull-requests-prs" class="slide level2">
 <h2>Pull requests (PRs)</h2>
@@ -827,7 +1203,11 @@ Upload the changes in your local repository to the remote version.
 <li>Via the online platform (e.g.&nbsp;GitHub).</li>
 <li>Can receive comments and general feedback.</li>
 <li>Needs approval to be merged.</li>
+<li>The title can be preceded with “WIP:” to indicate that the PR is not ready.</li>
 </ul>
+<div class="footer">
+<p><a href="https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests">Pull requests</a></p>
+</div>
 </section>
 <section id="exercise-5" class="slide level2">
 <h2>Exercise</h2>

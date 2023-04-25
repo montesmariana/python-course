@@ -1222,28 +1222,49 @@
     "href": "slides/git.html#branches-2",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\n# do some work on main and stage\ngit commit\nGraph with one or more commits in main."
+    "text": "Branches\n# do some work on main and stage\ngit commit\n\n\n\n\n\n\n\nG\n\n \n\nclustermain\n\n main   \n\nM2\n\n M2   \n\nM1\n\n M1   \n\nM1->M2\n\n  commit"
   },
   {
     "objectID": "slides/git.html#branches-3",
     "href": "slides/git.html#branches-3",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\ngit checkout -b dev\n# do some work and stage\ngit commit\nSame graph, now we have a new branch dev with a commit. Small symbol where the user stands."
+    "text": "Branches\ngit checkout -b dev\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD1\n\n D1   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch"
   },
   {
     "objectID": "slides/git.html#branches-4",
     "href": "slides/git.html#branches-4",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\ngit checkout main\n# do some work and stage\ngit commit\nSame graph, now symbol is back in main. New commit."
+    "text": "Branches\n# do some work on dev and stage\ngit commit\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD2\n\n D2   \n\nD1\n\n D1   \n\nD1->D2\n\n  commit   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch"
   },
   {
     "objectID": "slides/git.html#branches-5",
     "href": "slides/git.html#branches-5",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\ngit checkout dev\ngit merge main\nSame graph, now symbol is in dev and an arrow brings the latest commit to dev."
+    "text": "Branches\ngit checkout main\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD1\n\n D1   \n\nD2\n\n D2   \n\nD1->D2\n\n  commit   \n\nM2\n\n M2   \n\nM2->D1\n\n  branch   \n\nM1\n\n M1   \n\nM1->M2\n\n  commit"
+  },
+  {
+    "objectID": "slides/git.html#branches-6",
+    "href": "slides/git.html#branches-6",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\n# do some work on main and stage\ngit commit\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD1\n\n D1   \n\nD2\n\n D2   \n\nD1->D2\n\n  commit   \n\nM3\n\n M3   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch   \n\nM2->M3\n\n  commit"
+  },
+  {
+    "objectID": "slides/git.html#branches-7",
+    "href": "slides/git.html#branches-7",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\ngit checkout dev\n\n\n\n\n\n\n\nG\n\n \n\nclustermain\n\n main  \n\nclusterdev\n\n dev   \n\nD2\n\n D2   \n\nD1\n\n D1   \n\nD1->D2\n\n  commit   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch   \n\nM3\n\n M3   \n\nM2->M3\n\n  commit"
+  },
+  {
+    "objectID": "slides/git.html#branches-8",
+    "href": "slides/git.html#branches-8",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\ngit merge main\n\n\n\n\n\n\n\nG\n\n \n\nclustermain\n\n main  \n\nclusterdev\n\n dev   \n\nD3\n\n D3   \n\nD1\n\n D1   \n\nD2\n\n D2   \n\nD1->D2\n\n  commit   \n\nD2->D3\n\n  merge   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch   \n\nM3\n\n M3   \n\nM2->M3\n\n  commit   \n\nM3->D3\n\n  merge  \n\n\n\n\n\n\nD3 is up to date with both main and dev, and lives in the dev branch."
   },
   {
     "objectID": "slides/git.html#exercise-1",
@@ -1299,14 +1320,14 @@
     "href": "slides/git.html#forks",
     "title": "Git and GitHub",
     "section": "Forks",
-    "text": "Forks\n\nLinked copy of someone else’s repository in your own account.\nYou can synchronize with the original.\nYou can contribute to the original with a PR."
+    "text": "Forks\n\nLinked copy of someone else’s repository in your own account.\nYou can synchronize with the original.\nYou can contribute to the original with a PR.\n\n\nForks"
   },
   {
     "objectID": "slides/git.html#pull-requests-prs",
     "href": "slides/git.html#pull-requests-prs",
     "title": "Git and GitHub",
     "section": "Pull requests (PRs)",
-    "text": "Pull requests (PRs)\n\nRequest to contribute to a certain branch in a repository.\n\nBecause you don’t have access to modify the branch yourself.\nBecause a review of your submission is in order.\n\nVia the online platform (e.g. GitHub).\nCan receive comments and general feedback.\nNeeds approval to be merged."
+    "text": "Pull requests (PRs)\n\nRequest to contribute to a certain branch in a repository.\n\nBecause you don’t have access to modify the branch yourself.\nBecause a review of your submission is in order.\n\nVia the online platform (e.g. GitHub).\nCan receive comments and general feedback.\nNeeds approval to be merged.\nThe title can be preceded with “WIP:” to indicate that the PR is not ready.\n\n\nPull requests"
   },
   {
     "objectID": "slides/git.html#exercise-5",
@@ -1706,6 +1727,20 @@
     "title": "Introduction to Machine Learning using Python",
     "section": "",
     "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nMore on regular expressions\n\n\n\n\n\n\n\nregex\n\n\nbasics\n\n\n\n\nA deeper dive into regular expressions.\n\n\n\n\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "assignments/2023-06-12-final-project.html",
+    "href": "assignments/2023-06-12-final-project.html",
+    "title": "Final assignment",
+    "section": "",
+    "text": "The main task is: think of a problem you can solve with Python and do so with a script. Create, document and illustrate your program."
+  },
+  {
+    "objectID": "assignments/2023-06-12-final-project.html#process",
+    "href": "assignments/2023-06-12-final-project.html#process",
+    "title": "Final assignment",
+    "section": "Process",
+    "text": "Process\nYou can actually submit everything as a zipped folder via e-mail if you only make one submission, but I strongly recommend that you start working as soon as possible and practice with Git, PRs and the different tasks that you have. I can then try to give you feedback when I have the time."
   },
   {
     "objectID": "assignments/2023-04-18-first-assignment.html",
