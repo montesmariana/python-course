@@ -364,258 +364,6 @@
     "text": "While generating\n\ndef birthday():\n    age = 0\n    while True:\n        age += 1\n        year = \"year\" if age == 1 else \"years\"\n        yield f\"Happy birthday! You are {age} {year} old!\"\n\n\nbday = birthday()\nnext(bday)\n\n'Happy birthday! You are 1 year old!'\n\n\n\nnext(bday)\n\n'Happy birthday! You are 2 years old!'"
   },
   {
-    "objectID": "slides/regex-bs4.html#vocabulary",
-    "href": "slides/regex-bs4.html#vocabulary",
-    "title": "Documentation",
-    "section": "Vocabulary",
-    "text": "Vocabulary\n\nregex / regular expression\n\na pattern describing a certain amount of text.\n\nmatch\n\npiece of text or sequence of bytes/characters that a pattern corresponds to.\n\nstring\n\nsequence of characters that the regular expression is applied to\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#regular-expression-object",
-    "href": "slides/regex-bs4.html#regular-expression-object",
-    "title": "Documentation",
-    "section": "Regular expression object",
-    "text": "Regular expression object\nWith re.compile(regex[, flags]) you get a re.Pattern object. Useful if you want to use the same pattern multiple times.\n\npattern = re.compile(r'\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\b', re.I)\ntype(pattern)\n\nre.Pattern\n\n\n\nUseful attributes: pattern and groups.\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\\\b'\n\n\n\npattern.groups\n\n2"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#match-object",
-    "href": "slides/regex-bs4.html#match-object",
-    "title": "Documentation",
-    "section": "Match object",
-    "text": "Match object\nOutput of re.search(), re.match(), re.fullmatch() and the search(), match() and fullmatch() methods of a re.Pattern object.\n\nemail = pattern.search('My email is mariana.montes@kuleuven.be')\nemail\n\n<re.Match object; span=(12, 38), match='mariana.montes@kuleuven.be'>\n\n\n\nastring = re.search(r'[a-z]+\\.$', 'Here is my email.')\nastring\n\n<re.Match object; span=(11, 17), match='email.'>"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#match-object-components",
-    "href": "slides/regex-bs4.html#match-object-components",
-    "title": "Documentation",
-    "section": "Match object: components",
-    "text": "Match object: components\n\nemail.re\n\nre.compile(r'\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\b',\n           re.IGNORECASE|re.UNICODE)\n\n\n\nemail.string\n\n'My email is mariana.montes@kuleuven.be'\n\n\n\nastring.re\n\nre.compile(r'[a-z]+\\.$', re.UNICODE)\n\n\n\nastring.string\n\n'Here is my email.'\n\n\nAlso useful:\n\nemail.expand(r'The username is \\g<username> and the domain is \\2.')\n\n'The username is mariana.montes and the domain is kuleuven.be.'"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#match-object-matches",
-    "href": "slides/regex-bs4.html#match-object-matches",
-    "title": "Documentation",
-    "section": "Match object: matches",
-    "text": "Match object: matches\n\nemail.group()\n\n'mariana.montes@kuleuven.be'\n\n\n\nemail.groups()\n\n('mariana.montes', 'kuleuven.be')\n\n\n\nemail.group('username')\n\n'mariana.montes'\n\n\n\nemail.group(1)\n\n'mariana.montes'\n\n\n\nastring.group()\n\n'email.'\n\n\n\nastring.groups()\n\n()"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#match-object-indices",
-    "href": "slides/regex-bs4.html#match-object-indices",
-    "title": "Documentation",
-    "section": "Match object: indices",
-    "text": "Match object: indices\n\nemail.span()\n\n(12, 38)\n\n\n\nemail.string[email.start():email.end()]\n\n'mariana.montes@kuleuven.be'\n\n\n\nemail.string[:email.start()]\n\n'My email is '\n\n\n\nastring.span()\n\n(11, 17)\n\n\n\nastring.string[email.start():email.end()]\n\n'mail.'"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#special-characters",
-    "href": "slides/regex-bs4.html#special-characters",
-    "title": "Documentation",
-    "section": "Special characters",
-    "text": "Special characters\n\\, ^, $, ., |, ?, *, +, (, ), [, {.\n\nSpecial meaning\nIf used where they shouldn’t (e.g. + at the beginning): error\nUsed literally if escaped with \\. Combining \\ with another character may result in a special meaning.\n] is literal always unless you already used [ and didn’t close it yet."
-  },
-  {
-    "objectID": "slides/regex-bs4.html#escaping-and-quotes",
-    "href": "slides/regex-bs4.html#escaping-and-quotes",
-    "title": "Documentation",
-    "section": "Escaping and quotes",
-    "text": "Escaping and quotes\n\nQuotation marks may have to be escaped if they match the ones you use to surround your regex.\nRecommended to use raw strings to avoid escaping too much:\n\n\nshort_string = r\"a one line raw string\"\nshort_string\n\n'a one line raw string'\n\n\n\nlong_string = r\"\"\"a raw string\nwith\nmany lines\n\"\"\"\nlong_string\n\n'a raw string\\nwith\\nmany lines\\n'"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#non-printable-characters",
-    "href": "slides/regex-bs4.html#non-printable-characters",
-    "title": "Documentation",
-    "section": "Non-printable characters",
-    "text": "Non-printable characters\n\n\\t = tab\n\\r = carriage return\n\\n = line feed\n\n\nprint(short_string)\nre.findall(r'\\n', short_string)\n\na one line raw string\n\n\n[]\n\n\n\nprint(long_string)\nre.findall(r'\\n', long_string)\n\na raw string\nwith\nmany lines\n\n\n\n['\\n', '\\n', '\\n']\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#character-classes",
-    "href": "slides/regex-bs4.html#character-classes",
-    "title": "Documentation",
-    "section": "Character classes",
-    "text": "Character classes\n\nMatch one out of several characters by placing them between [].\nNegate the match by starting with ^. It can also match line break characters. It has to match something.\n\n\n\n\n\n\n\n\nExample\n\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+.[a-z]{2,4})\\\\b'\n\n\n\n[a-z0-9_.] matches any lowercase letter, digit, _ or .\n[a-z] only matches lowercase letters.\n\n\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#character-classes-1",
-    "href": "slides/regex-bs4.html#character-classes-1",
-    "title": "Documentation",
-    "section": "Character classes",
-    "text": "Character classes\n\nOnly special characters inside are ], \\, ^ , -. They can be escaped with a backslash or by changing the position so they don’t take their special meaning.\nA ?, * or + afterwards matches the character class, not the matched character (see Backreferences)\n\n\n\n\n\n\n\nExample\n\n\n\n[a-z0-9_.]+ matches any combination of one or more lowercase letters, digits, _ or .\n[a-z]+ matches one or more lowecase letters, not necessarily the same letter repeated.\n\n\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#shorthand-character-classes-digits",
-    "href": "slides/regex-bs4.html#shorthand-character-classes-digits",
-    "title": "Documentation",
-    "section": "Shorthand character classes: digits",
-    "text": "Shorthand character classes: digits\n\ntest_string = \"\"\"A string (test_string) with 3 numbers:\n1, 2 and the one-mentioned-before.\"\"\"\n\n\n\\d = [0-9] (but also other scripts). \\D is the opposite.\n\n\nre.findall(r'\\d+', test_string)\n\n['3', '1', '2']\n\n\n\nre.findall(r'\\D+', test_string)\n\n['A string (test_string) with ',\n ' numbers:\\n',\n ', ',\n ' and the one-mentioned-before.']\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#shorthand-character-classes-words",
-    "href": "slides/regex-bs4.html#shorthand-character-classes-words",
-    "title": "Documentation",
-    "section": "Shorthand character classes: words",
-    "text": "Shorthand character classes: words\n\ntest_string\n\n'A string (test_string) with 3 numbers:\\n1, 2 and the one-mentioned-before.'\n\n\n\n\\w = [A-Za-z0-9_]. \\W is the opposite.\n\n\nprint(re.findall(r'\\w+', test_string))\n\n['A', 'string', 'test_string', 'with', '3', 'numbers', '1', '2', 'and', 'the', 'one', 'mentioned', 'before']\n\n\n\nre.findall(r'\\W+', test_string)\n\n[' ', ' (', ') ', ' ', ' ', ':\\n', ', ', ' ', ' ', ' ', '-', '-', '.']\n\n\n\nIt matches other scripts too:\n\n\nre.findall('\\w+', '言葉 means \"word\".')\n\n['言葉', 'means', 'word']\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#shorthand-character-classes-spaces",
-    "href": "slides/regex-bs4.html#shorthand-character-classes-spaces",
-    "title": "Documentation",
-    "section": "Shorthand character classes: spaces",
-    "text": "Shorthand character classes: spaces\n\ntest_string\n\n'A string (test_string) with 3 numbers:\\n1, 2 and the one-mentioned-before.'\n\n\n\n\\s = [ \\t\\r\\n\\f] (\\f = form feed). \\S is the opposite.\n\n\nre.findall(r'\\s+', test_string)\n\n[' ', ' ', ' ', ' ', ' ', '\\n', ' ', ' ', ' ', ' ']\n\n\n\nprint(re.findall(r'\\S+', test_string))\n\n['A', 'string', '(test_string)', 'with', '3', 'numbers:', '1,', '2', 'and', 'the', 'one-mentioned-before.']\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#shorthand-character-classes",
-    "href": "slides/regex-bs4.html#shorthand-character-classes",
-    "title": "Documentation",
-    "section": "Shorthand character classes",
-    "text": "Shorthand character classes\n\ntest_string\n\n'A string (test_string) with 3 numbers:\\n1, 2 and the one-mentioned-before.'\n\n\n\nThey can also be used inside brackets.\n\n\n# any sequence of digits + spaces\nre.findall(r'[\\d\\s]+', test_string)\n\n[' ', ' ', ' ', ' 3 ', '\\n1', ' 2 ', ' ', ' ']\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#dot",
-    "href": "slides/regex-bs4.html#dot",
-    "title": "Documentation",
-    "section": "Dot",
-    "text": "Dot\n\nMatches anything except for line breaks.\nUse sparingly: it can match things you don’t want to match! Sometimes a negated character class is better.\n\n\nre.search('(.+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()\n\n('mariana.montes@kuleuven.be or anothermail',)\n\n\n\nre.search('([^@]+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()\n\n('mariana.montes',)\n\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#anchors",
-    "href": "slides/regex-bs4.html#anchors",
-    "title": "Documentation",
-    "section": "Anchors",
-    "text": "Anchors\n\nDoes not match a character but a position\n^ , $, \\b (for word boundaries: between something that matches \\w and either the beginning or end of the string or something that does not match \\w). ::: footer regular-expressions.info :::"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#alternation",
-    "href": "slides/regex-bs4.html#alternation",
-    "title": "Documentation",
-    "section": "Alternation",
-    "text": "Alternation\n| to match either one sequence or another ::: footer regular-expressions.info :::"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#optional-items",
-    "href": "slides/regex-bs4.html#optional-items",
-    "title": "Documentation",
-    "section": "Optional items",
-    "text": "Optional items\n? make the preceding token (character or group) optional It will try to match if possible and only return a match without if that’s the only option\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#repetition",
-    "href": "slides/regex-bs4.html#repetition",
-    "title": "Documentation",
-    "section": "Repetition",
-    "text": "Repetition\n* and +, {min,max}\n\n{0,1} = ?\n{0,} = *\n{1,} = +\n\n{x} = repeat exactly x times\n\n? after one of this makes the search lazy instead of greedy. (but negated character class is more efficient) ::: footer regular-expressions.info :::"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#grouping-and-capturing",
-    "href": "slides/regex-bs4.html#grouping-and-capturing",
-    "title": "Documentation",
-    "section": "Grouping and capturing",
-    "text": "Grouping and capturing\nwith ()\n\nto apply a quantifier or limit an alternation\ncreates a numbered group unless it starts with ?: (non-capturing group)\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#backreferences",
-    "href": "slides/regex-bs4.html#backreferences",
-    "title": "Documentation",
-    "section": "Backreferences",
-    "text": "Backreferences\nto match the same text again\n\n\\1 for the first capturing group, \\2 for the second… (non-capturing groups are excluded)\ndifference between [ab]+ and (a|b)\\1+\nReplace with re.sub(regex, replacement, subject).\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#named-groups",
-    "href": "slides/regex-bs4.html#named-groups",
-    "title": "Documentation",
-    "section": "Named groups",
-    "text": "Named groups\n?P<name> at the beginning of a capturing group, then backreference is (?P=name): this does not capture ::: footer regular-expressions.info :::"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#free-spacing-and-comments",
-    "href": "slides/regex-bs4.html#free-spacing-and-comments",
-    "title": "Documentation",
-    "section": "Free spacing and comments",
-    "text": "Free spacing and comments\n\nAllow to use spaces between “logical sections”\nAdd comments with #\nWith the re.X flag in Python\n\n\nregular-expressions.info - re.X"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#unicode",
-    "href": "slides/regex-bs4.html#unicode",
-    "title": "Documentation",
-    "section": "Unicode",
-    "text": "Unicode\nSTILL TO STUDY\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#mode-modifiers",
-    "href": "slides/regex-bs4.html#mode-modifiers",
-    "title": "Documentation",
-    "section": "Mode modifiers",
-    "text": "Mode modifiers\nre.compile() and flags\n\n\n\nMode\nFlag in (?<flag>)\nre. flag\n\n\n\n\nCase insensitive\ni\nI\n\n\nFree-spacing\nx\nX\n\n\nMultiline\nm\nM\n\n\nDot matches also new lines\ns\nS\n\n\n\n\nre.findall() and re.finditer() do not support the flags. re.match() and re.search() do.\n\n\nregular-expressions.info - re.compile()"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#lookahead-and-lookbehind",
-    "href": "slides/regex-bs4.html#lookahead-and-lookbehind",
-    "title": "Documentation",
-    "section": "Lookahead and lookbehind",
-    "text": "Lookahead and lookbehind\n\nDon’t return matches but whether a match is made or not.\n\nq(?!u) matches a ‘q’ that is NOT followed by an ‘u’\nq(?=u) matches a ‘q’ followed by an ‘u’ but not the ‘u’ itself.\n\nq(?=u)i can never match anything!\nCan be very useful to find a match with n characters, e.g. \\b(?=\\w{6}\\b)\\w*cat\\w* matches a word with exactly 6 characters that contains the pattern cat.\n\n(?<!a)b matches a ‘b’ NOT preceded by an ‘a’\n(?<=)b matches a ‘b’ preceded by an ‘a’, but not the ‘a’.\n\nLookbehind: no quantifiers or backreferences, alternation only if they have the same length.\nNot capturing groups (but can have groups inside)\n\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#conditionals",
-    "href": "slides/regex-bs4.html#conditionals",
-    "title": "Documentation",
-    "section": "Conditionals",
-    "text": "Conditionals\n\nregular-expressions.info"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#vocabulary-1",
-    "href": "slides/regex-bs4.html#vocabulary-1",
-    "title": "Documentation",
-    "section": "Vocabulary",
-    "text": "Vocabulary\n\ntag\n\ndefinition of tag\n\nattribute-value\n\ndefinition of attr\n\ntext?\n\nThe contents?"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#common-tags-and-how-they-are-used-html",
-    "href": "slides/regex-bs4.html#common-tags-and-how-they-are-used-html",
-    "title": "Documentation",
-    "section": "Common tags and how they are used: html",
-    "text": "Common tags and how they are used: html\n\nclass\nid"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#common-tags-in-tei-compliant-xml",
-    "href": "slides/regex-bs4.html#common-tags-in-tei-compliant-xml",
-    "title": "Documentation",
-    "section": "Common tags in TEI-compliant XML",
-    "text": "Common tags in TEI-compliant XML\n(Use ‘xml’ for parser)"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#get-one-tag",
-    "href": "slides/regex-bs4.html#get-one-tag",
-    "title": "Documentation",
-    "section": "Get one tag",
-    "text": "Get one tag\nProperties: name, attrs\n\nBeautifulSoup"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#find-all-tags",
-    "href": "slides/regex-bs4.html#find-all-tags",
-    "title": "Documentation",
-    "section": "Find all tags",
-    "text": "Find all tags\n\nBeautifulSoup"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#find-based-on-attribute",
-    "href": "slides/regex-bs4.html#find-based-on-attribute",
-    "title": "Documentation",
-    "section": "Find based on attribute",
-    "text": "Find based on attribute\n\nBeautifulSoup"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#get-the-text",
-    "href": "slides/regex-bs4.html#get-the-text",
-    "title": "Documentation",
-    "section": "Get the text",
-    "text": "Get the text\n\nBeautifulSoup"
-  },
-  {
-    "objectID": "slides/regex-bs4.html#example-with-tei-version-of-brown",
-    "href": "slides/regex-bs4.html#example-with-tei-version-of-brown",
-    "title": "Documentation",
-    "section": "Example with TEI-version of Brown",
-    "text": "Example with TEI-version of Brown"
-  },
-  {
     "objectID": "slides/oop.html#functional-vs-oo-programming",
     "href": "slides/oop.html#functional-vs-oo-programming",
     "title": "Object oriented programming",
@@ -1162,6 +910,223 @@
     "text": "Dictionaries: notes\n\nA dictionary has key-value pairs: instead of an index you use a named key to retrieve a value.\nThe in operator to check inclusion checks for values in lists and for keys in dictionaries.\nDictionaries are also mutable.\n\n\nMore about dictionaries"
   },
   {
+    "objectID": "slides/regex.html#vocabulary",
+    "href": "slides/regex.html#vocabulary",
+    "title": "More on regular expressions",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\nregex / regular expression\n\na pattern describing a certain amount of text.\n\nmatch\n\npiece of text or sequence of bytes/characters that a pattern corresponds to.\n\nstring\n\nsequence of characters that the regular expression is applied to.\n\n\n\nWe try to get a match of a regex in a string.\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#regular-expression-object",
+    "href": "slides/regex.html#regular-expression-object",
+    "title": "More on regular expressions",
+    "section": "Regular expression object",
+    "text": "Regular expression object\nre.compile(regex[, flags]) → re.Pattern object. Useful if you want to use the same pattern multiple times.\n\nemail_regex = r'\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\.[a-z]{2,4})\\b'\npattern = re.compile(email_regex, re.I)\ntype(pattern)\n\nre.Pattern\n\n\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\\\.[a-z]{2,4})\\\\b'\n\n\n\npattern.groups\n\n2"
+  },
+  {
+    "objectID": "slides/regex.html#match-object",
+    "href": "slides/regex.html#match-object",
+    "title": "More on regular expressions",
+    "section": "Match object",
+    "text": "Match object\nOutput of re.search(), re.match(), re.fullmatch() and the search(), match() and fullmatch() methods of a re.Pattern object.\n\nemail = pattern.search('My email is mariana.montes@kuleuven.be')\nemail\n\n<re.Match object; span=(12, 38), match='mariana.montes@kuleuven.be'>\n\n\n\nastring = re.search(r'[a-z]+\\.$', 'Here is my email.')\nastring\n\n<re.Match object; span=(11, 17), match='email.'>"
+  },
+  {
+    "objectID": "slides/regex.html#match-object-components",
+    "href": "slides/regex.html#match-object-components",
+    "title": "More on regular expressions",
+    "section": "Match object: components",
+    "text": "Match object: components\n\nemail.re\n\nre.compile(r'\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\.[a-z]{2,4})\\b',\n           re.IGNORECASE|re.UNICODE)\n\n\n\nemail.string\n\n'My email is mariana.montes@kuleuven.be'\n\n\n\nastring.re\n\nre.compile(r'[a-z]+\\.$', re.UNICODE)\n\n\n\nastring.string\n\n'Here is my email.'\n\n\n\n\nemail.expand(r'The username is \\g<username> and the domain is \\2.')\n\n'The username is mariana.montes and the domain is kuleuven.be.'"
+  },
+  {
+    "objectID": "slides/regex.html#match-object-matches",
+    "href": "slides/regex.html#match-object-matches",
+    "title": "More on regular expressions",
+    "section": "Match object: matches",
+    "text": "Match object: matches\n\nemail.group()\n\n'mariana.montes@kuleuven.be'\n\n\n\nemail.groups()\n\n('mariana.montes', 'kuleuven.be')\n\n\n\nemail.group('username')\n\n'mariana.montes'\n\n\n\nemail.group(1)\n\n'mariana.montes'\n\n\n\nastring.group()\n\n'email.'\n\n\n\nastring.groups()\n\n()"
+  },
+  {
+    "objectID": "slides/regex.html#match-object-indices",
+    "href": "slides/regex.html#match-object-indices",
+    "title": "More on regular expressions",
+    "section": "Match object: indices",
+    "text": "Match object: indices\n\nemail.span()\n\n(12, 38)\n\n\n\nemail.string[email.start():email.end()]\n\n'mariana.montes@kuleuven.be'\n\n\n\nemail.string[:email.start()]\n\n'My email is '\n\n\n\nastring.span()\n\n(11, 17)\n\n\n\nastring.string[email.start():email.end()]\n\n'mail.'"
+  },
+  {
+    "objectID": "slides/regex.html#special-characters",
+    "href": "slides/regex.html#special-characters",
+    "title": "More on regular expressions",
+    "section": "Special characters",
+    "text": "Special characters\n\\, ^, $, ., |, ?, *, +, (, ), [, {.\n\nSpecial meaning\nIf used where they shouldn’t (e.g. + at the beginning): error\nUsed literally if escaped with \\. Combining \\ with another character may result in a special meaning.\n] is literal always unless you already used [ and didn’t close it yet."
+  },
+  {
+    "objectID": "slides/regex.html#escaping-and-quotes",
+    "href": "slides/regex.html#escaping-and-quotes",
+    "title": "More on regular expressions",
+    "section": "Escaping and quotes",
+    "text": "Escaping and quotes\n\nQuotation marks may have to be escaped if they match the ones you use to surround your regex.\nRecommended to use raw strings to avoid escaping too much:\n\n\nshort_string = r\"a one line raw string\"\nshort_string\n\n'a one line raw string'\n\n\n\nlong_string = r\"\"\"a raw string\nwith\nmany lines\n\"\"\"\nlong_string\n\n'a raw string\\nwith\\nmany lines\\n'"
+  },
+  {
+    "objectID": "slides/regex.html#non-printable-characters",
+    "href": "slides/regex.html#non-printable-characters",
+    "title": "More on regular expressions",
+    "section": "Non-printable characters",
+    "text": "Non-printable characters\n\n\n\\t = tab\n\\r = carriage return\n\\n = line feed\n\n\n\n\n\nprint(short_string)\nre.findall(r'\\n', short_string)\n\na one line raw string\n\n\n[]\n\n\n\n\nprint(long_string)\nre.findall(r'\\n', long_string)\n\na raw string\nwith\nmany lines\n\n\n\n['\\n', '\\n', '\\n']\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#character-classes",
+    "href": "slides/regex.html#character-classes",
+    "title": "More on regular expressions",
+    "section": "Character classes",
+    "text": "Character classes\n\nMatch one out of several characters by placing them between [].\nNegate the match by starting with ^. It can also match line break characters. It has to match something.\n\n\n\n\n\n\n\n\nExample\n\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\\\.[a-z]{2,4})\\\\b'\n\n\n\n[a-z0-9_.] matches any lowercase letter, digit, _ or .\n[a-z] only matches lowercase letters.\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#character-classes-1",
+    "href": "slides/regex.html#character-classes-1",
+    "title": "More on regular expressions",
+    "section": "Character classes",
+    "text": "Character classes\n\nOnly special characters inside are ], \\, ^ , -. They can be escaped with a backslash or by changing the position so they don’t take their special meaning.\nA ?, * or + afterwards matches the character class, not the matched character (see Backreferences).\n\n\n\n\n\n\n\nExample\n\n\n\n[a-z0-9_.]+ matches any combination of one or more lowercase letters, digits, _ or ..\n[a-z]+ matches one or more lowecase letters, not necessarily the same letter repeated.\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#shorthand-character-classes-digits",
+    "href": "slides/regex.html#shorthand-character-classes-digits",
+    "title": "More on regular expressions",
+    "section": "Shorthand character classes: digits",
+    "text": "Shorthand character classes: digits\n\ntest_string = \"\"\"A string (test_string) with 3 numbers:\n1, 2 and the one-mentioned-before.\"\"\"\n\n\n\\d = [0-9] (but also other scripts). \\D is the opposite.\n\n\nre.findall(r'\\d+', test_string)\n\n['3', '1', '2']\n\n\n\nre.findall(r'\\D+', test_string)\n\n['A string (test_string) with ',\n ' numbers:\\n',\n ', ',\n ' and the one-mentioned-before.']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#shorthand-character-classes-words",
+    "href": "slides/regex.html#shorthand-character-classes-words",
+    "title": "More on regular expressions",
+    "section": "Shorthand character classes: words",
+    "text": "Shorthand character classes: words\n\n\\w = [A-Za-z0-9_]. \\W is the opposite.\n\n\nprint(re.findall(r'\\w+', test_string))\n\n['A', 'string', 'test_string', 'with', '3', 'numbers', '1', '2', 'and', 'the', 'one', 'mentioned', 'before']\n\n\n\nre.findall(r'\\W+', test_string)\n\n[' ', ' (', ') ', ' ', ' ', ':\\n', ', ', ' ', ' ', ' ', '-', '-', '.']\n\n\n\n\nIt matches other scripts too:\n\n\nre.findall('\\w+', '言葉 means \"word\".')\n\n['言葉', 'means', 'word']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#shorthand-character-classes-spaces",
+    "href": "slides/regex.html#shorthand-character-classes-spaces",
+    "title": "More on regular expressions",
+    "section": "Shorthand character classes: spaces",
+    "text": "Shorthand character classes: spaces\n\nprint(test_string)\n\nA string (test_string) with 3 numbers:\n1, 2 and the one-mentioned-before.\n\n\n\n\\s = [ \\t\\r\\n\\f] (\\f = form feed). \\S is the opposite.\n\n\nre.findall(r'\\s+', test_string)\n\n[' ', ' ', ' ', ' ', ' ', '\\n', ' ', ' ', ' ', ' ']\n\n\n\nprint(re.findall(r'\\S+', test_string))\n\n['A', 'string', '(test_string)', 'with', '3', 'numbers:', '1,', '2', 'and', 'the', 'one-mentioned-before.']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#shorthand-character-classes",
+    "href": "slides/regex.html#shorthand-character-classes",
+    "title": "More on regular expressions",
+    "section": "Shorthand character classes",
+    "text": "Shorthand character classes\n\nprint(test_string)\n\nA string (test_string) with 3 numbers:\n1, 2 and the one-mentioned-before.\n\n\n\nThey can also be used inside brackets.\n\n\n# any sequence of digits + spaces\nre.findall(r'[\\d\\s]+', test_string)\n\n[' ', ' ', ' ', ' 3 ', '\\n1', ' 2 ', ' ', ' ']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#dot",
+    "href": "slides/regex.html#dot",
+    "title": "More on regular expressions",
+    "section": "Dot",
+    "text": "Dot\n\nMatches anything except for line breaks (unless re.S flag is used).\nUse sparingly: it can match things you don’t want to match! Sometimes a negated character class is better.\n\n\nre.search('(.+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()\n\n('mariana.montes@kuleuven.be or anothermail',)\n\n\n\nre.search('([^@]+)@', 'mariana.montes@kuleuven.be or anothermail@gmail.com').groups()\n\n('mariana.montes',)\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#anchors",
+    "href": "slides/regex.html#anchors",
+    "title": "More on regular expressions",
+    "section": "Anchors",
+    "text": "Anchors\n\nDoes not match a character but a position\n^ = beginning of a line\n$ = end of a lne\n\\b = word boundaries: between something that matches \\w and beginning/end of the string or something that matches \\W.\n\n\n\n\n\n\n\nExample\n\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\\\.[a-z]{2,4})\\\\b'\n\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#alternation",
+    "href": "slides/regex.html#alternation",
+    "title": "More on regular expressions",
+    "section": "Alternation",
+    "text": "Alternation\n| to match either one sequence or another.\n\nprint(long_string)\nre.findall('(string|lines)', long_string)\n\na raw string\nwith\nmany lines\n\n\n\n['string', 'lines']\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#repetition",
+    "href": "slides/regex.html#repetition",
+    "title": "More on regular expressions",
+    "section": "Repetition",
+    "text": "Repetition\n\n{0,1} = ? = zero or one times\n{0,} = * = zero or more times\n{1,} = + = one or more times\n{x} = repeat exactly x times\n\n\n\n\n\n\n\nTip\n\n\n? after one of this makes the search lazy instead of greedy. A negated character class is more efficient, though.\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#repetition-1",
+    "href": "slides/regex.html#repetition-1",
+    "title": "More on regular expressions",
+    "section": "Repetition",
+    "text": "Repetition\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\\\.[a-z]{2,4})\\\\b'\n\n\n\n[a-zO-9_.]+ = at least one lower case letter, digit, underscore or period.\n[a-z]{2,4} = two to four lower case letters.\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#grouping-and-capturing",
+    "href": "slides/regex.html#grouping-and-capturing",
+    "title": "More on regular expressions",
+    "section": "Grouping and capturing",
+    "text": "Grouping and capturing\nDone with ():\n\nto apply a quantifier or limit an alternation\ncreates a numbered group unless it starts with ?: (non-capturing group)\ncreates a named group if it starts with ?P<name>\n\n\n\n\n\n\n\nExample\n\n\n\npattern.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\\\.[a-z]{2,4})\\\\b'\n\n\n\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#backreferences",
+    "href": "slides/regex.html#backreferences",
+    "title": "More on regular expressions",
+    "section": "Backreferences",
+    "text": "Backreferences\nTo match the same text again\n\n\\1 for the first capturing group, \\2 for the second… (non-capturing groups are excluded)\n\n\nemail.re.pattern\n\n'\\\\b(?P<username>[a-z0-9_.]+)@(?P<domain>[a-z0-9.-]+\\\\.[a-z]{2,4})\\\\b'\n\n\n\nemail.string\n\n'My email is mariana.montes@kuleuven.be'\n\n\n\nemail.expand(r'The username is \\1 and the domain is \\2.')\n\n'The username is mariana.montes and the domain is kuleuven.be.'\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#backreferences-1",
+    "href": "slides/regex.html#backreferences-1",
+    "title": "More on regular expressions",
+    "section": "Backreferences",
+    "text": "Backreferences\nThere is a difference between [ab]+ and (a|b)\\1+:\n\nre.search(r'[ab]+', \"abby\").group()\n\n'abb'\n\n\n\nre.search(r'(a|b)\\1+', \"abby\").group()\n\n'bb'\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#backreferences-for-replacement",
+    "href": "slides/regex.html#backreferences-for-replacement",
+    "title": "More on regular expressions",
+    "section": "Backreferences for replacement",
+    "text": "Backreferences for replacement\n\nre.sub(\n    '([a-z]+)@([A-Za-z]+.com)', # regex\n    r'The username is \\1 and the domain is \\2.', # replacement\n    'lowercase@UpperCase.com', #string\n    )\n\n'The username is lowercase and the domain is UpperCase.com.'\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#free-spacing-and-comments",
+    "href": "slides/regex.html#free-spacing-and-comments",
+    "title": "More on regular expressions",
+    "section": "Free spacing and comments",
+    "text": "Free spacing and comments\n\nAllow to use spaces between “logical sections”.\nAdd comments with #.\nWith the re.X flag.\n\n\nregular-expressions.info - re.X"
+  },
+  {
+    "objectID": "slides/regex.html#free-spacing-and-comments-1",
+    "href": "slides/regex.html#free-spacing-and-comments-1",
+    "title": "More on regular expressions",
+    "section": "Free spacing and comments",
+    "text": "Free spacing and comments\n\npat = re.compile(\n    r\"\"\"\\b               # word boundary\n        (?P<username>    # username group\n        [a-z0-9_.] +     # one or more lowercase/digits/underscore/period\n        )\n        @                # at symbol\n        (?P<domain>      # domain group\n        [a-z0-9.-] +     # one or more lowercase/digits/period/dash\n        \\.               # a literal period\n        [a-z]     {2,4}  # two to four lowercase letters\n        )\n        \\b               # word boundary\"\"\", re.X)\npat.search('mariana.montes@kuleuven.be').groups()\n\n('mariana.montes', 'kuleuven.be')\n\n\n\nregular-expressions.info - re.X"
+  },
+  {
+    "objectID": "slides/regex.html#mode-modifiers",
+    "href": "slides/regex.html#mode-modifiers",
+    "title": "More on regular expressions",
+    "section": "Mode modifiers",
+    "text": "Mode modifiers\n\nCase insensitive (i) and free-spacing + comments (x)\n\n\nre.search(r'(?xi) [a-z] +', 'AaBbCc')\n\n<re.Match object; span=(0, 6), match='AaBbCc'>\n\n\n\nre.compile(r'  [a-z] +  ', re.I | re.X).search('AaBbCc')\n\n<re.Match object; span=(0, 6), match='AaBbCc'>\n\n\n\nregular-expressions.info - re.compile()"
+  },
+  {
+    "objectID": "slides/regex.html#mode-modifiers-multilinear",
+    "href": "slides/regex.html#mode-modifiers-multilinear",
+    "title": "More on regular expressions",
+    "section": "Mode modifiers: multilinear",
+    "text": "Mode modifiers: multilinear\n\nalliter = \"\"\"apple\nbanana\nmelon\nmilk\n\"\"\"\nre.search(r'(?m)^a[a-z]+$', alliter)\n\n<re.Match object; span=(0, 5), match='apple'>\n\n\n\n\nre.compile(r'^b[a-z]+$', re.M).search(alliter)\n\n<re.Match object; span=(6, 12), match='banana'>\n\n\n\n\n\nre.search(r'^a[a-z]+$', alliter)\n\n\n\n\nre.search(r'^a[a-z\\n]+$', alliter)\n\n<re.Match object; span=(0, 24), match='apple\\nbanana\\nmelon\\nmilk\\n'>\n\n\n\nregular-expressions.info - re.compile()"
+  },
+  {
+    "objectID": "slides/regex.html#lookaround",
+    "href": "slides/regex.html#lookaround",
+    "title": "More on regular expressions",
+    "section": "Lookaround",
+    "text": "Lookaround\n\nDon’t return matches but whether a match is made or not.\nNot capturing groups (but can have groups inside if you want to capture).\nOptions: lookahead ((?...)) or lookbehind ((?<...)).\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#lookahead",
+    "href": "slides/regex.html#lookahead",
+    "title": "More on regular expressions",
+    "section": "Lookahead",
+    "text": "Lookahead\n\nq(?!u) matches a ‘q’ that is NOT followed by an ‘u’.\nq(?=u) matches a ‘q’ followed by an ‘u’ but not the ‘u’ itself.\n\nq(?=u)i can never match anything!\nCan be very useful to find a match with n characters, e.g. \\b(?=\\w{6}\\b)\\w*cat\\w* matches a word with exactly 6 characters that contains the pattern cat.\n\n\n\nregular-expressions.info"
+  },
+  {
+    "objectID": "slides/regex.html#lookbehind",
+    "href": "slides/regex.html#lookbehind",
+    "title": "More on regular expressions",
+    "section": "Lookbehind",
+    "text": "Lookbehind\n\nNo quantifiers or backreferences, alternation only if they have the same length.\n(?<!a)b matches a ‘b’ NOT preceded by an ‘a’\n(?<=a)b matches a ‘b’ preceded by an ‘a’, but not the ‘a’.\n\n\nregular-expressions.info"
+  },
+  {
     "objectID": "slides/files/index.html#setup",
     "href": "slides/files/index.html#setup",
     "title": "Working with files",
@@ -1498,6 +1463,13 @@
     "text": "Think about\n\nHow do you think you could use a list or a dictionary in translation?"
   },
   {
+    "objectID": "classes/2023-04-25-regex.html",
+    "href": "classes/2023-04-25-regex.html",
+    "title": "More on regular expressions",
+    "section": "",
+    "text": "Today we learn a bit more about regular expressions:\n\nHow to use them in Python\nBasic and not so basic techniques\n\n\n\n\n\nWhat to do during the class\nCopy the code from the slides in a Jupyter Notebook. You can also experiment with some other string you make up!\n\n\n\n\n\n\nImportant\n\n\n\nDo not forget to import the re package!\n\nimport re\n\n\n\n\n\nFinal exercise\nFor your final project, you will have to add validation in you code, so that you make sure that users are providing what you expect them to (even if the only user would be yourself). Try to think what kind of character data your project will use and how you can validate its format with regular expressions. For example:\n\nValidate an email.\nValidate a date in one or more formats.\nValidate a home address.\n\nYou can also use regex groups to extract information from a fragment of text. For example, try to write regexes to:\n\nExtract username and domain from the email.\nExtract given name and last name from a name.\nExtract day, month and year from a date.\n\nFinally, you could write a template message in which you replace certain values with another string of text. We have been doing this with f\"...{}...\", but you could also use re.sub() or re.Pattern.expand() to replace a text."
+  },
+  {
     "objectID": "classes/2023-02-21-variables.html",
     "href": "classes/2023-02-21-variables.html",
     "title": "Variables",
@@ -1544,7 +1516,7 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nMore on regular expressions\n\n\n\n\n\n\n\nregex\n\n\nbasics\n\n\n\n\nA deeper dive into regular expressions.\n\n\n\n\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/2023-04-18-first-assignment.html",
