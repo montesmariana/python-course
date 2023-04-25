@@ -2,70 +2,74 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://montesmariana.github.io/python-course/about.html</loc>
-    <lastmod>2023-04-25T07:09:45.326Z</lastmod>
+    <lastmod>2023-04-25T14:46:41.217Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/iterables.html</loc>
-    <lastmod>2023-04-25T07:09:46.916Z</lastmod>
+    <lastmod>2023-04-25T14:46:42.437Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/if-functions.html</loc>
-    <lastmod>2023-04-25T07:09:48.296Z</lastmod>
+    <lastmod>2023-04-25T14:46:43.587Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/oop.html</loc>
-    <lastmod>2023-04-25T07:09:49.436Z</lastmod>
+    <lastmod>2023-04-25T14:46:44.407Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/documentation.html</loc>
-    <lastmod>2023-04-25T07:09:50.816Z</lastmod>
+    <lastmod>2023-04-25T14:46:45.387Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/variables.html</loc>
-    <lastmod>2023-04-25T07:09:52.096Z</lastmod>
+    <lastmod>2023-04-25T14:46:46.377Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/regex.html</loc>
-    <lastmod>2023-04-25T07:09:53.336Z</lastmod>
+    <lastmod>2023-04-25T14:46:47.297Z</lastmod>
+  </url>
+  <url>
+    <loc>https://montesmariana.github.io/python-course/slides/git.html</loc>
+    <lastmod>2023-04-25T14:46:48.087Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/slides/files/index.html</loc>
-    <lastmod>2023-04-25T07:09:57.876Z</lastmod>
+    <lastmod>2023-04-25T14:46:51.667Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-02-28-iterables.html</loc>
-    <lastmod>2023-04-25T07:09:59.396Z</lastmod>
+    <lastmod>2023-04-25T14:46:52.787Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-04-25-regex.html</loc>
-    <lastmod>2023-04-25T07:10:00.586Z</lastmod>
+    <lastmod>2023-04-25T14:46:53.737Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-02-21-variables.html</loc>
-    <lastmod>2023-04-25T07:10:01.836Z</lastmod>
+    <lastmod>2023-04-25T14:46:54.417Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-03-21-oop.html</loc>
-    <lastmod>2023-04-25T07:10:03.326Z</lastmod>
+    <lastmod>2023-04-25T14:46:55.257Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-03-07-if-functions.html</loc>
-    <lastmod>2023-04-25T07:10:04.866Z</lastmod>
+    <lastmod>2023-04-25T14:46:56.147Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-04-18-docs.html</loc>
-    <lastmod>2023-04-25T07:10:05.636Z</lastmod>
+    <lastmod>2023-04-25T14:46:56.627Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/classes/2023-03-14-files.html</loc>
-    <lastmod>2023-04-25T07:10:07.186Z</lastmod>
+    <lastmod>2023-04-25T14:46:57.487Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/index.html</loc>
-    <lastmod>2023-04-25T07:10:17.296Z</lastmod>
+    <lastmod>2023-04-25T14:47:04.397Z</lastmod>
   </url>
   <url>
     <loc>https://montesmariana.github.io/python-course/assignments/2023-04-18-first-assignment.html</loc>
-    <lastmod>2023-04-25T07:10:18.026Z</lastmod>
+    <lastmod>2023-04-25T14:47:05.117Z</lastmod>
   </url>
 </urlset>

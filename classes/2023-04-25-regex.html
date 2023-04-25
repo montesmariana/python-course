@@ -180,6 +180,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <ul>
   <li><a href="#what-to-do-during-the-class" id="toc-what-to-do-during-the-class" class="nav-link active" data-scroll-target="#what-to-do-during-the-class">What to do during the class</a></li>
   <li><a href="#final-exercise" id="toc-final-exercise" class="nav-link" data-scroll-target="#final-exercise">Final exercise</a></li>
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
   </ul>
 </nav>
     </div>
@@ -261,6 +262,56 @@ Important
 <li>Extract day, month and year from a date.</li>
 </ul>
 <p>Finally, you could write a template message in which you replace certain values with another string of text. We have been doing this with <code>f"...{}..."</code>, but you could also use <code>re.sub()</code> or <code>re.Pattern.expand()</code> to replace a text.</p>
+</section>
+<section id="git" class="level1">
+<h1>Git</h1>
+<p>The final project can be submitted via GitHub. If you so choose, you <em>can</em> send a folder via e-mail, but via Git you can start working on your project already and get feedback as you work on it during May.</p>
+<p>We’ll look into Git next week, but in the meantime:</p>
+<ul>
+<li>Download git.</li>
+<li>Create a GitHub account.</li>
+<li>Go to <a href="https://github.com/montesmariana/intro_machine_learning_using_python">the sample repository</a> and fork it by clicking on the “Fork” button shown in <a href="#fig-fork">Figure&nbsp;1</a>. This will create a linked copy in your own GitHub account.</li>
+</ul>
+<div id="fig-fork" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="_resources/fork.png" class="img-fluid figure-img" alt="Screenshot of a GitHub repository highlighting the button to fork a repository."></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Fork the repository</figcaption><p></p>
+</figure>
+</div>
+<p>Next you can configure your Git to talk to GitHub. Given your name <code>&lt;name&gt;</code> (this doesn’t have to be your username, just a way to sign your messages; mine is “Mariana Montes”) and the e-mail connected to that account <code>&lt;email&gt;</code>, open Git Bash or another terminal and run the following:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"&lt;name&gt;"</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"&lt;email&gt;"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>For example, I would do the following:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.name <span class="st">"Mariana Montes"</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> config <span class="at">--global</span> user.email <span class="st">"mariana.montes@kuleuven.be"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>The next steps we will look at next week, but you can already try them already. You also have to run them on Git Bash or another terminal.</p>
+<ul>
+<li>Download your forked repository with <code>git clone &lt;url&gt;</code>, replacing <code>&lt;url&gt;</code> with the url of your forked repository. This will look something like <code>https://github.com/montesmariana/intro_machine_learning_using_python.git</code>, but with your username instead of <code>montesmariana</code>.
+<ul>
+<li>If you do <code>git clone https://github.com/montesmariana/intro_machine_learning_using_python.git</code> you will be downloading MY version of the repository.</li>
+</ul></li>
+</ul>
+<p>It can be that Git asks you to authenticate. Follow the instructions of the messages in the console.</p>
+<ul>
+<li>Type <code>cd intro_machine_learning_using_python</code>. You are now inside the folder and you can see the list of files with <code>ls</code>.</li>
+</ul>
+<p>After these steps you will have a folder called “intro_machine_learning_using_python” with the contents of the repository. You can go ahead and open it with VS Code (either navigating from VS code or by typing <code>code .</code>).</p>
+<p>The idea is that the contents of this repository are the base of your final project. You should edit the README to adapt to your own program, rename/replace <code>script.py</code> with your own script, add a tutorial as <code>tutorial.md</code>… Just to test this out, you can try the following steps.</p>
+<ul>
+<li>With VS Code or some other editor, modify the README so that
+<ul>
+<li>it has your name instead of mine</li>
+<li>it shows how to clone your repository instead of mine (replace <code>git clone git@github.com:montesmariana/intro_machine_learning_using_python</code> with <code>git clone https://github.com:&lt;username&gt;/intro_machine_learning_using_python</code>, with your own username).</li>
+</ul></li>
+<li>In the console from which you cloned the repository (from inside the folder itself), type the following:</li>
+</ul>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Updated README.md"</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Again, if Git asks you to authenticate, follow its instructions. If everything was successful, when you go to the website of your repository you should be able to see the changes in the README.md</p>
+<p>We’ll look into these commands next week. If you still have energies to go a bit further, you can create a pull request! You will see that GitHub says that you are “one commit ahead of…” referring to my repository, so you are invited to contribute. Click on “contribute”, but select the branch in your name instead of “main”.</p>
+<p>I will get a message about your request and will be able to make comments.</p>
+<p>Don’t worry if any of this doesn’t immediately work! Bring your questions next week, we’ll see all about it :)</p>
 
 
 </section>

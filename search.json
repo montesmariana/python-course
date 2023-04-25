@@ -1127,6 +1127,195 @@
     "text": "Lookbehind\n\nNo quantifiers or backreferences, alternation only if they have the same length.\n(?<!a)b matches a ‘b’ NOT preceded by an ‘a’\n(?<=a)b matches a ‘b’ preceded by an ‘a’, but not the ‘a’.\n\n\nregular-expressions.info"
   },
   {
+    "objectID": "slides/git.html#version-control",
+    "href": "slides/git.html#version-control",
+    "title": "Git and GitHub",
+    "section": "Version control",
+    "text": "Version control\n\nKeep track of different stages of your project.\nTake snapshots with comments to which you can always go back and keep a log of changes.\nWork on different branches simultaneously, e.g. code that works vs code in development.\n\n\nVersion control"
+  },
+  {
+    "objectID": "slides/git.html#vocabulary",
+    "href": "slides/git.html#vocabulary",
+    "title": "Git and GitHub",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\nrepository\n\nFolder that Git is tracking. It has a .git folder with git-specific files.\n\nlocal repository\n\nThe local copy of a repository (e.g. in your computer, in my computer…).\n\nremote (repository)\n\nThe remote version of a repository, e.g. in the GitHub platform.\n\n\nBy default called origin."
+  },
+  {
+    "objectID": "slides/git.html#vocabulary-1",
+    "href": "slides/git.html#vocabulary-1",
+    "title": "Git and GitHub",
+    "section": "Vocabulary",
+    "text": "Vocabulary\n\nworking directory\n\nThe files that you are working on, your current changes.\n\nstaging area\n\nWhere you put the files / changes that you want to keep track of.\n\nlocal history\n\nHistory of tracked changes in the local repository."
+  },
+  {
+    "objectID": "slides/git.html#commands",
+    "href": "slides/git.html#commands",
+    "title": "Git and GitHub",
+    "section": "Commands",
+    "text": "Commands\n\nGit can be used via a platform, with a GUI (e.g. GitHub desktop) or from the command line, depending on the task and the preference.\nWe’ll look at the command line. Use Git Bash or another Terminal.\nAll these commands follow git in the command line. For example, to use add you type git add followed by any other arguments."
+  },
+  {
+    "objectID": "slides/git.html#configuration",
+    "href": "slides/git.html#configuration",
+    "title": "Git and GitHub",
+    "section": "Configuration",
+    "text": "Configuration\n\nconfig\n\nConfigure the settings for git.\n\n\ngit config --global makes the settings global; otherwise they only affect that repository.\n\n\nIt is followed by a setting-value pair to configure, e.g. git config --global user.name \"Mariana\" sets the username “Mariana” when signing changes.\n\n\n\ngit config"
+  },
+  {
+    "objectID": "slides/git.html#new-repo",
+    "href": "slides/git.html#new-repo",
+    "title": "Git and GitHub",
+    "section": "New repo",
+    "text": "New repo\n\ninit\n\nTurn an existing directory into a git repository.\n\n\ngit init dirname creates a directory dirname and turns it into a repository.\n\nclone\n\nDownload an existing repository from an url to obtain a local copy.\n\n\nThis creates a folder with the original name of the repository. git clone url new_name will name the folder new_name instead.\n\n\n\nGetting a Git repository"
+  },
+  {
+    "objectID": "slides/git.html#stage-changes",
+    "href": "slides/git.html#stage-changes",
+    "title": "Git and GitHub",
+    "section": "Stage changes",
+    "text": "Stage changes\n\nadd\n\nBring changes from the working directory to the staging area.\n\n\ngit add . stages all existing changes.\n\n\ngit add -u stages all changes in tracked files only.\n\n\ngit add filename stages the changes in filename only.\n\n\n\n\n\n\n\n\n\nG\n\n  \n\nwd\n\n Working directory   \n\nst\n\n Staging area   \n\nwd->st\n\n  add  \n\n\n\n\n\n\nRecording changes"
+  },
+  {
+    "objectID": "slides/git.html#commit-staged-changes",
+    "href": "slides/git.html#commit-staged-changes",
+    "title": "Git and GitHub",
+    "section": "Commit staged changes",
+    "text": "Commit staged changes\n\ncommit\n\nTake a snapshot of the staged changes.\n\n\ngit commit -m \"some message\" commits with a specific message; otherwise an editor is opened to write the message. The first line is the title.\n\n\n\n\n\n\n\n\n\nG\n\n  \n\nwd\n\n Working directory   \n\nst\n\n Staging area   \n\nwd->st\n\n  add   \n\nlh\n\n Local history   \n\nst->lh\n\n  commit  \n\n\n\n\n\n\nRecording changes"
+  },
+  {
+    "objectID": "slides/git.html#check-info",
+    "href": "slides/git.html#check-info",
+    "title": "Git and GitHub",
+    "section": "Check info",
+    "text": "Check info\n\nlog\n\nCheck the local history.\n\n\ngit log --oneline shows one line per commit.\n\nstatus\n\nCheck which changes have been staged or not, committed or not, on which branch.\n\ndiff\n\nQuickly see the difference between the current state and the latest commit or between branches.\n\n\ngit diff filename focuses on one file.\n\n\n\nCommit History"
+  },
+  {
+    "objectID": "slides/git.html#basic-daily-workflow",
+    "href": "slides/git.html#basic-daily-workflow",
+    "title": "Git and GitHub",
+    "section": "Basic daily workflow",
+    "text": "Basic daily workflow\ngit status # check what's up\n# after changes you want to keep track off\ngit add .\n# when you are ready to take a snapshot\ngit commit -m \"some message\"\ngit log # check history if you want\ngit status # check state is what you expected\nRinse and repeat :)"
+  },
+  {
+    "objectID": "slides/git.html#exercise",
+    "href": "slides/git.html#exercise",
+    "title": "Git and GitHub",
+    "section": "Exercise",
+    "text": "Exercise\n\nGo to your local version of the forked repository. If you haven’t done so yet, clone it first.\n\ngit clone https://github.com/<username>/intro_machine_learning_using_python.git\n\nMake some changes to README.md and then:\n\ngit status # check that the changes show up\ngit add README.md # or git add .\ngit status # see that file is staged\ngit commit -m \"update README\"\ngit status # see that file is committed\ngit log # check history"
+  },
+  {
+    "objectID": "slides/git.html#branches",
+    "href": "slides/git.html#branches",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\nMultiple versions of your repository simultaneously.\n\nCreate a branch\n\ngit branch branch_name\n# or, also moving to the branch:\ngit checkout -b branch_name # or\ngit switch --create branch_name\n\nDelete a branch\n\ngit branch -D branch_name\n\nBranches"
+  },
+  {
+    "objectID": "slides/git.html#branches-1",
+    "href": "slides/git.html#branches-1",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\n\nSwitch to an existing branch\n\ngit checkout branch_name # or\ngit switch branch_name\n\nRetrieve contents from another branch\n\ngit merge other_branch\n\nRetrieve all commits from the other branch as one commit\n\ngit merge --squash other_branch\n\nBranches"
+  },
+  {
+    "objectID": "slides/git.html#branches-2",
+    "href": "slides/git.html#branches-2",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\n# do some work on main and stage\ngit commit\nGraph with one or more commits in main."
+  },
+  {
+    "objectID": "slides/git.html#branches-3",
+    "href": "slides/git.html#branches-3",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\ngit checkout -b dev\n# do some work and stage\ngit commit\nSame graph, now we have a new branch dev with a commit. Small symbol where the user stands."
+  },
+  {
+    "objectID": "slides/git.html#branches-4",
+    "href": "slides/git.html#branches-4",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\ngit checkout main\n# do some work and stage\ngit commit\nSame graph, now symbol is back in main. New commit."
+  },
+  {
+    "objectID": "slides/git.html#branches-5",
+    "href": "slides/git.html#branches-5",
+    "title": "Git and GitHub",
+    "section": "Branches",
+    "text": "Branches\ngit checkout dev\ngit merge main\nSame graph, now symbol is in dev and an arrow brings the latest commit to dev."
+  },
+  {
+    "objectID": "slides/git.html#exercise-1",
+    "href": "slides/git.html#exercise-1",
+    "title": "Git and GitHub",
+    "section": "Exercise",
+    "text": "Exercise\n\nIn your repository, create a new branch called tutorial.\n\ngit checkout -b tutorial\n\nMake some changes in tutorial.md, stage and commit.\n\ngit add tutorial.md\ngit commit -m \"update tutorial\"\n\nGo back to the main branch and open tutorial.md again. Your changes are gone!"
+  },
+  {
+    "objectID": "slides/git.html#exercise-2",
+    "href": "slides/git.html#exercise-2",
+    "title": "Git and GitHub",
+    "section": "Exercise",
+    "text": "Exercise\n\nBring the changes to the main branch.\n\ngit checkout main # and open the File\ngit merge tutorial\n\nDelete the tutorial branch.\n\ngit branch -D tutorial"
+  },
+  {
+    "objectID": "slides/git.html#remote-repository",
+    "href": "slides/git.html#remote-repository",
+    "title": "Git and GitHub",
+    "section": "Remote repository",
+    "text": "Remote repository\n\nOnline backup of your repository contents.\nShare between locations and with other users.\nFork other people’s repositories.\n\n\n\n\n\n\n\nNote\n\n\nWhat we did in the first section of the slides (except for cloning) did not need Internat connection. This part does."
+  },
+  {
+    "objectID": "slides/git.html#command-line",
+    "href": "slides/git.html#command-line",
+    "title": "Git and GitHub",
+    "section": "Command line",
+    "text": "Command line\n\npull\n\nBring your local repository in sync with the remote version.\n\npush\n\nUpload the changes in your local repository to the remote version."
+  },
+  {
+    "objectID": "slides/git.html#exercise-3",
+    "href": "slides/git.html#exercise-3",
+    "title": "Git and GitHub",
+    "section": "Exercise",
+    "text": "Exercise\nYou have made changes to your local version of your repo. They do not show up in the remote version! Send them up.\ngit push"
+  },
+  {
+    "objectID": "slides/git.html#exercise-4",
+    "href": "slides/git.html#exercise-4",
+    "title": "Git and GitHub",
+    "section": "Exercise",
+    "text": "Exercise\nI made changes to the original repository. GitHub suggests that you bring your fork in sync. Do so on the website.\nNow your local version is outdated! Bring it up to speed.\ngit pull\n\n\n\n\n\n\nImportant\n\n\nWhen collaborating with others, always pull before committing."
+  },
+  {
+    "objectID": "slides/git.html#merges",
+    "href": "slides/git.html#merges",
+    "title": "Git and GitHub",
+    "section": "Merges",
+    "text": "Merges\n\nGit is quite smart at bringing changes together, but sometimes there are conflicts that prevent you from pushing or pulling.\nReason: the history of a line in a file has diverged in both the local and remote version.\nThis can also prevent merging between branches.\n\n\nJust breathe and read Git’s message. Normally you can easily solve it in the conflicting file."
+  },
+  {
+    "objectID": "slides/git.html#forks",
+    "href": "slides/git.html#forks",
+    "title": "Git and GitHub",
+    "section": "Forks",
+    "text": "Forks\n\nLinked copy of someone else’s repository in your own account.\nYou can synchronize with the original.\nYou can contribute to the original with a PR."
+  },
+  {
+    "objectID": "slides/git.html#pull-requests-prs",
+    "href": "slides/git.html#pull-requests-prs",
+    "title": "Git and GitHub",
+    "section": "Pull requests (PRs)",
+    "text": "Pull requests (PRs)\n\nRequest to contribute to a certain branch in a repository.\n\nBecause you don’t have access to modify the branch yourself.\nBecause a review of your submission is in order.\n\nVia the online platform (e.g. GitHub).\nCan receive comments and general feedback.\nNeeds approval to be merged."
+  },
+  {
+    "objectID": "slides/git.html#exercise-5",
+    "href": "slides/git.html#exercise-5",
+    "title": "Git and GitHub",
+    "section": "Exercise",
+    "text": "Exercise\nYou have made changes to the remote repository. GitHub suggests that you contribute them to my repository.\nContribute, but do so in the branch with your name, not main."
+  },
+  {
     "objectID": "slides/files/index.html#setup",
     "href": "slides/files/index.html#setup",
     "title": "Working with files",
@@ -1467,7 +1656,7 @@
     "href": "classes/2023-04-25-regex.html",
     "title": "More on regular expressions",
     "section": "",
-    "text": "Today we learn a bit more about regular expressions:\n\nHow to use them in Python\nBasic and not so basic techniques\n\n\n\n\n\nWhat to do during the class\nCopy the code from the slides in a Jupyter Notebook. You can also experiment with some other string you make up!\n\n\n\n\n\n\nImportant\n\n\n\nDo not forget to import the re package!\n\nimport re\n\n\n\n\n\nFinal exercise\nFor your final project, you will have to add validation in you code, so that you make sure that users are providing what you expect them to (even if the only user would be yourself). Try to think what kind of character data your project will use and how you can validate its format with regular expressions. For example:\n\nValidate an email.\nValidate a date in one or more formats.\nValidate a home address.\n\nYou can also use regex groups to extract information from a fragment of text. For example, try to write regexes to:\n\nExtract username and domain from the email.\nExtract given name and last name from a name.\nExtract day, month and year from a date.\n\nFinally, you could write a template message in which you replace certain values with another string of text. We have been doing this with f\"...{}...\", but you could also use re.sub() or re.Pattern.expand() to replace a text."
+    "text": "Today we learn a bit more about regular expressions:\n\nHow to use them in Python\nBasic and not so basic techniques\n\n\n\n\n\nWhat to do during the class\nCopy the code from the slides in a Jupyter Notebook. You can also experiment with some other string you make up!\n\n\n\n\n\n\nImportant\n\n\n\nDo not forget to import the re package!\n\nimport re\n\n\n\n\n\nFinal exercise\nFor your final project, you will have to add validation in you code, so that you make sure that users are providing what you expect them to (even if the only user would be yourself). Try to think what kind of character data your project will use and how you can validate its format with regular expressions. For example:\n\nValidate an email.\nValidate a date in one or more formats.\nValidate a home address.\n\nYou can also use regex groups to extract information from a fragment of text. For example, try to write regexes to:\n\nExtract username and domain from the email.\nExtract given name and last name from a name.\nExtract day, month and year from a date.\n\nFinally, you could write a template message in which you replace certain values with another string of text. We have been doing this with f\"...{}...\", but you could also use re.sub() or re.Pattern.expand() to replace a text.\n\n\nGit\nThe final project can be submitted via GitHub. If you so choose, you can send a folder via e-mail, but via Git you can start working on your project already and get feedback as you work on it during May.\nWe’ll look into Git next week, but in the meantime:\n\nDownload git.\nCreate a GitHub account.\nGo to the sample repository and fork it by clicking on the “Fork” button shown in Figure 1. This will create a linked copy in your own GitHub account.\n\n\n\n\nFigure 1: Fork the repository\n\n\nNext you can configure your Git to talk to GitHub. Given your name <name> (this doesn’t have to be your username, just a way to sign your messages; mine is “Mariana Montes”) and the e-mail connected to that account <email>, open Git Bash or another terminal and run the following:\ngit config --global user.name \"<name>\"\ngit config --global user.email \"<email>\"\nFor example, I would do the following:\ngit config --global user.name \"Mariana Montes\"\ngit config --global user.email \"mariana.montes@kuleuven.be\"\nThe next steps we will look at next week, but you can already try them already. You also have to run them on Git Bash or another terminal.\n\nDownload your forked repository with git clone <url>, replacing <url> with the url of your forked repository. This will look something like https://github.com/montesmariana/intro_machine_learning_using_python.git, but with your username instead of montesmariana.\n\nIf you do git clone https://github.com/montesmariana/intro_machine_learning_using_python.git you will be downloading MY version of the repository.\n\n\nIt can be that Git asks you to authenticate. Follow the instructions of the messages in the console.\n\nType cd intro_machine_learning_using_python. You are now inside the folder and you can see the list of files with ls.\n\nAfter these steps you will have a folder called “intro_machine_learning_using_python” with the contents of the repository. You can go ahead and open it with VS Code (either navigating from VS code or by typing code .).\nThe idea is that the contents of this repository are the base of your final project. You should edit the README to adapt to your own program, rename/replace script.py with your own script, add a tutorial as tutorial.md… Just to test this out, you can try the following steps.\n\nWith VS Code or some other editor, modify the README so that\n\nit has your name instead of mine\nit shows how to clone your repository instead of mine (replace git clone git@github.com:montesmariana/intro_machine_learning_using_python with git clone https://github.com:<username>/intro_machine_learning_using_python, with your own username).\n\nIn the console from which you cloned the repository (from inside the folder itself), type the following:\n\ngit add .\ngit commit -m \"Updated README.md\"\ngit push\nAgain, if Git asks you to authenticate, follow its instructions. If everything was successful, when you go to the website of your repository you should be able to see the changes in the README.md\nWe’ll look into these commands next week. If you still have energies to go a bit further, you can create a pull request! You will see that GitHub says that you are “one commit ahead of…” referring to my repository, so you are invited to contribute. Click on “contribute”, but select the branch in your name instead of “main”.\nI will get a message about your request and will be able to make comments.\nDon’t worry if any of this doesn’t immediately work! Bring your questions next week, we’ll see all about it :)"
   },
   {
     "objectID": "classes/2023-02-21-variables.html",
@@ -1516,7 +1705,7 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\nMore on regular expressions\n\n\n\n\n\n\n\nregex\n\n\nbasics\n\n\n\n\nA deeper dive into regular expressions.\n\n\n\n\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nMore on regular expressions\n\n\n\n\n\n\n\nregex\n\n\nbasics\n\n\n\n\nA deeper dive into regular expressions.\n\n\n\n\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/2023-04-18-first-assignment.html",
