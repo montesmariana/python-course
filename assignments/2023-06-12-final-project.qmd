@@ -1,0 +1,76 @@
+---
+title: "Final assignment"
+format: html
+---
+
+The main task is: think of a problem you can solve with Python and do so with a script. Create, document and illustrate your program.
+
+::: callout-important
+## Dates
+
+**Due** on 12-06-2023.
+
+As part of the second assignment (worth 2/20 points) you have to _present_ your plan by the end of the course. 
+:::
+
+# Steps to take
+
+- Fork the [GitHub repository](https://github.com/montesmariana/intro_machine_learning_using_python/) for the assignment (done in class).
+
+- Clone your fork so you can work on it locally (done in class).
+
+- Insert your own content in the placeholder files (the current content is JUST guidance, make sure to make it your own!):
+
+    + A README.md file describing your repository and illustrating how to use your code both as module and by running the script. Reading the README should be enough for any random person to understand the basics of what your code does and what for. If you want, you can generate it via Jupyter and replace it.
+	+ A Jupyter notebook or markdown file derived from a Jupyter Notebook (or both) in which you illustrate how your code works, like a tutorial with narrative documentation (`tutorial.md` in the example).
+	+ A script with your function and class definitions and some basic functionality when the script is run (rather than imported). This is called `script.py` in the repository, but please rename it to something more meaningful for your program. Remember that if your script is called `shoppinglist.py`, you will import it with `import shoppinglist`.
+	+ One (or more) example file(s) for an user to test out your code; you can also use this for the illustration. The repository has an empty `example.json` file; you can add your content there or change it to a different name, different format...
+
+- Make a pull request, preferably to the branch of the repository with your name. Send me an e-mail when you consider that is your final submission.
+
+- You will receive feedback as comments on your pull request.
+
+## Process
+
+You can actually submit everything as a zipped folder via e-mail if you only make one submission, but I strongly recommend that you start working as soon as possible and practice with Git, PRs and the different tasks that you have. I can then try to give you feedback when I have the time.
+
+# Requirements
+
+Next to the presence of all the files described above, there are also some requirements that need to be fulfilled _to get a passing grade_.
+
+- Your script should be **documented with docstrings**: one for the script itself and proper docstring documentation for each function and/or class you define. This documentation should be correct (e.g. document the arguments that are present, describe what the function actually does...).
+
+- You should **use `argparse` to receive arguments** (at least one) when your script is run and add a help message for each argument and the program itself. The part of the code that reads and processes the arguments should be inside an `if __name__ == "__main__":` statement.
+
+- Your code should include **at least one class** with attributes and a method. This looks less strict than the first assignment but it is only meant to give you more freedom in defining which kind of attributes and methods you need for your project and keep you from adding features that are pointless just for the sake of it.
+
+- **Use validation** in every user interaction. That is: your code should be able to deal with bad input from the user and you should explain why you deal with it that way. For example, if you expect a date, what happens when the user does not provide a date? Is there an error (and what message will you provide)? Or can you just keep going with a default value or some other alternative path? I will stress-test your code with bad input to see how it reacts - maybe you miss some cases, and that's ok, but the most obvious vulnerabilities should be covered. If your validation is very complex, you can add an additional markdown file explaining your reasoning, to avoid too many comments in your script.
+
+- **The code has to work as expected**. I will run the code in the tutorial and the output should be the same or at least comparable. If I follow your instructions I should get no errors.
+
+::: callout-important
+These items are necessary in order to pass the exam, please read them carefully, give them priority in the design of your program, and ask anything that is not clear! If any item is not fulfilled, the project will fail.
+:::
+
+# Additionals
+
+The points in this section will help you get a higher and higher grade. You can still pass without them, but this is how you get a higher grade.
+
+- Use **regular expressions** at some point (for example in validation).
+
+- **Open a file** to read or write data (or do both). You can also read data from an URL with `requests` as an alternative.
+
+- Write a meaningful, proper tutorial with **appropriate markdown** (headings, bullet points, proper formatting...), in narrative English that introduces an user to your program. Maybe try showing it to a friend and see what they understand?
+
+- The attributes and methods of the class should **make sense** in terms of what they represent in the real world. Messages you print should be readable in **clear English**. (You can also add extra languages as an option for extra points, but at least English should be there.)
+
+- Write an extra markdown file that describes the _format_ that you expect in files like your example file(s). For example, is it a list of dictionaries? What keys should those dictionaries have? Or do you need a certain folder structure?
+
+
+# Non requirements
+
+- There is no restriction on what type of file you should use for your example data. It can be tabular (e.g. csv), JSON, YAML, just raw text...
+
+- There is no specification on what number or kind of arguments your script should take, as long as there is at least one argument.
+
+- It is not important whether you submit everything at once as a zipped folder or via a PR in the repository; the Git(Hub) way is to give you the chance to get more feedback in the process of fulfilling the assignment.
