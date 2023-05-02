@@ -1,0 +1,586 @@
+---
+title: "Git and GitHub"
+format: revealjs
+---
+
+# Git
+
+## Version control
+
+- Keep track of different stages of your project.
+- Take snapshots with comments to which you can always go back and keep a log of changes.
+- Work on different branches simultaneously, e.g. code that works vs code in development.
+
+::: footer
+[Version control](https://git-scm.com/book/en/v2/Getting-Started-About-Version-Control)
+:::
+
+## Vocabulary
+
+repository
+:    Folder that Git is tracking. It has a `.git` folder with git-specific files.
+
+local repository
+:    The local copy of a repository (e.g. in your computer, in my computer...).
+
+remote (repository)
+:    The remote version of a repository, e.g. in the GitHub platform.
+:    By default called `origin`.
+
+## Vocabulary
+
+working directory
+:    The files that you are working on, your current changes.
+
+staging area
+:    Where you put the files / changes that you want to keep track of.
+
+local history
+:    History of tracked changes in the local repository.
+
+## Commands
+
+- Git can be used via a platform, with a GUI (e.g. GitHub desktop) or from the command line, depending on the task and the preference.
+
+- We'll look at the **command line**. Use Git Bash or another Terminal.
+
+- All these commands follow `git` in the command line. For example, to use `add` you type `git add` followed by any other arguments.
+
+## Configuration
+
+`config`
+:    Configure the settings for git.
+:    `git config --global` makes the settings global; otherwise they only affect that repository.
+:    It is followed by a setting-value pair to configure, e.g. `git config --global user.name "Mariana"` sets the username "Mariana" when signing changes.
+
+::: footer
+[`git config`](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration)
+:::
+
+## New repo
+
+`init`
+:    Turn an existing directory into a git repository.
+:    `git init dirname` creates a directory `dirname` and turns it into a repository.
+
+`clone`
+:    Download an existing repository from an url to obtain a local copy.
+:    This creates a folder with the original name of the repository. `git clone url new_name` will name the folder `new_name` instead.
+
+::: footer
+[Getting a Git repository](https://git-scm.com/book/en/v2/Git-Basics-Getting-a-Git-Repository)
+:::
+
+## Stage changes
+
+`add`
+:    Bring changes from the **working directory** to the **staging area**.
+:    `git add .` stages _all existing changes_.
+:    `git add -u` stages all changes _in tracked files only_.
+:    `git add filename` stages the changes in `filename` only.
+
+```{dot}
+//| echo: false
+//| fig-height: 1
+digraph G {
+    node [shape = rect fontname = "Segoe UI" ];
+    edge [fontname = "Monospace" ];
+    wd [ label = "Working directory" ];
+    st [ label = "Staging area" ];
+    wd -> st [ label = "add" ];
+    {
+        rank=same;
+        wd; st;
+    }
+}
+
+```
+
+::: footer
+[Recording changes](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
+:::
+
+## Commit staged changes
+
+`commit`
+:    Take a snapshot of the staged changes.
+:    `git commit -m "some message"` commits with a specific message; otherwise an editor is opened to write the message. The first line is the title.
+```{dot}
+//| echo: false
+//| fig-height: 1
+digraph G {
+    node [shape = rect fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    wd [ label = "Working directory" ];
+    st [ label = "Staging area" ];
+    wd -> st [ label = "add" ];
+    lh [ label = "Local history" ];
+    st -> lh [label = "commit"];
+    {
+        rank=same;
+        wd; st; lh;
+    }
+}
+
+```
+
+::: footer
+[Recording changes](https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository)
+:::
+
+## Check info
+
+`log`
+:    Check the local history.
+:    `git log --oneline` shows one line per commit.
+
+`status`
+:    Check which changes have been staged or not, committed or not, on which branch.
+
+`diff`
+:    Quickly see the difference between the current state and the latest commit or between branches.
+:    `git diff filename` focuses on one file.
+
+::: footer
+[Commit History](https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History)
+:::
+
+## Basic daily workflow
+
+```sh
+# after changes you want to keep track off
+git status # check what's up
+git add .
+# when you are ready to take a snapshot
+git commit -m "some message"
+git log # check history if you want
+git status # check state is what you expected
+```
+
+Rinse and repeat :)
+
+## Exercise
+
+1. Go to your local version of the [forked repository](https://github.com/montesmariana/intro_machine_learning_using_python). If you haven't done so yet, clone it first:
+
+```sh
+git clone https://github.com/<username>/intro_machine_learning_using_python.git
+```
+
+2. Make some changes to README.md and then:
+
+```sh
+git status # check that the changes show up
+git add README.md # or git add .
+git status # see that file is staged
+git commit -m "update README"
+git status # see that file is committed
+git log # check history
+```
+
+## Branches
+
+Multiple versions of your repository simultaneously.
+
+- Create a branch
+
+```sh
+git branch branch_name
+# or, also moving to the branch:
+git checkout -b branch_name # or
+git switch --create branch_name
+```
+
+- Delete a branch
+
+```sh
+git branch -D branch_name
+```
+
+::: footer
+[Branches](https://git-scm.com/book/en/v2/Git-Branching-Branches-in-a-Nutshell)
+:::
+
+## Branches
+
+- Switch to an existing branch
+
+```sh
+git checkout branch_name # or
+git switch branch_name
+```
+
+- Retrieve contents from another branch
+
+```sh
+git merge other_branch
+```
+
+- Retrieve all commits from the other branch as one commit
+
+```sh
+git merge --squash other_branch
+```
+
+::: footer
+[Branches](https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging)
+:::
+
+## Branches
+
+```sh
+# do some work on main and stage
+git commit
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 2
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M2 [ color = webmaroon; style = filled fontcolor = white ];
+        M1 -> M2 [ label = "commit" ];
+        label = "main";
+        {rank = same; M1; M2}
+    }
+}
+```
+
+## Branches
+
+```sh
+git checkout -b dev
+# do some work on dev
+git commit
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clusterdev {
+        style = filled;
+        color = lightsalmon;
+        D1 [ color = webmaroon; style = filled fontcolor = white ];
+        label = "dev";
+    }
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M1 -> M2 [ label = "commit" ];
+        label = "main";
+        {rank = same; M1; M2}
+    }
+    
+    M2 -> D1 [ label = "branch" ];
+}
+```
+
+## Branches
+
+```sh
+# do some more work on dev and stage
+git commit
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clusterdev {
+        style = filled;
+        color = lightsalmon;
+        D2 [ color = webmaroon; style = filled fontcolor = white ];
+        D1 -> D2 [ label = "commit" ];
+        label = "dev";
+        {rank = same; D1; D2}
+    }
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M1 -> M2 [ label = "commit" ];
+        label = "main";
+        {rank = same; M1; M2}
+    }
+    
+    M2 -> D1 [ label = "branch" ];
+}
+```
+
+## Branches
+
+```sh
+git checkout main
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clusterdev {
+        style = filled;
+        color = lightsalmon;
+        D1 -> D2 [ label = "commit" ];
+        label = "dev";
+        {rank = same; D1; D2}
+    }
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M2 [ color = webmaroon; style = filled fontcolor = white ];
+        M1 -> M2 [ label = "commit" ];
+        label = "main";
+        {rank = same; M1; M2}
+    }
+    
+    M2 -> D1 [ label = "branch" ];
+}
+```
+## Branches
+
+```sh
+# do some work on main and stage
+git commit
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clusterdev {
+        style = filled;
+        color = lightsalmon;
+        D1 -> D2 [ label = "commit" ];
+        label = "dev";
+        {rank = same; D1; D2}
+    }
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M3 [ color = webmaroon; style = filled fontcolor = white ];
+        M1 -> M2 [ label = "commit" ];
+        M2 -> M3 [label = "commit"];
+        label = "main";
+        {rank = same; M1; M2; M3}
+    }
+    
+    M2 -> D1 [ label = "branch" ];
+}
+```
+
+## Branches
+
+```sh
+git checkout dev
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clusterdev {
+        style = filled;
+        color = lightsalmon;
+        D2 [ color = webmaroon; style = filled fontcolor = white ];
+        D1 -> D2 [ label = "commit" ];
+        label = "dev";
+        {rank = same; D1; D2}
+    }
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M1 -> M2 [ label = "commit" ];
+        M2 -> M3 [label = "commit"];
+        label = "main";
+        {rank = same; M1; M2; M3}
+    }
+    
+    M2 -> D1 [ label = "branch" ];
+}
+```
+
+## Branches
+
+```sh
+git merge main
+```
+
+```{dot}
+//| echo: false
+//| fig-height: 4
+digraph G {
+    node [shape = oval fontname = "Segoe UI"];
+    edge [fontname = "Monospace" ];
+    
+    subgraph clusterdev {
+        style = filled;
+        color = lightsalmon;
+        D3 [ color = webmaroon; style = filled fontcolor = white ];
+        D1 [group=group1];
+        D1 -> D2 [ label = "commit" ];
+        D2 -> D3 [ label = "merge" ];
+        label = "dev";
+        {rank = same; D1; D2; D3}
+    }
+    
+    subgraph clustermain {
+        style = filled;
+        color = lightsteelblue1;
+        M2 [group=group1];
+        M1 -> M2 [ label = "commit" ];
+        M2 -> M3 [label = "commit"];
+        label = "main";
+        {rank = same; M1; M2; M3}
+    }
+    
+    M2 -> D1 [ label = "branch" ];
+    M3 -> D3 [ label = "merge" ];
+}
+```
+
+- `D3` is up to date with both `main` and `dev`, and lives in the `dev` branch.
+
+## Exercise
+
+1. In your repository, create a new branch called `tutorial`.
+
+```sh
+git checkout -b tutorial
+```
+
+2. Make some changes in `tutorial.md`, stage and commit.
+
+```sh
+git add tutorial.md
+git commit -m "update tutorial"
+```
+
+3. Go back to the main branch and open `tutorial.md` again. Your changes are gone!
+
+```sh
+git checkout main # and open the File
+```
+
+## Exercise
+
+4. Bring the changes to the `main` branch.
+
+```sh
+git merge tutorial
+# open the file to check the changes are there
+git status # check the current status
+```
+
+4. Delete the `tutorial` branch.
+
+```sh
+git branch -D tutorial
+```
+
+# GitHub
+
+## Remote repository
+
+- Online backup of your repository contents.
+- Share between locations and with other users.
+- Fork other people's repositories.
+
+::: callout-note
+What we did in the first section of the slides (except for cloning) did not need Internat connection. This part does.
+:::
+
+## Command line
+
+`pull`
+:    Bring your local repository in sync with the remote version.
+
+`push`
+:    Upload the changes in your local repository to the remote version.
+
+## Exercise
+
+You have made changes to your local version of your repo. They do not show up in the remote version! Send them up.
+
+```sh
+git push
+```
+
+## Exercise
+
+I made changes to the original repository. GitHub suggests that you bring your fork in sync. Do so on the website.
+
+Now your local version is outdated! Bring it up to speed.
+
+```sh
+git pull
+```
+
+::: callout-important
+When collaborating with others, always pull before committing.
+:::
+
+## Merges
+
+- Git is quite smart at bringing changes together, but sometimes there are conflicts that **prevent you from pushing or pulling**.
+
+- Reason: the history of a line in a file has diverged in both the local and remote version.
+
+- This can also prevent merging between branches.
+
+> Just breathe and read Git's message. Normally you can easily solve it in the conflicting file.
+
+## Forks
+
+- Linked copy of someone else's repository in your own account.
+- You can synchronize with the original.
+- You can contribute to the original with a PR.
+
+::: footer
+[Forks](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/about-forks)
+:::
+
+## Pull requests (PRs)
+
+- Request to contribute to a certain branch in a repository.
+    + Because you don't have access to modify the branch yourself.
+    + Because a review of your submission is in order.
+- Via the online platform (e.g. GitHub).
+- Can receive comments and general feedback.
+- Needs approval to be merged.
+- The title can be preceded with "WIP: " to indicate that the PR is not ready.
+
+::: footer
+[Pull requests](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests)
+:::
+
+## Exercise
+
+You have made changes to the remote repository. GitHub suggests that you contribute them to my repository.
+
+Contribute, but do so in the branch with your name, not `main`.
+

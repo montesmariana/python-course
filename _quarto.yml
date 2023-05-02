@@ -11,6 +11,7 @@ website:
       - text: "Assignments"
         menu:
           - assignments/2023-04-18-first-assignment.qmd
+          - assignments/2023-06-12-final-project.qmd
 
 format:
   html:

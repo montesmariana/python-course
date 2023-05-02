@@ -1,0 +1,22 @@
+---
+title: "Git and Scikit"
+format: html
+date: 2023-05-02
+categories:
+    - git
+    - machine learning
+description: Basics of Git and a machine learning package.
+---
+
+Today we learn about [git and GitHub](../slides/git.qmd){target="_blank"} and we'll follow a [tutorial](https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html) on text processing with Scikit-learn.
+
+<div>
+```{=html}
+<iframe class="slide-deck" src="../slides/git.html"></iframe>
+```
+</div>
+
+# What to do during the class
+
+- For **Git** follow the steps marked as "exercise".
+- For **scikit-learn** open the link to the tutorial and imitate the notebook shown during class.

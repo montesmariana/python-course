@@ -1,0 +1,11 @@
+{
+  "hash": "cc9b29ce98bc48305480dc838e4bb7ca",
+  "result": {
+    "markdown": "---\ntitle: \"Git and GitHub\"\nformat: revealjs\n---\n\n# Git\n\n## Version control\n\n- Keep track of different stages of your project\n- Take snapshots with comments to which you can always go back and keep a log of changes.\n- Work on different branches simultaneously: code that works vs code in development.\n\n## Vocabulary\n\nrepository\n:    Folder that Git is tracking. It has a `.git` folder with git-specific files.\n\nlocal repository\n:    The local copy of a repository (e.g. in your computer, in my computer...)\n\nremote (repository)\n:    The remote version of a repository, e.g. in the GitHub platform.\n\n## Vocabulary\n\nworking directory\n:    The files that you are working on, your current changes.\n\nstaging area\n:    Where you put the files / changes that you want to keep track of.\n\n## Commands\n\nGit can be used via a platform, with a GUI (e.g. GitHub desktop) or from the command line, depending on the task and the preference.\n\nWe'll look at the **command line**. Use Git Bash or another Temrinal.\n\nAll these commands follow `git` in the command line. For example, to use `add` you type `git add` followed by any other arguments.\n\n## New repo\n\n\ninit\n:    Turn an existing directory into a git repository. (or from a directory?)\n\nclone\n:    Download an existing repository from an url to obtain a local copy.\n:    This creates a folder with the name of the repository (how to adapt that?).\n\n## Stage changes\n\nadd\n:    Bring changes from the **working directory** to the **staging area**.\n:    `git add .` stages _all existing changes_.\n:    `git add -u` stages all changes in **tracked files only**.\n:    `git add filename` stages the changes in `filename` only.\n\n\n```{graphviz}\n\\\\| echo: false\ndigraph G {\n    wd [ label = \"Working directory\" ];\n    st [ label = \"Staging area\" ];\n    wd -> st [ label = \"add\" ];\n}\n\n```\n\n\n## Commit staged changes\n\ncommit\n:    Take a snapshot of the staged changes.\n:    `git commit -m \"some message\"` \n\n# GitHub\n\n",
+    "supporting": [
+      "git_files"
+    ],
+    "filters": [],
+    "includes": {}
+  }
+}
