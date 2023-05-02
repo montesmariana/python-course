@@ -619,8 +619,8 @@ Quickly see the difference between the current state and the latest commit or be
 </section>
 <section id="basic-daily-workflow" class="slide level2">
 <h2>Basic daily workflow</h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">git</span> status <span class="co"># check what's up</span></span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># after changes you want to keep track off</span></span>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># after changes you want to keep track off</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">git</span> status <span class="co"># check what's up</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="fu">git</span> add .</span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="co"># when you are ready to take a snapshot</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"some message"</span></span>
@@ -631,7 +631,7 @@ Quickly see the difference between the current state and the latest commit or be
 <section id="exercise" class="slide level2">
 <h2>Exercise</h2>
 <ol type="1">
-<li>Go to your local version of the forked repository. If you haven’t done so yet, clone it first.</li>
+<li>Go to your local version of the <a href="https://github.com/montesmariana/intro_machine_learning_using_python">forked repository</a>. If you haven’t done so yet, clone it first:</li>
 </ol>
 <div class="sourceCode" id="cb2"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">git</span> clone https://github.com/<span class="op">&lt;</span>username<span class="op">&gt;</span>/intro_machine_learning_using_python.git</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="2" type="1">
@@ -719,7 +719,9 @@ M1-&gt;M2
 </section>
 <section id="branches-3" class="slide level2">
 <h2>Branches</h2>
-<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> dev</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> checkout <span class="at">-b</span> dev</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># do some work on dev</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-fig-height="4">
 <div class="cell-output-display">
 <div>
@@ -766,7 +768,7 @@ M2-&gt;D1
 </section>
 <section id="branches-4" class="slide level2">
 <h2>Branches</h2>
-<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># do some work on dev and stage</span></span>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1"></a><span class="co"># do some more work on dev and stage</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a><span class="fu">git</span> commit</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell" data-fig-height="4">
 <div class="cell-output-display">
@@ -1009,12 +1011,12 @@ M2-&gt;M3
 <div class="cell-output-display">
 <div>
 <p>
-<svg width="960" height="384" viewbox="0.00 0.00 351.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
+<svg width="960" height="384" viewbox="0.00 0.00 431.00 212.40" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style=" display: block; margin: auto auto auto auto">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208.4)">
 <title>
 G
 </title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 347,-208.4 347,4 -4,4"></polygon> <g id="clust3" class="cluster">
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208.4 427,-208.4 427,4 -4,4"></polygon> <g id="clust3" class="cluster">
 <title>
 clustermain
 </title>
@@ -1022,43 +1024,35 @@ clustermain
 <title>
 clusterdev
 </title>
-<polygon fill="lightsalmon" stroke="lightsalmon" points="43,-8 43,-84.8 335,-84.8 335,-8 43,-8"></polygon> <text text-anchor="middle" x="189" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <!-- D3 --> <g id="node1" class="node">
+<polygon fill="lightsalmon" stroke="lightsalmon" points="123,-8 123,-84.8 415,-84.8 415,-8 123,-8"></polygon> <text text-anchor="middle" x="269" y="-68.2" font-family="Times,serif" font-size="14.00">dev</text> </g> <!-- D3 --> <g id="node1" class="node">
 <title>
 D3
 </title>
-<ellipse fill="#800000" stroke="#800000" cx="300" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="300" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">D3</text> </g> <!-- D1 --> <g id="node2" class="node">
+<ellipse fill="#800000" stroke="#800000" cx="380" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="380" y="-29.8" font-family="Segoe UI" font-size="14.00" fill="white">D3</text> </g> <!-- D1 --> <g id="node2" class="node">
 <title>
 D1
 </title>
-<ellipse fill="none" stroke="black" cx="78" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="78" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D2 --> <g id="node3" class="node">
+<ellipse fill="none" stroke="black" cx="158" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-29.8" font-family="Segoe UI" font-size="14.00">D1</text> </g> <!-- D2 --> <g id="node3" class="node">
 <title>
 D2
 </title>
-<ellipse fill="none" stroke="black" cx="193" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="193" y="-29.8" font-family="Segoe UI" font-size="14.00">D2</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
+<ellipse fill="none" stroke="black" cx="273" cy="-34" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="273" y="-29.8" font-family="Segoe UI" font-size="14.00">D2</text> </g> <!-- D1&#45;&gt;D2 --> <g id="edge1" class="edge">
 <title>
 D1-&gt;D2
 </title>
-<path fill="none" stroke="black" d="M105.25,-34C120.29,-34 139.19,-34 155.59,-34"></path> <polygon fill="black" stroke="black" points="155.94,-37.5 165.94,-34 155.94,-30.5 155.94,-37.5"></polygon> <text text-anchor="middle" x="135.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- D2&#45;&gt;D3 --> <g id="edge2" class="edge">
+<path fill="none" stroke="black" d="M185.25,-34C200.29,-34 219.19,-34 235.59,-34"></path> <polygon fill="black" stroke="black" points="235.94,-37.5 245.94,-34 235.94,-30.5 235.94,-37.5"></polygon> <text text-anchor="middle" x="215.5" y="-41.2" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- D2&#45;&gt;D3 --> <g id="edge2" class="edge">
 <title>
 D2-&gt;D3
 </title>
-<path fill="none" stroke="black" d="M220,-34C232.83,-34 248.37,-34 262.34,-34"></path> <polygon fill="black" stroke="black" points="262.64,-37.5 272.64,-34 262.64,-30.5 262.64,-37.5"></polygon> <text text-anchor="middle" x="246.5" y="-41.2" font-family="Monospace" font-size="14.00">merge</text> </g> <!-- M1 --> <g id="node4" class="node">
-<title>
-M1
-</title>
-<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M2 --> <g id="node5" class="node">
+<path fill="none" stroke="black" d="M300,-34C312.83,-34 328.37,-34 342.34,-34"></path> <polygon fill="black" stroke="black" points="342.64,-37.5 352.64,-34 342.64,-30.5 342.64,-37.5"></polygon> <text text-anchor="middle" x="326.5" y="-41.2" font-family="Monospace" font-size="14.00">merge</text> </g> <!-- M2 --> <g id="node4" class="node">
 <title>
 M2
 </title>
-<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge3" class="edge">
-<title>
-M1-&gt;M2
-</title>
-<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge5" class="edge">
+<ellipse fill="none" stroke="black" cx="158" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="158" y="-141.4" font-family="Segoe UI" font-size="14.00">M2</text> </g> <!-- M2&#45;&gt;D1 --> <g id="edge5" class="edge">
 <title>
 M2-&gt;D1
 </title>
-<path fill="none" stroke="black" d="M146.54,-128.9C133.17,-110.59 110.93,-80.12 95.43,-58.87"></path> <polygon fill="black" stroke="black" points="98.16,-56.69 89.44,-50.67 92.51,-60.81 98.16,-56.69"></polygon> <text text-anchor="middle" x="151.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> <!-- M3 --> <g id="node6" class="node">
+<path fill="none" stroke="black" d="M158,-127.47C158,-110.02 158,-82.69 158,-62.25"></path> <polygon fill="black" stroke="black" points="161.5,-62 158,-52 154.5,-62 161.5,-62"></polygon> <text text-anchor="middle" x="177.04" y="-97" font-family="Monospace" font-size="14.00">branch</text> </g> <!-- M3 --> <g id="node6" class="node">
 <title>
 M3
 </title>
@@ -1066,18 +1060,26 @@ M3
 <title>
 M2-&gt;M3
 </title>
-<path fill="none" stroke="black" d="M185.25,-145.6C200.29,-145.6 219.19,-145.6 235.59,-145.6"></path> <polygon fill="black" stroke="black" points="235.94,-149.1 245.94,-145.6 235.94,-142.1 235.94,-149.1"></polygon> <text text-anchor="middle" x="215.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M3&#45;&gt;D3 --> <g id="edge6" class="edge">
+<path fill="none" stroke="black" d="M185.25,-145.6C200.29,-145.6 219.19,-145.6 235.59,-145.6"></path> <polygon fill="black" stroke="black" points="235.94,-149.1 245.94,-145.6 235.94,-142.1 235.94,-149.1"></polygon> <text text-anchor="middle" x="215.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M1 --> <g id="node5" class="node">
+<title>
+M1
+</title>
+<ellipse fill="none" stroke="black" cx="43" cy="-145.6" rx="27" ry="18"></ellipse> <text text-anchor="middle" x="43" y="-141.4" font-family="Segoe UI" font-size="14.00">M1</text> </g> <!-- M1&#45;&gt;M2 --> <g id="edge3" class="edge">
+<title>
+M1-&gt;M2
+</title>
+<path fill="none" stroke="black" d="M70.25,-145.6C85.29,-145.6 104.19,-145.6 120.59,-145.6"></path> <polygon fill="black" stroke="black" points="120.94,-149.1 130.94,-145.6 120.94,-142.1 120.94,-149.1"></polygon> <text text-anchor="middle" x="100.5" y="-152.8" font-family="Monospace" font-size="14.00">commit</text> </g> <!-- M3&#45;&gt;D3 --> <g id="edge6" class="edge">
 <title>
 M3-&gt;D3
 </title>
-<path fill="none" stroke="black" d="M277.22,-127.47C281.54,-109.94 288.31,-82.43 293.36,-61.97"></path> <polygon fill="black" stroke="black" points="296.82,-62.55 295.81,-52 290.02,-60.88 296.82,-62.55"></polygon> <text text-anchor="middle" x="302.49" y="-97" font-family="Monospace" font-size="14.00">merge</text> </g> </g>
+<path fill="none" stroke="black" d="M287.43,-129.82C305.72,-111.08 337.4,-78.63 358.54,-56.99"></path> <polygon fill="black" stroke="black" points="361.32,-59.15 365.8,-49.55 356.31,-54.26 361.32,-59.15"></polygon> <text text-anchor="middle" x="340.49" y="-97" font-family="Monospace" font-size="14.00">merge</text> </g> </g>
 </svg>
 </p>
 </div>
 </div>
 </div>
 <ul>
-<li>D3 is up to date with both <code>main</code> and <code>dev</code>, and lives in the <code>dev</code> branch.</li>
+<li><code>D3</code> is up to date with both <code>main</code> and <code>dev</code>, and lives in the <code>dev</code> branch.</li>
 </ul>
 </section>
 <section id="exercise-1" class="slide level2">
@@ -1094,18 +1096,20 @@ M3-&gt;D3
 <ol start="3" type="1">
 <li>Go back to the main branch and open <code>tutorial.md</code> again. Your changes are gone!</li>
 </ol>
+<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">git</span> checkout main <span class="co"># and open the File</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercise-2" class="slide level2">
 <h2>Exercise</h2>
 <ol start="4" type="1">
 <li>Bring the changes to the <code>main</code> branch.</li>
 </ol>
-<div class="sourceCode" id="cb18"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1"></a><span class="fu">git</span> checkout main <span class="co"># and open the File</span></span>
-<span id="cb18-2"><a href="#cb18-2"></a><span class="fu">git</span> merge tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">git</span> merge tutorial</span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="co"># open the file to check the changes are there</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="fu">git</span> status <span class="co"># check the current status</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <ol start="4" type="1">
 <li>Delete the <code>tutorial</code> branch.</li>
 </ol>
-<div class="sourceCode" id="cb19"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1"></a><span class="fu">git</span> branch <span class="at">-D</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">git</span> branch <span class="at">-D</span> tutorial</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section></section>
 <section>
 <section id="github" class="title-slide slide level1 center">
@@ -1149,13 +1153,13 @@ Upload the changes in your local repository to the remote version.
 <section id="exercise-3" class="slide level2">
 <h2>Exercise</h2>
 <p>You have made changes to your local version of your repo. They do not show up in the remote version! Send them up.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb20-1"><a href="#cb20-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">git</span> push</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="exercise-4" class="slide level2">
 <h2>Exercise</h2>
 <p>I made changes to the original repository. GitHub suggests that you bring your fork in sync. Do so on the website.</p>
 <p>Now your local version is outdated! Bring it up to speed.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode numberSource sh number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">git</span> pull</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-important callout-captioned callout-style-default">
 <div class="callout-body">
 <div class="callout-caption">

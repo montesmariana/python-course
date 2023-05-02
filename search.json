@@ -1194,14 +1194,14 @@
     "href": "slides/git.html#basic-daily-workflow",
     "title": "Git and GitHub",
     "section": "Basic daily workflow",
-    "text": "Basic daily workflow\ngit status # check what's up\n# after changes you want to keep track off\ngit add .\n# when you are ready to take a snapshot\ngit commit -m \"some message\"\ngit log # check history if you want\ngit status # check state is what you expected\nRinse and repeat :)"
+    "text": "Basic daily workflow\n# after changes you want to keep track off\ngit status # check what's up\ngit add .\n# when you are ready to take a snapshot\ngit commit -m \"some message\"\ngit log # check history if you want\ngit status # check state is what you expected\nRinse and repeat :)"
   },
   {
     "objectID": "slides/git.html#exercise",
     "href": "slides/git.html#exercise",
     "title": "Git and GitHub",
     "section": "Exercise",
-    "text": "Exercise\n\nGo to your local version of the forked repository. If you haven’t done so yet, clone it first.\n\ngit clone https://github.com/<username>/intro_machine_learning_using_python.git\n\nMake some changes to README.md and then:\n\ngit status # check that the changes show up\ngit add README.md # or git add .\ngit status # see that file is staged\ngit commit -m \"update README\"\ngit status # see that file is committed\ngit log # check history"
+    "text": "Exercise\n\nGo to your local version of the forked repository. If you haven’t done so yet, clone it first:\n\ngit clone https://github.com/<username>/intro_machine_learning_using_python.git\n\nMake some changes to README.md and then:\n\ngit status # check that the changes show up\ngit add README.md # or git add .\ngit status # see that file is staged\ngit commit -m \"update README\"\ngit status # see that file is committed\ngit log # check history"
   },
   {
     "objectID": "slides/git.html#branches",
@@ -1229,14 +1229,14 @@
     "href": "slides/git.html#branches-3",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\ngit checkout -b dev\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD1\n\n D1   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch"
+    "text": "Branches\ngit checkout -b dev\n# do some work on dev\ngit commit\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD1\n\n D1   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch"
   },
   {
     "objectID": "slides/git.html#branches-4",
     "href": "slides/git.html#branches-4",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\n# do some work on dev and stage\ngit commit\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD2\n\n D2   \n\nD1\n\n D1   \n\nD1->D2\n\n  commit   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch"
+    "text": "Branches\n# do some more work on dev and stage\ngit commit\n\n\n\n\n\n\n\nG\n\n \n\nclusterdev\n\n dev  \n\nclustermain\n\n main   \n\nD2\n\n D2   \n\nD1\n\n D1   \n\nD1->D2\n\n  commit   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch"
   },
   {
     "objectID": "slides/git.html#branches-5",
@@ -1264,21 +1264,21 @@
     "href": "slides/git.html#branches-8",
     "title": "Git and GitHub",
     "section": "Branches",
-    "text": "Branches\ngit merge main\n\n\n\n\n\n\n\nG\n\n \n\nclustermain\n\n main  \n\nclusterdev\n\n dev   \n\nD3\n\n D3   \n\nD1\n\n D1   \n\nD2\n\n D2   \n\nD1->D2\n\n  commit   \n\nD2->D3\n\n  merge   \n\nM1\n\n M1   \n\nM2\n\n M2   \n\nM1->M2\n\n  commit   \n\nM2->D1\n\n  branch   \n\nM3\n\n M3   \n\nM2->M3\n\n  commit   \n\nM3->D3\n\n  merge  \n\n\n\n\n\n\nD3 is up to date with both main and dev, and lives in the dev branch."
+    "text": "Branches\ngit merge main\n\n\n\n\n\n\n\nG\n\n \n\nclustermain\n\n main  \n\nclusterdev\n\n dev   \n\nD3\n\n D3   \n\nD1\n\n D1   \n\nD2\n\n D2   \n\nD1->D2\n\n  commit   \n\nD2->D3\n\n  merge   \n\nM2\n\n M2   \n\nM2->D1\n\n  branch   \n\nM3\n\n M3   \n\nM2->M3\n\n  commit   \n\nM1\n\n M1   \n\nM1->M2\n\n  commit   \n\nM3->D3\n\n  merge  \n\n\n\n\n\n\nD3 is up to date with both main and dev, and lives in the dev branch."
   },
   {
     "objectID": "slides/git.html#exercise-1",
     "href": "slides/git.html#exercise-1",
     "title": "Git and GitHub",
     "section": "Exercise",
-    "text": "Exercise\n\nIn your repository, create a new branch called tutorial.\n\ngit checkout -b tutorial\n\nMake some changes in tutorial.md, stage and commit.\n\ngit add tutorial.md\ngit commit -m \"update tutorial\"\n\nGo back to the main branch and open tutorial.md again. Your changes are gone!"
+    "text": "Exercise\n\nIn your repository, create a new branch called tutorial.\n\ngit checkout -b tutorial\n\nMake some changes in tutorial.md, stage and commit.\n\ngit add tutorial.md\ngit commit -m \"update tutorial\"\n\nGo back to the main branch and open tutorial.md again. Your changes are gone!\n\ngit checkout main # and open the File"
   },
   {
     "objectID": "slides/git.html#exercise-2",
     "href": "slides/git.html#exercise-2",
     "title": "Git and GitHub",
     "section": "Exercise",
-    "text": "Exercise\n\nBring the changes to the main branch.\n\ngit checkout main # and open the File\ngit merge tutorial\n\nDelete the tutorial branch.\n\ngit branch -D tutorial"
+    "text": "Exercise\n\nBring the changes to the main branch.\n\ngit merge tutorial\n# open the file to check the changes are there\ngit status # check the current status\n\nDelete the tutorial branch.\n\ngit branch -D tutorial"
   },
   {
     "objectID": "slides/git.html#remote-repository",
@@ -1659,6 +1659,13 @@
     "text": "Useful functions for files\n\nos.remove(\"somefile.txt\"): remove a file.\nos.path.getsize(\"somefile.txt\"): get the size of a file in bytes."
   },
   {
+    "objectID": "classes/2023-05-02-git.html",
+    "href": "classes/2023-05-02-git.html",
+    "title": "Git and Scikit",
+    "section": "",
+    "text": "Today we learn about git and GitHub and we’ll follow a tutorial on text processing with Scikit-learn.\n\n\n\n\nWhat to do during the class\n\nFor Git follow the steps marked as “exercise”.\nFor scikit-learn open the link to the tutorial and imitate the notebook shown during class."
+  },
+  {
     "objectID": "classes/2023-02-28-iterables.html",
     "href": "classes/2023-02-28-iterables.html",
     "title": "Working with iterables",
@@ -1726,7 +1733,7 @@
     "href": "index.html",
     "title": "Introduction to Machine Learning using Python",
     "section": "",
-    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n  \n\n\n\n\nMore on regular expressions\n\n\n\n\n\n\n\nregex\n\n\nbasics\n\n\n\n\nA deeper dive into regular expressions.\n\n\n\n\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to the website of the course “Introduction to Machine Learning Using Python” (February-May 2023).\nBelow you can find the notes from the different classes, which include the slides and instructions to work on the Jupyter Notebook and/or VS Code.\n\nClass notes\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nGit and Scikit\n\n\n\n\n\n\n\ngit\n\n\nmachine learning\n\n\n\n\nBasics of Git and a machine learning package.\n\n\n\n\n\n\nMay 2, 2023\n\n\n\n\n\n\n  \n\n\n\n\nMore on regular expressions\n\n\n\n\n\n\n\nregex\n\n\nbasics\n\n\n\n\nA deeper dive into regular expressions.\n\n\n\n\n\n\nApr 25, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDocstrings and script arguments\n\n\n\n\n\n\n\ndocumentation\n\n\nscripting\n\n\n\n\nDocumenting Python functions, classes and scripts.\n\n\n\n\n\n\nApr 18, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nObject oriented programming\n\n\n\n\n\n\n\nclasses\n\n\nbasics\n\n\n\n\nCreating and understanding Python classes.\n\n\n\n\n\n\nMar 21, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with files\n\n\n\n\n\n\n\nfiles\n\n\nregex\n\n\nerrors\n\n\nparsing\n\n\n\n\nDifferent ways of working with files and parsing text.\n\n\n\n\n\n\nMar 14, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nConditionals and functions\n\n\n\n\n\n\n\nconditions\n\n\nfunctions\n\n\nerrors\n\n\nbasics\n\n\n\n\nIntroduction to if-statements and functions.\n\n\n\n\n\n\nMar 7, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWorking with iterables\n\n\n\n\n\n\n\nsequences\n\n\nfor loop\n\n\nwhile\n\n\nconditions\n\n\nbasics\n\n\n\n\nIntroduction to iterables and for loops.\n\n\n\n\n\n\nFeb 28, 2023\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariables\n\n\n\n\n\n\n\nbasics\n\n\nsequences\n\n\nerrors\n\n\n\n\nIntroduction to the fundamental data types in Python.\n\n\n\n\n\n\nFeb 21, 2023\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "assignments/2023-06-12-final-project.html",
