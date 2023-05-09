@@ -13,7 +13,7 @@ At this point you have learned everything you need to show in the final project.
 
 In the case of today, we'll look into the `scikit-learn` Python package and follow a tutorial of theirs on machine learning with texts. This will offer an opportunity to talk about what machine learning is and how it works in a package like this, while also getting some hands-on experience on already-made code.
 
-During the class itself, I will use a [Jupyter Notebook](_resources/scikit-learn%20tutorial.ipynb) in which I reordered the cells of the tutorial and added some cells for exploration and explanation. You can download it and follow the class with it. Of course, open it from an environment that includes the packages that are loaded in the first cell. For example:
+During the class itself, I will use a <a href="_resources/scikit-learn%20tutorial.ipynb" download>Jupyter Notebook</a> in which I reordered the cells of the tutorial and added some cells for exploration and explanation. You can download it and follow the class with it. Of course, open it from an environment that includes the packages that are loaded in the first cell. For example:
 
 - Create a new Anaconda environment `scikit`. You can already choose to install `scikit-learn`.
 - Open the Jupyter Notebook from that environment.
