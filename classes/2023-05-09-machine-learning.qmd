@@ -1,0 +1,20 @@
+---
+title: "Scikit learn"
+format: html
+date: 2023-05-09
+categories:
+    - machine learning
+description: Basics of machine learning and a scikit-learn tutorial.
+---
+
+Today we'll follow a [tutorial](https://scikit-learn.org/stable/tutorial/text_analytics/working_with_text_data.html) on text processing with Scikit-learn.
+
+At this point you have learned everything you need to show in the final project. The rest of the semester is meant for you to work on this final project (and get feedback), while learning additional stuff related to Python and language research.
+
+In the case of today, we'll look into the `scikit-learn` Python package and follow a tutorial of theirs on machine learning with texts. This will offer an opportunity to talk about what machine learning is and how it works in a package like this, while also getting some hands-on experience on already-made code.
+
+During the class itself, I will use a [Jupyter Notebook](_resources/scikit-learn%20tutorial.ipynb) in which I reordered the cells of the tutorial and added some cells for exploration and explanation. You can download it and follow the class with it. Of course, open it from an environment that includes the packages that are loaded in the first cell. For example:
+
+- Create a new Anaconda environment `scikit`. You can already choose to install `scikit-learn`.
+- Open the Jupyter Notebook from that environment.
+- Try to run the first cell. If it fails, it will tell you which packages still need to be installed: add a (temporary) cell in which you type `!pip install <packagename>`, run it, and try again. Once the first cell runs without errors, you can delete the temporary cell and move forward.
